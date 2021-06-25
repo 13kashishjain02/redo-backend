@@ -45,14 +45,12 @@ INSTALLED_APPS = [
     'ckeditor',
     'payment',
     'general',
-    'django_hosts',
     'rest_framework',
     'social_django',
 ]
 SITE_ID = 1
 
 MIDDLEWARE = [
-    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'subdomains.middleware.SubdomainURLRoutingMiddleware',
@@ -61,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 AUTH_USER_MODEL = 'account.Account'
 AUTHENTICATION_BACKENDS = [
