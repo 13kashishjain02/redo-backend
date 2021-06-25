@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from shop.models import Product
+from shop.models import Product,SubCategory2
 from django.http import HttpResponseRedirect, HttpResponse
 from .serializers import ProductSerializer
 from django.views.decorators.csrf import csrf_exempt
@@ -16,13 +16,20 @@ def Product_api(request, id=None):
         if id is None:
             data = Product.objects.all()
             serializer = ProductSerializer(data, many=True)
-            print("hellloooo",serializer.data[0]['size'])
+            # print("hellloooo",serializer.data[0])
+            for i in serializer.data:
+                sub = SubCategory2.objects.get(id=i['subcategory2'])
+                i['subcategory2'] = sub.name
+                i['subcategory1'] = sub.subcategory1.name
+                i['category'] = sub.subcategory1.category.name
+
             return Response(serializer.data)
 
         else:
             # data = Product.objects.get(pk=id)
             data = Product.objects.filter(pk=id)
             serializer = ProductSerializer(data, many=True)
+            print(data[0])
             serializer.data[0]['subcategory2']=data[0].subcategory2.name
             serializer.data[0]['subcategory1'] = data[0].subcategory2.subcategory1.name
             serializer.data[0]['category'] = data[0].subcategory2.subcategory1.category.name
