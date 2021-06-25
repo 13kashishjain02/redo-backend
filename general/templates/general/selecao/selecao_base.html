@@ -1,0 +1,199 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title%} {% endblock %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{%static 'general/img/titlelogo.png'%}" rel="icon">
+  <link href="{%static 'general/img/titlelogo.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'bootstrap5/vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{%static 'bootstrap5/vendor/aos/aos.css'%}" rel="stylesheet">
+
+<!--  <link href="{%static 'selecao/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">-->
+<!--  <link href="{%static 'selecao/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">-->
+  <link href="{%static 'bootstrap5/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{%static 'bootstrap5/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{%static 'bootstrap5/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+  <link href="{%static 'bootstrap5/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+
+
+  <!-- Template Main CSS File -->
+  <link href="{%static 'selecao/css/style.css'%}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Elpizo - v4.1.0
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="../">Elpizo</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="{%static 'selecao/img/logo.png'%}" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="../">Home</a></li>
+          <li><a class="nav-link scrollto" href="../shop">Shop</a></li>
+          <li><a class="nav-link scrollto " href="../blog">Blogs</a></li>
+          <li><a class="nav-link scrollto" href="../#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="../#portfolio">Portfolio</a></li>
+
+          {%if request.user.is_authenticated %}
+            <li><a class="nav-link scrollto" href="../account">My account</a></li>
+          {%else%}
+            <li><a class="nav-link scrollto" href="../login">Login/register</a></li>
+          {% endif %}
+<!--          <li><a class="nav-link scrollto" href="../#pricing">Pricing</a></li>-->
+          {%if request.user.is_Vendor %}
+            <li class="dropdown"><a href="#"><span>Vendor Options</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="../addproduct" >Add Product</a></li>
+                <li><a href="../choosevendortemplate" >Choose Template</a></li>
+                <li><a href="../customise-vendor-template" >Customise Template</a></li>
+                <li><a href="../viewmyproducts" >My Products</a></li>
+              </ul>
+            </li>
+          {%endif%}
+          {%if request.user.is_Blogger %}
+            <li class="dropdown"><a href="#"><span>Blogger Options</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="../addblog" >Add Blog</a></li>
+                <li><a href="../choosebloggertemplate" >Choose Template</a></li>
+                <li><a href="../customise-blogger-template" >Customise Template</a></li>
+<!--                <li><a href="../viewmyblogs" >My Blogs</a></li>-->
+              </ul>
+            </li>
+          {%endif%}
+          <li><a class="nav-link scrollto" href="../contactus">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  {% block body%} {% endblock %}
+
+     <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+
+      <div class="row">
+          <div class="col-lg-4 col-md-6 col-6">
+            <h4 class="mb-3">Get to know us</h4>
+            <ul class="list-unstyled">
+              <li><a href="../aboutus">About us</a></li>
+              <li><a href="../termsandcondition">Terms and conditions</a></li>
+              <li><a href="../privacypolicy">Privacy Policy</a></li>
+              <li><a href="../termsandcondition/#refunds/cancellation">Refunds/Cancellation</a></li>
+              {%if request.user.is_Vendor or request.user.is_Blogger %}
+              {%else%}
+              <li><a href="../">Take it online</a></li>
+              {%endif%}
+              <li><a href="../contactus">Contact us</a></li>
+            </ul>
+            <hr>
+            <h4 class="mb-3">User section</h4>
+            <ul class="list-unstyled">
+              {%if request.user.is_authenticated %}
+                <li><a href="../logout" data-toggle="modal" data-target="#login-modal">Logout</a></li>
+              {%else%}
+                <li><a href="../login" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                <li><a href="../register">Register</a></li>
+              {%endif%}
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 col-6">
+            <h3>Elpizo</h3>
+            <p>Follow us for more regular updates</p>
+            <div class="social-links">
+              <a href="../comingsoon" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="../comingsoon" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://instagram.com/elpizo.in?igshid=1wn0t98d7099r" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-6 contact">
+            <div class="info" style="background:none;">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4 style=" color:white">Location:</h4>
+                <p style="color:#ef6603;">Zanskar,IIT delhi, New Delhi, India</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4 style=" color:white">Email:</h4>
+                <p style="color:#ef6603;">elpizocustomercare@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4 style=" color:white">Call:</h4>
+                <p style="color:#ef6603;">+91 6264843506</p>
+              </div>
+
+            </div>
+          </div>
+      </div>
+
+      <div class="copyright">
+        &copy; Copyright <strong><span>Elpizo</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/selecao-bootstrap-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'bootstrap5/vendor/aos/aos.js'%}"></script>
+<!--  <script src="{%static 'selecao/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>-->
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+  <script src="{%static 'bootstrap5/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{%static 'bootstrap5/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{%static 'bootstrap5/vendor/php-email-form/validate.js'%}"></script>
+  <script src="{%static 'bootstrap5/vendor/swiper/swiper-bundle.min.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'selecao/js/main.js'%}"></script>
+
+</body>
+
+</html>

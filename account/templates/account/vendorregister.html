@@ -1,0 +1,196 @@
+﻿{% extends 'general/selecao/selecao_base.html' %}
+{%load static%}
+{% block title%}VendorRegisteration-Elpizo{% endblock %}
+
+{% block body%}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+
+        <div class="carousel-container" style="height:33vh">
+          <h1 class="animate__animated animate__fadeInDown">Welcome to <span>Elpizo</span></h1>
+          <p class="animate__animated fanimate__adeInUp">Take your Bussiness online |register now</p>
+        </div>
+
+
+      <!-- Slide 2 -->
+<!--      <div class="carousel-item">-->
+<!--        <div class="carousel-container">-->
+<!--          <h2 class="animate__animated animate__fadeInDown">Welcome to Elpizo</h2>-->
+<!--          <p class="animate__animated animate__fadeInUp"> ELpizo is a startup by a sophomore of Indian Institute of Technology, Delhi. Elpizo was launched earlier in year 2020 with the domain as "elpizocenter.xyz" and later relaunched in year 2021 with domain "elpizo.in".</p>-->
+<!--          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <!-- Slide 3 -->
+<!--      <div class="carousel-item">-->
+<!--        <div class="carousel-container">-->
+<!--          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>-->
+<!--          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>-->
+<!--          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+  </section><!-- End Hero -->
+
+    {% if msg %}
+      <div class="alert" style="background-color:red;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>{{msg}}!</strong>
+      </div>
+    {% endif %}
+
+  <main id="main">
+    <form method="post"  class="">
+        {%csrf_token%}
+        <div class="container">
+
+          <div class="col-lg-12 mt-5 mt-lg-0" data-aos="fade-left">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="shopname" class="form-control" id="name" placeholder="Your Shop Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="number" class="form-control" name="shop_number"  placeholder="Shop contact number" maxlength="12"></textarea>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="shop_add_flat" id="email" placeholder="Address" required>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="shop_add_city" id="subject" placeholder="City" required>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="shop_add_state" id="subject" placeholder="State" required>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="gst" id="subject" placeholder="GST number" >
+              </div>
+          </div>
+        </div>
+
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-lg-3 col-md-6">
+                <div class="box" data-aos="zoom-in">
+                  <h3>Free</h3>
+                  <h4><sup>₹</sup>0<span> / month</span></h4>
+                  <ul>
+                    <li>Product promotion</li>
+                    <li>upto 20 products only</li>
+                    <li class="na">personal website</li>
+                    <li class="na">Customise template</li>
+                  </ul>
+                  <ul class="custom-radio d-flex justify-content-center">
+                      <li>
+                            <input type="radio" id="a100" name="plan" value="Free" />
+                            <label for="a100">Select</label>
+                      </li>
+                  </ul>
+
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                <div class="box " data-aos="zoom-in" data-aos-delay="100">
+                  <h3>Economic</h3>
+                  <h4><sup>₹</sup>29<span> / month</span></h4>
+                  <ul>
+                    <li>Product promotion</li>
+                    <li>upto 100 product</li>
+                    <li>personal website</li>
+                    <li>Customise template</li>
+                  </ul>
+
+                  <ul class="custom-radio d-flex justify-content-center">
+                      <li>
+                        <input type="radio" id="a25" name="plan" value="Economic" />
+                        <label for="a25">Select</label>
+                      </li>
+                  </ul>
+    <!--              <div class="btn-wrap">-->
+    <!--                <a href="#" class="btn-buy">Buy Now</a>-->
+    <!--              </div>-->
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box" data-aos="zoom-in" data-aos-delay="200">
+                  <span class="advanced">Recommended</span>
+                  <h3>Business</h3>
+                  <h4><sup>₹</sup>49<span> / month</span></h4>
+                  <ul>
+                    <li>Product promotion</li>
+                    <li>no limit on number of product</li>
+                    <li >personal website</li>
+                    <li>Customise template</li>
+                  </ul>
+                  <ul class="custom-radio d-flex justify-content-center">
+                      <li>
+                            <input type="radio" id="a50" name="plan" value="Business" checked="checked"/>
+                            <label for="a50">Select</label>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box" data-aos="zoom-in" data-aos-delay="300">
+
+                  <h3>Ultimate</h3>
+                  <h4><sup>₹</sup>99<span> / month</span></h4>
+                  <ul>
+                    <li>Product promotion</li>
+                    <li>no limit on number of product</li>
+                    <li>personal website</li>
+                    <li>Customise template</li>
+                    <li>Completely costomized frontend</li>
+                  </ul>
+                  <ul class="custom-radio d-flex justify-content-center">
+                      <li>
+                            <input type="radio" id="a75" name="plan" value="Ultimate"  />
+                            <label for="a75">Select</label>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section><!-- End Pricing Section -->
+        <div class="text-center">
+            <button type="submit" style="background: #ef6603;display: inline-block;padding: 8px 35px 10px 35px; border-radius: 50px;color: #fff;transition: none;font-size: 14px ; margin-bottom:10px; font-weight: 400;font-family: 'Raleway', sans-serif;">Register</button>
+        </div>
+    </form>
+  </main><!-- End #main -->
+
+  {% endblock %}

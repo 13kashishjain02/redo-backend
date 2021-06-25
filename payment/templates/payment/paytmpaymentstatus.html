@@ -1,0 +1,17 @@
+{% extends 'general/base.html' %}{% extends 'general/base.html' %}
+{%load static%}
+{% block title%} Elpizo{% endblock %}
+
+{% block body%}
+
+        Traction date: {{response.TXNDATE}}<br>
+        Trction ID : {{response.TXNID}}<br>
+        Amount : {{response.TXNAMOUNT}}<br>
+        Order ID : {{response.ORDERID}}<br>
+        {%if response.RESPCODE == '01'%}
+            ORDER SUCCESSFUL
+        {%else %}
+            ORDER FAILED
+        {%endif%}
+
+{% endblock %}

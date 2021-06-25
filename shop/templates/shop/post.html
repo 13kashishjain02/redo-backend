@@ -1,0 +1,211 @@
+{% extends 'general/base.html' %}
+{% load static %}
+{% block title%} Add Product- Elpizo{% endblock %}
+{% block style%}
+<!--<script src="https://cdn.ckeditor.com/4.16.0/standard-all/ckeditor.js"></script>-->
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+     <style>
+                    .dropbtn {
+                      background-color: #4fbfa8;
+                      color: white;
+                      padding: 16px;
+                      font-size: 16px;
+                      border: none;
+                      cursor: pointer;
+                    }
+
+                    .dropdown {
+                      position: relative; margin-left: 5rem;
+                      display: inline-block;
+                    }
+
+                    .dropdown-content {
+                      display: none;
+                      position: absolute;
+                      background-color: #f9f9f9;
+                      min-width: 160px;
+                      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                      z-index: 1;
+                    }
+
+                    .dropdown-content a {
+                      color: black;
+                      padding: 12px 16px;
+                      text-decoration: none;
+                      display: block;
+                    }
+
+                    .dropdown-content a:hover {background-color: #f1f1f1}
+
+                    .dropdown:hover .dropdown-content {
+                      display: block;
+                    }
+
+                    .dropdown:hover .dropbtn {
+                      background-color: #3e8e41;
+                    }
+     </style>
+
+{% endblock %}
+{% block body%}
+    
+    {% if msg %}
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>{{msg}}!</strong>
+      </div>
+    {% endif %}
+  <div id="all">
+      <div id="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- breadcrumb-->
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../">Home</a></li>
+                  <li aria-current="page" class="breadcrumb-item active">Add Product</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 ">
+              <div class="box">
+                <h1>Add Product</h1><hr>
+                <p>while uploading your product try to be as precise as possible!<br> All the fiels marked with * are compulsory</p>
+                <p class="text-muted">If you have any questions, please feel free to <a href="../contactus">contact us</a>, our customer service center is working for you 24/7.</p>
+                <hr>
+                <form method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                  <div class="form-group">
+                      <label for="name"><b><u>Product Name*</u></b></label>
+                    <input id="name" type="text" name="name" class="form-control" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Product Brand</label>
+                    <input id="name" type="text" name="brand" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="Price"><b><u>Price*</u></b></label>
+                    <input id="name" type="number" name="price" class="form-control" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="Price">Selling Price</label>
+                    <input id="name" type="number" name="selling_price" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="Price">Delivery Rates</label>
+                    <input id="name" type="number" name="delivery_charge" class="form-control" placeholder="by deafult rates are 60RS" value=60>
+                  </div>
+                  <div class="form-group">
+                    <label for="discount">Discount</label>
+                    <input id="name" type="number" name="discount" class="form-control" placeholder="dont mention discount if selling price is already submited">
+                  </div>
+                  <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input id="name" type="number" name="stock" class="form-control"value=60>
+                  </div>
+                  <b><u>Image 1*</u></b><input type="file" name="myfile" required/><br>
+                  Image 2 <input type="file" name="myfile2"><br>
+                  Image 3 <input type="file" name="myfile3">
+
+                
+              </div>
+            </div>
+            
+            <div class="col-lg-6 ">
+              <div class="box">
+                <p class="lead">Description and Category</p>
+                <p class="text-muted">Description ,Tags and Category are the most crucial data which will make a user buy your product..</p>
+                <hr>
+                
+                  <div class="form-group">
+                    <label for="description">Product description</label>
+                    <input id="" type="text" name="desc" class="form-control" style="height:200px;">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Tags</label>
+                    <input id="name" type="text" name="tags" placeholder="enter different tags with a space; For example - if your tags are tees and tshirt then enter tees tshirt" class="form-control" style="height:100px;">
+                  </div>
+
+                  <div class="dropdown" style="margin-top:15px">
+                      <select class="dropbtn" name="product_for" required/>Dropdown
+                      <div class="dropdown-content">
+   							<option selected="selected" class="dropdown-content" disabled>Product For:</option>
+                            <option name=size value="men">Men</option>
+                            <option name=size value="women">Women</option>
+                            <option name=size value="boys">Boys</option>
+                            <option name=size value="girls">Girls</option>
+                            <option name=size value="kids">Kids</option>
+                            <option name=size value="general">General</option>
+                      </div>
+                      </select>
+                 </div>
+                  <div class="form-group">
+                    <label for="category"><b><u>Category*</b></u></label>
+                    <input id="name" type="text" name="category" class="form-control" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="subcategory">Subcategory</label>
+                    <input id="name" type="text" name="subcategory" class="form-control">
+                  </div>
+<!--                 <div
+<!--                 <div class="dropdown" style="margin-top:15px">-->
+<!--                      <select class="dropbtn" name="category">Dropdown-->
+<!--                      <div class="dropdown-content">-->
+<!--   							<option selected="selected" class="dropdown-content" disabled>category:</option>-->
+<!--                            <option name=size value="tshirt">T-shirt</option>-->
+<!--                            <option name=size value="shirt">Shirt</option>-->
+<!--                            <option name=size value="shoes">Shoes</option>-->
+<!--                            <option name=size value="tops">Tops</option> -->
+<!--                            <option name=size value="jeans">Jeans</option>-->
+<!--                      </div>-->
+<!--                      </select>-->
+<!--                 </div>-->
+<!--                 <div class="dropdown" style="margin-top:15px">-->
+<!--                      <select class="dropbtn" name="subcategory">Dropdown-->
+<!--                      <div class="dropdown-content">-->
+<!--   							<option selected="selected" class="dropdown-content" disabled>Subcategory:</option>-->
+<!--                            <option name=size value="tshirt">T-shirt</option>-->
+<!--                            <option name=size value="shirt">Shirt</option>-->
+<!--                            <option name=size value="shoes">Shoes</option>-->
+<!--                            <option name=size value="tops">Tops</option> -->
+<!--                            <option name=size value="jeans">Jeans</option>-->
+<!--                      </div>-->
+<!--                      </select>-->
+<!--                 </div>-->
+                  {% for i in chartnum %}
+                    <input id="name" type="checkbox" name="size" value="{{i}}"/> {{i}}
+                  {%endfor%}
+
+                  <br><br>
+
+                  {% for i in chartletter %}
+                    <input id="name" type="checkbox" name="size" value="{{i}}"/> {{i}}
+                  {%endfor%}
+
+                  <div class="text-center" style=" margin-top:10px;">
+                    <button type="submit" class="btn btn-primary" value="required" /><i class="fa fa-user-md"></i> Add product</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% block js%}
+    <script>
+    CKEDITOR.config.devtools_styles =
+      '#cke_tooltip { line-height: 20px; font-size: 12px; padding: 5px; border: 2px solid #333; background: #ffffff }' +
+      '#cke_tooltip h2 { font-size: 14px; border-bottom: 1px solid; margin: 0; padding: 1px; }' +
+      '#cke_tooltip ul { padding: 0pt; list-style-type: none; }';
+
+    CKEDITOR.replace('deku', {
+      height: 250,
+      extraPlugins: 'devtools'
+    });
+  </script>
+{% endblock %}
+{%endblock%}

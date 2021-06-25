@@ -1,0 +1,66 @@
+{% extends 'general/base.html' %}
+{%load static%}
+{% block title%}Elpizo-About Us{% endblock %}
+
+{% block body%}
+    <div id="all">
+      <div id="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- breadcrumb-->
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../">Home</a></li>
+                  <li aria-current="page" class="breadcrumb-item active">About</li>
+                </ol>
+              </nav>
+            </div>
+
+            <div class="col-lg-12 text-center">
+              <div id="text-page" class="box">
+                <h1>Our Aim</h1>
+                <img src="{%static 'shop/img/main-slider5.png'%}" class="img-fluid">
+                <p style="font-size:20px;">
+                    Elpizo aims at proving an Affordable platform for users to take their business (through e-commerce and Affiliate) and ideas (through blogs) Online, and get a start with an already existing set of audience available at elpizo.
+                </p>
+
+                <hr>
+
+                <h1>Our Journey</h1>
+                <img src="{%static 'general/img/college.webp'%}" class="img-fluid">
+                <p style="font-size:20px;">
+                  ELpizo is a startup by a sophomore of Indian Institute of Technology, Delhi.
+                  Elpizo was launched earlier in year 2020 with the domain as "elpizocenter.xyz" and later relaunched in year 2021 with domain "elpizo.in".
+
+                </p>
+                <hr>
+                <h1>Our Team</h1><br>
+                <div class="row">
+
+                  <div class="col-md-4">
+                      <p class="text-center"><img src="{%static 'general/img/founder.jpeg'%}" alt="" class="rounded-circle img-fluid"></p>
+                      <p class="text-center"><strong>Founder</strong></p>
+                      <p>
+                        Kashish Jain : Founder, founded elpizo in year 2020 while persuing btech in Indian Institute of Technology, Delhi.
+                      </p>
+                  </div>
+
+                  <div class="col-md-4">
+                      <p class="text-center"><img src="{%static 'general/img/manage.png'%}" alt="" class="rounded-circle img-fluid"></p>
+                      <p class="text-center"><strong>Managing Team</strong></p>
+                      <p>
+<!--                        <a href="tel:6264843506">Callus</a><br>-->
+                        To mail us <a href="mailto:elpizocustomercare@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i>click here</a><br>
+                        To text us on whatsapp <a href="https://wa.me/message/4SRBZLZIUSAKD1"><i class="fa fa-whatsapp" aria-hidden="true"></i>click here</a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.col-lg-9-->
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

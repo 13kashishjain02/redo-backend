@@ -1,0 +1,33 @@
+{% extends 'general/base.html' %}
+{%load static%}
+{% block title%}Account-Elpizo{% endblock %}
+
+{% block body%}
+    <div>
+    hello,buddy
+    <form method="post">
+    {%csrf_token%}
+    {%for field in account_form%}
+    <p>{{field.label_tag}}hiii
+        {{field}}ggfds
+        {%if field.help_text%}
+        hii
+        <small >{{field.help_text}}</small>
+        {%endif%}</p>
+    {%endfor%}
+    
+    {%for field in account_form %}
+        {% for error in field.errors %}
+            {{error}}
+        {%endfor%}
+    {%endfor%}
+
+    {%if account_form.non_field_errors %}
+        {{account_form.non_field_errors}}
+    {%endif%}
+
+    <button type="submit">save</button>
+
+    </div>
+    
+{%endblock%}

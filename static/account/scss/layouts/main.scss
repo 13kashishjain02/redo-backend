@@ -1,0 +1,101 @@
+.signup-content {
+    background: #fff;
+    @include border-radius(10px);
+    padding: 50px 85px;
+}
+.form-group {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.form-input {
+    width: 100%;
+    border: 1px solid rgb(235, 235, 235);
+    @include border-radius(5px);
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 500;
+    color: $black-color;
+    @include input-placeholder($grey-light);
+	&::-webkit-input-placeholder {
+        font-weight: 500;
+	}
+	&::-moz-placeholder {
+		font-weight: 500;
+	}
+	&:-ms-input-placeholder {
+		font-weight: 500;
+	}
+	&:-moz-placeholder {
+		font-weight: 500;
+    }
+    &:focus {
+        border: 1px solid transparent;
+        -webkit-border-image-source: 
+            -webkit-linear-gradient(to right, rgb(159,172,230),  rgb(116,235,213)); 
+        -moz-border-image-source:
+            -moz-linear-gradient(to right, rgb(159,172,230),  rgb(116,235,213)); 
+        -o-border-image-source:
+            -o-linear-gradient(to right, rgb(159,172,230),  rgb(116,235,213));
+        border-image-source:
+            linear-gradient(to right, rgb(159,172,230),  rgb(116,235,213));
+        -webkit-border-image-slice: 1;
+        border-image-slice: 1;
+        @include border-radius(5px);
+        @include input-placeholder($black-color);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+    }
+
+}
+.form-submit {
+    width: 100%;
+    @include border-radius(5px);
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    background-image :    -moz-linear-gradient(to left, #74ebd5,#9face6);
+    background-image :     -ms-linear-gradient(to left, #74ebd5,#9face6);
+    background-image :      -o-linear-gradient(to left, #74ebd5,#9face6);
+    background-image : -webkit-linear-gradient(to left, #74ebd5,#9face6);
+    background-image :         linear-gradient(to left, #74ebd5,#9face6);
+    
+}
+
+.label-agree-term {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+}
+.term-service {
+    color: #555; 
+}
+
+.loginhere {
+    color: #555;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 91px;
+    margin-bottom: 5px;
+}
+.loginhere-link {
+    font-weight: 700;
+    color: $black-color;
+}
+.field-icon {
+    float: right;
+    margin-right: 17px;
+    margin-top: -32px;
+    position: relative;
+    z-index: 2;
+    color: #555;
+  }
+
+
+  
+
+  

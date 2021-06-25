@@ -1,0 +1,276 @@
+{% extends 'general/selecao/selecao_base.html' %}
+{%load static%}
+{% block title%}Template-Elpizo{% endblock %}
+
+{% block body%}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+
+        <div class="carousel-container" style="height:33vh">
+          <h1 class="animate__animated animate__fadeInDown">Choose Theme</h1>
+          <p class="animate__animated fanimate__adeInUp">Choose the Theme which best suits your idea</p>
+        </div>
+
+
+      <!-- Slide 2 -->
+<!--      <div class="carousel-item">-->
+<!--        <div class="carousel-container">-->
+<!--          <h2 class="animate__animated animate__fadeInDown">Welcome to Elpizo</h2>-->
+<!--          <p class="animate__animated animate__fadeInUp"> ELpizo is a startup by a sophomore of Indian Institute of Technology, Delhi. Elpizo was launched earlier in year 2020 with the domain as "elpizocenter.xyz" and later relaunched in year 2021 with domain "elpizo.in".</p>-->
+<!--          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <!-- Slide 3 -->
+<!--      <div class="carousel-item">-->
+<!--        <div class="carousel-container">-->
+<!--          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>-->
+<!--          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>-->
+<!--          <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+           <section id="portfolio" class="portfolio">
+              <div class="container">
+
+                <div class="section-title" data-aos="zoom-out">
+                  <h2>Choose template</h2>
+                  {% if msg %}
+                        <div class="alert">
+                          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                          <strong>{{msg}}!</strong>
+                        </div>
+                  {% endif %}
+                </div>
+                  <h2>Obaju</h2>
+                <div class="row portfolio-container" data-aos="fade-up">
+
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/default/default,default.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,default">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/default/default,default.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Obaju-default</h4>
+                      <p>template</p>
+<!--                      <i class="bx bx-plus preview-link"></i>-->
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,default">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    default
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/default/default,red.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,red">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/default/default,red.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Obaju-red</h4>
+                      <p>red</p>
+<!--                      <i class="bx bx-plus preview-link"></i>-->
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,red">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    red
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/default/default,green.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,green">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/default/default,green.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Obaju-green</h4>
+                      <p>green</p>
+<!--                      <i class="bx bx-plus preview-link"></i>-->
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,green">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    green
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/default/default,violet.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,violet">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/default/default,violet.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Obaju-violet</h4>
+                      <p>violet</p>
+<!--                      <i class="bx bx-plus preview-link"></i>-->
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,violet">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    violet
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/default/default,pink.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,pink">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/default/default,pink.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Obaju-pink</h4>
+                      <p>pink</p>
+<!--                      <i class="bx bx-plus preview-link"></i>-->
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,pink">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    pink
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/default/default,blue.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,blue">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/default/default,blue.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Obaju-blue</h4>
+                      <p>blue</p>
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,blue">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    blue
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/default/default,sea.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,sea">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/default/default,sea.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Obaju-sea</h4>
+                      <p>sea</p>
+<!--                      <i class="bx bx-plus preview-link"></i>-->
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="default,sea">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    sea
+                  </div>
+
+
+                  <hr>
+                  <h2>Bootslander</h2>
+                  <div class="col-lg-4 col-md-6 portfolio-item ">
+                    <div class="portfolio-img">
+                      <a href="{%static 'general/template/bootslander/bootslander,blue.webp'%}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title='<form action="../choosebloggertemplate/" method="post" >
+                      {%csrf_token%}
+                        <input type="hidden" name="tname" value="bootslander,blue">
+                        <button type="submit" class="preview-link custom-button">Apply</button>
+                      </form>'>
+                      <img src="{%static 'general/template/bootslander/bootslander,blue.webp'%}" class="img-fluid" alt=""></a>
+                    </div>
+                    <div class="portfolio-info">
+                      <h4>Bootslander,blue</h4>
+                      <p>template</p>
+<!--                      <i class="bx bx-plus preview-link"></i>-->
+                      <form action="../choosebloggertemplate/" method="post" >
+                        {%csrf_token%}
+                        <input type="hidden" name="tname" value="bootslander,blue">
+                        <button type="submit" class="preview-link custom-button" style="padding: 5px 20px 5px 20px;">Apply</button>
+                      </form>
+        <!--              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>-->
+                    </div>
+                    Blue
+                  </div>
+                </div>
+
+
+              </div>
+           </section>
+
+
+  </main><!-- End #main -->
+
+{% endblock %}

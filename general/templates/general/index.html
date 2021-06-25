@@ -1,0 +1,328 @@
+{% extends 'general/base.html' %}
+{%load static%}
+{% block title%} Shop - Elpizo{% endblock %}
+{% block style%}
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <style>
+  /* Large rounded green border */
+    hr.tline {
+      border: 3px solid #FF8F8F;
+      border-radius: 1px;
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
+    hr.bline {
+      border: 3px solid #FF8F8F;
+      border-radius: 1px;
+      margin-top: 0px;
+      margin-bottom: 5px;
+    }
+<!--    hr.coloured {-->
+<!--      background: -webkit-linear-gradient(left, rgba(196,222,138,1) 0%, rgba(196,222,138,1) 33.3%,  rgba(255,208,132,1) 33.3%, rgba(255,208,132,1) 66.6%,  rgba(94,190,227,1) 66.6%, rgba(94,190,227,1) 100%); /* Chrome10+,Safari5.1+ */-->
+<!--    }-->
+
+  </style>
+{% endblock %}
+
+{% block body%}
+    {% if msg %}
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>{{msg}}!</strong>
+      </div>
+    {% endif %}
+    <div id="all">
+      <div id="content">
+        <!--<div class="container" style="padding-right: 5px; padding-left: 5px;">-->
+        <div class="" style="padding-right: 5px; padding-left: 5px;">
+          <div class="row">
+            <div class="col-md-12">
+              <div id="main-slider" class="owl-carousel owl-theme" style="width: 100%; height:60vh">
+                <div class="item">
+                      <img src="{%static 'shop/img/main-slider1.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
+<!--                      <div  style="background: white; opacity: 0.9; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">-->
+<!--                        <hr class="tline ">-->
+<!--                        <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
+<!--                        <hr class="bline ">-->
+<!--                      </div>-->
+                      <div  style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); width:75%;">
+                          <form method="get" action="../search" class="ml-auto">
+                              <div class="input-group">
+                                <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
+                                <div class="input-group-append">
+                                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </div>
+                              </div>
+                          </form>
+                      </div>
+                </div>
+                <div class="item">
+                    <img src="{%static 'shop/img/main-slider2.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
+<!--                    <div  style="background: white; opacity: 0.9; position: absolute; top: 15px; left: 16px; ">-->
+<!--                      <hr class="tline ">-->
+<!--                      <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
+<!--                      <hr class="bline ">-->
+<!--                    </div>-->
+                    <div  style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); width:75%;">
+                        <form method="get" action="../search" class="ml-auto">
+                            <div class="input-group">
+                              <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
+                              <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{%static 'shop/img/main-slider3.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
+<!--                    <div  style="background: white; opacity: 0.9;   position: absolute;bottom: 8px; left: 16px;">-->
+<!--                      <hr class="tline ">-->
+<!--                      <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
+<!--                      <hr class="bline ">-->
+<!--                    </div>-->
+                    <div  style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width:75%;">
+                        <form method="get" action="../search" class="ml-auto">
+                            <div class="input-group">
+                              <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
+                              <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{%static 'shop/img/slider1.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
+<!--                    <div  style="background: white; opacity: 0.9; position: absolute; top: 8px; right: 16px;">-->
+<!--                      <hr class="tline ">-->
+<!--                      <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
+<!--                      <hr class="bline ">-->
+<!--                    </div>-->
+                    <div  style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); width:75%;">
+                        <form method="get" action="../search" class="ml-auto">
+                            <div class="input-group">
+                              <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
+                              <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+              </div>
+              <!-- /#main-slider-->
+            </div>
+            </div>
+          </div>
+
+
+        <!--
+        *** ADVANTAGES HOMEPAGE ***
+        _________________________________________________________
+        -->
+        <br>
+        <div id="advantages">
+          <div class="container" style="padding-right: 5px; padding-left: 5px;">
+            <div class="row mb-4">
+              <div class="col-md-4 ">
+                <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100" >
+                  <div class="icon"><i class="fa fa-heart"></i></div>
+                  <h3><a href="#">We love our customers</a></h3>
+                  <p class="mb-0">We try our best to provide the best possible service ever to our costumers</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                  <div class="icon"><i class="fa fa-tags"></i></div>
+                  <h3><a href="#">Best prices</a></h3>
+                  <p class="mb-0">Our aim is to provide you with the products at best price.</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                  <div class="icon"><i class="fa fa-thumbs-up"></i></div>
+                  <h3><a href="#">100% satisfaction guaranteed</a></h3>
+                  <p class="mb-0">Free returns on any defected and damaged product.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- *** ADVANTAGES END ***-->
+
+        <!--
+        *** COROUSEL HOMEPAGE ***
+        _________________________________________________________
+        -->
+
+        <div id="demo" class="carousel slide mb-4" data-ride="carousel">
+
+          <!-- Indicators -->
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+
+          <!-- The slideshow -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{%static 'shop/img/slider2.jpg'%}" alt="Los Angeles" width="100%" height="500">
+            </div>
+            <div class="carousel-item">
+              <img src="{%static 'shop/img/slider4.jpg'%}" alt="Chicago" width="100%" height="500">
+            </div>
+            <div class="carousel-item">
+              <img src="{%static 'shop/img/slider1.jpg'%}" alt="New York" width="100%" height="500">
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+
+        <!-- *** COROUSEL END ***-->
+
+        <!--
+        *** HOT PRODUCT SLIDESHOW ***
+        _________________________________________________________
+        -->
+        <div id="hot">
+          <div class="box py-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1 class="mb-0" style="background: #ffd834;">Latest Arrivals  <i class="fa fa-shopping-cart" aria-hidden="true"></i></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+          {% for product, range, nSlides in allProds %}
+            <div class="box py-4">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h3 class="mb-0" style="background: #ffd834;">Products in Category :{{product.0.category}}</h3>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="product-slider owl-carousel owl-theme">
+                {% for i in product|slice:"0:12" %}
+                 <div class="item ">
+                    <div class="product ">
+                      <div class="flip-container">
+                        <div class="flipper">
+                          <div class="front"><a href="../products/{{i.id}}"><img style="max-height:370px;" src="/media/{{i.image}}" alt="" class="img-fluid" ></a></div>
+                          {% if i.image2 %}
+                            <div class="back"><a href="../products/{{i.id}}"><img style="max-height:370px;" src="/media/{{i.image2}}" alt="" class="img-fluid"></a></div>
+                          {% else %}
+                            <div class="back"><a href="../products/{{i.id}}"><img style="max-height:370px;" src="/media/{{i.image}}" alt="" class="img-fluid"></a></div>
+                          {% endif %}  
+                        </div>
+                      </div><a href="../products/{{i.id}}" class="invisible"><img style="max-height:370px;" src="{%static 'shop/img/product1.jpg'%}" alt="" class="img-fluid" ></a>
+                      <div class="text">
+                        <h3><a href="../products/{{i.id}}">{{i.name|slice:"0:20"}}..</a></h3>
+                        <p class="price"> 
+                          <del>Rs.{{i.original_price}}</del> Rs.{{i.price}}
+                        </p>
+                      </div>
+                  
+                      {%if i.discount > 0 %}
+                      <!-- /.text-->
+                      <div class="ribbon sale">
+                        <div class="theribbon">SALE</div>
+                        <div class="ribbon-background"></div>
+                      </div>
+                      <!-- /.ribbon-->
+                      <div class="ribbon new">
+                        <div class="theribbon">{{i.discount}}% off</div>
+                        <div class="ribbon-background"></div>
+                      </div>
+                      <!-- /.ribbon-->
+                      {%endif%}
+                    </div>
+                    <!-- /.product-->
+                  </div>
+                {% endfor %}
+              
+              <!-- /.product-slider-->
+            </div>
+            
+            {% endfor %}
+            <!-- /.container-->
+          </div>
+          <!-- /#hot-->
+          <!-- *** HOT END ***-->
+        </div>
+        <!--
+        ---------------------------------------------------------
+        *** GET INSPIRED ***
+        _________________________________________________________
+        -->
+        <!--<div class="container">-->
+        <div>
+          <div class="col-md-12">
+            <div class="box slideshow">
+              <h3>Get Inspired</h3>
+              <p class="lead">Get the inspiration from our world class designers</p>
+              <div id="get-inspired" class="owl-carousel owl-theme">
+                <div class="item"><a href="#"><img src="{%static 'shop/img/getinspired1.jpg'%}" alt="Get inspired" class="img-fluid"></a></div>
+                <div class="item"><a href="#"><img src="{%static 'shop/img/getinspired2.jpg'%}" alt="Get inspired" class="img-fluid"></a></div>
+                <div class="item"><a href="#"><img src="{%static 'shop/img/getinspired3.jpg'%}" alt="Get inspired" class="img-fluid"></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- *** GET INSPIRED END ***-->
+        <!--
+        *** BLOG HOMEPAGE ***
+        _________________________________________________________
+        -->
+        <div class="box text-center">
+          <div class="container">
+            <div class="col-md-12">
+              <h3 class="text-uppercase">From our blog</h3>
+              <p class="lead mb-0">What's new in the world of fashion? <a href="../blog">Check our blog!</a></p>
+            </div>
+          </div>
+        </div>
+<!--        <div class="container">-->
+<!--          <div class="col-md-12">-->
+<!--            <div id="blog-homepage" class="row">-->
+<!--              <div class="col-sm-6">-->
+<!--                <div class="post">-->
+<!--                  <h4><a href="post.html">Fashion now</a></h4>-->
+<!--                  <p class="author-category">By <a href="#">John Slim</a> in <a href="">Fashion and style</a></p>-->
+<!--                  <hr>-->
+<!--                  <p class="intro">DUmmy text Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>-->
+<!--                  <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a></p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="col-sm-6">-->
+<!--                <div class="post">-->
+<!--                  <h4><a href="post.html">Who is who - example blog post</a></h4>-->
+<!--                  <p class="author-category">By <a href="#">John Slim</a> in <a href="">About Minimal</a></p>-->
+<!--                  <hr>-->
+<!--                  <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>-->
+<!--                  <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a></p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; /#blog-homepage&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+        <!-- /.container-->
+        <!-- *** BLOG HOMEPAGE END ***-->
+      </div>
+    </div>
+{% endblock %}
+
