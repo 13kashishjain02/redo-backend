@@ -80,39 +80,4 @@ class Order(models.Model):
         return self.status
 
 
-COLOR_CHOICES = [
-    ('stationary', (
-        ('pencil', 'pencil'),
-        ('paper', 'Paper'),
-        ('eraser', 'Eraser'),
-        ('other', 'Other'),
-    )
-     ),
-    ('Category2', (
-        ('vhs', 'VHS Tape'),
-        ('dvd', 'DVD'),
-        ('pencil', 'Pencil'),
-        ('paper', 'Paper'),
-        ('other', 'Other'),
-    )
-     ),
-    ('vhs', 'VHS Tape'),
-    ('dvd', 'DVD'),
-    ('pencil', 'Pencil'),
-    ('paper', 'Paper'),
-    ('Other', 'Other'),
-]
 
-
-class MyModel(models.Model):
-    color = models.CharField(max_length=7, choices=COLOR_CHOICES, default='green')
-
-
-class Property(models.Model):
-    address = models.TextField()
-
-
-class PropertyImage(models.Model):
-    property = models.ForeignKey(Property, related_name='images', on_delete=models.CASCADE)
-    # test = models.ForeignKey('self', related_name='images',null=True, on_delete=models.CASCADE)
-    image = models.ImageField()

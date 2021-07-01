@@ -34,6 +34,10 @@ INSTALLED_APPS = [
     'shop',
     'account',
     'blog',
+    'cart',
+    'payment',
+    'general',
+
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,11 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cart',
+
+
     'ckeditor',
-    'payment',
-    'general',
     'rest_framework',
+    'rest_framework.authtoken',
     'social_django',
 ]
 SITE_ID = 1
@@ -69,6 +73,17 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
 
 ROOT_URLCONF = 'redopact.urls'
 ROOT_HOSTCONF = 'redopact.hosts'

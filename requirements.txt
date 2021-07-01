@@ -1,15 +1,9 @@
-pip install django
-pip install django-ckeditor
-pip install requests
-pip install twilio
-pip install pycryptodome
-pip install paywix
-pip install pillow
-pip install django-hosts
-pip install django social-auth-app-django
-pip install djangorestframework
-
-
-updates needed
-1.stop form resubmission on refresh
-2.template change in mobile mode
+django==3.2.4
+django-ckeditor==6.1.0
+requests==6.1.0
+twilio==6.60.0
+pycryptodome==3.10.1
+paywix==1.4.0
+pillow==8.2.0
+django social-auth-app-django==4.0.0
+djangorestframework==3.12.4

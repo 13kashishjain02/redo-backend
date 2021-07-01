@@ -1,17 +1,28 @@
 from django.shortcuts import render
-from shop.models import Product,SubCategory2
+from shop.models import Product, SubCategory2
+from account.models import VendorAccount
 from django.http import HttpResponseRedirect, HttpResponse
 from .serializers import ProductSerializer
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.db.utils import IntegrityError
 from django.urls import reverse
 
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+
+from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.generics import ListAPIView
+from rest_framework.filters import SearchFilter, OrderingFilter
+
+
 @csrf_exempt
 @api_view(['POST', 'GET', 'PUT', 'DELETE'])
-def Product_api(request, id=None):
+@permission_classes([IsAuthenticated])
+def product_api(request, id=None):
     if request.method == "GET":
         if id is None:
             data = Product.objects.all()
@@ -30,7 +41,7 @@ def Product_api(request, id=None):
             data = Product.objects.filter(pk=id)
             serializer = ProductSerializer(data, many=True)
             print(data[0])
-            serializer.data[0]['subcategory2']=data[0].subcategory2.name
+            serializer.data[0]['subcategory2'] = data[0].subcategory2.name
             serializer.data[0]['subcategory1'] = data[0].subcategory2.subcategory1.name
             serializer.data[0]['category'] = data[0].subcategory2.subcategory1.category.name
             # print(serializer.data)
@@ -40,9 +51,9 @@ def Product_api(request, id=None):
         serializer = ProductSerializer(data=request.data)
         # print(serializer.data)
         if serializer.is_valid():
-            comment = serializer.data
-            data = Product.objects.get(pk=id)
-            data.comments.append(comment["comments"])
+            data = serializer.data
+            vendor = VendorAccount.objects.get(email=request.user.email)
+            data["vendor"]=vendor
             data.save()
 
             # serializer.save()
@@ -62,3 +73,20 @@ def Product_api(request, id=None):
         data = Product.objects.get(pk=id)
         data.delete()
         return Response({'msg': 'data deleted'})
+
+
+# Url:
+#		1) list: https://<your-domain>/api/blog/list
+#		2) pagination: http://<your-domain>/api/blog/list?page=2
+#		3) search: http://<your-domain>/api/blog/list?search=mitch
+#		4) ordering: http://<your-domain>/api/blog/list?ordering=-date_updated
+#		4) search + pagination + ordering: <your-domain>/api/blog/list?search=mitch&page=2&ordering=-date_updated
+# Headers: Authorization: Token <token>
+class ApiProductListView(ListAPIView):
+	queryset = Product.objects.all()
+	serializer_class = ProductSerializer
+	authentication_classes = (TokenAuthentication,)
+	permission_classes = (IsAuthenticated,)
+	pagination_class = PageNumberPagination
+	filter_backends = (SearchFilter, OrderingFilter)
+	search_fields = ('name', 'subcategory2__name', 'desc')
