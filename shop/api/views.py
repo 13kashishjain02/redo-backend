@@ -12,7 +12,7 @@ from django.urls import reverse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
-
+from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.generics import ListAPIView
@@ -20,8 +20,9 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 @csrf_exempt
-@api_view(['POST', 'GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
+@api_view(['GET',])
+# @permission_classes([IsAuthenticated])
+@permission_classes([])
 def product_api(request, id=None):
     if request.method == "GET":
         if id is None:
@@ -82,11 +83,13 @@ def product_api(request, id=None):
 #		4) ordering: http://<your-domain>/api/blog/list?ordering=-date_updated
 #		4) search + pagination + ordering: <your-domain>/api/blog/list?search=mitch&page=2&ordering=-date_updated
 # Headers: Authorization: Token <token>
+
+@permission_classes((AllowAny, ))
 class ApiProductListView(ListAPIView):
 	queryset = Product.objects.all()
 	serializer_class = ProductSerializer
-	authentication_classes = (TokenAuthentication,)
-	permission_classes = (IsAuthenticated,)
+	# authentication_classes = (TokenAuthentication,)
+	# permission_classes = (IsAuthenticated,)
 	pagination_class = PageNumberPagination
 	filter_backends = (SearchFilter, OrderingFilter)
 	search_fields = ('name', 'subcategory2__name', 'desc')
