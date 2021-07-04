@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'social_django',
 ]
 SITE_ID = 1
@@ -57,12 +58,12 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'subdomains.middleware.SubdomainURLRoutingMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 AUTH_USER_MODEL = 'account.Account'
 AUTHENTICATION_BACKENDS = [
@@ -84,6 +85,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#   'http://localhost:8000',
+# )
 
 ROOT_URLCONF = 'redopact.urls'
 ROOT_HOSTCONF = 'redopact.hosts'
