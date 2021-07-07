@@ -11,16 +11,14 @@ from datetime import date
 def index(request):
     allProds = []
     Products=Product.objects.values()
-    catprods = Products.values('category', 'id')
-    cats = {item['category'] for item in catprods}
 
-    for cat in cats:
-        prod = Products.filter(category=cat).order_by('?')
-        n = len(prod)
-        nSlides = n // 4 + math.ceil((n / 4) - (n // 4))
-        allProds.append([prod, range(1, nSlides), nSlides])
+    # for cat in cats:
+    #     prod = Products.filter(category=cat).order_by('?')
+    #     n = len(prod)
+    #     nSlides = n // 4 + math.ceil((n / 4) - (n // 4))
+    #     allProds.append([prod, range(1, nSlides), nSlides])
     params = {'allProds': allProds}
-    return render(request, 'general/index.html', params)
+    return render(request, 'general/index.html',{'products':Products})
 
 def contactus(request):
     if request.method == 'POST':

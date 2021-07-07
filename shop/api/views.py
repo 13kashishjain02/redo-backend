@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from django.db.utils import IntegrityError
 from django.urls import reverse
 
-
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
@@ -77,19 +77,21 @@ def product_api(request, id=None):
 
 
 # Url:
-#		1) list: https://<your-domain>/api/blog/list
-#		2) pagination: http://<your-domain>/api/blog/list?page=2
-#		3) search: http://<your-domain>/api/blog/list?search=mitch
-#		4) ordering: http://<your-domain>/api/blog/list?ordering=-date_updated
-#		4) search + pagination + ordering: <your-domain>/api/blog/list?search=mitch&page=2&ordering=-date_updated
+#		1) list: https://<your-domain>/api/list
+#		2) pagination: http://<your-domain>/api/list?page=2
+#		3) search: http://<your-domain>/api/list?search=mitch
+#		4) ordering: http://<your-domain>/api/list?ordering=-date_updated
+#		4) search + pagination + ordering: <your-domain>/api/list?search=shirt&page=2&ordering=-date_updated
+# http://127.0.0.1:8000/api/list/?brand=elpizo
 # Headers: Authorization: Token <token>
 
 @permission_classes((AllowAny, ))
 class ApiProductListView(ListAPIView):
-	queryset = Product.objects.all()
-	serializer_class = ProductSerializer
-	# authentication_classes = (TokenAuthentication,)
-	# permission_classes = (IsAuthenticated,)
-	pagination_class = PageNumberPagination
-	filter_backends = (SearchFilter, OrderingFilter)
-	search_fields = ('name', 'subcategory2__name', 'desc')
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    # authentication_classes = (TokenAuthentication,)
+    # permission_classes = (IsAuthenticated,)
+    pagination_class = PageNumberPagination
+    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filterset_fields = ['brand', 'size']
+    search_fields = ('name', 'subcategory2__name', 'desc')

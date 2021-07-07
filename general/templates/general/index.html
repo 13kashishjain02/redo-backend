@@ -1,328 +1,1730 @@
-{% extends 'general/base.html' %}
+<!DOCTYPE html>
 {%load static%}
-{% block title%} Shop - Elpizo{% endblock %}
-{% block style%}
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <style>
-  /* Large rounded green border */
-    hr.tline {
-      border: 3px solid #FF8F8F;
-      border-radius: 1px;
-      margin-top: 5px;
-      margin-bottom: 0px;
-    }
-    hr.bline {
-      border: 3px solid #FF8F8F;
-      border-radius: 1px;
-      margin-top: 0px;
-      margin-bottom: 5px;
-    }
-<!--    hr.coloured {-->
-<!--      background: -webkit-linear-gradient(left, rgba(196,222,138,1) 0%, rgba(196,222,138,1) 33.3%,  rgba(255,208,132,1) 33.3%, rgba(255,208,132,1) 66.6%,  rgba(94,190,227,1) 66.6%, rgba(94,190,227,1) 100%); /* Chrome10+,Safari5.1+ */-->
-<!--    }-->
+<html lang="en">
 
-  </style>
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="{%static 'general/css/style.css'%}" >
+<!--    <link rel="stylesheet" href="styles_navbar_Responsive.css">-->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!--    <link rel="stylesheet" href="three-boxes.css" />-->
+<!--    <link rel="stylesheet" href="gifts.css" />-->
+<!--    <link href="horizontalvertical.css" rel="stylesheet" />-->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <title>Redo Pact</title>
+</head>
 
-{% block body%}
-    {% if msg %}
-      <div class="alert">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>{{msg}}!</strong>
-      </div>
-    {% endif %}
-    <div id="all">
-      <div id="content">
-        <!--<div class="container" style="padding-right: 5px; padding-left: 5px;">-->
-        <div class="" style="padding-right: 5px; padding-left: 5px;">
-          <div class="row">
-            <div class="col-md-12">
-              <div id="main-slider" class="owl-carousel owl-theme" style="width: 100%; height:60vh">
-                <div class="item">
-                      <img src="{%static 'shop/img/main-slider1.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
-<!--                      <div  style="background: white; opacity: 0.9; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">-->
-<!--                        <hr class="tline ">-->
-<!--                        <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
-<!--                        <hr class="bline ">-->
-<!--                      </div>-->
-                      <div  style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); width:75%;">
-                          <form method="get" action="../search" class="ml-auto">
-                              <div class="input-group">
-                                <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
-                                <div class="input-group-append">
-                                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                </div>
-                              </div>
-                          </form>
-                      </div>
-                </div>
-                <div class="item">
-                    <img src="{%static 'shop/img/main-slider2.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
-<!--                    <div  style="background: white; opacity: 0.9; position: absolute; top: 15px; left: 16px; ">-->
-<!--                      <hr class="tline ">-->
-<!--                      <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
-<!--                      <hr class="bline ">-->
-<!--                    </div>-->
-                    <div  style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); width:75%;">
-                        <form method="get" action="../search" class="ml-auto">
-                            <div class="input-group">
-                              <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
-                              <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                              </div>
-                            </div>
-                        </form>
+<body>
+    <!--main page-->
+    <section id="header">
+        <div class="header">
+            <!--top-bar-->
+            <div class="top-bar">
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Free Delivery (Over 1000 INR*)</h6>
                     </div>
                 </div>
-                <div class="item">
-                    <img src="{%static 'shop/img/main-slider3.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
-<!--                    <div  style="background: white; opacity: 0.9;   position: absolute;bottom: 8px; left: 16px;">-->
-<!--                      <hr class="tline ">-->
-<!--                      <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
-<!--                      <hr class="bline ">-->
-<!--                    </div>-->
-                    <div  style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width:75%;">
-                        <form method="get" action="../search" class="ml-auto">
-                            <div class="input-group">
-                              <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
-                              <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                              </div>
-                            </div>
-                        </form>
+
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-reply"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Easy Returns</h6>
                     </div>
                 </div>
-                <div class="item">
-                    <img src="{%static 'shop/img/slider1.jpg'%}" alt="" class="img-fluid" style="width: 100%; height:60vh">
-<!--                    <div  style="background: white; opacity: 0.9; position: absolute; top: 8px; right: 16px;">-->
-<!--                      <hr class="tline ">-->
-<!--                      <h2 style="padding:10px 5px 2px 20px;">GET THE BEST QUALITY PRODUCTS AT CHEAPEST RATES <i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>-->
-<!--                      <hr class="bline ">-->
-<!--                    </div>-->
-                    <div  style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); width:75%;">
-                        <form method="get" action="../search" class="ml-auto">
-                            <div class="input-group">
-                              <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
-                              <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                              </div>
-                            </div>
-                        </form>
+
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-coins"></i>
                     </div>
-              </div>
-              <!-- /#main-slider-->
+                    <div class="icon-content">
+                        <h6>Best Deals</h6>
+                    </div>
+                </div>
             </div>
-            </div>
-          </div>
+            <!--end-of-topbar-->
 
 
-        <!--
-        *** ADVANTAGES HOMEPAGE ***
-        _________________________________________________________
-        -->
-        <br>
-        <div id="advantages">
-          <div class="container" style="padding-right: 5px; padding-left: 5px;">
-            <div class="row mb-4">
-              <div class="col-md-4 ">
-                <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100" >
-                  <div class="icon"><i class="fa fa-heart"></i></div>
-                  <h3><a href="#">We love our customers</a></h3>
-                  <p class="mb-0">We try our best to provide the best possible service ever to our costumers</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                  <div class="icon"><i class="fa fa-tags"></i></div>
-                  <h3><a href="#">Best prices</a></h3>
-                  <p class="mb-0">Our aim is to provide you with the products at best price.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                  <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                  <h3><a href="#">100% satisfaction guaranteed</a></h3>
-                  <p class="mb-0">Free returns on any defected and damaged product.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
-        <!-- *** ADVANTAGES END ***-->
+    </section>
 
-        <!--
-        *** COROUSEL HOMEPAGE ***
-        _________________________________________________________
-        -->
+    <!--end of header-->
 
-        <div id="demo" class="carousel slide mb-4" data-ride="carousel">
+    <!--navbar-->
+    <section id="navbar">
+        <nav class="navbar header">
+            <div class="container-fluid">
+                <a id="logo-img" href="index.html"><img class="logo" src="Logo!_Logo.svg.png'%}" alt="REDOPACT"></a>
+                <div class="d-sm-none d-md-block ms-auto d-none d-sm-block">
+                    <form class="d-flex ms-auto bar1">
+                        <input id="inpt_srch" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit" style="padding-left: 6px"><svg
+                                class="srch_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                <ul class="flex-container ms-auto" style="list-style-type: none">
+                    <li class="pad_nav">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg><br>Account</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg><br>Wishlist</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cart" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg></span><br>Cart</a>
+                    </li>
+                </ul>
+                <div class="d-none d-sm-block d-md-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form class="d-flex ms-auto">
+                        <input id="inptsm_srch" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                <div class="d-block d-sm-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form class="d-flex ms-auto">
+                        <input id="inptxs_srch" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </nav>
 
-          <!-- Indicators -->
-          <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-          </ul>
 
-          <!-- The slideshow -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{%static 'shop/img/slider2.jpg'%}" alt="Los Angeles" width="100%" height="500">
+        <!-- 1st part -->
+
+        <nav class="navbar nav2 d-none d-sm-block">
+            <div class="container-fluid margin-bottom: 0">
+                <ul class="ms-auto me-auto mb-2 mb-lg-0 mb-md-0 mb-sm-0 navi"
+                    style="list-style-type: none; padding-left: 0px">
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="#">SALE</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Fashion & Accessories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home & Kitchen
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Kids, Toys & Babies
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <!-- dummy work start -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dummy
+                        </a>
+                        <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" tabindex="-1" href="#">Opt2</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <!-- dummy work end -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">More</a>
+                    </li>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Contact Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- 2nd part -->
+        <nav class="navbar nav3 navbar-dark d-block d-sm-none">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">REDOPACT</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">SALE</a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Fashion & Accessories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Home & Kitchen
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Kids, Toys & Babies
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Events
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <!-- dummy work start -->
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dummy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <ul class="dropdown-submenu" aria-labelledby="navbarDropdown"
+                                    style="list-style-type:none;">
+                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
+                                </ul>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">More</a>
+                        </li>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Contact Us
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!--end of navbar-->
+
+    <!--banner-->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>First slide label</h1>
+                    <h5>Some representative placeholder content for the first slide.</h5>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Second slide label</h1>
+                    <h5>Some representative placeholder content for the second slide.</h5>
+                </div>
             </div>
             <div class="carousel-item">
-              <img src="{%static 'shop/img/slider4.jpg'%}" alt="Chicago" width="100%" height="500">
+                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Third slide label</h1>
+                    <h5>Some representative placeholder content for the third slide.</h5>
+                </div>
             </div>
             <div class="carousel-item">
-              <img src="{%static 'shop/img/slider1.jpg'%}" alt="New York" width="100%" height="500">
-            </div>
-          </div>
-
-          <!-- Left and right controls -->
-          <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-          <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </a>
-        </div>
-
-        <!-- *** COROUSEL END ***-->
-
-        <!--
-        *** HOT PRODUCT SLIDESHOW ***
-        _________________________________________________________
-        -->
-        <div id="hot">
-          <div class="box py-4">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1 class="mb-0" style="background: #ffd834;">Latest Arrivals  <i class="fa fa-shopping-cart" aria-hidden="true"></i></h1>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-          {% for product, range, nSlides in allProds %}
-            <div class="box py-4">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h3 class="mb-0" style="background: #ffd834;">Products in Category :{{product.0.category}}</h3>
-                    </div>
-                  </div>
+                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Fourth slide label</h1>
+                    <h5>Some representative placeholder content for the third slide.</h5>
                 </div>
             </div>
+            <div class="carousel-item">
+                <img src="{%static 'general/Images/banner.jpg'%}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Fifth slide label</h1>
+                    <h5>Some representative placeholder content for the third slide.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="wave">
 
-            <div class="product-slider owl-carousel owl-theme">
-                {% for i in product|slice:"0:12" %}
-                 <div class="item ">
-                    <div class="product ">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front"><a href="../products/{{i.id}}"><img style="max-height:370px;" src="/media/{{i.image}}" alt="" class="img-fluid" ></a></div>
-                          {% if i.image2 %}
-                            <div class="back"><a href="../products/{{i.id}}"><img style="max-height:370px;" src="/media/{{i.image2}}" alt="" class="img-fluid"></a></div>
-                          {% else %}
-                            <div class="back"><a href="../products/{{i.id}}"><img style="max-height:370px;" src="/media/{{i.image}}" alt="" class="img-fluid"></a></div>
-                          {% endif %}  
-                        </div>
-                      </div><a href="../products/{{i.id}}" class="invisible"><img style="max-height:370px;" src="{%static 'shop/img/product1.jpg'%}" alt="" class="img-fluid" ></a>
-                      <div class="text">
-                        <h3><a href="../products/{{i.id}}">{{i.name|slice:"0:20"}}..</a></h3>
-                        <p class="price"> 
-                          <del>Rs.{{i.original_price}}</del> Rs.{{i.price}}
-                        </p>
-                      </div>
-                  
-                      {%if i.discount > 0 %}
-                      <!-- /.text-->
-                      <div class="ribbon sale">
-                        <div class="theribbon">SALE</div>
-                        <div class="ribbon-background"></div>
-                      </div>
-                      <!-- /.ribbon-->
-                      <div class="ribbon new">
-                        <div class="theribbon">{{i.discount}}% off</div>
-                        <div class="ribbon-background"></div>
-                      </div>
-                      <!-- /.ribbon-->
-                      {%endif%}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+        <!--three-boxes-->
+        <section id="three-boxes">
+            <div class="three-boxes">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
                     </div>
-                    <!-- /.product-->
-                  </div>
-                {% endfor %}
-              
-              <!-- /.product-slider-->
+                    <img src="{%static 'general/Images/three-boxes/img-4.jpg'%}" class="card-img-top" alt="...">
+
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                    </div>
+                    <img src="{%static 'general/Images/three-boxes/img-2.jpg'%}" class="card-img-top" alt="...">
+
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                    </div>
+                    <img src="{%static 'general/Images/three-boxes/img-3.jpg'%}" class="card-img-top" alt="...">
+
+                </div>
             </div>
-            
-            {% endfor %}
-            <!-- /.container-->
-          </div>
-          <!-- /#hot-->
-          <!-- *** HOT END ***-->
-        </div>
-        <!--
-        ---------------------------------------------------------
-        *** GET INSPIRED ***
-        _________________________________________________________
-        -->
-        <!--<div class="container">-->
-        <div>
-          <div class="col-md-12">
-            <div class="box slideshow">
-              <h3>Get Inspired</h3>
-              <p class="lead">Get the inspiration from our world class designers</p>
-              <div id="get-inspired" class="owl-carousel owl-theme">
-                <div class="item"><a href="#"><img src="{%static 'shop/img/getinspired1.jpg'%}" alt="Get inspired" class="img-fluid"></a></div>
-                <div class="item"><a href="#"><img src="{%static 'shop/img/getinspired2.jpg'%}" alt="Get inspired" class="img-fluid"></a></div>
-                <div class="item"><a href="#"><img src="{%static 'shop/img/getinspired3.jpg'%}" alt="Get inspired" class="img-fluid"></a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- *** GET INSPIRED END ***-->
-        <!--
-        *** BLOG HOMEPAGE ***
-        _________________________________________________________
-        -->
-        <div class="box text-center">
-          <div class="container">
-            <div class="col-md-12">
-              <h3 class="text-uppercase">From our blog</h3>
-              <p class="lead mb-0">What's new in the world of fashion? <a href="../blog">Check our blog!</a></p>
-            </div>
-          </div>
-        </div>
-<!--        <div class="container">-->
-<!--          <div class="col-md-12">-->
-<!--            <div id="blog-homepage" class="row">-->
-<!--              <div class="col-sm-6">-->
-<!--                <div class="post">-->
-<!--                  <h4><a href="post.html">Fashion now</a></h4>-->
-<!--                  <p class="author-category">By <a href="#">John Slim</a> in <a href="">Fashion and style</a></p>-->
-<!--                  <hr>-->
-<!--                  <p class="intro">DUmmy text Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>-->
-<!--                  <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a></p>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="col-sm-6">-->
-<!--                <div class="post">-->
-<!--                  <h4><a href="post.html">Who is who - example blog post</a></h4>-->
-<!--                  <p class="author-category">By <a href="#">John Slim</a> in <a href="">About Minimal</a></p>-->
-<!--                  <hr>-->
-<!--                  <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>-->
-<!--                  <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a></p>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; /#blog-homepage&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-        <!-- /.container-->
-        <!-- *** BLOG HOMEPAGE END ***-->
-      </div>
+        </section>
+        <!--end-of-three-boxes-->
     </div>
-{% endblock %}
+    <!--end of banner-->
 
+
+    <!--featured collections-->
+    <section id="featured">
+        <div class="featured">
+            <div class="featured-header">
+                <h1 class="section-title">Featured <span>Collection</span></h1>
+            </div>
+            <div class="all-features">
+                <div class="collection">
+                    <div class="feature-top">
+                        <div class="feature-left">
+                            <div class="feature-item">
+                                <div class="feature-name">
+                                    <h2>Eco-cook and Serve</h2>
+                                </div>
+                                <div class="feature-img">
+                                    <a href="#"><img src="{%static 'general/Images/featured-section/featured-collection-img-1.jpg'%}"
+                                            alt="img"></a>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-name">
+                                    <h2>Sustainable Wardrobe</h2>
+                                </div>
+                                <div class="feature-img">
+                                    <a href="#"><img src="{%static 'general/Images/featured-section/featured-collection-img-2.jpg'%}"
+                                            alt="img"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-right">
+                            <div class="feature-item">
+                                <div class="feature-name">
+                                    <h2>I'm Compost-able</h2>
+                                </div>
+                                <div class="feature-img">
+                                    <a href="#"> <img src="{%static 'general/Images/featured-section/featured-collection-img-5.jpg'%}"
+                                            alt="img"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-bottom">
+                        <div class="feature-left">
+                            <div class="feature-item">
+                                <div class="feature-name">
+                                    <h2>Green Home Decor</h2>
+                                </div>
+                                <div class="feature-img">
+                                    <a href="#"> <img src="{%static 'general/Images/featured-section/featured-collection-img-3.jpg'%}"
+                                            alt="img"></a>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-name">
+                                    <h2>Recycle Paper-Mache it up!</h2>
+                                </div>
+                                <div class="feature-img">
+                                    <a href="#"><img src="{%static 'general/Images/featured-section/featured-collection-img-4.jpg'%}"
+                                            alt="img"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature-right">
+                            <div class="feature-item">
+                                <div class="feature-name">
+                                    <h2>Day and Night Essentials</h2>
+                                </div>
+                                <div class="feature-img">
+                                    <a href="#"><img src="{%static 'general/Images/featured-section/featured-collection-img-6.jpg'%}"
+                                            alt="img"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end of featured collections-->
+
+    <!--Recommendation-->
+    <section id="Browsing-History">
+        <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Browsing
+            <span>History</span>
+        </h1>
+        <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+
+
+
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    Recycled newspaper pencils
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-top: 10px;">₹200</h2>
+                <div>
+
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                </a>
+                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                <div>
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+    <!--Vertical slider and a image-->
+    <div id="video-and-vertical" class="row container">
+        <div class="col-md-7 col-xs-12">
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <img src="{%static 'general/Images/banner-1.jpg'%}">
+                <div class="tags">
+                    <div  class="tag">
+                        <a href="#"><h3>lorem</h3></a>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="tag">
+                        <a href="#"><h3>lorem</h3></a>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="tag">
+                        <a href="#"><h3>lorem</h3></a>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div  class="tag">
+                        <a href="#"><h3>lorem</h3></a>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="tag">
+                        <a href="#"><h3>lorem</h3></a>
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="horVerSlider" data-desktop="800" data-tabportrait="600" data-tablandscape="600"
+                data-mobilelarge="375" data-mobilelandscape="500" data-mobileportrait="375">
+                <div class="horizon-wrapper " >
+                    <div class="horizone-nav" >
+                        <div class="prev" style="display: none;">
+                            <img src="leftarrow.svg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-wrapper">
+                    <div id="vertical-slider">
+                        <ul>
+
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                                        href="#">Bamboo</a></button></li>
+                        </ul>
+                    </div>
+                    <div class="horizon-wrapper ">
+                        <div class="horizone-nav">
+                            <div class="next" style="display: block;">
+                                <img src="rightarrow.svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--End of vertical slider and image-->
+
+
+
+    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">
+        Recomme<span>ndation</span></h1>
+    <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
+        {% for i in products %}
+            <div id="rec" class="carousel-cell">
+                <a href="#">
+                    <img src="../media/{{i.image}}" alt=".." style="width: 100%; height: 50%;">
+                </a>
+                <a style="font-size: 12px; font-weight: 400;" href="#">
+                    <h2 style="font-size: 18px; font-weight: 400;">{{i.name}}</h2>
+                </a>
+                <h3 style="text-align: left; font-size: 12px; padding-bottom: 0;"><del>Rs.{{i.original_price}}</del>  Rs.{{i.price}}</h3>
+                <div>
+
+                    <button style="font-size: 12px;" class="btn btn-outline-danger">
+                        SHOP NOW
+                    </button>
+                </div>
+
+            </div>
+        {%endfor%}
+    </div>
+    <!-- End of recommendation-->
+
+    <!--Trending-->
+    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">What's
+        <span>Trending</span>
+    </h1>
+    <div id="tren" class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+        <div id="tre" class="carousel-cell">
+            <a href="#">
+                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
+            </a>
+            <a style="font-size: 12px; font-weight: 400;" href="#">
+                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
+            </a>
+            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+            <div>
+                <button style="font-size: 12px;" class="btn btn-outline-danger">
+                    SHOP NOW
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!--End of Trending-->
+
+
+
+
+    <!--new gifts section-->
+    <section id="gifts">
+        <div class="gifts">
+            <div class="gifts-header">
+                <h1 class="section-title">Gif<span>ts</span></h1>
+            </div>
+            <div class="all-gifts">
+                <div class="left">
+                    <div class="gift-item">
+                        <div class="card bg-dark text-white">
+                            <img src="{%static 'general/Images/gifts-section/corporate-gifts.jpg'%}" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">Card title</h5>
+                                <h5 class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle">
+                    <div class="top">
+                        <div class="gift-item">
+                            <div class="card bg-dark text-white">
+                                <img src="{%static 'general/Images/gifts-section/gift-for-kids.jpg'%}" class="card-img" alt="...">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title">Card title</h5>
+                                    <h5 class="card-text">This is a wider card with supporting text below as a
+                                        natural lead-in to additional content. This content is a little bit longer.
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="gift-item">
+                            <div class="card bg-dark text-white">
+                                <img src="{%static 'general/Images/gifts-section/gifts-for-her.jpg'%}" class="card-img" alt="...">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title">Card title</h5>
+                                    <h5 class="card-text">This is a wider card with supporting text below as a
+                                        natural lead-in to additional content. This content is a little bit longer.
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="gift-item">
+                        <div class="card bg-dark text-white">
+                            <img src="{%static 'general/Images/gifts-section/gifts-for-him.jpg'%}" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">Card title</h5>
+                                <h5 class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--end of new gifts section-->
+    <!--Blogs-->
+    <a href="#">
+        <h1 class="section-title">Blo<span>gs</span></h1>
+    </a>
+    <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
+        <div id="blog" class="carousel-cell">
+            <h2 style="font-size: 22px;">Title Heading</h2>
+            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
+            <a href="#">
+                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
+            </a>
+            <p style="font-size: 15px;">Some text..</p>
+        </div>
+        <div id="blog" class="carousel-cell">
+            <h2 style="font-size: 22px;">Title Heading</h2>
+            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
+            <a href="#">
+                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
+            </a>
+            <p style="font-size: 15px;">Some text..</p>
+        </div>
+        <div id="blog" class="carousel-cell">
+            <h2 style="font-size: 22px;">Title Heading</h2>
+            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
+            <a href="#">
+                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
+            </a>
+            <p style="font-size: 15px;">Some text..</p>
+        </div>
+        <div id="blog" class="carousel-cell">
+            <h2 style="font-size: 22px;">Title Heading</h2>
+            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
+            <a href="#">
+                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
+            </a>
+            <p style="font-size: 15px;">Some text..</p>
+        </div>
+        <div id="blog" class="carousel-cell">
+            <h2 style="font-size: 22px;">Title Heading</h2>
+            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
+            <a href="#">
+                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
+            </a>
+            <p style="font-size: 15px;">Some text..</p>
+        </div>
+        <div id="blog" class="carousel-cell">
+            <h2 style="font-size: 22px;">Title Heading</h2>
+            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
+            <a href="#">
+                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
+            </a>
+            <p style="font-size: 15px;">Some text..</p>
+        </div>
+        <div id="blog" class="carousel-cell">
+            <h2 style="font-size: 22px;">Title Heading</h2>
+            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
+            <a href="#">
+                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
+            </a>
+            <p style="font-size: 15px;">Some text..</p>
+        </div>
+    </div>
+    <!--End of blogs-->
+
+
+    <!--vision section-->
+    <section id="vision">
+        <div class="vision">
+            <div class="vision-header">
+                <h1 class="section-title"><span>Our</span> Vision</h1>
+            </div>
+            <div class="all-visions">
+                <div class="vision-item">
+                    <div class="icon">
+                        <img src="{%static 'general/Images/vision-logos/fair-trade.png'%}" />
+                    </div>
+                    <div class="icon-content">
+                        <h5>Fair Trade</h5>
+                    </div>
+                </div>
+
+                <div class="vision-item">
+                    <div class="icon">
+                        <img src="{%static 'general/Images/vision-logos/commuinty.png'%}" />
+                    </div>
+                    <div class="icon-content">
+                        <h5>Build A Community Of Envirocitizens</h5>
+                    </div>
+                </div>
+
+                <div class="vision-item">
+                    <div class="icon">
+                        <img src="{%static 'general/Images/vision-logos/made-in-india.png'%}" />
+                    </div>
+                    <div class="icon-content">
+                        <h5>Made in India</h5>
+                    </div>
+                </div>
+
+                <div class="vision-item">
+                    <div class="icon">
+                        <img src="{%static 'general/Images/vision-logos/eco-friendly.png'%}" />
+                    </div>
+                    <div class="icon-content">
+                        <h5>Eco-friendly and Sustainable</h5>
+                    </div>
+                </div>
+
+                <div class="vision-item">
+                    <div class="icon">
+                        <img src="{%static 'general/Images/vision-logos/verified.png'%}" />
+                    </div>
+                    <div class="icon-content">
+                        <h5>Verified Products And Sellers</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="vision-description">
+                <div class="description">
+                    <div class="para">
+                        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate, voluptatum
+                            dolor
+                            voluptates fuga
+                            nihil reiciendis consectetur ad dicta non recusandae. Sunt, voluptas officia! Vel harum
+                            rerum accusamus fugit ratione.</h5>
+                        <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus facilis expedita
+                            porro
+                            quibusdam modi natus dolorem
+                            incidunt, quas quo voluptatem? Nam iusto voluptas odit molestiae aperiam sapiente labore
+                            id
+                            aliquam eveniet commodi, consectetur
+                            voluptates dolores magnam quis autem consequatur? Voluptatibus vero corrupti cumque
+                            incidunt
+                            excepturi sint hic laborum rem adipisci
+                            aut. Repellat aut magni suscipit consequatur? Numquam dignissimos asperiores eaque?</h5>
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, odit. Pariatur aut
+                            dignissimos deserunt quibusdam obcaecati,
+                            sunt molestias quae assumenda tenetur enim, cumque libero magni suscipit voluptatem
+                            architecto hic facilis.</h5>
+
+                    </div>
+                    <div class="join-us">
+                        <div class="join-us-content">
+                            <h6>Join over 10,000+ customers
+                                who receive our awesome newsletter and marketing emails.</h6>
+                        </div>
+                        <div class="social-icons">
+                            <div class="social-item">
+                                <a href="#"><img src="{%static 'general/Images/social-media-icons/facebook.png'%}"></a>
+                            </div>
+                            <div class="social-item">
+                                <a href="#"><img src="{%static 'general/Images/social-media-icons/instagram.png'%}"></a>
+                            </div>
+                            <div class="social-item">
+                                <a href="#"><img src="{%static 'general/Images/social-media-icons/twitter.png'%}"></a>
+                            </div>
+                            <div class="social-item">
+                                <a href="#"><img src="{%static 'general/Images/social-media-icons/youtube.png'%}"></a>
+                            </div>
+
+                        </div>
+
+                        <div class="join-us-form">
+                            <form class="join-us-form">
+                                <div class="email">
+                                    <input class="user-email" type="text" placeholder="Enter your Email address">
+                                </div>
+                                <div class="recaptcha">
+                                    <input type="checkbox" class="recaptcha-checkbox" id="check">
+                                    <label for="check">
+                                        <h6>I,m not a robot</h6>
+                                    </label>
+                                </div>
+                                <div class="button">
+                                    <a href="#" type="button" class="btn">Submit</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vision-image">
+                    <img src="{%static 'general/Images/vision-logos/vision-image.jpg'%}" alt="img" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end of our vision section-->
+    <!--testimonials-->
+    <section id="testimonials">
+        <div class="testimonial">
+            <div class="testimonial-header">
+                <h1 class="section-title"><span>Testim</span>onials</h1>
+            </div>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-items" class="d-block w-100">
+                            <div class="testimonial-item">
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-items" class="d-block w-100">
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-items" class="d-block w-100">
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+    <!--testimonials for mobile-->
+
+    <section id="testimonials-mobile">
+        <div class="testimonial">
+            <div class="testimonial-header">
+                <h1 class="section-title"><span>Testim</span>onials</h1>
+            </div>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-items" class="d-block w-100">
+                            <div class="testimonial-item">
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-items" class="d-block w-100">
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-items" class="d-block w-100">
+                            <div class="testimonial-item">
+
+                                <div class="testimonial-content">
+                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
+                                        nulla
+                                        reprehenderit? Nisi, fugit obcaecati?</h5>
+                                </div>
+                                <div class="user">
+                                    <h6>Lorem, ipsum dolor.--1</h6>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+    <!--end-of-testimonials-->
+
+
+
+
+    <!--footer-->
+    <section id="footer">
+        <div class="footer container">
+            <div class="footer-items">
+                <div class="footer-item">
+                    <div class="shop">
+                        <h4>Shop</h4>
+
+                        <ul>
+                            <a>
+                                <li>Fashion</li>
+                            </a>
+                            <a>
+                                <li>Accessories</li>
+                            </a>
+                            <a>
+                                <li>Home & Kitchen</li>
+                            </a>
+                            <a>
+                                <li>Event And Festival Shop</li>
+                            </a>
+                            <a>
+                                <li>Gift & Toy Shop</li>
+                            </a>
+                            <a>
+                                <li>Personal Care</li>
+                            </a>
+                            <a>
+                                <li>Stationary</li>
+                            </a>
+                            <a>
+                                <li>SALE</li>
+                            </a>
+                            <a>
+                                <li>Pet Care</li>
+                            </a>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="Information">
+                    <h4>Information</h4>
+
+                    <ul>
+                        <li><a>About Us</a></li>
+                        <a>
+                            <li>Privacy and Cookie Policy</li>
+                        </a>
+                        <a>
+                            <li>Orders and Returns</li>
+                        </a>
+                        <a>
+                            <li>Terms of Use</li>
+                        </a>
+                        <a>
+                            <li>Bulk Orders</li>
+                        </a>
+                        <a>
+                            <li>Customised Orders</li>
+                        </a>
+                        <a>
+                            <li>Corporate Gifts</li>
+                        </a>
+                        <a>
+                            <li>Events</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="Quick-links">
+                    <h4>Quick Links</h4>
+
+                    <ul>
+                        <a>
+                            <li>My Account</li>
+                        </a>
+                        <a>
+                            <li>Sell With Us</li>
+                        </a>
+                        <a>
+                            <li>Shopping Cart</li>
+                        </a>
+                        <a>
+                            <li>Customer Registration</li>
+                        </a>
+                        <a>
+                            <li>Blog</li>
+                        </a>
+                        <a>
+                            <li>Login</li>
+                        </a>
+                        <a>
+                            <li>Affiliates</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="support">
+                    <h4>Support</h4>
+
+                    <ul>
+                        <a>
+                            <li>Customer Help & FAQs</li>
+                        </a>
+                        <a>
+                            <li>Seller Help & FAQs</li>
+                        </a>
+                        <a>
+                            <li>Careers</li>
+                        </a>
+                        <a>
+                            <li>News</li>
+                        </a>
+                        <a>
+                            <li>Customer Registration</li>
+                        </a>
+                        <a>
+                            <li>Blog</li>
+                        </a>
+                        <a>
+                            <li>Login</li>
+                        </a>
+                        <a>
+                            <li>Affiliates</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="contact">
+                    <h4>Contact</h4>
+
+                    <ul>
+                        <a>
+                            <li>info@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(General Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>sales@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Seller Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>support@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Technical Queries)</h6>
+                        </l1>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
+        </div>
+        </div>
+    </section>
+
+    <!--footer for mobile-->
+
+    <section id="footer-mobile">
+        <div class="footer">
+            <div class="footer-items">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Information
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Quick Links
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Support
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
+        </div>
+
+    </section>
+    <!--end-of-footer-->
+    <!--end of main page-->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="horizontalvertical.js"></script>
+
+</body>
+
+</html>

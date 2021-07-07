@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import VendorAccount
+from account.models import VendorAccount,Account
 from ckeditor.fields import RichTextField
 
 
@@ -79,5 +79,14 @@ class Order(models.Model):
     def __str__(self):
         return self.status
 
+class Wishlist(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
+    wishlist = models.ManyToManyField(Product)
+    def __str__(self):
+        return self.user.name
 
-
+class Cart(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
+    cartdata = models.JSONField(default=list, blank=True, null=True)
+    def __str__(self):
+        return self.user.name

@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'shop',
     'account',
     'blog',
-    'cart',
     'payment',
     'general',
 
@@ -56,6 +55,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -63,7 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+
 ]
 AUTH_USER_MODEL = 'account.Account'
 AUTHENTICATION_BACKENDS = [
@@ -107,7 +107,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cart.context_processor.cart_total_amount',
+                # 'cart.context_processor.cart_total_amount',
 
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
@@ -115,7 +115,7 @@ TEMPLATES = [
         },
     },
 ]
-CART_SESSION_ID = 'cart'
+# CART_SESSION_ID = 'cart'
 
 WSGI_APPLICATION = 'redopact.wsgi.application'
 

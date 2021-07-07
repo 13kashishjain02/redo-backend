@@ -15,7 +15,7 @@ from django.http import HttpResponse
 from twilio.rest import Client
 import datetime
 import random
-from cart.models import Cartdata
+# from cart.models import Cartdata
 from shop import views
 
 username = ""

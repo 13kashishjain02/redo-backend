@@ -1,4 +1,4 @@
-from shop.models import Product
+from shop.models import Product,Cart
 from rest_framework import routers, serializers, viewsets
 
 
@@ -19,4 +19,10 @@ class ProductSerializer(serializers.ModelSerializer):
         category = obj.subcategory2.subcategory1.category.name
         return category
 
+
+class CartSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Cart
+        fields = '__all__'
 

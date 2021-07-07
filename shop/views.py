@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from .models import Product, Order
+from .models import Product, Order, Cart
 from account.models import VendorAccount
-from cart.models import Cartdata
 from django.contrib.auth.decorators import login_required
-from cart.cart import Cart
 from datetime import date
 import math
 from .forms import AddproductForm
 from django.views.decorators.csrf import csrf_exempt
 from PayTm import Checksum2
 from twilio.rest import Client
+from django.core.paginator import Paginator
+from django.views.generic import ListView
 
 MERCHANT_KEY = 'Ujzdeai9L@l%#6!o';
 username = ""
@@ -76,7 +76,7 @@ def convertstrtolist(x):
 
 
 def olist(username):
-    orders_temp = Cartdata.objects.filter(username=username)
+    orders_temp = Cart.objects.filter(username=username)
     orders = orders_temp.values()
     a = []
     total = 0
@@ -198,71 +198,13 @@ def search(request):
     return render(request, 'shop/search_result.html', params)
     # return render(request, 'costumer/product.html', params)
 
+def listing(request):
+    product_list = Product.objects.all()
+    paginator = Paginator(product_list, 24) # Show 24 products per page.
 
-@login_required(login_url="../login")
-def cart_add(request, id):
-    size = request.GET.get('size', "0")
-    username = request.user.email
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    cart.add(product=product, size=size, username=username)
-    return redirect("cart_detail")
-
-
-@login_required(login_url="../login")
-def item_clear(request, id):
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    cart.remove(product)
-    size = Cartdata.objects.filter(username=request.user.email)
-    size = size.filter(product_id=id)
-    size.delete()
-    return redirect("cart_detail")
-
-
-@login_required(login_url="../login")
-def item_increment(request, id):
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    username = request.user.email
-    size = Cartdata.objects.filter(username=username)
-    size = size.filter(product_id=id)
-    size = size[0]
-    print(size)
-    size = size.size
-    print(size)
-    cart.add(product=product, size=size, username=username)
-    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-
-
-@login_required(login_url="../login")
-def item_decrement(request, id):
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    username = request.user.email
-    size = Cartdata.objects.filter(username=username)
-    size = size.filter(product_id=id)
-    size = size[0]
-    size = size.size
-    cart.decrement(product=product, size=size, username=username)
-    return redirect("cart_detail")
-
-
-@login_required(login_url="../login")
-def cart_clear(request):
-    cart = Cart(request)
-    cart.clear()
-    return redirect("cart_detail")
-
-
-@login_required(login_url="../login")
-def cart_detail(request):
-    username = request.user.email
-    print("hello")
-    a, total = olist(username)
-    print(type(a))
-    return render(request, "shop/cart.html", {'a': a, 'total': total})
-
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'shop/list.html', {'page_obj': page_obj})
 
 # ---------------------------------------------------------------------
 # vendor related functions
