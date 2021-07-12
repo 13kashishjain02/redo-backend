@@ -118,7 +118,12 @@ def productView(request, myid):
     for i in product:
         i.size = convertstrtolist(i.size)
 
-    return render(request, 'shop/detail.html', {'product': product[0]})
+    return render(request, 'shop/product page.html', {'product': product[0]})
+
+
+def mycart(request):
+    cart = Cart.objects.get(user=request.user)
+    return render(request, 'shop/mycart.html',{'cart':cart.cartdata})
 
 
 @login_required(login_url="../login")
@@ -198,13 +203,7 @@ def search(request):
     return render(request, 'shop/search_result.html', params)
     # return render(request, 'costumer/product.html', params)
 
-def listing(request):
-    product_list = Product.objects.all()
-    paginator = Paginator(product_list, 24) # Show 24 products per page.
 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'shop/list.html', {'page_obj': page_obj})
 
 # ---------------------------------------------------------------------
 # vendor related functions
@@ -320,3 +319,80 @@ def updateproduct(request, myid):
         return render(request, 'shop/updateproduct.html', {'product': product})
     else:
         return render(request, "shop/unauthorized.html")
+
+# --------------------------------------------------------------
+# general views
+# --------------------------------------------------------------
+
+# def listing(request):
+#     # filter_by= request.GET.get('filter')
+#     # condo_filter = ProductFilter(request.GET, queryset=condo_list)
+#     product_list = Product.objects.all()
+#     paginator = Paginator(product_list, 24) # Show 24 products per page.
+#
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+#     return render(request, 'shop/product-search.html', {'page_obj': page_obj})
+
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+from django.db.models import Q
+PRODUCTS_PER_PAGE = 10
+
+def listing(request):
+    ordering = request.GET.get('ordering', "")  # http://www.wondershop.in:8000/listproducts/?page=1&ordering=price
+    search = request.GET.get('search', "")
+    price = request.GET.get('price', "")
+
+    if search:
+        product = Product.objects.filter(Q(name__icontains=search) | Q(
+            brand__icontains=search))  # SQLite doesn’t support case-sensitive LIKE statements; contains acts like icontains for SQLite
+
+    else:
+        product = Product.objects.all()
+
+    if ordering:
+        product = product.order_by(ordering)
+
+    if price:
+        product = product.filter(price__lt=price)
+
+    # Pagination
+    page = request.GET.get('page', 1)
+    product_paginator = Paginator(product, PRODUCTS_PER_PAGE)
+    try:
+        product = product_paginator.page(page)
+    except EmptyPage:
+        product = product_paginator.page(product_paginator.num_pages)
+    except:
+        product = product_paginator.page(PRODUCTS_PER_PAGE)
+    return render(request, "shop/product-search.html",
+                  {"product": product, 'page_obj': product, 'is_paginated': True, 'paginator': product_paginator})
+
+
+class ProductListView(ListView):
+    paginate_by = 2
+    model = Product
+
+# def try(request):
+#     condo_list = Product.objects.all().order_by('-brand')
+#     condo_filter = CondoFilter(request.GET, queryset=condo_list)
+#
+#     paginator = Paginator(condo_filter.qs, MAX_CONDOS_PER_PAGE)
+#     page = request.GET.get('page')
+#
+#     try:
+#         condos = paginator.page(page)
+#     except PageNotAnInteger:
+#         condos = paginator.page(1)
+#     except EmptyPage:
+#         condos = paginator.page(paginator.num_pages)
+#
+#
+#     return render(request, 'app/index.html', {
+#         'title': 'Home',
+#         'condos': condos,
+#         'page': page,
+#         'condo_filter': condo_filter,
+#     })

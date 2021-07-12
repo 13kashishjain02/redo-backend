@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="{%static 'shop/css/style.css'%}" />
+    <link rel="stylesheet" href="{%static 'shop/css/product-search.css'%}">
+    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+   
+</head>
+
+<body>
+
+    <section id="header">
+        <div class="header container">
+            <!--top-bar-->
+            <div class="top-bar">
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Free Delivery (Over 1000 INR*)</h6>
+                    </div>
+                </div>
+
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-reply"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Easy Returns</h6>
+                    </div>
+                </div>
+
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Best Deals</h6>
+                    </div>
+                </div>
+            </div>
+            <!--end-of-topbar-->
+
+
+
+        </div>
+    </section>
+
+    <!--end of header-->
+
+    <!--navbar-->
+    <section id="navbar">
+        <nav class="navbar header">
+            <div class="container-fluid">
+                <a id="logo-img" href="index.html"><img class="logo" src="Logo!_Logo.svg.png" alt="REDOPACT"></a>
+                <div class="d-sm-none d-md-block ms-auto d-none d-sm-block">
+                    <form class="d-flex ms-auto bar1">
+                        <input id="inpt_srch" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit" style="padding-left: 6px"><svg
+                                class="srch_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                <ul class="flex-container ms-auto" style="list-style-type: none">
+                    <li class="pad_nav">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg><br>Account</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg><br>Wishlist</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cart" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg></span><br>Cart</a>
+                    </li>
+                </ul>
+                <div class="d-none d-sm-block d-md-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form class="d-flex ms-auto">
+                        <input id="inptsm_srch" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                <div class="d-block d-sm-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form class="d-flex ms-auto">
+                        <input id="inptxs_srch" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+
+        <!-- 1st part -->
+
+        <nav class="navbar nav2 d-none d-sm-block">
+            <div class="container-fluid margin-bottom: 0">
+                <ul class="ms-auto me-auto mb-2 mb-lg-0 mb-md-0 mb-sm-0 navi"
+                    style="list-style-type: none; padding-left: 0px">
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="#">SALE</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Fashion & Accessories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home & Kitchen
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Kids, Toys & Babies
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <!-- dummy work start -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dummy
+                        </a>
+                        <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" tabindex="-1" href="#">Opt2</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <!-- dummy work end -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">More</a>
+                    </li>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Contact Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- 2nd part -->
+        <nav class="navbar nav3 navbar-dark d-block d-sm-none">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">REDOPACT</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">SALE</a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Fashion & Accessories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Home & Kitchen
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Kids, Toys & Babies
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Events
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <!-- dummy work start -->
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dummy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <ul class="dropdown-submenu" aria-labelledby="navbarDropdown"
+                                    style="list-style-type:none;">
+                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
+                                </ul>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">More</a>
+                        </li>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Contact Us
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!--end of navbar-->
+
+   
+
+    <section id="top">
+        <div class="top-left">
+            <h3>Showing results for : <span class="product-item-name">"Shoes"</span></h3>
+            <h5><span class="product-number"> 55 </span> search results found for the keyword <span id="keyword">
+                    "shoes"</span> </h5>
+        </div>
+        <div class="top-right">
+            <h2>Sort by nearest match:
+                <span>
+                    <select name="sort" id="sort-list" onchange="location = finalurl();" style="margin:5px; padding: 5px;">
+                        <option value="" id="placeholder" disabled selected hidden>Sort</option>
+                        <option id="price" value="price" style="margin: 5px;">Price: Low To High</option>
+                        <option id="-price" value="-price" style="margin: 5px;">Price: High To Low</option>
+                        <option id="product_name" value="name" style="margin: 5px;">Product Name</option>
+                        <option id="-date_added" value="-pub_date" style="margin: 5px;">What's New</option>
+                    </select>
+                </span>
+            </h2>
+        </div>
+    </section>
+
+     <!--filter and sort-->
+     <div class="fi-and-so">
+        <button class=" buy-btn btn filter-box-btn" id="filterBtn">FILTER</button>
+        
+     </div>
+     
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <section id="bottom" style="display: flex;">
+        <div class="col-lg-2 col-md-2 bottom-left" style="flex-basis: 20%;">
+            <div class="refined-searches" style="margin: 5px; padding: 5px; color: teal; font-weight: 800; display: flex; ">
+                <h2 style="font-weight: 600;">REFINED SEARCHES</h2>
+                <h3 class="XBtn" style="display: none;  margin-left: 60px;">X</h3>
+            </div>
+            <div class="price left-boxes">
+                <h4 class="title">Price :</h4>
+                <div class="middle">
+                    <div class="multi-range-slider" style="width: 100%;">
+                        <input type="range" id="input-left" min="0" max="100" value="25">
+                        <input type="range" id="input-right" min="0" max="100" value="75">
+
+                        <div class="slider">
+                            <div class="track"></div>
+                            <div class="range"></div>
+                            <div class="thumb left"></div>
+                            <div class="thumb right"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-indicator">
+                    <h4 style="font-weight: 100; font-size: 1rem; text-align: center;">Rs <span
+                            class="min-price">600</span> - Rs <span class="max-price"> 1000</span></h4>
+                </div>
+            </div>
+            <div class="size left-boxes">
+                <h4 class="title">Size :</h4>
+                <div class="checkboxes size-checkbox">
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check">5</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check">6</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check">7</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check">8</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check">9</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check">10</label></span>
+                </div>
+            </div>
+            <div class="product-type left-boxes">
+                <h4 class="title">Product Type :</h4>
+                <div class="checkboxes" style="display: flex; flex-direction: column;">
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Sneakers <span class="no-of-sneakers"> (12)</span></label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Sneakers <span class="no-of-sneakers"> (12)</span></label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Sneakers <span class="no-of-sneakers"> (12)</span></label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Sneakers <span class="no-of-sneakers"> (12)</span></label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Sneakers <span class="no-of-sneakers"> (12)</span></label></span>
+                </div>
+            </div>
+            <div class="materials-used left-boxes">
+                <h4 class="title">Materials Used :</h4>
+                <div class="checkboxes" style="display: flex; flex-direction: column;">
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Recycled Polyester</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Organic Cotton</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Plant Based Resin</label></span>
+                </div>
+            </div>
+            <div class="brand left-boxes">
+                <h4 class="title">Brand</h4>
+                <div class="checkboxes brand-checkbox" style="display: flex; flex-direction: column;">
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Rackled Shoes</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">SAOLA</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Kyrgis</label></span>
+                </div>
+            </div>
+            <div class="gender left-boxes">
+                <h4 class="title">Gender :</h4>
+                <div class="checkboxes" style="display: flex; flex-direction: column;">
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Man</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Woman</label></span>
+                    <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                            style="margin-left: 5px;">Unisex</label></span>
+                </div>
+            </div>
+            <div class="top-right-left-boxes left-boxes"  >
+                <h2 style="color: #fff; font-size: 1.2rem; padding: 5px;">Sort by nearest match:
+                    <select name="sort" id="sort-list" onchange="location = finalurl();" style="margin:5px; padding: 5px;">
+                        <option value="" id="placeholder" disabled selected hidden>Sort</option>
+                        <option id="price" value="price" style="margin: 5px;">Price: Low To High</option>
+                        <option id="-price" value="-price" style="margin: 5px;">Price: High To Low</option>
+                        <option id="product_name" value="name" style="margin: 5px;">Product Name</option>
+                        <option id="-date_added" value="-pub_date" style="margin: 5px;">What's New</option>
+                    </select>
+                </h2>
+            </div>
+        </div>
+        
+        <div class="col-lg-7 col-md-6 bottom-right" id="productList" style="flex-basis: 80%;">
+            {% for i in product %}
+            <div class="product text-center">
+                <img class="img-fluid product-img " src="../media/{{i.image}}">
+                <h5 class="p-name">{{i.name}}</h5>
+                <h4 class="p-price">&#8377 {{i.price}}</h4>
+                <div class="buttons" style="display: flex;">
+                    <button class="buy-btn"><i class="fas fa-shopping-cart"></i></button>
+                    <button class="buy-btn"><i class="fas fa-heart"></i></button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+   <!-------------------------------------------------------------------------------------->
+  
+    
+    <!--pagination-->
+    {% if is_paginated %}
+    <nav id="pagination" aria-label="Page navigation example" class="my-5">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="/listing/?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            {% for i in paginator.page_range %}
+            <li class="page-item"><a class="page-link" href="/listing/?page={{i}}">{{i}}</a></li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="/listing/?page={{ page_obj.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+    <!--footer-->
+    <section id="footer">
+        <div class="footer container">
+            <div class="footer-items">
+                <div class="footer-item">
+                    <div class="shop">
+                        <h4>Shop</h4>
+
+                        <ul>
+                            <a>
+                                <li>Fashion</li>
+                            </a>
+                            <a>
+                                <li>Accessories</li>
+                            </a>
+                            <a>
+                                <li>Home & Kitchen</li>
+                            </a>
+                            <a>
+                                <li>Event And Festival Shop</li>
+                            </a>
+                            <a>
+                                <li>Gift & Toy Shop</li>
+                            </a>
+                            <a>
+                                <li>Personal Care</li>
+                            </a>
+                            <a>
+                                <li>Stationary</li>
+                            </a>
+                            <a>
+                                <li>SALE</li>
+                            </a>
+                            <a>
+                                <li>Pet Care</li>
+                            </a>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="Information">
+                    <h4>Information</h4>
+
+                    <ul>
+                        <li><a>About Us</a></li>
+                        <a>
+                            <li>Privacy and Cookie Policy</li>
+                        </a>
+                        <a>
+                            <li>Orders and Returns</li>
+                        </a>
+                        <a>
+                            <li>Terms of Use</li>
+                        </a>
+                        <a>
+                            <li>Bulk Orders</li>
+                        </a>
+                        <a>
+                            <li>Customised Orders</li>
+                        </a>
+                        <a>
+                            <li>Corporate Gifts</li>
+                        </a>
+                        <a>
+                            <li>Events</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="Quick-links">
+                    <h4>Quick Links</h4>
+
+                    <ul>
+                        <a>
+                            <li>My Account</li>
+                        </a>
+                        <a>
+                            <li>Sell With Us</li>
+                        </a>
+                        <a>
+                            <li>Shopping Cart</li>
+                        </a>
+                        <a>
+                            <li>Customer Registration</li>
+                        </a>
+                        <a>
+                            <li>Blog</li>
+                        </a>
+                        <a>
+                            <li>Login</li>
+                        </a>
+                        <a>
+                            <li>Affiliates</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="support">
+                    <h4>Support</h4>
+
+                    <ul>
+                        <a>
+                            <li>Customer Help & FAQs</li>
+                        </a>
+                        <a>
+                            <li>Seller Help & FAQs</li>
+                        </a>
+                        <a>
+                            <li>Careers</li>
+                        </a>
+                        <a>
+                            <li>News</li>
+                        </a>
+                        <a>
+                            <li>Customer Registration</li>
+                        </a>
+                        <a>
+                            <li>Blog</li>
+                        </a>
+                        <a>
+                            <li>Login</li>
+                        </a>
+                        <a>
+                            <li>Affiliates</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="contact">
+                    <h4>Contact</h4>
+
+                    <ul>
+                        <a>
+                            <li>info@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(General Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>sales@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Seller Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>support@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Technical Queries)</h6>
+                        </l1>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
+        </div>
+        </div>
+    </section>
+
+    <!--footer for mobile-->
+
+    <section id="footer-mobile">
+        <div class="footer">
+            <div class="footer-items">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Information
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Quick Links
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Support
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
+        </div>
+
+    </section>
+
+
+    <!--end-of-footer-->
+
+    <script>
+        var inputLeft = document.getElementById("input-left");
+        var inputRight = document.getElementById("input-right");
+
+        var thumbLeft = document.querySelector(".slider > .thumb.left");
+        var thumbRight = document.querySelector(".slider > .thumb.right");
+        var range = document.querySelector(".slider > .range");
+
+        var minPrice = document.querySelector(".min-price");
+        var maxPrice = document.querySelector(".max-price");
+
+
+        function setLeftValue() {
+            var _this = inputLeft,
+                min = parseInt(_this.min),
+                max = parseInt(_this.max);
+
+            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+
+            var percent = ((_this.value - min) / (max - min)) * 100;
+
+            thumbLeft.style.left = percent + "%";
+            range.style.left = percent + "%";
+            minPrice.innerHTML = parseInt(percent);
+        }
+        setLeftValue();
+
+        function setRightValue() {
+            var _this = inputRight,
+                min = parseInt(_this.min),
+                max = parseInt(_this.max);
+
+            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+
+            var percent = ((_this.value - min) / (max - min)) * 100;
+
+            thumbRight.style.right = (100 - percent) + "%";
+            range.style.right = (100 - percent) + "%";
+            maxPrice.innerHTML = parseInt(percent);
+        }
+        setRightValue();
+
+        inputLeft.addEventListener("input", setLeftValue);
+        inputRight.addEventListener("input", setRightValue);
+
+        inputLeft.addEventListener("mouseover", function () {
+            thumbLeft.classList.add("hover");
+        });
+        inputLeft.addEventListener("mouseout", function () {
+            thumbLeft.classList.remove("hover");
+        });
+        inputLeft.addEventListener("mousedown", function () {
+            thumbLeft.classList.add("active");
+        });
+        inputLeft.addEventListener("mouseup", function () {
+            thumbLeft.classList.remove("active");
+        });
+
+        inputRight.addEventListener("mouseover", function () {
+            thumbRight.classList.add("hover");
+        });
+        inputRight.addEventListener("mouseout", function () {
+            thumbRight.classList.remove("hover");
+        });
+        inputRight.addEventListener("mousedown", function () {
+            thumbRight.classList.add("active");
+        });
+        inputRight.addEventListener("mouseup", function () {
+            thumbRight.classList.remove("active");
+        });
+
+
+        const productItemName = document.querySelector('.product-item-name');
+        const productNumber = document.querySelector('.product-number');
+        const productImg = document.querySelectorAll('.product-img ');
+        const productName = document.querySelectorAll('.p-name');
+        const productPrice = document.querySelectorAll('.p-price');
+        const searchBtn = document.getElementById('srch');
+        const productList = document.getElementById('productList');
+        const keyword = document.getElementById('keyword');
+        const brand = document.querySelector('.brand-checkbox');
+        const size = document.querySelector('.size-checkbox');
+
+        const filterBtn = document.getElementById('filterBtn');
+        const bottomLeft = document.querySelector('.bottom-left');
+        const bottomRight = document.querySelector('.bottom-right');
+        const refinedSearchesTitle = document.querySelector('.refined-searches')
+        const Xbtn = document.querySelector('.XBtn');
+        const topRight = document.querySelector('.top-right-left-boxes');
+
+        //event listeners
+        filterBtn.addEventListener('click',() => {
+            bottomLeft.style.display = 'flex';
+            bottomRight.style.display = 'none';
+            Xbtn.style.display = 'block';
+        });
+
+        Xbtn.addEventListener('click',()=>{
+            bottomLeft.style.display = 'none';
+            bottomRight.style.display = 'flex';
+          
+           
+        })
+
+        //event listeners
+        searchBtn.addEventListener('click', getProductList);
+
+
+        //get product list that matches with the input keyword
+        function getProductList() {
+            let searchInputTxt = document.getElementById('inpt_srch').value.trim();
+            fetch(`https://redopact.pythonanywhere.com/api/product-api/${searchInputTxt}`).then(response => response.json()).then(datas => {
+                console.log(datas);
+                let html = "";
+                let pName = " ";
+                let pStock = " ";
+                let brandhtml = " ";
+                let sizehtml = " ";
+                if (datas) {
+                    datas.forEach(data => {
+                        html += `
+                        <div class="product text-center" data-id="${data.name}">
+                            <img class="img-fluid product-img " src="https://redopact.pythonanywhere.com/${data.image}">
+                            <h5 class="p-name">${data.name}</h5>
+                            <h4 class="p-price">&#8377 ${data.price}</h4>
+                            <div class="buttons" style="display: flex;">
+                                <button class="buy-btn"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="buy-btn"><i class="fas fa-heart"></i></button>
+                             </div>
+                        </div> `;
+
+                        pStock += `${data.stock}`;
+
+                        brandhtml += `
+                            <span class="checkbox"><input type="checkbox" id="check"><label for="check"
+                                    style="margin-left: 5px;">${data.brand}</label></span>`;
+
+                        sizehtml += ` <span class="checkbox"><input type="checkbox" id="check"><label for="check">${data.size}</label></span>`;
+                    })
+
+
+
+                    pName += `"${searchInputTxt}"`;
+
+                }
+                else {
+                    html = "Sorry, we didn't find any product!";
+                    productList.classList.add('notFound');
+                }
+                size.innerHTML = sizehtml;
+                productList.innerHTML = html;
+                brand.innerHTML = brandhtml;
+                productItemName.innerHTML = pName;
+                productNumber.innerHTML = pStock;
+                keyword.innerHTML = pName;
+            });
+        }
+
+
+    </script>
+<script>
+    // for getting url after applying ordering
+  function finalurl() {
+    var url = new URL(window.location.href);
+    var search_params = url.searchParams;
+    search_params.set('ordering', document.getElementById("sort-list").value);
+    url.search = search_params.toString();
+    var new_url = url.toString();
+    return new_url
+  }
+
+  // for getting url after applying price filtering
+  function finalurl2() {
+    var url = new URL(window.location.href);
+    var search_params = url.searchParams;
+    search_params.set('price', document.getElementById("price-list").value);
+    url.search = search_params.toString();
+    var new_url = url.toString();
+    return new_url
+  }
+
+</script>
+
+</body>
+
+</html>

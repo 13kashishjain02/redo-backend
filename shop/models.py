@@ -50,7 +50,7 @@ class Product(models.Model):
     product_for = models.CharField(max_length=7, choices=PRODUCTFOR_CHOICES, default='general')
     brand = models.CharField(max_length=50, null=True)
     tags = models.CharField(max_length=500, null=True, blank=True, default="blanktag")
-    cod_available = models.BooleanField(default=False)
+    in_stock = models.BooleanField(default=False)
     discount = models.IntegerField(null=True, blank=True)
     stock = models.IntegerField(null=True, blank=True)
     price = models.FloatField(default=60.00, null=True, blank=True)

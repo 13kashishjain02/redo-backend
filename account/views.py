@@ -45,25 +45,13 @@ def usermail():
     return usernaam
 
 
-def savedata(product_id, qty, size, username):
-    catprods = Cartdata.objects.values('username', 'product_id', 'size')
-    for sub in catprods:
-        if sub['username'] == username and sub['product_id'] == product_id and sub['size'] == size:
-            instance = Cartdata.objects.filter(product_id=product_id)
-            instance = instance.filter(username=username)
-            instance.delete()
-
-    p_order = Cartdata.objects.create(username=username, product_id=product_id, qty=qty, size=size)
-    p_order.save()
-
 
 # -----------------------------------------------------------------------
 
 def userregister(request):
-    global msg
     if request.method == 'POST':
         name = request.POST['name']
-        contact_number = int(request.POST['contact_number'])
+        contact_number = int(request.POST['mobile'])
         email = request.POST['email']
         password = request.POST.get('password')
         try:
@@ -71,17 +59,21 @@ def userregister(request):
                 name=name, email=email, password=password, contact_number=contact_number, viewpass=password
             )
             user.save()
-            login(request, user)
+            print("1")
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             msg = "User Registration Successful"
-            return render(request, 'general/starthere.html', {'msg': msg})
+            print("1")
+            return redirect("../")
         except IntegrityError as e:
             msg = email + " is already registered,if you think there is a issue please contact us at 6264843506"
+            print("3")
             return render(request, "account/register.html", {'msg': msg})
         except Exception as e:
             print(e)
+            print("2")
         # return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
     else:
-        return render(request, "account/register.html", {'msg': msg})
+        return render(request, "account/register.html")
 
 
 def userlogin(request):
@@ -91,13 +83,9 @@ def userlogin(request):
         return redirect("../")
     else:
         if request.POST:
-            form = AccountAuthenticationForm(request.POST)
-            if form.is_valid():
-                email = form.cleaned_data['email']
-                password = form.cleaned_data['password']
+                email = request.POST.get('email')
+                password = request.POST.get('password')
                 user = authenticate(email=email, password=password)
-                global usernamee
-                usernamee = email
                 if user:
                     login(request, user)
                     request.user = user
