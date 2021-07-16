@@ -67,8 +67,21 @@ def olist(username):
 # general views
 # --------------------------------------------------------------
 def myorders(request):
-    previous_order = Order.objects.get(user=request.user).previous_order
-    return render(request, 'shop/myorder.html',{"order":previous_order})
+    data = Order.objects.get(user=request.user)
+    # previous_order=order.previous_order
+    counter=0
+    # print(data)
+    # for i in data:
+    #     product = Product.objects.get(id=i["product_id"])
+    #     data[counter]["mrp"] = product.mrp
+    #     data[counter]["special_price"] = product.special_price
+    #     data[counter]["our_price"] = product.our_price
+    #     data[counter]["name"] = product.name
+    #     data[counter]["image"] = product.image
+    #     data[counter]["discount"] = math.floor(100 - (product.special_price / product.mrp) * 100)
+    #     counter+=1
+
+    return render(request, 'shop/myorder.html',{"order":data})
 
 
 def productView(request, slug):
@@ -104,6 +117,8 @@ def placeorder(request):
             order_list[counter]["special_price"] = product.special_price
             order_list[counter]["our_price"] = product.our_price
             order_list[counter]["name"] = product.name
+            order_list[counter]["status"] = "order placed"
+            order_list[counter]["image"] = str(product.image)
             order_list[counter]["vendor_email"] = product.vendor.email
             if product.our_price:
                 total = total + product.our_price

@@ -80,7 +80,7 @@ class Order(models.Model):
     address = models.CharField(max_length=150)
     address2 = models.CharField(max_length=150, null=True, blank=True)
     zipcode = models.IntegerField(default=00)
-    landmark = models.CharField(max_length=100, default="")
+    landmark = models.CharField(max_length=100, null=True, blank=True)
     state = models.CharField(max_length=20, default="")
     city = models.CharField(max_length=20, default="")
     contact_number = models.IntegerField()
@@ -88,7 +88,6 @@ class Order(models.Model):
     status = models.CharField(max_length=15, default="order noted")
     order_list = models.JSONField(default=list, blank=True, null=True)
     previous_order = models.JSONField(default=list, blank=True, null=True)
-    is_done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.status

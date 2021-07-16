@@ -13,15 +13,25 @@ def mycart(request):
         cart = Cart.objects.get(user=request.user)
         data=cart.cartdata
         counter=0
+        total=0
+        final_total=0
         for i in data:
             product=Product.objects.get(id=i["product_id"])
             data[counter]["mrp"]=product.mrp
             data[counter]["special_price"] = product.special_price
+            data[counter]["our_price"] = product.our_price
             data[counter]["name"] = product.name
             data[counter]["image"] = product.image
             data[counter]["discount"] = math.floor(100-(product.special_price/product.mrp)*100)
+            if product.our_price:
+                total = total + product.our_price
+            elif product.special_price:
+                total = total + product.special_price
+            else:
+                total = total + product.mrp
             counter+=1
-        return render(request, 'shop/mycart.html', {'cart': data})
+        final_total=total+60 #60 for delivery
+        return render(request, 'shop/mycart.html', {'cart': data,'total':total,'final_total':final_total})
     except:
         return render(request, 'shop/mycart.html')
 
