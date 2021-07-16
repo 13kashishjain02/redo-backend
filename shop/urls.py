@@ -2,13 +2,14 @@ from django.urls import path
 from django.contrib import admin
 from . import views,cart
 urlpatterns = [
-    path("products/<int:myid>", views.productView, name="ProductView"),
+    # path("product/<int:myid>", views.productView, name="ProductView"),
+    path("<slug:slug>!/", views.productView, name="ProductView"),
+    path('dashboard',views.dashboard,name='dashboard'),
     path('addproduct',views.addproduct,name='addproduct'),
     path('placeorder/',views.placeorder,name='placeorder'),
-    path("search", views.search, name="Search"),
     path("listing/", views.listing, name="listing"),
-    path('list/', views.ProductListView.as_view(), name="list"),
     path('viewmyproducts/', views.viewmyproducts, name='viewmyproducts'),
+    path('myorders/', views.myorders, name='myorders'),
     path("updateproduct/<int:myid>", views.updateproduct, name="updateproduct"),
 
     path('cart/', cart.mycart, name='mycart'),

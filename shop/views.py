@@ -10,15 +10,11 @@ from PayTm import Checksum2
 from twilio.rest import Client
 from django.core.paginator import Paginator
 from django.views.generic import ListView
+import re
 
 MERCHANT_KEY = 'Ujzdeai9L@l%#6!o';
 username = ""
 orderid = ""
-# msg is for time when the message has to be printed on same page
-msg = ""
-# msessage is for time when the message has to be printed on some other page such as index
-message = ""
-
 
 # ----------------------------------------------------------
 # static methods
@@ -32,36 +28,6 @@ def getvendor(email):
 def getvendorbyshopname(shop_name):
     vendor = VendorAccount.objects.get(shop_name=shop_name)
     return vendor
-
-
-def sorting(array, stype):
-    if stype == "pricehigh":
-        # To sort the list in place...
-        array.sort(key=lambda x: x.price, reverse=True)
-        # To return a new list, use the sorted() built-in function...
-        array = sorted(array, key=lambda x: x.price, reverse=True)
-
-    if stype == "pricelow":
-        # To sort the list in place...
-        array.sort(key=lambda x: x.price, reverse=False)
-        # To return a new list, use the sorted() built-in function...
-        array = sorted(array, key=lambda x: x.price, reverse=False)
-
-    if stype == "latest":
-        # To sort the list in place...
-        array.sort(key=lambda x: x.pub_date, reverse=True)
-        # To return a new list, use the sorted() built-in function...
-        array = sorted(array, key=lambda x: x.pub_date, reverse=True)
-
-    return array
-
-
-def filtering(array, prodfor, category):
-    if prodfor is not None:
-        array = array.filter(product_for=prodfor)
-    if category is not None:
-        array = array.filter(category=category)
-    return array
 
 
 def convertstrtolist(x):
@@ -97,58 +63,60 @@ def olist(username):
     a.reverse()
     return (a, total)
 
-
-def searchMatch(query, item):
-    '''return true only if query matches the item'''
-    print("hello", item.subcategory, item.tags)
-    if query in item.desc.lower() or query in item.name.lower() or query in item.tags.lower() or query in item.category.lower() or query in item.subcategory.lower() or query in item.product_for.lower() or query in item.vendor.shop_name.lower():
-        return True
-    else:
-        return False
-
-
 # --------------------------------------------------------------
 # general views
 # --------------------------------------------------------------
+def myorders(request):
+    previous_order = Order.objects.get(user=request.user).previous_order
+    return render(request, 'shop/myorder.html',{"order":previous_order})
 
 
-def productView(request, myid):
+def productView(request, slug):
     # Fetch the product using the id
-    product = Product.objects.filter(id=myid)
-    for i in product:
-        i.size = convertstrtolist(i.size)
+    product = Product.objects.get(slug=slug)
 
-    return render(request, 'shop/product page.html', {'product': product[0]})
+        # i.size = convertstrtolist(i.size)
+    if product.color:
+        product.color = re.split('; | ,|, |,| |\n', product.color)
+    print(product.color)
 
-
-def mycart(request):
-    cart = Cart.objects.get(user=request.user)
-    return render(request, 'shop/mycart.html',{'cart':cart.cartdata})
-
+    return render(request, 'shop/product page.html', {'product': product})
 
 @login_required(login_url="../login")
 def placeorder(request):
     if request.method == 'POST':
-        username = request.user.email
-        receivers_add = request.POST['receivers_add']
+        username = request.user
+        first_name = request.POST['fname']
+        last_name = request.POST['lname']
+        address = request.POST['address']
+        address2 = request.POST['address2']
         city = request.POST['city']
         state = request.POST['state']
-        receivers_pincode = request.POST['receivers_pincode']
-        receivers_landmark = request.POST['receivers_landmark']
-        receivers_contact = request.POST['receivers_contact']
-        payment = request.POST['payment']
-        a, total = olist(username)
-        order_list = ""
+        zipcode = request.POST['zip']
+        landmark = request.POST['landmark']
+        contact_number = request.POST['contact_number']
+        order_list = Cart.objects.get(user=username).cartdata
+        total=60 #60 rupees for delivery
+        counter = 0
+        for i in order_list:
+            product=Product.objects.get(id=i["product_id"])
+            order_list[counter]["mrp"]=product.mrp
+            order_list[counter]["special_price"] = product.special_price
+            order_list[counter]["our_price"] = product.our_price
+            order_list[counter]["name"] = product.name
+            order_list[counter]["vendor_email"] = product.vendor.email
+            if product.our_price:
+                total = total + product.our_price
+            elif product.special_price:
+                total = total + product.special_price
+            else :
+                total = total + product.mrp
 
-        receivers_add = receivers_add + ", " + city + ", " + state
+            counter+=1
 
-        for i in a:
-            order_list = order_list + "[ product id : " + str(i["product_id"]) + ", vendor : " + i[
-                "vendor"] + ", price : " + str(i["price"]) + ", qty : " + str(i["qty"]) + "]"
-
-        c_order = Order.objects.create(username=username, order_list=order_list, receivers_pincode=receivers_pincode,
-                                       receivers_add=receivers_add, receivers_contact=receivers_contact,
-                                       receivers_landmark=receivers_landmark, total=total)
+        c_order = Order.objects.create(user=username, order_list=order_list, zipcode=zipcode,
+                                       address=address, address2=address2, contact_number=contact_number,
+                                       landmark=landmark,city=city,state=state, total=total)
         c_order.save()
         global orderid
         orderid = str(c_order.id)
@@ -158,56 +126,11 @@ def placeorder(request):
     else:
         return render(request, 'shop/placeorder.html')
 
-
-def search(request):
-    query = request.GET.get('search').lower()
-    prodfor = request.GET.get('prodfor')
-    sort = request.GET.get('sort')
-    category = request.GET.get('category')
-    allProds = []
-    prodtemp = Product.objects.all()
-    if prodfor or category is not None:
-        prodtemp = filtering(prodtemp, prodfor, category)
-
-    analyzed = ""
-    for char in query:
-        if char != " ":
-            analyzed = analyzed + char
-            if len(analyzed) == len(query):
-                prod = [item for item in prodtemp if searchMatch(analyzed, item)]
-                if len(prod) != 0:
-                    allProds.append(prod)
-
-
-        else:
-            prod = [item for item in prodtemp if searchMatch(analyzed, item)]
-            if len(prod) != 0:
-                allProds.append(prod)
-
-            analyzed = ""
-
-    temp = []
-    for product in allProds:
-        for i in product:
-            temp.append(i)
-    if sort is not None:
-        temp = sorting(temp, sort)
-
-    allProds = temp
-    params = {'allProds': allProds, "msg": "", "query": query}
-
-    if len(allProds) == 0:
-        params = {'msg': "No result found, we are adding new products daily so make sure to check again later",
-                  "query": query}
-
-    return render(request, 'shop/search_result.html', params)
-    # return render(request, 'costumer/product.html', params)
-
-
-
 # ---------------------------------------------------------------------
 # vendor related functions
 # ---------------------------------------------------------------------
+def dashboard(request):
+    return render(request, 'shop/dashboard.html')
 
 def addproduct(request):
     global msg
@@ -288,7 +211,9 @@ def viewmyproducts(request):
         vendor = getvendor(email=request.user.email)
         products = Product.objects.filter(vendor=vendor)
         params = {'products': products, 'vendor': vendor}
-        return render(request, 'shop/vendorproducts.html', params)
+        print(params)
+        print(vendor)
+        return render(request, 'shop/myproduct.html', params)
     else:
         return render(request, "shop/unauthorized.html")
 
@@ -313,10 +238,10 @@ def updateproduct(request, myid):
             # delivery_charge = request.POST['delivery_charge']
             desc = request.GET.get('desc', 'Description not available')
             print("hiii", product_for)
-            Product.objects.filter(id=productid).update(name=name, category=category, subcategory=subcategory,
-                                                        price=price, original_price=original_price, desc=desc)
+            Product.objects.filter(id=productid).update(name=name,
+                                                        special_price=price, mrp=original_price, description=desc)
 
-        return render(request, 'shop/updateproduct.html', {'product': product})
+        return render(request, 'shop/update_product.html', {'product': product})
     else:
         return render(request, "shop/unauthorized.html")
 
@@ -338,7 +263,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
-PRODUCTS_PER_PAGE = 10
+PRODUCTS_PER_PAGE = 24
 
 def listing(request):
     ordering = request.GET.get('ordering', "")  # http://www.wondershop.in:8000/listproducts/?page=1&ordering=price
@@ -347,7 +272,7 @@ def listing(request):
 
     if search:
         product = Product.objects.filter(Q(name__icontains=search) | Q(
-            brand__icontains=search))  # SQLite doesn’t support case-sensitive LIKE statements; contains acts like icontains for SQLite
+            brand__icontains=search)| Q(subcategory2__name__icontains=search)| Q(subcategory2__subcategory1__name__icontains=search)| Q(subcategory2__subcategory1__category__name__icontains=search))  # SQLite doesn’t support case-sensitive LIKE statements; contains acts like icontains for SQLite
 
     else:
         product = Product.objects.all()
@@ -356,7 +281,7 @@ def listing(request):
         product = product.order_by(ordering)
 
     if price:
-        product = product.filter(price__lt=price)
+        product = product.filter(special_price__lt=price)
 
     # Pagination
     page = request.GET.get('page', 1)
@@ -371,28 +296,4 @@ def listing(request):
                   {"product": product, 'page_obj': product, 'is_paginated': True, 'paginator': product_paginator})
 
 
-class ProductListView(ListView):
-    paginate_by = 2
-    model = Product
 
-# def try(request):
-#     condo_list = Product.objects.all().order_by('-brand')
-#     condo_filter = CondoFilter(request.GET, queryset=condo_list)
-#
-#     paginator = Paginator(condo_filter.qs, MAX_CONDOS_PER_PAGE)
-#     page = request.GET.get('page')
-#
-#     try:
-#         condos = paginator.page(page)
-#     except PageNotAnInteger:
-#         condos = paginator.page(1)
-#     except EmptyPage:
-#         condos = paginator.page(paginator.num_pages)
-#
-#
-#     return render(request, 'app/index.html', {
-#         'title': 'Home',
-#         'condos': condos,
-#         'page': page,
-#         'condo_filter': condo_filter,
-#     })

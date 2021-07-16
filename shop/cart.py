@@ -3,23 +3,35 @@ from django.shortcuts import render,redirect
 from django.core.exceptions import ObjectDoesNotExist
 from account.models import VendorAccount
 from django.http import HttpResponseRedirect, HttpResponse
+import math
 
 def add_to_cart(request):
     pass
 
 def mycart(request):
-    cart = Cart.objects.get(user=request.user)
-    return render(request, 'shop/mycart.html',{'cart':cart.cartdata})
+    try:
+        cart = Cart.objects.get(user=request.user)
+        data=cart.cartdata
+        counter=0
+        for i in data:
+            product=Product.objects.get(id=i["product_id"])
+            data[counter]["mrp"]=product.mrp
+            data[counter]["special_price"] = product.special_price
+            data[counter]["name"] = product.name
+            data[counter]["image"] = product.image
+            data[counter]["discount"] = math.floor(100-(product.special_price/product.mrp)*100)
+            counter+=1
+        return render(request, 'shop/mycart.html', {'cart': data})
+    except:
+        return render(request, 'shop/mycart.html')
 
 def addtocart(request):
     product_id = request.POST["id"]
-    name = request.POST["name"]
-    image = request.POST["image"]
     size = request.POST.get("size")
     color = request.POST.get("color")
     print(color)
     qty = request.POST["qty"]
-    data={"name": name, "size": size, "color": color, "qty": qty, "product_id": product_id, "image": image}
+    data={"size": size, "color": color, "qty": qty, "product_id": product_id}
     print("data",data)
     try:
         print("1")
