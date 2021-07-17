@@ -5,10 +5,10 @@
 }
 
 .top{
-    margin: 2px;
+    margin: 20px;
     padding: 2px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .top-left{
@@ -333,4 +333,383 @@ img{
     margin-top: 7px;
    font-size: 1.4rem;
     padding: 2px;
+}
+
+#d-f-i-1{
+    box-shadow: 2px 2px #000;
+}
+
+#d-f-i-2{
+    box-shadow: 2px 2px #000 ;
+}
+#d-f-i-3{
+    box-shadow: 0px 2px #000 ;
+}
+#d-f-i-4{
+    box-shadow: 2px 0px #000 ; 
+}
+#d-f-i-5{
+    box-shadow: 2px 0px #000 ;
+}
+
+@media (max-width:1100px){
+    .my-cart{
+        font-size: 1.7rem;
+    }
+    .top-right{
+        margin: 10px 10px 0;
+    }
+
+    .summary{
+        font-size: 1.7rem;
+    }
+    .total-price{
+       font-size: 1.35rem;
+    
+    }
+
+    .discount{
+      
+       font-size: 1.35rem;
+    }
+    
+    .carbon-footprint{
+       font-size: 1.35rem;
+    }
+    
+    .delivery-charge{
+       font-size: 1.35rem;
+    }
+    
+    .Subtotal{
+       font-size: 1.2rem;
+     
+    }
+    .pincode{
+        font-size: 1.3rem;
+    }
+
+    .product-name{
+        font-size: 1.5rem;
+    }
+
+    .save-btn{
+        font-size: 1.5rem;
+    }
+
+    .remove-btn{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width:990px){
+    
+.top{
+    margin: 10px;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-right{
+    margin: 10px 3px;
+    padding: 3px 0px;
+}
+.bottom{margin:10px;
+    margin-top: 40px;
+}
+.bottom-title{
+    margin: 2px;
+    padding: 2px;
+}
+
+.bottom-title h1{
+    font-size: 2.8rem;
+}
+
+
+.delivery-feature-item{
+    margin: 0px;
+    padding: 20px;
+    height: 400px;
+}
+
+.delivery-feature-item i{
+    font-size: 2.8rem;
+    margin: 2px;
+    padding: 2px;
+
+}
+.headline{
+    margin-top: 7px;
+    padding: 2px;
+    font-size: 1.3rem;
+}
+
+.decrpton{
+    margin-top: 7px;
+   font-size: 1.3rem;
+    padding: 2px;
+}
+}
+
+@media (max-width:767px){
+    
+   .top{
+       margin: 20px;
+   }
+}
+
+@media (max-width:600px){
+    .bottom-title h1{
+        font-size: 2.6rem;
+    }
+    .delivery-feature-item{
+        padding: 18px;
+    }
+    .delivery-feature-item i{
+        font-size: 2.6rem;
+    }
+    .headline{
+        font-size: 1.1rem;
+    }
+    
+    .decrpton{
+       font-size: 1.1rem;
+    }
+}
+@media (max-width:550px){
+    .my-cart{
+        font-size: 1.5rem;
+    }
+    .top-right{
+        margin: 10px 10px 0;
+    }
+
+    .summary{
+        font-size: 1.5rem;
+    }
+    .total-price{
+       font-size: 1.25rem;
+    
+    }
+
+    .discount{
+      
+       font-size: 1.25rem;
+    }
+    
+    .carbon-footprint{
+       font-size: 1.25rem;
+    }
+    
+    .delivery-charge{
+       font-size: 1.25rem;
+    }
+    
+    .Subtotal{
+       font-size: 1.2rem;
+     
+    }
+    .pincode{
+        font-size: 1.2rem;
+    }
+
+    .product-name{
+        font-size: 1.3rem;
+    }
+
+    .save-btn{
+        font-size: 1.3rem;
+    }
+
+    .remove-btn{
+        font-size: 1.3rem;
+    }
+
+    .offered-price{
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+    
+    .product-added{
+        flex-direction: column;
+    }
+    .img-container{margin: auto;
+        align-items:center;
+        justify-content:center ;
+    }
+    .img-container img{
+        width: 100%;
+        height: 300px;
+    }
+   .product-description{
+       margin: 10px;
+   }
+   .delivery-content{
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+   }
+   .delivery-feature-item{
+    width: 80%;
+   }
+   
+   
+#d-f-i-1{
+    box-shadow: none;
+    border-bottom: 2px solid #000;
+}
+
+#d-f-i-2{
+    box-shadow: none;
+    border-bottom: 2px solid #000;
+}
+#d-f-i-3{
+    box-shadow: none ;
+    border-bottom: 2px solid #000;
+}
+#d-f-i-4{
+    box-shadow: none ; 
+    border-bottom: 2px solid #000;
+}
+#d-f-i-5{
+    box-shadow: none ;
+    border-bottom: 2px solid #000;
+}
+.delivery-feature-item{
+    padding: 10px;
+    height: 200px;
+}
+.bottom-title{
+    text-align: center;
+}
+}
+
+@media (max-width:490px){
+    .my-cart{
+        font-size: 1.4rem;
+    }
+    .top-right{
+        margin: 10px 10px 0;
+    }
+
+    .summary{
+        font-size: 1.4rem;
+    }
+    .total-price{
+       font-size: 1.15rem;
+    
+    }
+
+    .discount{
+      
+       font-size: 1.15rem;
+    }
+    
+    .carbon-footprint{
+       font-size: 1.15rem;
+    }
+    
+    .delivery-charge{
+       font-size: 1.15rem;
+    }
+    
+    .Subtotal{
+       font-size: 1.1rem;
+     
+    }
+    .pincode{
+        font-size: 1.1rem;
+    }
+
+    .product-name{
+        font-size: 1.2rem;
+    }
+
+    .save-btn{
+        font-size: 1.2rem;
+    }
+
+    .remove-btn{
+        font-size: 1.2rem;
+    }
+
+    .offered-price{
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+    
+    .product-added{
+        flex-direction: column;
+    }
+    .img-container{margin: auto;
+        align-items:center;
+        justify-content:center ;
+    }
+    .img-container img{
+        width: 100%;
+        height: 300px;
+    }
+   .product-description{
+       margin: 10px;
+   }
+   .delivery-content{
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+   }
+   .delivery-feature-item{
+    width: 80%;
+   }
+   
+   
+#d-f-i-1{
+    box-shadow: none;
+    border-bottom: 2px solid #000;
+}
+
+#d-f-i-2{
+    box-shadow: none;
+    border-bottom: 2px solid #000;
+}
+#d-f-i-3{
+    box-shadow: none ;
+    border-bottom: 2px solid #000;
+}
+#d-f-i-4{
+    box-shadow: none ; 
+    border-bottom: 2px solid #000;
+}
+#d-f-i-5{
+    box-shadow: none ;
+    border-bottom: 2px solid #000;
+}
+.delivery-feature-item{
+    padding: 20px;
+    height: 200px;
+}
+.bottom-title{
+    text-align: center;
+}
+.continue-shopping-btn{
+    font-size: 1rem;
+}
+
+.place-order-btn{
+    font-size: 1rem;
+}
+
+}
+
+@media (max-width:460px){
+    .title{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .offered-price{
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    
 }

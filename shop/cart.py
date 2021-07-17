@@ -22,13 +22,14 @@ def mycart(request):
             data[counter]["our_price"] = product.our_price
             data[counter]["name"] = product.name
             data[counter]["image"] = product.image
+            data[counter]["slug"] = product.slug
             data[counter]["discount"] = math.floor(100-(product.special_price/product.mrp)*100)
             if product.our_price:
-                total = total + product.our_price
+                total = total + product.our_price*int(data[counter]["qty"])
             elif product.special_price:
-                total = total + product.special_price
+                total = total + product.special_price*int(data[counter]["qty"])
             else:
-                total = total + product.mrp
+                total = total + product.mrp*int(data[counter]["qty"])
             counter+=1
         final_total=total+60 #60 for delivery
         return render(request, 'shop/mycart.html', {'cart': data,'total':total,'final_total':final_total})

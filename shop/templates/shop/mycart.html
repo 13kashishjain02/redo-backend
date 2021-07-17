@@ -23,7 +23,7 @@
                             <div class="product-added">
                                 <div class="img-container">
                                     <div class="image">
-                                        <img src="../media/{{i.image}}">
+                                        <a href="../{{i.slug}}!"><img src="../media/{{i.image}}"></a>
                                     </div>
                                     <div class="number-of-items">
                                         <div class="plus">
@@ -37,6 +37,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <a href="../{{i.slug}}!">
                                 <div class="product-description">
                                     <h3 class="product-name">{{i.name}}</h3>
                                     <h5 class="packaging-details">Product Packaging : <span class="packaging-type" style="color:teal">Sustainable
@@ -48,10 +49,11 @@
                                         <strike>{{i.mrp}}</strike></span> <span class="offer" style="color: olive; font-size: 1.2rem; margin: 0px;">{{i.discount}}%off</span>
                                     </h4>
                                     <div class="buttons">
-                                        <button class="save-btn" type="button">Save For Later</button>
+                                        <a href="../"><button class="save-btn" type="button">Save For Later</button></a>
                                         <button class="remove-btn" type="button">Remove</button>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     {% endfor %}

@@ -828,6 +828,36 @@ label.radio input:checked+span::before {
      display: inline-block
  }</style>
 
+  <style>
+
+label.size-radio {
+    cursor: pointer
+}
+
+label.size-radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+label.size-radio span {
+    padding: 2px 9px;
+    border: 2px solid #ff0000;
+    display: inline-block;
+    color: #ff0000;
+    border-radius: 3px;
+    text-transform: uppercase
+}
+
+label.size-radio input:checked+span {
+    border-color: #ff0000;
+    background-color: #ff0000;
+    color: #fff
+}
+
+  </style>
 
 {% endblock %}
 {% block body%}
@@ -872,13 +902,18 @@ label.radio input:checked+span::before {
                         </div>
                         <hr>
                         {% if product.color%}
-                        <div><span class="fw-bold">Color:</span><span> blue</span></div>
+                        <div><span class="fw-bold">Color:</span><span> #</span></div>
                         <div class="my-color">
                             {%for color in product.color%}
                                 <label class="radio"> <input type="radio" name="color" value="pink" checked> <span style="background-color: {{color}}; border-color: {{color}};"></span> </label>
-<!--                                <label class="radio"> <input type="radio" name="color" value="blue"> <span class="blue"></span> </label>-->
-<!--                                <label class="radio"> <input type="radio" name="color" value="green"> <span class="green"></span> </label>-->
-<!--                                <label class="radio"> <input type="radio" name="color" value="orange"> <span class="orange"></span> </label>-->
+                            {%endfor%}
+                        </div>
+                        {%endif%}
+                        {% if product.size%}
+                        <div class="sizes">
+                            <h6 class="text-uppercase">Size</h6>
+                            {%for size in product.size%}
+                            <label class="size-radio"> <input type="radio" name="size" value="{{size}}" checked> <span>{{size}}</span> </label>
                             {%endfor%}
                         </div>
                         {%endif%}

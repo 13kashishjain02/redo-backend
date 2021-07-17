@@ -91,7 +91,8 @@ def productView(request, slug):
         # i.size = convertstrtolist(i.size)
     if product.color:
         product.color = re.split('; | ,|, |,| |\n', product.color)
-    print(product.color)
+    if product.size:
+        product.size = re.split('; | ,|, |,| |\n', product.size)
 
     return render(request, 'shop/product page.html', {'product': product})
 
