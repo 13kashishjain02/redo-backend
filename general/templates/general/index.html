@@ -1,93 +1,181 @@
 {% extends 'general/base.html' %}
 {%load static%}
-{% block title%}Myproducts - Elpizo{% endblock %}
+{% block title%}Home{% endblock %}
 {% block head%}
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<style>
+    .w-100 {
+    width: 100%!important;
+    height: 80VH;
+    }
+    .c-2 {
+    width: 100%!important;
+    height: 60VH;
+    }
+</style>
 {% endblock %}
 {% block body%}
 
 
     <!--banner-->
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+<!--    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">-->
 
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>First slide label</h1>
-                    <h5>Some representative placeholder content for the first slide.</h5>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Second slide label</h1>
-                    <h5>Some representative placeholder content for the second slide.</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Third slide label</h1>
-                    <h5>Some representative placeholder content for the third slide.</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Fourth slide label</h1>
-                    <h5>Some representative placeholder content for the third slide.</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{%static 'general/Images/banner.jpg'%}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Fifth slide label</h1>
-                    <h5>Some representative placeholder content for the third slide.</h5>
-                </div>
-            </div>
-        </div>
-        <div class="wave">
+<!--        <div class="carousel-inner">-->
+<!--            <div class="carousel-item active" data-bs-interval="10000">-->
+<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>First slide label</h1>-->
+<!--                    <h5>Some representative placeholder content for the first slide.</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item" data-bs-interval="2000">-->
+<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>Second slide label</h1>-->
+<!--                    <h5>Some representative placeholder content for the second slide.</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>Third slide label</h1>-->
+<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>Fourth slide label</h1>-->
+<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <img src="{%static 'general/Images/banner.jpg'%}" class="d-block w-100" alt="...">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>Fifth slide label</h1>-->
+<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="wave">-->
 
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+<!--        </div>-->
+<!--        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">-->
+<!--            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--            <span class="visually-hidden">Previous</span>-->
+<!--        </button>-->
+<!--        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">-->
+<!--            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--            <span class="visually-hidden">Next</span>-->
+<!--        </button>-->
 
-        <!--three-boxes-->
-        <section id="three-boxes">
-            <div class="three-boxes">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                    </div>
-                    <img src="{%static 'general/Images/three-boxes/img-4.jpg'%}" class="card-img-top" alt="...">
+<!--        &lt;!&ndash;three-boxes&ndash;&gt;-->
+<!--        <section id="three-boxes">-->
+<!--            <div class="three-boxes">-->
+<!--                <div class="card" style="width: 18rem;">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">Card title</h5>-->
+<!--                    </div>-->
+<!--                    <img src="{%static 'general/Images/three-boxes/img-4.jpg'%}" class="card-img-top" alt="...">-->
 
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                    </div>
-                    <img src="{%static 'general/Images/three-boxes/img-2.jpg'%}" class="card-img-top" alt="...">
+<!--                </div>-->
+<!--                <div class="card" style="width: 18rem;">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">Card title</h5>-->
+<!--                    </div>-->
+<!--                    <img src="{%static 'general/Images/three-boxes/img-2.jpg'%}" class="card-img-top" alt="...">-->
 
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                    </div>
-                    <img src="{%static 'general/Images/three-boxes/img-3.jpg'%}" class="card-img-top" alt="...">
+<!--                </div>-->
+<!--                <div class="card" style="width: 18rem;">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">Card title</h5>-->
+<!--                    </div>-->
+<!--                    <img src="{%static 'general/Images/three-boxes/img-3.jpg'%}" class="card-img-top" alt="...">-->
 
-                </div>
-            </div>
-        </section>
-        <!--end-of-three-boxes-->
-    </div>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        &lt;!&ndash;end-of-three-boxes&ndash;&gt;-->
+<!--    </div>-->
     <!--end of banner-->
+
+<div id="carousel1" class="carousel slide mb-3" data-bs-ride="carousel" style="height:80vh">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!--vision section-->
+
+<div class="container-fluid pop-tags " >
+  <div class="row">
+    <div class=" col-4">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle img-fluid ">
+      <center><p>Technology</p></center>
+    </div>
+    <div class="col-4">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="rounded-circle img-fluid ">
+      <center><p>Politics</p></center>
+    </div>
+    <div class="col-4">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="rounded-circle img-fluid ">
+      <center><p>Science</p></center>
+    </div>
+  </div>
+</div>
+
+<!--end vision section-->
+
+<!--carousel-->
+
+<div id="carousel2" class="carousel slide mt-5" data-bs-ride="carousel" style="height:60vh">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block c-2" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block c-2" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block c-2" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!--end of carousel-->
 
 
     <!--featured collections-->
@@ -173,6 +261,7 @@
         </div>
     </section>
     <!--end of featured collections-->
+
 
     <!--Recommendation-->
     <section id="Browsing-History">
@@ -385,6 +474,8 @@
         </div>
 
     </section>
+
+
     <!--Vertical slider and a image-->
     <div id="video-and-vertical" class="row container">
         <div class="col-md-7 col-xs-12">
@@ -428,21 +519,21 @@
                     <div id="vertical-slider">
                         <ul>
 
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle ui-draggable-disabled"><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
+                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
                                         href="#">Bamboo</a></button></li>
                         </ul>
                     </div>
@@ -808,56 +899,43 @@
 
     <!--vision section-->
     <section id="vision">
-        <div class="vision">
+        <div class="vision container-fluid">
             <div class="vision-header">
                 <h1 class="section-title"><span>Our</span> Vision</h1>
             </div>
-            <div class="all-visions">
-                <div class="vision-item">
-                    <div class="icon">
-                        <img src="{%static 'general/Images/vision-logos/fair-trade.png'%}" />
-                    </div>
-                    <div class="icon-content">
-                        <h5>Fair Trade</h5>
-                    </div>
-                </div>
+            <!--vision section-->
 
-                <div class="vision-item">
-                    <div class="icon">
-                        <img src="{%static 'general/Images/vision-logos/commuinty.png'%}" />
-                    </div>
-                    <div class="icon-content">
-                        <h5>Build A Community Of Envirocitizens</h5>
-                    </div>
+            <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-4">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
+                  <center><p>Technology</p></center>
                 </div>
-
-                <div class="vision-item">
-                    <div class="icon">
-                        <img src="{%static 'general/Images/vision-logos/made-in-india.png'%}" />
-                    </div>
-                    <div class="icon-content">
-                        <h5>Made in India</h5>
-                    </div>
+                <div class="col-4">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
+                  <center><p>Politics</p></center>
                 </div>
-
-                <div class="vision-item">
-                    <div class="icon">
-                        <img src="{%static 'general/Images/vision-logos/eco-friendly.png'%}" />
-                    </div>
-                    <div class="icon-content">
-                        <h5>Eco-friendly and Sustainable</h5>
-                    </div>
+                <div class="col-4">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
+                  <center><p>Science</p></center>
                 </div>
-
-                <div class="vision-item">
-                    <div class="icon">
-                        <img src="{%static 'general/Images/vision-logos/verified.png'%}" />
-                    </div>
-                    <div class="icon-content">
-                        <h5>Verified Products And Sellers</h5>
-                    </div>
+                <div class=" col-4">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
+                  <center><p>Technology</p></center>
                 </div>
+                <div class="col-4">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
+                  <center><p>Politics</p></center>
+                </div>
+                <div class="col-4">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
+                  <center><p>Science</p></center>
+                </div>
+              </div>
             </div>
+
+            <!--end vision section-->
+
             <div class="vision-description">
                 <div class="description">
                     <div class="para">
@@ -929,6 +1007,8 @@
         </div>
     </section>
     <!--end of our vision section-->
+
+
     <!--testimonials-->
     <section id="testimonials">
         <div class="testimonial">

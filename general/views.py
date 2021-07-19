@@ -38,13 +38,13 @@ def contactus(request):
         return render(request, "general/contact.html")
 
 def aboutus(request):
-    return render(request, "general/aboutus.html")
+    return render(request, "general/about.html")
 
 def termsandcondition(request):
-    return render(request, "general/terms and conditions.html")
+    return render(request, "general/text.html")
 
 def privacypolicy(request):
-    return render(request, "general/privacypolicy.html")
+    return render(request, "general/text.html")
 
 def starthere(request):
     return render(request, "general/starthere.html")

@@ -50,6 +50,7 @@ class Product(models.Model):
     product_for = models.CharField(max_length=7, choices=PRODUCTFOR_CHOICES, default='general')
     brand = models.CharField(max_length=50, null=True)
     tags = models.CharField(max_length=500, null=True, blank=True, default="blanktag")
+    material = models.CharField(max_length=500, null=True, blank=True, default="blanktag")
     slug = models.SlugField(max_length=60, unique=True)
     in_stock = models.BooleanField(default=False)
     discount = models.IntegerField(null=True, blank=True)

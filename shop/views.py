@@ -149,7 +149,7 @@ def dashboard(request):
     return render(request, 'shop/dashboard.html')
 
 def addproduct(request):
-    global msg
+    msg=""
     chartnum = ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "26", "28", "30", "32", "34", "36", "38", "40",
                 "42", "44", "46", "48", "50", "52", "54", "56", "58", "60"]
     chartletter = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"]
@@ -158,40 +158,29 @@ def addproduct(request):
             form = AddproductForm(request.POST, request.FILES)
             if form.is_valid():
                 desc = form.cleaned_data['desc']
-            print("content:",desc)
+                short_desc = form.cleaned_data['short_desc']
 
-            name = request.POST['name']
+            name = request.POST['product_name']
             vendor = getvendor(request.user.email)
-            size = request.POST.getlist('size')
+            # size = request.POST.getlist('size')
             brand = request.POST['brand']
             tags = request.POST.get('tags')
-            category = request.POST['category']
-            subcategory = request.POST['subcategory']
-            product_for = request.POST.get('product_for')
-            discount = request.POST['discount']
-            price = request.POST['selling_price']
+            # category = request.POST['category']
+            # subcategory = request.POST['subcategory']
+            # product_for = request.POST.get('product_for')
+            slug = name.replace(" ", "-")
+            sprice = request.POST['sprice']
+            mrp = request.POST['mrp']
             stock = request.POST['stock']
-            original_price = float(request.POST['price'])
-            delivery_charge = request.POST['delivery_charge']
-            # desc = request.POST.get('desc', 'Description not available')
+            weight = request.POST['weight']
+            length = request.POST['length']
+            width = request.POST['width']
+            height = request.POST['height']
+            material = request.POST['material']
             pub_date = date.today()
             myfile = request.FILES['myfile']
             myfile2 = request.FILES.get('myfile2')
             myfile3 = request.FILES.get('myfile3')
-            msg = ""
-            if product_for == None:
-                product_for = "general"
-
-            if price == "":
-                price = original_price
-                if discount != "":
-                    price = price * ((100.00 - float(discount)) / 100.00)
-            else:
-                price = float(price)
-
-            if discount == "":
-                discount = 100 - math.ceil((price / original_price) * 100)
-
             import random
             # for i in range(4):
             #     name=random.choice(['Jeans', 'Tshirt', 'Skirt', 'Shoes', 'Pant', 'Shirt'])+" Test Product " + str(i)
@@ -205,18 +194,18 @@ def addproduct(request):
             #            "different vendors and their products.Heading 2:This product is not for sale.Heading 3:The " \
             #            "prices mentioned for this product does not hold any value. " + "best " + name +" in "+category
             p_add = Product.objects.create(
-                original_price=original_price, vendor=vendor, name=name, brand=brand, size=size, tags=tags,
-                category=category, subcategory=subcategory, product_for=product_for, discount=discount, stock=stock,
-                price=price, delivery_charge=delivery_charge, desc=desc, pub_date=pub_date, image=myfile,
-                image2=myfile2, image3=myfile3, )
+                mrp=mrp, vendor=vendor, name=name, brand=brand,  tags=tags,
+                stock=stock,weight=weight,height=height,length=length,width=width,material=material,slug=slug,
+                special_price=sprice,  description=desc,short_description=short_desc, pub_date=pub_date, image=myfile,
+                image2=myfile2, image3=myfile3,in_stock=True )
             p_add.save()
 
             msg = "product added successfully"
-            return render(request, "shop/add_product.html",
+            return render(request, "shop/Add Product.html",
                           {'msg': msg, 'chartnum': chartnum, 'chartletter': chartletter,'form': form})
         else:
             form = AddproductForm()
-            return render(request, "shop/add_product.html",
+            return render(request, "shop/Add Product.html",
                           {'msg': msg, 'chartnum': chartnum, 'chartletter': chartletter,'form': form})
     else:
         return render(request, "shop/unauthorized.html", {'msg': msg,})

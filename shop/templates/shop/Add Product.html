@@ -1,0 +1,220 @@
+{% extends 'general/base.html' %}
+{%load static%}
+
+{% block title%}UpdateProduct-Elpizo{% endblock %}
+{% block head%}
+    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <style>
+	#Category1 {
+      display: none;
+   }
+   #Category2 {
+      display: none;
+   }
+   #SubCategory1 {
+      display: none;
+   }
+</style>
+
+<!--    checkbox style-->
+  <style>
+
+    label.check {
+        cursor: pointer
+    }
+
+    label.check input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        pointer-events: none
+    }
+
+    label.check span {
+        padding: 7px 14px;
+        border: 2px solid #8f37aa;
+        display: inline-block;
+        color: #8f37aa;
+        border-radius: 3px;
+        text-transform: uppercase
+    }
+
+    label.check input:checked+span {
+        border-color: #8f37aa;
+        background-color: #8f37aa;
+        color: #fff
+    }
+  </style>
+
+{% endblock %}
+{% block body%}
+
+    <div class="row" style="padding-top: 10px; padding-left: 10px; padding-right: 10px;">
+
+        <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
+            <div class="container" style="border:2px solid black; padding-left: 15px;">
+                <br>
+                <form method="post" enctype="multipart/form-data" >
+                {%csrf_token%}
+                <h2>Add Product</h2>
+                <hr style="border: 1px solid lightgrey; background: lightgrey;">
+                <p style="font-weight: 500;">
+                    <div style="font-weight: 500;">while uploading your product try to be as precise as possible!</div>
+                    <div style="font-weight: 500;">All the fields marked with * are compulsory</div>
+                </p>
+                <p style="font-weight: 500;">
+                    <div style="font-weight: 400;">If you have any questions, please feel free to contact us,our customer service center is working for you 24/7</div>
+                </p>
+                <hr style="border: 1px solid lightgrey; background: lightgrey;">
+                <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
+                    Product Name*
+                </div>
+                <input type="text" name="product_name" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                
+                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                    Product Brand
+                </div>
+                <input type="text" name="brand" style="width: 100%; border:1px solid lightgrey; height:30px;">
+
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    Weight (in kg)*
+                </div>
+                <input type="number" name="weight" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    length (in cm)*
+                </div>
+                <input type="number" name="length" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    width (in cm)*
+                </div>
+                <input type="number" name="width" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    height (in cm)*
+                </div>
+                <input type="number" name="height" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    M.R.P.*
+                </div>
+                <input type="number" name="mrp" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                    Special Price
+                </div>
+                <input type="number" name="sprice" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    Stock available*
+                </div>
+                <input type="text" name="stock" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                
+                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                    Tags
+                </div>
+                <div style="padding-bottom: 10px;">
+                    <input type="text" name="tags" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                </div>
+                <div class="mb-3">
+                    <p class="card-description">CHoose product type</p>
+                    <label class="check"> <input type="checkbox" name="type" value="1"> <span>RECYCLABLE</span> </label>
+                    <label class="check"> <input type="checkbox" name="type" value="2"> <span>SUSTAINABLE</span> </label>
+                    <label class="check"> <input type="checkbox" name="type" value="3"> <span>ECOFRIENDLY</span> </label>
+                </div>
+                <div class="mb-3">
+                    <hr>
+                  <b><u>Image 1*</u></b><input type="file" name="myfile" required/><br>
+                    <hr>
+                  Image 2 <input type="file" name="myfile2"><br>
+                    <hr>
+                  Image 3 <input type="file" name="myfile3">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
+            <div class="container" style="border:2px solid black;">
+                <br>
+                <h5 style="font-weight: 400; font-size: 20px;">Description and Category</h5>
+                <p style="font-weight: 500;">
+                    <div style="font-weight: 400;">Description, Tags and Category are the most crucial data which will make the user buy the product.</div>
+                </p>
+                <hr style="border: 1px solid lightgrey; background: lightgrey;">
+                <p style="font-weight: 500;">
+                    {{ form.media}}
+                    {{form}}
+                    <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    Material*
+                </div>
+                <input type="text" name="material" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                    Type*
+                </div>
+                <input type="text" name="type" style="width: 100%; border:1px solid lightgrey; height:30px;">
+                <label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                    Category
+                </div></label>
+			      <select id="inputState" class="form-control" onchange="displayDivDemo('Category2', this)">
+			        <option selected>Choose...</option>
+			        <option value="0">Category 1</option>
+			        <option value="1">Category 2</option>
+			      </select>
+			    <div id="Category2">
+			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                    Sub Category 1
+                </div></label>
+			      <select id="inputState" class="form-control" onchange="displayDiv('hideValuesOnSelect', this)">
+			        <option selected>Choose...</option>
+			        <option value="0">Category 1</option>
+			        <option value="1">Category 2</option>
+			      </select>
+			    </div>
+			    <div id="Category1">
+			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                    Sub Category 1
+                </div></label>
+			      <select id="inputState" class="form-control" onchange="displayDiv('hideValuesOnSelect', this)">
+			        <option selected>Choose...</option>
+			        <option value="0">Sub Category 1</option>
+			        <option value="1">Sub Category 2</option>
+                    <option value="1">Sub Category 2</option>
+			      </select>
+			    </div>
+			    <div id="SubCategory1">
+			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                    Sub Category 2
+                </div></label>
+			      <select id="inputState" class="form-control">
+			        <option selected>Choose...</option>
+			        <option value="0">Sub Category 1</option>
+			        <option value="1">Sub Category 2</option>
+                    <option value="1">Sub Category 2</option>
+			      </select>
+			    </div>
+
+                </p>
+                
+
+            </div>
+            <div class="text-center" style=" margin-top:10px;">
+                    <button type="submit" class="btn btn-primary" value="required" /><i class="fa fa-user-md"></i> Add product</button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+<script>
+   function displayDivDemo(id, elementValue) {
+   	console.log(elementValue.value);
+   	if (elementValue.value==0){
+   		document.getElementById('Category1').style.display = elementValue.value == 0 ? 'block' : 'none';
+   	}
+   	if(elementValue.value==1){
+      document.getElementById('Category2').style.display = elementValue.value == 1 ? 'block' : 'none';
+   	}
+   }
+   function displayDiv(id, elementValue) {
+   	console.log(elementValue.value);
+   	if(elementValue.value==1){
+      document.getElementById('SubCategory1').style.display = elementValue.value == 1 ? 'block' : 'none';
+   	}
+   }
+</script>
+{% endblock %}

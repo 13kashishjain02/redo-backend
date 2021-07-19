@@ -177,6 +177,7 @@ h1{
 
 /*end-of-header-section*/
 /*banner*/
+/*
 .carousel-item{
    position: relative;
 }
@@ -196,9 +197,8 @@ h1{
 .carousel-inner img{
 	height: 625px;
     object-fit: cover;
- /* background-attachment: fixed;
- clip-path: circle(175vh at 50% -80vh);*/
 }
+*/
 .wave{
     width: 100%;
     position: absolute;

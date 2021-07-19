@@ -38,13 +38,6 @@ msg = ""
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
-def usermail():
-    global usernamee
-    usernaam = usernamee
-    # usernaam = "jain@jain.com"
-    return usernaam
-
-
 
 # -----------------------------------------------------------------------
 
@@ -112,7 +105,7 @@ def logoutuser(request):
     return redirect("../")
 
 
-@login_required(login_url="../login")
+# @login_required(login_url="../login")
 def vendorregister(request):
     global shopname
     global shop_add
@@ -128,13 +121,13 @@ def vendorregister(request):
         shop_number = request.POST.get('shop_number')
         shopname = request.POST.get('shopname').lower()
         gst = request.POST.get('gst')
-        shop_add_flat = request.POST['shop_add_flat']
-        shop_add_city = request.POST['shop_add_city']
-        shop_add_state = request.POST['shop_add_state']
-        shop_add_pincode = str(request.POST.get('shop_add_pincode'))
+        shop_add_flat = request.POST['address']
+        shop_add_city = request.POST['city']
+        shop_add_state = request.POST['state']
+        # shop_add_pincode = str(request.POST.get('shop_add_pincode'))
         # shop_add = shop_add_flat + "," + shop_add_city + "," + shop_add_state + "," + shop_add_pincode
         plan = request.POST['plan']
-        subscription_amount = 50
+        # subscription_amount = 50
         vendor = Account.objects.get(email=email)
         vendor.is_Vendor = True
         vendor.save()
@@ -143,8 +136,7 @@ def vendorregister(request):
         try:
             user = VendorAccount.objects.create(
                 shop_name=shopname, shop_number=shop_number, shop_add=shop_add_flat, city=shop_add_city,
-                state=shop_add_state, plan=plan, gst=gst, vendor=vendor,
-                subscripton_amount=subscription_amount, email=email)
+                state=shop_add_state, gst=gst, vendor=vendor, email=email)
             user.save()
 
         except IntegrityError as e:
@@ -153,12 +145,11 @@ def vendorregister(request):
                 shopname = shopname + "#" + vendor.name[2:5]
 
                 user = VendorAccount.objects.create(
-                    shop_name=shopname, shop_number=shop_number, shop_add=shop_add, plan=plan, gst=gst, vendor=vendor,
-                    subscripton_amount=subscription_amount, email=email)
+                    shop_name=shopname, shop_number=shop_number, shop_add=shop_add, gst=gst, vendor=vendor, email=email)
                 user.save()
             else:
                 msg = "vendor already registered,if you think there is a issue please contact us at 6264843506"
-                return render(request, "account/vendorregister.html", {'msg': msg})
+                return render(request, "account/vendor_signup.html", {'msg': msg})
 
         # twilio message
         # account_sid = 'AC58aae686ada0a42728e123cfee24cd5b'
@@ -179,7 +170,7 @@ def vendorregister(request):
         msg = "Vendor Registration Successful"
         return render(request, 'general/index.html', {'msg': msg})
     else:
-        return render(request, "account/vendorregister.html")
+        return render(request, "account/vendor_signup.html")
 
 
 @login_required(login_url="../login")

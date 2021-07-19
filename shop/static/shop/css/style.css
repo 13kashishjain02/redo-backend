@@ -176,29 +176,7 @@ h1{
 
 
 /*end-of-header-section*/
-/*banner*/
-.carousel-item{
-   position: relative;
-}
-.carousel-caption{
-    width: 100%;
-    height: fit-content;
-   position: absolute;
-   top: 40%;
-   left: 0%;
-}
-.carousel-caption h1{
-    text-transform: uppercase;
-}
-.carousel-inner{
-    position: relative;
-}
-.carousel-inner img{
-	height: 625px;
-    object-fit: cover;
- /* background-attachment: fixed;
- clip-path: circle(175vh at 50% -80vh);*/
-}
+
 .wave{
     width: 100%;
     position: absolute;

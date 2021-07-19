@@ -1,0 +1,88 @@
+{% extends 'general/base.html' %}
+{%load static%}
+{% block title%} Register - Redopact{% endblock %}
+{% block head%}
+<!--    <link rel="stylesheet" href="{%static 'account/css/signin.css'%}">-->
+
+{% endblock %}
+{% block body%}
+
+<main>
+  <form class="text-center" method="post" action="../../register/">
+      {% csrf_token %}
+    <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW9NSxSwGFhkkc0jFe3o2-CFkiMp2Y9yh-3g&usqp=CAU" alt="" style="width:72px; height:57px;">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col col-lg-6">
+          <div class="form-floating">
+              <input type="text" class="form-control" placeholder="FirstName" name="fname">
+              <label>FirstName</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+              <input type="text" class="form-control"  placeholder="Last Name" name="lname">
+              <label >Last Name</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-12 col-lg-6">
+          <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+              <label for="floatingInput">Email address</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+              <input type="number" class="form-control"  placeholder="987XXXXX10" name="call">
+              <label >Contact Number</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col col-lg-6">
+          <div class="form-floating">
+              <input type="text" class="form-control" placeholder="Organisation" name="org">
+              <label>Organisation</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+              <input type="text" class="form-control"  placeholder="Profession" name="prof">
+              <label >Profession</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-lg-6">
+          <div class="form-floating">
+              <select class="form-select" aria-label="Default select example" name="gender">
+                  <option selected value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="notsay">Rather not say</option>
+              </select>
+              <label>gender</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+              <label for="floatingPassword">Password</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="checkbox mb-3">
+      <label>
+          <input type="checkbox" value="remember-me"> i agree to terms and conditions
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">register</button>
+  </form>
+</main>
+{% endblock %}
