@@ -6,100 +6,27 @@
 <style>
     .w-100 {
     width: 100%!important;
-    height: 80VH;
+    height: 50VH;
     }
     .c-2 {
     width: 100%!important;
-    height: 60VH;
+    height: 40VH;
     }
 </style>
+<!--three boxes-->
+<style>
+.three-boxes img:hover{
+    opacity: 0.9;
+    transform: scale(1.03);
+    overflow: hidden;
+}
+</style>
+<!--<link href="{%static 'general/css/carousel.css'%}" rel="stylesheet">-->
 {% endblock %}
 {% block body%}
 
 
-    <!--banner-->
-<!--    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">-->
-
-<!--        <div class="carousel-inner">-->
-<!--            <div class="carousel-item active" data-bs-interval="10000">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>First slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the first slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item" data-bs-interval="2000">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Second slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the second slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Third slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Fourth slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="{%static 'general/Images/banner.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Fifth slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="wave">-->
-
-<!--        </div>-->
-<!--        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">-->
-<!--            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--            <span class="visually-hidden">Previous</span>-->
-<!--        </button>-->
-<!--        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">-->
-<!--            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--            <span class="visually-hidden">Next</span>-->
-<!--        </button>-->
-
-<!--        &lt;!&ndash;three-boxes&ndash;&gt;-->
-<!--        <section id="three-boxes">-->
-<!--            <div class="three-boxes">-->
-<!--                <div class="card" style="width: 18rem;">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Card title</h5>-->
-<!--                    </div>-->
-<!--                    <img src="{%static 'general/Images/three-boxes/img-4.jpg'%}" class="card-img-top" alt="...">-->
-
-<!--                </div>-->
-<!--                <div class="card" style="width: 18rem;">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Card title</h5>-->
-<!--                    </div>-->
-<!--                    <img src="{%static 'general/Images/three-boxes/img-2.jpg'%}" class="card-img-top" alt="...">-->
-
-<!--                </div>-->
-<!--                <div class="card" style="width: 18rem;">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Card title</h5>-->
-<!--                    </div>-->
-<!--                    <img src="{%static 'general/Images/three-boxes/img-3.jpg'%}" class="card-img-top" alt="...">-->
-
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        &lt;!&ndash;end-of-three-boxes&ndash;&gt;-->
-<!--    </div>-->
-    <!--end of banner-->
-
-<div id="carousel1" class="carousel slide mb-3" data-bs-ride="carousel" style="height:80vh">
+<div id="carousel1" class="carousel slide mb-3" data-bs-ride="carousel" style="height:50vh">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -107,7 +34,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">
+      <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" class="d-block w-100" alt="...">
       <div  style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); width:75%;">
                           <form action="../listing/" method="get" class="ml-auto">
                               <div class="input-group">
@@ -160,17 +87,17 @@
 
 <div class="container-fluid pop-tags " >
   <div class="row">
-    <div class=" col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle img-fluid ">
-      <center><p>Technology</p></center>
+    <div class=" col-4  three-boxes">
+      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="50vh">
+
     </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="rounded-circle img-fluid ">
-      <center><p>Politics</p></center>
+    <div class="col-4  three-boxes">
+      <img src="{%static 'general/Images/featured-section/fimg4.jpg'%}" alt="politics-pic" class="rounded-circle ">
+
     </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="rounded-circle img-fluid ">
-      <center><p>Science</p></center>
+    <div class="col-4  three-boxes">
+      <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" alt="politics-pic" class="rounded-circle  ">
+
     </div>
   </div>
 </div>
@@ -179,7 +106,7 @@
 
 <!--carousel-->
 
-<div id="carousel2" class="carousel slide mt-5" data-bs-ride="carousel" style="height:60vh">
+<div id="carousel2" class="carousel slide mt-5" data-bs-ride="carousel" style="height:40vh">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -187,13 +114,13 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block c-2" alt="...">
+      <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" class="d-block c-2" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block c-2" alt="...">
+      <img src="{%static 'general/Images/featured-section/fimg4.jpg'%}" class="d-block c-2" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block c-2" alt="...">
+      <img src="{%static 'general/Images/featured-section/fimg6.jpg'%}" class="d-block c-2" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
@@ -220,7 +147,7 @@
                         <div class="feature-left">
                             <div class="feature-item">
                                 <div class="feature-name">
-                                    <h2>Eco-cook and Serve</h2>
+                                    <h2>kitchen</h2>
                                 </div>
                                 <div class="feature-img">
                                     <a href="#"><img src="{%static 'general/Images/featured-section/fimg1.jpg'%}"
@@ -230,7 +157,7 @@
 
                             <div class="feature-item">
                                 <div class="feature-name">
-                                    <h2>Sustainable Wardrobe</h2>
+                                    <h2>stationary</h2>
                                 </div>
                                 <div class="feature-img">
                                     <a href="#"><img src="{%static 'general/Images/featured-section/fimg2.jpg'%}"
@@ -241,7 +168,7 @@
                         <div class="feature-right">
                             <div class="feature-item">
                                 <div class="feature-name">
-                                    <h2>I'm Compost-able</h2>
+                                    <h2>books</h2>
                                 </div>
                                 <div class="feature-img">
                                     <a href="#"> <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}"
@@ -255,7 +182,7 @@
                         <div class="feature-left">
                             <div class="feature-item">
                                 <div class="feature-name">
-                                    <h2>Green Home Decor</h2>
+                                    <h2>garments</h2>
                                 </div>
                                 <div class="feature-img">
                                     <a href="#"> <img src="{%static 'general/Images/featured-section/fimg4.jpg'%}"
@@ -265,7 +192,7 @@
 
                             <div class="feature-item">
                                 <div class="feature-name">
-                                    <h2>Recycle Paper-Mache it up!</h2>
+                                    <h2>bathroom accessries</h2>
                                 </div>
                                 <div class="feature-img">
                                     <a href="#"><img src="{%static 'general/Images/featured-section/fimg5.jpg'%}"
@@ -277,7 +204,7 @@
                         <div class="feature-right">
                             <div class="feature-item">
                                 <div class="feature-name">
-                                    <h2>Day and Night Essentials</h2>
+                                    <h2>Daily Essentials</h2>
                                 </div>
                                 <div class="feature-img">
                                     <a href="#"><img src="{%static 'general/Images/featured-section/fimg6.jpg'%}"
@@ -293,509 +220,428 @@
     <!--end of featured collections-->
 
 
-    <!--Recommendation-->
-    <section id="Browsing-History">
-        <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Browsing
-            <span>History</span>
-        </h1>
-        <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
 
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-
-
-
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    Recycled newspaper pencils
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-top: 10px;">₹200</h2>
-                <div>
-
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-            <div id="rec" class="carousel-cell">
-                <a href="#">
-                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="#">
-                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                </a>
-                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                <div>
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!--Vertical slider and a image-->
-    <div id="video-and-vertical" class="row container">
-        <div class="col-md-7 col-xs-12">
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <img src="{%static 'general/Images/banner-1.jpg'%}">
-                <div class="tags">
-                    <div  class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div  class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-xs-12">
-            <div class="horVerSlider" data-desktop="800" data-tabportrait="600" data-tablandscape="600"
-                data-mobilelarge="375" data-mobilelandscape="500" data-mobileportrait="375">
-                <div class="horizon-wrapper " >
-                    <div class="horizone-nav" >
-                        <div class="prev" style="display: none;">
-                            <img src="leftarrow.svg" />
-                        </div>
-                    </div>
-                </div>
-                <div class="vertical-wrapper">
-                    <div id="vertical-slider">
-                        <ul>
-
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                        </ul>
-                    </div>
-                    <div class="horizon-wrapper ">
-                        <div class="horizone-nav">
-                            <div class="next" style="display: block;">
-                                <img src="rightarrow.svg" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--End of vertical slider and image-->
-
-
-
-    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">
-        Recomme<span>ndation</span></h1>
-    <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
-        {% for i in products %}
-            <div id="rec" class="carousel-cell">
-                <a href="../{{i.slug}}!">
-                    <img src="../media/{{i.image}}" alt=".." style="width: 100%; height: 50%;">
-                </a>
-                <a style="font-size: 12px; font-weight: 400;" href="../{{i.slug}}!">
-                    <h2 style="font-size: 18px; font-weight: 400;">{{i.name}}</h2>
-                </a>
-                <h3 style="text-align: left; font-size: 12px; padding-bottom: 0;"><del>Rs.{{i.original_price}}</del>  Rs.{{i.price}}</h3>
-                <div>
-
-                    <button style="font-size: 12px;" class="btn btn-outline-danger">
-                        SHOP NOW
-                    </button>
-                </div>
-
-            </div>
-        {%endfor%}
-    </div>
-    <!-- End of recommendation-->
-
-    <!--Trending-->
-    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">What's
-        <span>Trending</span>
+<!--    product slider-->
+    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Browsing<span>History</span>
     </h1>
-    <div id="tren" class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
+    <div id="slider1" class="carousel slide mb-3" data-bs-ride="carousel" >
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#slider1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#slider1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#slider1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
-        <div id="tre" class="carousel-cell">
-            <a href="#">
-                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">
-            </a>
-            <a style="font-size: 12px; font-weight: 400;" href="#">
-                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>
-            </a>
-            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-            <div>
-                <button style="font-size: 12px;" class="btn btn-outline-danger">
-                    SHOP NOW
-                </button>
-            </div>
-
-        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#slider1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#slider1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <!--End of Trending-->
+<!-- end of product slider-->
 
-
+<!--    product slider-->
+    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Recommend<span>ation</span>
+    </h1>
+    <div id="slider2" class="carousel slide mb-3" data-bs-ride="carousel" >
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#slider2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#slider2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#slider2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+  <div class="row">
+    <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+  </div>
+</div>
+        </div>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+  <div class="row">
+    <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#slider2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#slider2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+<!-- end of product slider-->
 
 
     <!--new gifts section-->
@@ -861,75 +707,430 @@
         </div>
     </section>
 
-    <!--end of new gifts section-->
-    <!--Blogs-->
-    <a href="#">
-        <h1 class="section-title">Blo<span>gs</span></h1>
-    </a>
-    <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>
-        <div id="blog" class="carousel-cell">
-            <h2 style="font-size: 22px;">Title Heading</h2>
-            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
-            <a href="#">
-                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
-            </a>
-            <p style="font-size: 15px;">Some text..</p>
+<!--    product slider-->
+    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Browsing<span>History</span>
+    </h1>
+    <div id="slider3" class="carousel slide mb-3" data-bs-ride="carousel" >
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#slider3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#slider3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#slider3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-        <div id="blog" class="carousel-cell">
-            <h2 style="font-size: 22px;">Title Heading</h2>
-            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
-            <a href="#">
-                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
-            </a>
-            <p style="font-size: 15px;">Some text..</p>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-        <div id="blog" class="carousel-cell">
-            <h2 style="font-size: 22px;">Title Heading</h2>
-            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
-            <a href="#">
-                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
-            </a>
-            <p style="font-size: 15px;">Some text..</p>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-        <div id="blog" class="carousel-cell">
-            <h2 style="font-size: 22px;">Title Heading</h2>
-            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
-            <a href="#">
-                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
-            </a>
-            <p style="font-size: 15px;">Some text..</p>
-        </div>
-        <div id="blog" class="carousel-cell">
-            <h2 style="font-size: 22px;">Title Heading</h2>
-            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
-            <a href="#">
-                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
-            </a>
-            <p style="font-size: 15px;">Some text..</p>
-        </div>
-        <div id="blog" class="carousel-cell">
-            <h2 style="font-size: 22px;">Title Heading</h2>
-            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
-            <a href="#">
-                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
-            </a>
-            <p style="font-size: 15px;">Some text..</p>
-        </div>
-        <div id="blog" class="carousel-cell">
-            <h2 style="font-size: 22px;">Title Heading</h2>
-            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>
-            <a href="#">
-                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">
-            </a>
-            <p style="font-size: 15px;">Some text..</p>
-        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#slider3" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#slider3" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <!--End of blogs-->
+<!-- end of product slider-->
 
+<!--    product slider-->
+    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Browsing<span>History</span>
+    </h1>
+    <div id="slider4" class="carousel slide mb-3" data-bs-ride="carousel" >
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#slider4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#slider4" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#slider4" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row">
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class=" col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <a href="#">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  </a>
+                  <a style="font-size: 12px; font-weight: 400;" href="#">
+                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  </a>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <div>
+                      <button style="font-size: 12px;" class="btn btn-outline-danger">
+                          SHOP NOW
+                      </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#slider4" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#slider4" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+<!-- end of product slider-->
 
     <!--vision section-->
-    <section id="vision">
-        <div class="vision container-fluid">
+
             <div class="vision-header">
                 <h1 class="section-title"><span>Our</span> Vision</h1>
             </div>
@@ -937,106 +1138,276 @@
 
             <div class="container-fluid pop-tags " >
               <div class="row">
-                <div class=" col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Technology</p></center>
+                <div class=" col-4 col-lg-2 mb-2">
+                  <img src="{%static 'general/Images/vision-logos/commuinty.png'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
                 </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Politics</p></center>
+                <div class="col-4 col-lg-2 mb-2">
+                  <img src="{%static 'general/Images/vision-logos/eco-friendly.png'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
                 </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Science</p></center>
+                <div class="col-4 col-lg-2 mb-2">
+                  <img src="{%static 'general/Images/vision-logos/fair-trade.png'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
                 </div>
-                <div class=" col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Technology</p></center>
+                <div class=" col-4 col-lg-2 mb-2">
+                  <img src="{%static 'general/Images/vision-logos/made-in-india.png'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
                 </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Politics</p></center>
+                <div class="col-4 col-lg-2 mb-2">
+                  <img src="{%static 'general/Images/vision-logos/verified.png'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
                 </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Science</p></center>
+                <div class="col-4 col-lg-2 mb-2">
+                  <img src="{%static 'general/Images/vision-logos/vision-image.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
                 </div>
               </div>
             </div>
 
             <!--end vision section-->
 
-            <div class="vision-description">
-                <div class="description">
-                    <div class="para">
-                        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate, voluptatum
-                            dolor
+<!--<section id="vision">-->
+<!--        <div class="vision container-fluid">-->
+<!--<div class="vision-description">-->
+<!--                <div class="description">-->
+<!--                    <div class="para">-->
+<!--                        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate, voluptatum dolor-->
+<!--                            voluptates fuga-->
+<!--                            nihil reiciendis consectetur ad dicta non recusandae. Sunt, voluptas officia! Vel harum-->
+<!--                            rerum accusamus fugit ratione.</h5>-->
+<!--                        <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus facilis expedita porro-->
+<!--                            quibusdam modi natus dolorem-->
+<!--                            incidunt, quas quo voluptatem? Nam iusto voluptas odit molestiae aperiam sapiente labore id-->
+<!--                            aliquam eveniet commodi, consectetur-->
+<!--                            voluptates dolores magnam quis autem consequatur? Voluptatibus vero corrupti cumque incidunt-->
+<!--                            excepturi sint hic laborum rem adipisci-->
+<!--                            aut. Repellat aut magni suscipit consequatur? Numquam dignissimos asperiores eaque?</h5>-->
+<!--                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, odit. Pariatur aut-->
+<!--                            dignissimos deserunt quibusdam obcaecati,-->
+<!--                            sunt molestias quae assumenda tenetur enim, cumque libero magni suscipit voluptatem-->
+<!--                            architecto hic facilis.</h5>-->
+
+<!--                    </div>-->
+<!--                    <div class="join-us">-->
+<!--                        <div class="join-us-content">-->
+<!--                            <h6>Join over 10,000+ customers-->
+<!--                                who receive our awesome newsletter and marketing emails.</h6>-->
+<!--                        </div>-->
+<!--                        <div class="social-icons">-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/facebook.png"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/instagram.png"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/twitter.png"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/youtube.png"></a>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                        <div class="join-us-form">-->
+<!--                            <form class="join-us-form">-->
+<!--                                <div class="email">-->
+<!--                                    <input class="user-email" type="text" placeholder="Enter your Email address">-->
+<!--                                </div>-->
+<!--                                <div class="recaptcha">-->
+<!--                                    <input type="checkbox" class="recaptcha-checkbox" id="check">-->
+<!--                                    <label for="check">-->
+<!--                                        <h6>I,m not a robot</h6>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                                <div class="button">-->
+<!--                                    <a href="#" type="button" class="btn">Submit</a>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="vision-image">-->
+<!--                    <img src="Images/vision-logos/vision-image.jpg" alt="img" />-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <section id="vision">-->
+<!--        <div class="vision container">-->
+<!--&lt;!&ndash;            <div class="vision-header">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h1 class="section-title"><span>Our</span> Vision</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="all-visions">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="vision-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="Images/vision-logos/fair-trade.png" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h5>Fair Trade</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="vision-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="Images/vision-logos/commuinty.png" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h5>Build A Community Of Envirocitizens</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="vision-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="Images/vision-logos/made-in-india.png" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h5>Made in India</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="vision-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="Images/vision-logos/eco-friendly.png" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h5>Eco-friendly and Sustainable</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="vision-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="Images/vision-logos/verified.png" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="icon-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h5>Verified Products And Sellers</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            <div class="vision-description">-->
+<!--                <div class="description">-->
+<!--                    <div class="para">-->
+<!--                        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate, voluptatum dolor-->
+<!--                            voluptates fuga-->
+<!--                            nihil reiciendis consectetur ad dicta non recusandae. Sunt, voluptas officia! Vel harum-->
+<!--                            rerum accusamus fugit ratione.</h5>-->
+<!--                        <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus facilis expedita porro-->
+<!--                            quibusdam modi natus dolorem-->
+<!--                            incidunt, quas quo voluptatem? Nam iusto voluptas odit molestiae aperiam sapiente labore id-->
+<!--                            aliquam eveniet commodi, consectetur-->
+<!--                            voluptates dolores magnam quis autem consequatur? Voluptatibus vero corrupti cumque incidunt-->
+<!--                            excepturi sint hic laborum rem adipisci-->
+<!--                            aut. Repellat aut magni suscipit consequatur? Numquam dignissimos asperiores eaque?</h5>-->
+<!--                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, odit. Pariatur aut-->
+<!--                            dignissimos deserunt quibusdam obcaecati,-->
+<!--                            sunt molestias quae assumenda tenetur enim, cumque libero magni suscipit voluptatem-->
+<!--                            architecto hic facilis.</h5>-->
+
+<!--                    </div>-->
+<!--                    <div class="join-us">-->
+<!--                        <div class="join-us-content">-->
+<!--                            <h6>Join over 10,000+ customers-->
+<!--                                who receive our awesome newsletter and marketing emails.</h6>-->
+<!--                        </div>-->
+<!--                        <div class="social-icons">-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/facebook.png"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/instagram.png"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/twitter.png"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="Images/social-media-icons/youtube.png"></a>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                        <div class="join-us-form">-->
+<!--                            <form class="join-us-form">-->
+<!--                                <div class="email">-->
+<!--                                    <input class="user-email" type="text" placeholder="Enter your Email address">-->
+<!--                                </div>-->
+<!--                                <div class="recaptcha">-->
+<!--                                    <input type="checkbox" class="recaptcha-checkbox" id="check">-->
+<!--                                    <label for="check">-->
+<!--                                        <h6>I,m not a robot</h6>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                                <div class="button">-->
+<!--                                    <a href="#" type="button" class="btn">Submit</a>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="vision-image">-->
+<!--                    <img src="{%static 'general/Images/vision-logos/vision-image.jpg'%}" alt="img" />-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<div class="container marketing mt-4">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate, voluptatum dolor-->
                             voluptates fuga
                             nihil reiciendis consectetur ad dicta non recusandae. Sunt, voluptas officia! Vel harum
                             rerum accusamus fugit ratione.</h5>
-                        <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus facilis expedita
-                            porro
+        <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus facilis expedita porro
                             quibusdam modi natus dolorem
-                            incidunt, quas quo voluptatem? Nam iusto voluptas odit molestiae aperiam sapiente labore
-                            id
+                            incidunt, quas quo voluptatem? Nam iusto voluptas odit molestiae aperiam sapiente labore id
                             aliquam eveniet commodi, consectetur
-                            voluptates dolores magnam quis autem consequatur? Voluptatibus vero corrupti cumque
-                            incidunt
+                            voluptates dolores magnam quis autem consequatur? Voluptatibus vero corrupti cumque incidunt
                             excepturi sint hic laborum rem adipisci
-                            aut. Repellat aut magni suscipit consequatur? Numquam dignissimos asperiores eaque?</h5>
-                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, odit. Pariatur aut
-                            dignissimos deserunt quibusdam obcaecati,
-                            sunt molestias quae assumenda tenetur enim, cumque libero magni suscipit voluptatem
-                            architecto hic facilis.</h5>
+        </h5>
+<!--        <div class="join-us">-->
+<!--                        <div class="join-us-content">-->
+<!--                            <h6>Join over 10,000+ customers-->
+<!--                                who receive our awesome newsletter and marketing emails.</h6>-->
+<!--                        </div>-->
+<!--                        <div class="social-icons">-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="{%static 'general/Images/social-media-icons/facebook.png'%}"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="{%static 'general/Images/social-media-icons/instagram.png'%}"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="{%static 'general/Images/social-media-icons/twitter.png'%}"></a>-->
+<!--                            </div>-->
+<!--                            <div class="social-item">-->
+<!--                                <a href="#"><img src="{%static 'general/Images/social-media-icons/youtube.png'%}"></a>-->
+<!--                            </div>-->
 
-                    </div>
-                    <div class="join-us">
-                        <div class="join-us-content">
-                            <h6>Join over 10,000+ customers
-                                who receive our awesome newsletter and marketing emails.</h6>
-                        </div>
-                        <div class="social-icons">
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/facebook.png'%}"></a>
-                            </div>
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/instagram.png'%}"></a>
-                            </div>
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/twitter.png'%}"></a>
-                            </div>
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/youtube.png'%}"></a>
-                            </div>
+<!--                        </div>-->
 
-                        </div>
-
-                        <div class="join-us-form">
-                            <form class="join-us-form">
-                                <div class="email">
-                                    <input class="user-email" type="text" placeholder="Enter your Email address">
-                                </div>
-                                <div class="recaptcha">
-                                    <input type="checkbox" class="recaptcha-checkbox" id="check">
-                                    <label for="check">
-                                        <h6>I,m not a robot</h6>
-                                    </label>
-                                </div>
-                                <div class="button">
-                                    <a href="#" type="button" class="btn">Submit</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="vision-image">
-                    <img src="{%static 'general/Images/vision-logos/vision-image.jpg'%}" alt="img" />
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--end of our vision section-->
+<!--                        <div class="join-us-form">-->
+<!--                            <form class="join-us-form">-->
+<!--                                <div class="email">-->
+<!--                                    <input class="user-email" type="text" placeholder="Enter your Email address">-->
+<!--                                </div>-->
+<!--                                <div class="recaptcha">-->
+<!--                                    <input type="checkbox" class="recaptcha-checkbox" id="check">-->
+<!--                                    <label for="check">-->
+<!--                                        <h6>I,m not a robot</h6>-->
+<!--                                    </label>-->
+<!--                                </div>-->
+<!--                                <div class="button">-->
+<!--                                    <a href="#" type="button" class="btn">Submit</a>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+      </div>
+      <div class="col-md-5">
+<!--        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
+        <img src="{%static 'general/Images/vision-logos/vision-image.jpg'%}" alt="img" />
+      </div>
+    </div>
+</div>
 
 
     <!--testimonials-->

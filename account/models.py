@@ -83,7 +83,7 @@ class Account(AbstractBaseUser):
         return self.is_admin
 
 def get_uplaod_file_name(userpic, filename,):
-    return u'shop/%s/%s%s' % (str(userpic.vendor_id)+"/template","",filename)
+    return u'shop/%s/%s%s' % (str(userpic.vendor_id)+"/data","",filename)
 def get_uplaod_file_name_blog(userpic, filename,):
     return u'blog/%s/%s%s' % (str(userpic.blogger_id)+"/template","",filename)
 
@@ -96,6 +96,18 @@ class VendorAccount(models.Model):
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=20)
     gst = models.CharField(max_length=30 ,null=True, blank=True)
+    vat = models.CharField(max_length=30, null=True, blank=True)
+    adhar_card = models.CharField(max_length=30, null=True, blank=True)
+    pan = models.CharField(max_length=30, null=True, blank=True)
+    pan_image = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
+    adhar_image = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
+    facebook = models.CharField(max_length=200, null=True, blank=True)
+    instagram = models.CharField(max_length=200, null=True, blank=True)
+    twitter = models.CharField(max_length=200, null=True, blank=True)
+    bank_account_number=models.IntegerField(null=True, blank=True)
+    bank_ifsc_code = models.IntegerField(null=True, blank=True)
+    bank_name = models.CharField(max_length=50, null=True, blank=True)
+    bank_account_holder_name = models.CharField(max_length=60, null=True, blank=True)
     is_blocked = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 

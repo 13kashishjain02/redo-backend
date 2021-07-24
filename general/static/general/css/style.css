@@ -584,7 +584,7 @@ background-color: rgb(228, 225, 225);
 }
 
 #vision .all-visions{
-    margin: 10px;
+
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -595,7 +595,7 @@ background-color: rgb(228, 225, 225);
 #vision .vision-item{
     background-color: #fff;
     height: 275px;
-    margin: 10px;
+
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -607,15 +607,15 @@ background-color: rgb(228, 225, 225);
     justify-content: center;
     /*background-color: yellow;*/
     flex-basis: 20%;
-    
+
 }
 
-#vision .icon{ 
-    margin: 10px;
+#vision .icon{
+
     padding: 10px;
    /* background-color: indigo;*/
-    flex-basis: 70%; 
-    border-radius: 50%; 
+    flex-basis: 70%;
+    border-radius: 50%;
 }
 
 #vision .icon-content{
@@ -623,7 +623,7 @@ background-color: rgb(228, 225, 225);
     flex-basis: 20%;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+
     padding: 10px;
 }
 
@@ -636,7 +636,7 @@ background-color: rgb(228, 225, 225);
 }
 
 #vision .vision-description{
-    margin: 10px;
+
     padding: 10px;
     display: flex;
     align-items: center;
@@ -645,8 +645,8 @@ background-color: rgb(228, 225, 225);
 }
 
 #vision .description{
-    
-    margin: 10px;
+
+
     padding: 10px;
   /*  background-color: olivedrab;*/
     display: flex;
@@ -656,13 +656,13 @@ background-color: rgb(228, 225, 225);
 
 #vision .description h5{
     color:teal;
-    margin: 15px;
+
     padding: 15px;
 }
 #vision .para{
    /* background-color: yellow;*/
    background-color: #fff;
-    margin: 2px;
+
     flex-basis: 70%;
     box-shadow: 0px 0px 5px 0px olive;
     transition: 0.3s ease transform;
@@ -679,7 +679,7 @@ background-color: rgb(228, 225, 225);
 }
 
 #vision .social-item{
-    margin: 0 15px;
+
     padding: 15px;
     flex-basis: 20%;
 }
@@ -696,7 +696,7 @@ background-color: rgb(228, 225, 225);
     transform: scale(1.04);
 }
 #vision .join-us{
-    margin: 10px;
+
     padding: 10px;
     background-color: #fff;
     flex-basis: 30%;
@@ -705,7 +705,7 @@ background-color: rgb(228, 225, 225);
     flex-direction: column;
     transition: 0.3s ease transform;
     transform: scale(1);
-    
+
 }
 #vision .join-us:hover{
     transform: scale(1.04);
@@ -715,12 +715,12 @@ background-color: rgb(228, 225, 225);
     align-items: center;
     justify-content: center;
     display: flex;
-    margin: 5px;
+
     padding: 5px;
 }
 
 #vision .join-us-content{
-    margin: 5px;
+
     padding: 5px;
 }
 
@@ -729,7 +729,7 @@ background-color: rgb(228, 225, 225);
 }
 
 #vision .email{
-    margin: 5px;
+
     margin-left: 0;
     padding: 5px;
     padding-left: 0;
@@ -739,7 +739,7 @@ background-color: rgb(228, 225, 225);
 #vision .email input{
     width: 100%;
     height: 35px;
-     margin-right: 1rem;
+
     padding: 0 1rem 0 1rem;
     border: .1rem solid #ddd;
     border-radius: .5rem;
@@ -754,7 +754,7 @@ background-color: rgb(228, 225, 225);
 
 #vision .recaptcha{
     display: flex;
-    margin: 5px;
+
     padding: 5px;
     flex-basis: 30%;
 }
@@ -771,13 +771,13 @@ background-color: rgb(228, 225, 225);
 }
 
 #vision .button{
-    margin: 5px;
+
     padding: 5px;
     flex-basis: 30%;
 }
 
 #vision .btn{
-    margin: 5px;
+
     padding: 5px;
     display: inline-block;
     color: olive;
@@ -907,7 +907,7 @@ background-color: rgb(228, 225, 225);
 }
 
 #footer .footer-items{
-    margin: 5px;
+    /*margin: 5px;*/
     padding: 5px;
     display: flex;
     flex-direction: row;
@@ -1238,7 +1238,7 @@ background-color: rgb(228, 225, 225);
        /* background-color: violet;*/
         align-items: flex-start;
         justify-content: flex-start;
-        margin: 5px;
+        /*margin: 5px;*/
         padding:5px;
         
     }
@@ -1612,7 +1612,7 @@ background-color: rgb(228, 225, 225);
        /* background-color: violet;*/
         align-items: flex-start;
         justify-content: flex-start;
-        margin: 5px;
+        /*margin: 5px;*/
         padding:5px;
         
     }
@@ -1692,7 +1692,7 @@ background-color: rgb(228, 225, 225);
 }
 
 .logo {
-	width: 100px;
+	width: 90px;
 }
 
 .flex-container {

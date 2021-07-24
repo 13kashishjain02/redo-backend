@@ -1,0 +1,271 @@
+{% extends 'general/base.html' %}
+{%load static%}
+{% block title%}Elpizo{% endblock %}
+{% block head%}
+    <link rel="stylesheet" href="{%static 'shop/css/style.css'%}" />
+    <link rel="stylesheet" href="{%static 'shop/css/search.css'%}">
+    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+
+{% endblock %}
+
+{% block body%}
+    
+    <div id="all">
+      <div id="content">
+        <div class="container">
+          <div class="row">                       
+            <div class="col-lg-12">
+              <!-- breadcrumb-->
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../">Home</a></li>
+                  <li aria-current="page" class="breadcrumb-item active" style="text-transform: uppercase;">{{query}}</li>
+                </ol>
+              </nav>
+              <div class="box">
+                <h1 style="text-transform: uppercase;">{{query}}</h1>
+                <p>In our <b style="text-transform: uppercase;">{{query}}</b> department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
+              </div>
+              <div class="box info-bar">
+                <div class="row">
+                
+                  <div class="col-md-12 col-lg-4 products-showing"><strong>{{ allProds|length }}</strong> products found</div>
+                  <div class="col-md-12 col-lg-7 products-number-sort">
+                      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="background:#ffd835;">Sort and Filter</button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+    
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">FILTER and SORT</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              
+                            </div>
+                            <div class="modal-body">
+                            <!--
+                              <form method="get" action="../search" class="form-inline d-block d-lg-flex justify-content-between flex-column flex-md-row">
+                                  
+                                  <div class="products-sort-by mt-2 mt-lg-0">
+                       
+                                    <select name="prodfor" class="form-control">
+                                      <option value="men">Men</option>
+                                      <option value="women">Women</option>
+                                      <option value="boys">Boys</option>
+                                      <option value="girl">Girls</option>
+                                      <option value="kids">Kids</option>
+                                    </select>
+                                    <strong class="buttons"><button type="submit"  class="btn btn-outline-secondary">Filter </button></strong>
+                                  </div>
+                                  <div class="products-sort-by mt-2 mt-lg-0">
+                                   <input type="hidden"  name="search" value="{{query}}">
+                                    <select name="sort" class="form-control">
+                                      <option value="latest">Newest first</option>
+                                      <option value="pricelow">Price low to high</option>
+                                      <option value="pricehigh">Price high to low</option>
+                                    </select>
+                                    <strong class="buttons"><button type="submit"  class="btn btn-outline-secondary">Sort </button></strong>
+                                  </div>
+                              </form>
+                            -->
+
+                              <form method="get" action="../search">  
+                              <!--
+                              *** MENUS AND FILTERS ***
+                              _________________________________________________________
+                              -->
+                              <div class="card sidebar-menu mb-4">
+                                <div class="card-header">
+                                  <h3 class="h4 card-title">Categories</h3>
+                                </div>
+                                <div class="card-body">
+                                  <ul class="nav nav-pills flex-column category-menu">
+                                    <li><a href="category.html" class="nav-link">Product For <span class="badge badge-secondary"></span></a>
+                                      <input type="radio" id="male" name="prodfor" value="men">
+                                      <label for="male"><i class="fa fa-male" aria-hidden="true"></i>  MEN</label><br>
+                                      <input type="radio" id="female" name="prodfor" value="women">
+                                      <label for="female"><i class="fa fa-female" aria-hidden="true"></i>  WOMEN</label><br>
+                                      <input type="radio" id="other" name="prodfor" value="boys">
+                                      <label for="other"><i class="fa fa-child" aria-hidden="true"></i>   BOYS</label><br>
+                                      <input type="radio" id="other" name="prodfor" value="girls">
+                                      <label for="other"><i class="fa fa-female" aria-hidden="true"></i>  GiRLS</label><br>
+                                    </li>
+                                    <li><a href="category.html" class="nav-link ">category  <span class="badge badge-light"></span></a>
+                                      <input type="radio" id="male" name="category" value="tshirt">
+                                      <label for="male">  Tshirt</label><br>
+                                      <input type="radio" id="female" name="category" value="shirt">
+                                      <label for="female">  Shirt</label><br>
+                                      <input type="radio" id="other" name="category" value="jeans">
+                                      <label for="other">   Jeans</label><br>
+                                      <input type="radio" id="other" name="category" value="accessories">
+                                      <label for="other">Accessories</label>
+                                    </li>
+                                    <li><a href="category.html" class="nav-link">Kids  <span class="badge badge-secondary">11</span></a>
+                                      <ul class="list-unstyled">
+                                        <li><a href="category.html" class="nav-link">T-shirts</a></li>
+                                        <li><a href="category.html" class="nav-link">Skirts</a></li>
+                                        <li><a href="category.html" class="nav-link">Pants</a></li>
+                                        <li><a href="category.html" class="nav-link">Accessories</a></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                  <input type="hidden"  name="search" value="{{query}}">
+                                  <strong class="buttons"><button type="submit"  class="btn btn-outline-secondary">Sort </button></strong>
+                                </div>
+                              </div>
+                              </form>
+                              <div class="card sidebar-menu mb-4">
+                                <div class="card-header">
+                                  <h3 class="h4 card-title">Brands <a href="#" class="btn btn-sm btn-danger pull-right"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                                </div>
+                                <div class="card-body">
+                                  <form>
+                                    <div class="form-group">
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"> Armani  (10)
+                                        </label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"> Versace  (12)
+                                        </label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"> Carlo Bruni  (15)
+                                        </label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"> Jack Honey  (14)
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
+                                  </form>
+                                </div>
+                              </div>
+                              <div class="card sidebar-menu mb-4">
+                                <div class="card-header">
+                                  <h3 class="h4 card-title">Colours <a href="#" class="btn btn-sm btn-danger pull-right"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                                </div>
+                                <div class="card-body">
+                                  <form>
+                                    <div class="form-group">
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"><span class="colour white"></span> White (14)
+                                        </label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"><span class="colour blue"></span> Blue (10)
+                                        </label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"><span class="colour green"></span>  Green (20)
+                                        </label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"><span class="colour yellow"></span>  Yellow (13)
+                                        </label>
+                                      </div>
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"><span class="colour red"></span>  Red (10)
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
+                                  </form>
+                                </div>
+                              </div>
+                              <!-- *** MENUS AND FILTERS END ***-->
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+      
+                        </div>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="row products">
+              <h3 style="color:red">{{msg}}</h3>
+              {% for i in product %}
+
+                
+                    <div class="col-lg-3 col-md-6 col-xs-6 chain-grid" style="padding-right: 0px;  padding-left: 0px;">
+                      <div class="product">
+                        <div class="flip-container">
+                          <div class="flipper">
+                            <div class="front"><a href="../products/{{i.id}}"><img src="../media/{{i.image}}" alt="" class="img-fluid"></a></div>
+                            {% if i.image2 %}
+                                <div class="back"><a href="../products/{{i.id}}"><img src="../media/{{i.image2}}" alt="" class="img-fluid"></a></div>
+                            {% else %}
+                                <div class="back"><a href="../products/{{i.id}}"><img src="../media/{{i.image}}" alt="" class="img-fluid"></a></div>
+                            {% endif %}  
+                            
+                          </div>
+                          {%if i.is_recycle %}
+                              <div class="ribbon sale">
+                                <div class="theribbon">RECYCLABLE</div>
+                                <div class="ribbon-background"></div>
+                              </div>
+                          {%endif%}
+                              <!-- /.ribbon-->
+                          {%if i.is_upcycle  %}
+                              <div class="ribbon new">
+                                <div class="theribbon">upcyclable</div>
+                                <div class="ribbon-background"></div>
+                              </div>
+                          {%endif%}
+                        </div>
+                        <a href="../products/{{i.id}}" class="invisible"><img src="../media/{{i.image}}" alt="" class="img-fluid" Fop></a>
+                        <div class="text">
+                          <h3><a href="../products/{{i.id}}">{{i.name|slice:"0:20"}}..</a></h3>
+                          <p class="price"> 
+                            <del>Rs.{{i.mrp}}</del>Rs.{{i.special_price}}
+                          </p>
+<!--                          <p class="buttons"><a href="../products/{{i.id}}" class="btn btn-outline-secondary">View detail</a><a href="/cart_add/{{i.id}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>-->
+                        </div>
+                        <!-- /.text-->
+                      </div>
+                      <!-- /.product            -->
+                    </div>
+                
+              {%endfor%}
+                <!-- /.products-->
+              </div>
+              <!--
+              <div class="pages">
+                <p class="loadMore"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Load more</a></p>
+                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                  <ul class="pagination">
+                    <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                  </ul>
+                </nav>
+              </div>
+              -->
+            </div>
+            <!-- /.col-lg-9-->
+          </div>
+        </div>
+      </div>
+    </div>
+   
+ {% endblock %}

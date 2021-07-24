@@ -52,6 +52,7 @@
                         <input class="input" placeholder="Mobile Number" id="mobile-number" name="mobile" value="">
                     </div>
                 </div>
+                <input type="hidden" name="next" value="{{ request.GET.next }}"/>
                 <h5 class="otp-para" style="display: none; color: teal;">An OTP has been sent to your mobile number ending in XXXX and on email xxxxx23@gmail.com</h5>
                 <div class="input-div pass" id="otp" style="display: none;">
                     <div class="div">

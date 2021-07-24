@@ -139,6 +139,7 @@
         
         <div class="col-lg-7 col-md-6 bottom-right" id="productList" style="flex-basis: 80%;">
             {% for i in product %}
+            <div class="col-3">
             <div class="product text-center">
                 <a href="../{{i.slug}}!">
                 <img class="img-fluid product-img " src="../media/{{i.image}}">
@@ -153,6 +154,7 @@
                     <button class="buy-btn"><i class="fas fa-heart"></i></button>
                 </div>
                 </a>
+            </div>
             </div>
             {% endfor %}
         </div>

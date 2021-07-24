@@ -145,9 +145,11 @@ def placeorder(request):
 # ---------------------------------------------------------------------
 # vendor related functions
 # ---------------------------------------------------------------------
+@login_required(login_url="../login")
 def dashboard(request):
     return render(request, 'shop/dashboard.html')
 
+@login_required(login_url="../login")
 def addproduct(request):
     msg=""
     chartnum = ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "26", "28", "30", "32", "34", "36", "38", "40",
@@ -210,7 +212,7 @@ def addproduct(request):
     else:
         return render(request, "shop/unauthorized.html", {'msg': msg,})
 
-
+@login_required(login_url="../login")
 def viewmyproducts(request):
     if request.user.is_Vendor == True:
         vendor = getvendor(email=request.user.email)
@@ -222,7 +224,7 @@ def viewmyproducts(request):
     else:
         return render(request, "shop/unauthorized.html")
 
-
+@login_required(login_url="../login")
 def updateproduct(request, myid):
     if request.user.is_Vendor == True:
         product = Product.objects.get(id=myid)
@@ -297,7 +299,7 @@ def listing(request):
         product = product_paginator.page(product_paginator.num_pages)
     except:
         product = product_paginator.page(PRODUCTS_PER_PAGE)
-    return render(request, "shop/product-search.html",
+    return render(request, "shop/search_result.html",
                   {"product": product, 'page_obj': product, 'is_paginated': True, 'paginator': product_paginator})
 
 

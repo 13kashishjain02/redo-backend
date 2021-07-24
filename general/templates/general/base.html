@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name='viewport' content='width=device-width, initial-scale=1'>-->
+    <meta content="width=device-width,user-scalable=no" name="viewport">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
@@ -67,7 +68,7 @@
     <section id="navbar">
         <nav class="navbar header">
             <div class="container-fluid">
-                <a id="logo-img" href="../../"><img class="logo" src="Logo!_Logo.svg.png'%}" alt="REDOPACT"></a>
+                <a id="logo-img" href="../../"><img class="logo" src="{%static 'general/Images/logo.png'%}" alt="REDOPACT" style="height:50px"></a>
                 <div class="d-sm-none d-md-block ms-auto d-none d-sm-block">
                     <form action="../listing/" method="get" class="d-flex ms-auto bar1">
                         <input id="inpt_srch" class="form-control" name="search" type="search" placeholder="Search"
@@ -354,29 +355,29 @@
 <!--footer-->
     <section id="footer">
         <div class="footer container">
-            <div class="footer-items">
-                <div class="footer-item">
-                    <div class="shop">
-                        <h4>Shop</h4>
+<!--            <div class="footer-items">-->
+<!--                <div class="footer-item">-->
+<!--                    <div class="shop">-->
+<!--                        <h4>Shop</h4>-->
 
-                        <ul>
-                            <a href="../../listing/">
-                                <li>Fashion</li>
-                            </a>
-                            <a href="../../listing/">
-                                <li>Accessories</li>
-                            </a>
-                            <a href="../../listing/">
-                                <li>Home & Kitchen</li>
-                            </a>
-                            <a href="../../listing/">
-                                <li>Event And Festival Shop</li>
-                            </a>
-                        </ul>
-                    </div>
+<!--                        <ul>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Fashion</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Accessories</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Home & Kitchen</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Event And Festival Shop</li>-->
+<!--                            </a>-->
+<!--                        </ul>-->
+<!--                    </div>-->
 
-                </div>
-            </div>
+<!--                </div>-->
+<!--            </div>-->
             <div class="footer-item">
                 <div class="Information">
                     <h4>Information</h4>
@@ -389,7 +390,7 @@
                             <li>Privacy and Cookie Policy</li>
                         </a>
                         <a href="../../privacypolicy/">
-                            <li>Orders and Returns</li>
+                            <li>Shiping and Returns</li>
                         </a>
                         <a href="../../termsandcondition/">
                             <li>Terms of Use</li>
@@ -399,14 +400,11 @@
             </div>
             <div class="footer-item">
                 <div class="Quick-links">
-                    <h4>Quick Links</h4>
+                    <h4>Let us help you</h4>
 
                     <ul>
                         <a href="../../account/">
                             <li>My Account</li>
-                        </a>
-                        <a href="../../vendorregister/">
-                            <li>Sell With Us</li>
                         </a>
                         <a>
                             <li>Shopping Cart</li>
@@ -425,21 +423,18 @@
                     <h4>Support</h4>
 
                     <ul>
+                        <a href="../../vendorregister/">
+                            <li>Sell With Us</li>
+                        </a>
                         <a>
                             <li>Customer Help & FAQs</li>
-                        </a>
-                        <a href="../../register/">
-                            <li>Customer Registration</li>
-                        </a>
-                        <a href="../../login/">
-                            <li>Login</li>
                         </a>
                     </ul>
                 </div>
             </div>
             <div class="footer-item">
                 <div class="contact">
-                    <h4>Contact</h4>
+                    <h4>Contact Us</h4>
 
                     <ul>
                         <a>
@@ -476,41 +471,41 @@
         <div class="footer">
             <div class="footer-items">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Shop
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
-                    </ul>
+<!--                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"-->
+<!--                        data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                        Shop-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">-->
+<!--                        <li><button class="dropdown-item" type="button">Action</button></li>-->
+<!--                        <li><button class="dropdown-item" type="button">Another action</button></li>-->
+<!--                        <li><button class="dropdown-item" type="button">Something else here</button></li>-->
+<!--                    </ul>-->
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Information
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../aboutus/">About Us</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../privacypolicy/">Privacy and Cookie Policy</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../privacypolicy/">Shiping and Returns</a></button></li>
                     </ul>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Quick Links
+                        Let Us help You
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../account/">My Account</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a>Shopping Cart</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../register/">Customer Registration</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../login/">Login</a></button></li>
                     </ul>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Support
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../vendorregister/">Sell With Us</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a>Customer Help & FAQs</a></button></li>
                     </ul>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
                         data-bs-toggle="dropdown" aria-expanded="false">
