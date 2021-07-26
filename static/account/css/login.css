@@ -149,7 +149,7 @@ form{
 }
 
 a{
-	display: block;
+	/*display: block;*/
 	text-align: right;
 	text-decoration: none;
 	color: #999;

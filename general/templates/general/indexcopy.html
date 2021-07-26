@@ -1,1359 +1,535 @@
-{% extends 'general/base.html' %}
+<!DOCTYPE html>
 {%load static%}
-{% block title%}Home{% endblock %}
-{% block head%}
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-<style>
-    .w-100 {
-    width: 100%!important;
-    height: 80VH;
-    }
-    .c-2 {
-    width: 100%!important;
-    height: 60VH;
-    }
-</style>
-{% endblock %}
-{% block body%}
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name='viewport' content='width=device-width, initial-scale=1'>-->
+    <meta content="width=device-width,user-scalable=no" name="viewport">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
-    <!--banner-->
-<!--    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-<!--        <div class="carousel-inner">-->
-<!--            <div class="carousel-item active" data-bs-interval="10000">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>First slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the first slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item" data-bs-interval="2000">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Second slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the second slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Third slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="{%static 'general/Images/banner-1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Fourth slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <img src="{%static 'general/Images/banner.jpg'%}" class="d-block w-100" alt="...">-->
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h1>Fifth slide label</h1>-->
-<!--                    <h5>Some representative placeholder content for the third slide.</h5>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="wave">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
-<!--        </div>-->
-<!--        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">-->
-<!--            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--            <span class="visually-hidden">Previous</span>-->
-<!--        </button>-->
-<!--        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">-->
-<!--            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--            <span class="visually-hidden">Next</span>-->
-<!--        </button>-->
+    <link rel="stylesheet" href="{%static 'general/css/style.css'%}" >
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
-<!--        &lt;!&ndash;three-boxes&ndash;&gt;-->
-<!--        <section id="three-boxes">-->
-<!--            <div class="three-boxes">-->
-<!--                <div class="card" style="width: 18rem;">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Card title</h5>-->
-<!--                    </div>-->
-<!--                    <img src="{%static 'general/Images/three-boxes/img-4.jpg'%}" class="card-img-top" alt="...">-->
-
-<!--                </div>-->
-<!--                <div class="card" style="width: 18rem;">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Card title</h5>-->
-<!--                    </div>-->
-<!--                    <img src="{%static 'general/Images/three-boxes/img-2.jpg'%}" class="card-img-top" alt="...">-->
-
-<!--                </div>-->
-<!--                <div class="card" style="width: 18rem;">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Card title</h5>-->
-<!--                    </div>-->
-<!--                    <img src="{%static 'general/Images/three-boxes/img-3.jpg'%}" class="card-img-top" alt="...">-->
-
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        &lt;!&ndash;end-of-three-boxes&ndash;&gt;-->
-<!--    </div>-->
-    <!--end of banner-->
-
-<div id="carousel1" class="carousel slide mb-3" data-bs-ride="carousel" style="height:80vh">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">
-      <div  style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); width:75%;">
-                          <form action="../listing/" method="get" class="ml-auto">
-                              <div class="input-group">
-                                <input type="search" placeholder="Search and start shoping" name="search" class="form-control">
-                                <div class="input-group-append">
-                                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                </div>
-                              </div>
-                          </form>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">
-      <div  style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); width:75%;">
-         <form method="get" action="../search" class="ml-auto">
-             <div class="input-group">
-                 <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
-                 <div class="input-group-append">
-                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                 </div>
-             </div>
-         </form>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">
-      <div  style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); width:75%;">
-         <form method="get" action="../search" class="ml-auto">
-             <div class="input-group">
-                 <input type="text" placeholder="Search and start shoping" name="search" class="form-control">
-                 <div class="input-group-append">
-                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                 </div>
-             </div>
-         </form>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-<!--vision section-->
-
-<div class="container-fluid pop-tags " >
-  <div class="row">
-    <div class=" col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle img-fluid ">
-      <center><p>Technology</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="rounded-circle img-fluid ">
-      <center><p>Politics</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="rounded-circle img-fluid ">
-      <center><p>Science</p></center>
-    </div>
-  </div>
-</div>
-
-<!--end vision section-->
-
-<!--carousel-->
-
-<div id="carousel2" class="carousel slide mt-5" data-bs-ride="carousel" style="height:60vh">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block c-2" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block c-2" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block c-2" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<!--end of carousel-->
-
-
-    <!--featured collections-->
-    <section id="featured">
-        <div class="featured">
-            <div class="featured-header">
-                <h1 class="section-title">Featured <span>Collection</span></h1>
-            </div>
-            <div class="all-features">
-                <div class="collection">
-                    <div class="feature-top">
-                        <div class="feature-left">
-                            <div class="feature-item">
-                                <div class="feature-name">
-                                    <h2>Eco-cook and Serve</h2>
-                                </div>
-                                <div class="feature-img">
-                                    <a href="#"><img src="{%static 'general/Images/featured-section/fimg1.jpg'%}"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-
-                            <div class="feature-item">
-                                <div class="feature-name">
-                                    <h2>Sustainable Wardrobe</h2>
-                                </div>
-                                <div class="feature-img">
-                                    <a href="#"><img src="{%static 'general/Images/featured-section/fimg2.jpg'%}"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature-right">
-                            <div class="feature-item">
-                                <div class="feature-name">
-                                    <h2>I'm Compost-able</h2>
-                                </div>
-                                <div class="feature-img">
-                                    <a href="#"> <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
+    <title>{% block title%} {% endblock %}</title>
+    {% block head%} {% endblock %}
+</head>
+<body>
+<!--<body oncontextmenu='return false' class='snippet-body'>-->
+    <!--main page-->
+    <section id="header">
+        <div class="header">
+            <!--top-bar-->
+            <div class="top-bar">
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-truck"></i>
                     </div>
+                    <div class="icon-content">
+                        <h6>Free Delivery (Over 1000 INR*)</h6>
+                    </div>
+                </div>
 
-                    <div class="feature-bottom">
-                        <div class="feature-left">
-                            <div class="feature-item">
-                                <div class="feature-name">
-                                    <h2>Green Home Decor</h2>
-                                </div>
-                                <div class="feature-img">
-                                    <a href="#"> <img src="{%static 'general/Images/featured-section/fimg4.jpg'%}"
-                                            alt="img"></a>
-                                </div>
-                            </div>
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-reply"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Easy Returns</h6>
+                    </div>
+                </div>
 
-                            <div class="feature-item">
-                                <div class="feature-name">
-                                    <h2>Recycle Paper-Mache it up!</h2>
-                                </div>
-                                <div class="feature-img">
-                                    <a href="#"><img src="{%static 'general/Images/featured-section/fimg5.jpg'%}"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="feature-right">
-                            <div class="feature-item">
-                                <div class="feature-name">
-                                    <h2>Day and Night Essentials</h2>
-                                </div>
-                                <div class="feature-img">
-                                    <a href="#"><img src="{%static 'general/Images/featured-section/fimg6.jpg'%}"
-                                            alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Best Deals</h6>
                     </div>
                 </div>
             </div>
+            <!--end-of-topbar-->
+
+
+
         </div>
     </section>
-    <!--end of featured collections-->
 
+    <!--end of header-->
 
-    <!--Recommendation-->
-<!--    <section id="Browsing-History">-->
-<!--        <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Browsing-->
-<!--            <span>History</span>-->
-<!--        </h1>-->
-<!--        <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-
-
-
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    Recycled newspaper pencils-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-top: 10px;">₹200</h2>-->
-<!--                <div>-->
-
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="#">-->
-<!--                    <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                    <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>-->
-<!--                </a>-->
-<!--                <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--                <div>-->
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
-<!--        </div>-->
-
-<!--    </section>-->
-
-<!--    product slider-->
-    <div id="slider1" class="carousel slide mb-3" data-bs-ride="carousel" style="height:80vh">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#slider1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#slider1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#slider1" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
-          <div class="container-fluid pop-tags " >
-  <div class="row">
-    <div class=" col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class=" img-fluid ">
-      <center><p>Technology</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class=" img-fluid ">
-      <center><p>Politics</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class=" img-fluid ">
-      <center><p>Science</p></center>
-    </div>
-  </div>
-</div>
-        </div>
-        <div class="carousel-item">
-<!--          <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">-->
-          <div class="container-fluid pop-tags " >
-  <div class="row">
-    <div class=" col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class=" img-fluid ">
-      <center><p>Technology</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class=" img-fluid ">
-      <center><p>Politics</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class=" img-fluid ">
-      <center><p>Science</p></center>
-    </div>
-  </div>
-</div>
-        </div>
-        <div class="carousel-item">
-<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
-          <div class="container-fluid pop-tags " >
-  <div class="row">
-    <div class=" col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class=" img-fluid ">
-      <center><p>Technology</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class=" img-fluid ">
-      <center><p>Politics</p></center>
-    </div>
-    <div class="col-4">
-      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class=" img-fluid ">
-      <center><p>Science</p></center>
-    </div>
-  </div>
-</div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#slider1" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#slider1" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-<!-- end of product slider-->
-
-    <!--Vertical slider and a image-->
-    <div id="video-and-vertical" class="row container">
-        <div class="col-md-7 col-xs-12">
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <img src="{%static 'general/Images/banner-1.jpg'%}">
-                <div class="tags">
-                    <div  class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div  class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="tag">
-                        <a href="#"><h3>lorem</h3></a>
-                        <i class="fas fa-times"></i>
-                    </div>
+    <!--navbar-->
+    <section id="navbar">
+        <nav class="navbar header">
+            <div class="container-fluid">
+                <a id="logo-img" href="../../"><img class="logo" src="{%static 'general/Images/logo.png'%}" alt="REDOPACT" style="height:50px"></a>
+                <div class="d-sm-none d-md-block ms-auto d-none d-sm-block">
+                    <form action="../listing/" method="get" class="d-flex ms-auto bar1">
+                        <input id="inpt_srch" class="form-control" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit" style="padding-left: 6px"><svg
+                                class="srch_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                {%if request.user.is_authenticated %}
+                    <ul class="flex-container ms-auto" style="list-style-type: none">
+                    <li class="pad_nav">
+                        <a href="../../account/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg><br>Account</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg><br>Wishlist</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="../../cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cart" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg></span><br>Cart
+                        </a>
+                    </li>
+                </ul>
+                {%else%}
+                    <ul class="flex-container ms-auto" style="list-style-type: none">
+                        <li class="pad_nav">
+                            <a href="../login/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                </svg><br>Login/Register</a>
+                        </li>
+                        <li class="pad_nav">
+                            <a href="../../contactus ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-heart" viewBox="0 0 16 16">
+                                    <path
+                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                </svg><br>contact us</a>
+                        </li>
+                    </ul>
+                {%endif%}
+                <div class="d-none d-sm-block d-md-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form action="../listing/" method="get" class="d-flex ms-auto">
+                        <input id="inptsm_srch" class="form-control" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                <div class="d-block d-sm-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form action="../listing/" method="get" class="d-flex ms-auto">
+                        <input id="inptxs_srch" class="form-control" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 col-xs-12">
-            <div class="horVerSlider" data-desktop="800" data-tabportrait="600" data-tablandscape="600"
-                data-mobilelarge="375" data-mobilelandscape="500" data-mobileportrait="375">
-                <div class="horizon-wrapper " >
-                    <div class="horizone-nav" >
-                        <div class="prev" style="display: none;">
-                            <img src="leftarrow.svg" />
-                        </div>
-                    </div>
-                </div>
-                <div class="vertical-wrapper">
-                    <div id="vertical-slider">
-                        <ul>
+            </div>
+        </nav>
 
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive; box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color: #fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
-                            <li class="ui-draggable ui-draggable-handle "><button style="background-color:#fff; border: 1px solid olive;box-shadow: 0 0 5px olive;"><a
-                                        href="#">Bamboo</a></button></li>
+
+        <!-- 1st part -->
+
+        <nav class="navbar nav2 d-none d-sm-block">
+            <div class="container-fluid margin-bottom: 0">
+                <ul class="ms-auto me-auto mb-2 mb-lg-0 mb-md-0 mb-sm-0 navi"
+                    style="list-style-type: none; padding-left: 0px">
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="#">SALE</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Fashion & Accessories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
                         </ul>
-                    </div>
-                    <div class="horizon-wrapper ">
-                        <div class="horizone-nav">
-                            <div class="next" style="display: block;">
-                                <img src="rightarrow.svg" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home & Kitchen
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Kids, Toys & Babies
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <!-- dummy work start -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dummy
+                        </a>
+                        <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" tabindex="-1" href="#">Opt2</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                    <!-- dummy work end -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">More</a>
+                    </li>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Contact Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Opt1</a></li>
+                            <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Opt3</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>
-    <!--End of vertical slider and image-->
+        </nav>
+        <!-- 2nd part -->
+        <nav class="navbar nav3 navbar-dark d-block d-sm-none">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">REDOPACT</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">SALE</a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Fashion & Accessories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Home & Kitchen
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Kids, Toys & Babies
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Events
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                        <!-- dummy work start -->
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dummy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <ul class="dropdown-submenu" aria-labelledby="navbarDropdown"
+                                    style="list-style-type:none;">
+                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
+                                </ul>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">More</a>
+                        </li>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Contact Us
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-item" href="#">Opt2</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Opt3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
 
+    <!--end of navbar-->
+    {% block body%} {% endblock %}
+<!--footer-->
+    <section id="footer">
+        <div class="footer container">
+<!--            <div class="footer-items">-->
+<!--                <div class="footer-item">-->
+<!--                    <div class="shop">-->
+<!--                        <h4>Shop</h4>-->
 
+<!--                        <ul>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Fashion</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Accessories</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Home & Kitchen</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Event And Festival Shop</li>-->
+<!--                            </a>-->
+<!--                        </ul>-->
+<!--                    </div>-->
 
-<!--    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">-->
-<!--        Recomme<span>ndation</span></h1>-->
-<!--    <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>-->
-<!--        {% for i in products %}-->
-<!--            <div id="rec" class="carousel-cell">-->
-<!--                <a href="../{{i.slug}}!">-->
-<!--                    <img src="../media/{{i.image}}" alt=".." style="width: 100%; height: 50%;">-->
-<!--                </a>-->
-<!--                <a style="font-size: 12px; font-weight: 400;" href="../{{i.slug}}!">-->
-<!--                    <h2 style="font-size: 18px; font-weight: 400;">{{i.name}}</h2>-->
-<!--                </a>-->
-<!--                <h3 style="text-align: left; font-size: 12px; padding-bottom: 0;"><del>Rs.{{i.original_price}}</del>  Rs.{{i.price}}</h3>-->
-<!--                <div>-->
-
-<!--                    <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                        SHOP NOW-->
-<!--                    </button>-->
 <!--                </div>-->
-
 <!--            </div>-->
-<!--        {%endfor%}-->
-<!--    </div>-->
-    <!-- End of recommendation-->
+            <div class="footer-item">
+                <div class="Information">
+                    <h4>Information</h4>
 
-    <!--Trending-->
-<!--    <h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">What's-->
-<!--        <span>Trending</span>-->
-<!--    </h1>-->
-<!--    <div id="tren" class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--        <div id="tre" class="carousel-cell">-->
-<!--            <a href="#">-->
-<!--                <img src="trend 1.jpg'%}" alt=".." style="width: 100%; height: 55%;">-->
-<!--            </a>-->
-<!--            <a style="font-size: 12px; font-weight: 400;" href="#">-->
-<!--                <h3 style="font-size: 12px; font-weight: 400;">Bamboo Toothbrush</h3>-->
-<!--            </a>-->
-<!--            <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>-->
-<!--            <div>-->
-<!--                <button style="font-size: 12px;" class="btn btn-outline-danger">-->
-<!--                    SHOP NOW-->
-<!--                </button>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-    <!--End of Trending-->
-
-
-
-
-    <!--new gifts section-->
-    <section id="gifts">
-        <div class="gifts">
-            <div class="gifts-header">
-                <h1 class="section-title">Gif<span>ts</span></h1>
+                    <ul>
+                        <a href="../../aboutus/">
+                            <li>About Us</li>
+                        </a>
+                        <a href="../../privacypolicy/">
+                            <li>Privacy and Cookie Policy</li>
+                        </a>
+                        <a href="../../privacypolicy/">
+                            <li>Shiping and Returns</li>
+                        </a>
+                        <a href="../../termsandcondition/">
+                            <li>Terms of Use</li>
+                        </a>
+                    </ul>
+                </div>
             </div>
-            <div class="all-gifts">
-                <div class="left">
-                    <div class="gift-item">
-                        <div class="card bg-dark text-white">
-                            <img src="{%static 'general/Images/gifts-section/gift1.jpg'%}" class="card-img" alt="...">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">Card title</h5>
-                                <h5 class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</h5>
-                            </div>
-                        </div>
-                    </div>
+            <div class="footer-item">
+                <div class="Quick-links">
+                    <h4>Let us help you</h4>
+
+                    <ul>
+                        <a href="../../account/">
+                            <li>My Account</li>
+                        </a>
+                        <a>
+                            <li>Shopping Cart</li>
+                        </a>
+                        <a href="../../register/">
+                            <li>Customer Registration</li>
+                        </a>
+                        <a href="../../login/">
+                            <li>Login</li>
+                        </a>
+                    </ul>
                 </div>
-                <div class="middle">
-                    <div class="top">
-                        <div class="gift-item">
-                            <div class="card bg-dark text-white">
-                                <img src="{%static 'general/Images/gifts-section/gift3.jpg'%}" class="card-img" alt="...">
-                                <div class="card-img-overlay">
-                                    <h5 class="card-title">Card title</h5>
-                                    <h5 class="card-text">This is a wider card with supporting text below as a
-                                        natural lead-in to additional content. This content is a little bit longer.
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="gift-item">
-                            <div class="card bg-dark text-white">
-                                <img src="{%static 'general/Images/gifts-section/gift3.jpg'%}" class="card-img" alt="...">
-                                <div class="card-img-overlay">
-                                    <h5 class="card-title">Card title</h5>
-                                    <h5 class="card-text">This is a wider card with supporting text below as a
-                                        natural lead-in to additional content. This content is a little bit longer.
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="footer-item">
+                <div class="support">
+                    <h4>Support</h4>
+
+                    <ul>
+                        <a href="../../vendorregister/">
+                            <li>Sell With Us</li>
+                        </a>
+                        <a>
+                            <li>Customer Help & FAQs</li>
+                        </a>
+                    </ul>
                 </div>
-                <div class="right">
-                    <div class="gift-item">
-                        <div class="card bg-dark text-white">
-                            <img src="{%static 'general/Images/gifts-section/gift4.jpg'%}" class="card-img" alt="...">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">Card title</h5>
-                                <h5 class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</h5>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="footer-item">
+                <div class="contact">
+                    <h4>Contact Us</h4>
+
+                    <ul>
+                        <a>
+                            <li>info@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(General Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>sales@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Seller Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>support@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Technical Queries)</h6>
+                        </l1>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!--end of new gifts section-->
-    <!--Blogs-->
-<!--    <a href="#">-->
-<!--        <h1 class="section-title">Blo<span>gs</span></h1>-->
-<!--    </a>-->
-<!--    <div class="carousel" data-flickity='{"groupCells": true,"draggable":false}'>-->
-<!--        <div id="blog" class="carousel-cell">-->
-<!--            <h2 style="font-size: 22px;">Title Heading</h2>-->
-<!--            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>-->
-<!--            <a href="#">-->
-<!--                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">-->
-<!--            </a>-->
-<!--            <p style="font-size: 15px;">Some text..</p>-->
-<!--        </div>-->
-<!--        <div id="blog" class="carousel-cell">-->
-<!--            <h2 style="font-size: 22px;">Title Heading</h2>-->
-<!--            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>-->
-<!--            <a href="#">-->
-<!--                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">-->
-<!--            </a>-->
-<!--            <p style="font-size: 15px;">Some text..</p>-->
-<!--        </div>-->
-<!--        <div id="blog" class="carousel-cell">-->
-<!--            <h2 style="font-size: 22px;">Title Heading</h2>-->
-<!--            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>-->
-<!--            <a href="#">-->
-<!--                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">-->
-<!--            </a>-->
-<!--            <p style="font-size: 15px;">Some text..</p>-->
-<!--        </div>-->
-<!--        <div id="blog" class="carousel-cell">-->
-<!--            <h2 style="font-size: 22px;">Title Heading</h2>-->
-<!--            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>-->
-<!--            <a href="#">-->
-<!--                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">-->
-<!--            </a>-->
-<!--            <p style="font-size: 15px;">Some text..</p>-->
-<!--        </div>-->
-<!--        <div id="blog" class="carousel-cell">-->
-<!--            <h2 style="font-size: 22px;">Title Heading</h2>-->
-<!--            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>-->
-<!--            <a href="#">-->
-<!--                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">-->
-<!--            </a>-->
-<!--            <p style="font-size: 15px;">Some text..</p>-->
-<!--        </div>-->
-<!--        <div id="blog" class="carousel-cell">-->
-<!--            <h2 style="font-size: 22px;">Title Heading</h2>-->
-<!--            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>-->
-<!--            <a href="#">-->
-<!--                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">-->
-<!--            </a>-->
-<!--            <p style="font-size: 15px;">Some text..</p>-->
-<!--        </div>-->
-<!--        <div id="blog" class="carousel-cell">-->
-<!--            <h2 style="font-size: 22px;">Title Heading</h2>-->
-<!--            <h5 style="font-size: 18px;">Title description, Dec 7, 2017</h5>-->
-<!--            <a href="#">-->
-<!--                <img src="recommend 1.jpg'%}" alt=".." style="width: 100%; height: 65%;">-->
-<!--            </a>-->
-<!--            <p style="font-size: 15px;">Some text..</p>-->
-<!--        </div>-->
-<!--    </div>-->
-    <!--End of blogs-->
-
-
-    <!--vision section-->
-    <section id="vision">
-        <div class="vision container-fluid">
-            <div class="vision-header">
-                <h1 class="section-title"><span>Our</span> Vision</h1>
-            </div>
-            <!--vision section-->
-
-            <div class="container-fluid pop-tags " >
-              <div class="row">
-                <div class=" col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Technology</p></center>
-                </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Politics</p></center>
-                </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Science</p></center>
-                </div>
-                <div class=" col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Technology</p></center>
-                </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Politics</p></center>
-                </div>
-                <div class="col-4">
-                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">
-                  <center><p>Science</p></center>
-                </div>
-              </div>
-            </div>
-
-            <!--end vision section-->
-
-            <div class="vision-description">
-                <div class="description">
-                    <div class="para">
-                        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto cupiditate, voluptatum
-                            dolor
-                            voluptates fuga
-                            nihil reiciendis consectetur ad dicta non recusandae. Sunt, voluptas officia! Vel harum
-                            rerum accusamus fugit ratione.</h5>
-                        <h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus facilis expedita
-                            porro
-                            quibusdam modi natus dolorem
-                            incidunt, quas quo voluptatem? Nam iusto voluptas odit molestiae aperiam sapiente labore
-                            id
-                            aliquam eveniet commodi, consectetur
-                            voluptates dolores magnam quis autem consequatur? Voluptatibus vero corrupti cumque
-                            incidunt
-                            excepturi sint hic laborum rem adipisci
-                            aut. Repellat aut magni suscipit consequatur? Numquam dignissimos asperiores eaque?</h5>
-                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, odit. Pariatur aut
-                            dignissimos deserunt quibusdam obcaecati,
-                            sunt molestias quae assumenda tenetur enim, cumque libero magni suscipit voluptatem
-                            architecto hic facilis.</h5>
-
-                    </div>
-                    <div class="join-us">
-                        <div class="join-us-content">
-                            <h6>Join over 10,000+ customers
-                                who receive our awesome newsletter and marketing emails.</h6>
-                        </div>
-                        <div class="social-icons">
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/facebook.png'%}"></a>
-                            </div>
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/instagram.png'%}"></a>
-                            </div>
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/twitter.png'%}"></a>
-                            </div>
-                            <div class="social-item">
-                                <a href="#"><img src="{%static 'general/Images/social-media-icons/youtube.png'%}"></a>
-                            </div>
-
-                        </div>
-
-                        <div class="join-us-form">
-                            <form class="join-us-form">
-                                <div class="email">
-                                    <input class="user-email" type="text" placeholder="Enter your Email address">
-                                </div>
-                                <div class="recaptcha">
-                                    <input type="checkbox" class="recaptcha-checkbox" id="check">
-                                    <label for="check">
-                                        <h6>I,m not a robot</h6>
-                                    </label>
-                                </div>
-                                <div class="button">
-                                    <a href="#" type="button" class="btn">Submit</a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="vision-image">
-                    <img src="{%static 'general/Images/vision-logos/vision-image.jpg'%}" alt="img" />
-                </div>
-            </div>
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
+        </div>
         </div>
     </section>
-    <!--end of our vision section-->
 
+    <!--footer for mobile-->
 
-    <!--testimonials-->
-    <section id="testimonials">
-        <div class="testimonial">
-            <div class="testimonial-header">
-                <h1 class="section-title"><span>Testim</span>onials</h1>
-            </div>
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+    <section id="footer-mobile">
+        <div class="footer">
+            <div class="footer-items">
+                <div class="dropdown">
+<!--                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"-->
+<!--                        data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                        Shop-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">-->
+<!--                        <li><button class="dropdown-item" type="button">Action</button></li>-->
+<!--                        <li><button class="dropdown-item" type="button">Another action</button></li>-->
+<!--                        <li><button class="dropdown-item" type="button">Something else here</button></li>-->
+<!--                    </ul>-->
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Information
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button"><a href="../../aboutus/">About Us</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../privacypolicy/">Privacy and Cookie Policy</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../privacypolicy/">Shiping and Returns</a></button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Let Us help You
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button"><a href="../../account/">My Account</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a>Shopping Cart</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../register/">Customer Registration</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../login/">Login</a></button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Support
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button"><a href="../../vendorregister/">Sell With Us</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a>Customer Help & FAQs</a></button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="testimonial-items" class="d-block w-100">
-                            <div class="testimonial-item">
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-items" class="d-block w-100">
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-items" class="d-block w-100">
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
 
         </div>
-    </section>
-    <!--testimonials for mobile-->
 
-    <section id="testimonials-mobile">
-        <div class="testimonial">
-            <div class="testimonial-header">
-                <h1 class="section-title"><span>Testim</span>onials</h1>
-            </div>
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="testimonial-items" class="d-block w-100">
-                            <div class="testimonial-item">
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-items" class="d-block w-100">
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-items" class="d-block w-100">
-                            <div class="testimonial-item">
-
-                                <div class="testimonial-content">
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum minus
-                                        nulla
-                                        reprehenderit? Nisi, fugit obcaecati?</h5>
-                                </div>
-                                <div class="user">
-                                    <h6>Lorem, ipsum dolor.--1</h6>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
         </div>
+
     </section>
-    <!--end-of-testimonials-->
+    <!--end-of-footer-->
+    <!--end of main page-->
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
 
-
-
-   {% endblock %}
+</html>

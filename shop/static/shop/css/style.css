@@ -801,7 +801,7 @@ background-color: rgb(228, 225, 225);
     align-items: center;
     padding: 0px;
   /*  background-color: blue;*/
-    
+
 }
 /*
 #testimonials .section-title{
@@ -810,12 +810,12 @@ background-color: rgb(228, 225, 225);
 
 #testimonials .testimonial-items{
    /* background-color: pink;*/
-   
+
     margin: 5px;
     margin-top: 5px;
     padding: 5px;
     display: flex;
-    
+
    /* box-shadow: 0px 0px 10px 0px olive;*/
 }
 
@@ -829,7 +829,7 @@ background-color: rgb(228, 225, 225);
     margin: 20px;
     padding: 15px;
     flex-basis: 30%;
-    box-shadow: 0px 0px 1px 0px black;
+    box-shadow: 3px 3px 1px 0px #1fbfa9;
     transition: 0.3s ease transform;
     background-color: #fff;
 }
@@ -838,7 +838,7 @@ background-color: rgb(228, 225, 225);
     transform: scale(1.04);
 }
 
-  
+
 
 
 #testimonials .testimonial-content{
@@ -1554,7 +1554,7 @@ background-color: rgb(228, 225, 225);
 
      #testimonials-mobile h6{
         font-size: 1rem;
-        color: teal;
+        color: #30b55f;
         text-align: center;
     }
 

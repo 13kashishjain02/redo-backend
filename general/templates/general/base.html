@@ -65,13 +65,14 @@
     <!--end of header-->
 
     <!--navbar-->
+    <!--navbar-->
     <section id="navbar">
         <nav class="navbar header">
             <div class="container-fluid">
-                <a id="logo-img" href="../../"><img class="logo" src="{%static 'general/Images/logo.png'%}" alt="REDOPACT" style="height:50px"></a>
+                <a id="logo-img" href="index.html"><img class="logo" src="Logo!_Logo.svg.png" alt="REDOPACT"></a>
                 <div class="d-sm-none d-md-block ms-auto d-none d-sm-block">
-                    <form action="../listing/" method="get" class="d-flex ms-auto bar1">
-                        <input id="inpt_srch" class="form-control" name="search" type="search" placeholder="Search"
+                    <form class="d-flex ms-auto bar1">
+                        <input id="inpt_srch" class="form-control" type="search" placeholder="Search"
                             aria-label="Search">
                         <button id="srch" class="btn btn-outline-success" type="submit" style="padding-left: 6px"><svg
                                 class="srch_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -81,10 +82,9 @@
                             </svg></button>
                     </form>
                 </div>
-                {%if request.user.is_authenticated %}
-                    <ul class="flex-container ms-auto" style="list-style-type: none">
+                <ul class="flex-container ms-auto" style="list-style-type: none">
                     <li class="pad_nav">
-                        <a href="../../account/">
+                        <a href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
                                 <path
@@ -100,38 +100,17 @@
                             </svg><br>Wishlist</a>
                     </li>
                     <li class="pad_nav">
-                        <a href="../../cart">
+                        <a href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-cart" viewBox="0 0 16 16">
                                 <path
                                     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                            </svg></span><br>Cart
-                        </a>
+                            </svg></span><br>Cart</a>
                     </li>
                 </ul>
-                {%else%}
-                    <ul class="flex-container ms-auto" style="list-style-type: none">
-                        <li class="pad_nav">
-                            <a href="../login/">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-person" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                </svg><br>Login/Register</a>
-                        </li>
-                        <li class="pad_nav">
-                            <a href="../../contactus ">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg><br>contact us</a>
-                        </li>
-                    </ul>
-                {%endif%}
                 <div class="d-none d-sm-block d-md-none ms-auto me-auto" style="margin-bottom: 10px;">
-                    <form action="../listing/" method="get" class="d-flex ms-auto">
-                        <input id="inptsm_srch" class="form-control" name="search" type="search" placeholder="Search"
+                    <form class="d-flex ms-auto">
+                        <input id="inptsm_srch" class="form-control" type="search" placeholder="Search"
                             aria-label="Search">
                         <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -142,8 +121,8 @@
                     </form>
                 </div>
                 <div class="d-block d-sm-none ms-auto me-auto" style="margin-bottom: 10px;">
-                    <form action="../listing/" method="get" class="d-flex ms-auto">
-                        <input id="inptxs_srch" class="form-control" name="search" type="search" placeholder="Search"
+                    <form class="d-flex ms-auto">
+                        <input id="inptxs_srch" class="form-control" type="search" placeholder="Search"
                             aria-label="Search">
                         <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -214,18 +193,26 @@
                     <li class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Dummy
+                            Personal care
                         </a>
-                        <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Opt1</a></li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item" tabindex="-1" href="#">Opt2</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
-                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
-                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
-                                </ul>
-                            </li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item-class dropstart"><a class="dropdown-item" href="#">Bathroom accessories</a>
+                            <ul class="dropdown-submenu dropdown-submenu-item" aria-labelledby="navbarDropdown"
+                                style="list-style-type:none;">
+                                <li ><a class="dropdown-submenu-item dropdown-item" href="#">toilet roll</a></li>
+                                <li><a class="dropdown-submenu-item dropdown-item" href="#">scrub</a></li>
+                                <li><a class="dropdown-submenu-item dropdown-item" href="#">laundary bag</a></li>
+                                <li><a class="dropdown-submenu-item dropdown-item" href="#">Soap stand</a></li>
+                                <li><a class="dropdown-submenu-item dropdown-item" href="#">Hand towel</a></li>
+                                <li><a class="dropdown-submenu-item dropdown-item" href="#">toothbrush holder</a></li>
+                            </ul></li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">Opt2</a>
+                            <ul class="dropdown-submenu dropdown-submenu-item" aria-labelledby="navbarDropdown"
+                                style="list-style-type:none;">
+                                <li ><a class="dropdown-submenu-item dropdown-item" href="#">Opt1</a></li>
+                                <li><a class="dropdown-submenu-item dropdown-item" href="#">Opt2</a></li>
+                                <li><a class="dropdown-submenu-item dropdown-item" href="#">Opt3</a></li>
+                            </ul></li>
                             <li><a class="dropdown-item" href="#">Opt3</a></li>
                         </ul>
                     </li>
@@ -262,46 +249,63 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">SALE</a>
+                            <div class="links">
+                            <a class="nav-link navnav" href="#">SALE</a>
+                            <a id="p0" class="plus">+</a>
+                            </div>
                         </li>
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <div class="links">
+                                <a class="nav-link dropdown-toggle navnav" href="../aboutus" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Fashion & Accessories
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Opt1</a></li>
+                               </a>
+                            <a id="p1" class="plus">+</a>
+                            </div>
+
+
+                            <ul id="dropdown-m1" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="../cart">Opt1</a></li>
                                 <li><a class="dropdown-item" href="#">Opt2</a></li>
                                 <li><a class="dropdown-item" href="#">Opt3</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <div class="links">
+                            <a class="nav-link dropdown-toggle navnav" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Home & Kitchen
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="p2" class="plus">+</a>
+                        </div>
+                            <ul id="dropdown-m2" class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Opt1</a></li>
                                 <li><a class="dropdown-item" href="#">Opt2</a></li>
                                 <li><a class="dropdown-item" href="#">Opt3</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <div class="links">
+                            <a class="nav-link dropdown-toggle navnav" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Kids, Toys & Babies
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="p3" class="plus">+</a>
+                            </div>
+                            <ul id="dropdown-m3" class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Opt1</a></li>
                                 <li><a class="dropdown-item" href="#">Opt2</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <div class="links">
+                            <a class="nav-link dropdown-toggle navnav" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Events
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="p4" class="plus">+</a>
+                            </div>
+                            <ul id="dropdown-m4" class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Opt1</a></li>
                                 <li><a class="dropdown-item" href="#">Opt2</a></li>
                                 <li><a class="dropdown-item" href="#">Opt3</a></li>
@@ -309,31 +313,40 @@
                         </li>
                         <!-- dummy work start -->
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <div class="links">
+                            <a class="nav-link dropdown-toggle navnav" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Dummy
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Opt1</a></li>
-                                <li><a class="dropdown-item" href="#">Opt2</a></li>
-                                <ul class="dropdown-submenu" aria-labelledby="navbarDropdown"
+                            <a id="p5" class="plus">+</a>
+                            </div>
+                            <ul id="dropdown-m5" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="dropdown-item-class"><a class="dropdown-item" href="#">Opt1</a></li>
+                                <li class="dropdown-item-class"><a class="dropdown-item" href="#">Opt2</a>
+                                <ul  class="dropdown-submenu dropdown-submenu-item" aria-labelledby="navbarDropdown"
                                     style="list-style-type:none;">
-                                    <li><a class="dropdown-item" href="#">Opt1</a></li>
-                                    <li><a class="dropdown-item" href="#">Opt2</a></li>
-                                    <li><a class="dropdown-item" href="#">Opt3</a></li>
-                                </ul>
+                                    <li ><a class="dropdown-submenu-item dropdown-item" href="#">Opt1</a></li>
+                                    <li><a class="dropdown-submenu-item dropdown-item" href="#">Opt2</a></li>
+                                    <li><a class="dropdown-submenu-item dropdown-item" href="#">Opt3</a></li>
+                                </ul></li>
                                 <li><a class="dropdown-item" href="#">Opt3</a></li>
                             </ul>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">More</a>
+                            <div class="links">
+                            <a class="nav-link navnav" href="#">More </a>
+                            <a id="p6" class="plus">+</a>
+                            </div>
                         </li>
                         </li>
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="links">
+                            <a class="nav-link dropdown-toggle navnav" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" >
                                 Contact Us
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="p7" class="plus">+</a>
+                            </div>
+                            <ul id="dropdown-m7" class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Opt1</a></li>
                                 <li><a class="dropdown-item" href="#">Opt2</a></li>
                                 <li>
@@ -349,6 +362,176 @@
             </div>
         </nav>
     </section>
+
+ <style !important>
+
+    .dropdown:hover  .dropdown-menu{
+              display: block !important;
+     }
+    .dropdown-submenu-item{
+        display: none;
+    }
+    .dropdown-item-class:hover .dropdown-submenu-item{
+        display: block;
+    }
+    .plus{
+        color: #fff;
+        opacity: 0.5;
+        font-size: 1.4rem;
+    }
+    .plus:hover{
+       opacity: 1;
+       color: #fff;
+    }
+
+    .links{
+        justify-content: space-between;
+        display: flex;
+    }
+
+  </style>
+
+  <script>
+     // const plus0 = document.getElementById('plus0');
+     // const dropdownM = document.getElementById('dropdown-m');
+
+     // plus.addEventListener('click',()=>{
+    //      dropdownM.style.display = block;
+     // })
+
+    const p1 = document.getElementById('p1');
+    const p0 = document.getElementById('p0');
+    const p2 = document.getElementById('p2');
+    const p3 = document.getElementById('p3');
+    const p4 = document.getElementById('p4');
+    const p5 = document.getElementById('p5');
+    const p6 = document.getElementById('p6');
+    const p7 = document.getElementById('p7');
+
+        const dropdownM1 = document.getElementById('dropdown-m1');
+        const dropdownM2 = document.getElementById('dropdown-m2');
+        const dropdownM3 = document.getElementById('dropdown-m3');
+        const dropdownM4 = document.getElementById('dropdown-m4');
+        const dropdownM5 = document.getElementById('dropdown-m5');
+        const dropdownM6 = document.getElementById('dropdown-m6');
+        const dropdownM7 = document.getElementById('dropdown-m7');
+        var p = 0;
+        p1.addEventListener('click',()=>{
+            if(p==0){
+                dropdownM1.style.display = 'block';
+                dropdownM2.style.display = 'none';
+                dropdownM3.style.display = 'none';
+                dropdownM4.style.display = 'none';
+                dropdownM5.style.display = 'none';
+                dropdownM6.style.display = 'none';
+                dropdownM7.style.display = 'none';
+                p=1;
+            }
+            else{
+                dropdownM1.style.display = 'none';
+                p=0;
+            }
+        })
+        p2.addEventListener('click',()=>{
+            if(p==0){
+                dropdownM2.style.display = 'block';
+                dropdownM1.style.display = 'none';
+                dropdownM3.style.display = 'none';
+                dropdownM4.style.display = 'none';
+                dropdownM5.style.display = 'none';
+                dropdownM6.style.display = 'none';
+                dropdownM7.style.display = 'none';
+                p=1;
+            }
+            else{
+                dropdownM2.style.display = 'none';
+                p=0;
+            }
+        })
+        p3.addEventListener('click',()=>{
+            if(p==0){
+                dropdownM3.style.display = 'block';
+                dropdownM2.style.display = 'none';
+                dropdownM1.style.display = 'none';
+                dropdownM4.style.display = 'none';
+                dropdownM5.style.display = 'none';
+                dropdownM6.style.display = 'none';
+                dropdownM7.style.display = 'none';
+                p=1;
+            }
+            else{
+                dropdownM3.style.display = 'none';
+                p=0;
+            }
+        })
+        p4.addEventListener('click',()=>{
+            if(p==0){
+                dropdownM4.style.display = 'block';
+                dropdownM2.style.display = 'none';
+                dropdownM3.style.display = 'none';
+                dropdownM1.style.display = 'none';
+                dropdownM5.style.display = 'none';
+                dropdownM6.style.display = 'none';
+                dropdownM7.style.display = 'none';
+                p=1;
+            }
+            else{
+                dropdownM4.style.display = 'none';
+
+                p=0;
+            }
+        })
+        p5.addEventListener('click',()=>{
+            if(p==0){
+                dropdownM5.style.display = 'block';
+                dropdownM2.style.display = 'none';
+                dropdownM3.style.display = 'none';
+                dropdownM4.style.display = 'none';
+                dropdownM1.style.display = 'none';
+                dropdownM6.style.display = 'none';
+                dropdownM7.style.display = 'none';
+                p=1;
+            }
+            else{
+                dropdownM5.style.display = 'none';
+                p=0;
+            }
+        })
+        p6.addEventListener('click',()=>{
+            if(p==0){
+                dropdownM6.style.display = 'block';
+                dropdownM2.style.display = 'none';
+                dropdownM3.style.display = 'none';
+                dropdownM4.style.display = 'none';
+                dropdownM5.style.display = 'none';
+                dropdownM1.style.display = 'none';
+                dropdownM7.style.display = 'none';
+                p=1;
+            }
+            else{
+                dropdownM6.style.display = 'none';
+                p=0;
+            }
+        })
+        p7.addEventListener('click',()=>{
+            if(p==0){
+                dropdownM7.style.display = 'block';
+                dropdownM2.style.display = 'none';
+                dropdownM3.style.display = 'none';
+                dropdownM4.style.display = 'none';
+                dropdownM5.style.display = 'none';
+                dropdownM6.style.display = 'none';
+                dropdownM1.style.display = 'none';
+                p=1;
+            }
+            else{
+                dropdownM7.style.display = 'none';
+                p=0;
+            }
+        })
+
+  </script>
+    <!--end of navbar-->
 
     <!--end of navbar-->
     {% block body%} {% endblock %}
