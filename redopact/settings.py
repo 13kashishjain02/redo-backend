@@ -234,3 +234,12 @@ SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['emailAddress']
 # Arrange to add the fields to UserSocialAuth.extra_data
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [('id', 'id'),
                                           ('email', 'email_address')]
+
+
+# sending emails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '13nobody02@gmail.com'
+EMAIL_HOST_PASSWORD = 'Kashish2002@'

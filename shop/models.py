@@ -8,6 +8,8 @@ from ckeditor.fields import RichTextField
 def get_uplaod_file_name(userpic, filename, ):
     return u'shop/%s/%s%s' % (str(userpic.vendor_id) + "/products", "", filename)
 
+def get_uplaod_file_name_variation(userpic, filename, ):
+    return u'shop/%s/%s%s' % (str(userpic.product.vendor_id) + "/products", "", filename)
 
 PRODUCTFOR_CHOICES = (
     ('men', 'MEN'),
@@ -40,18 +42,18 @@ class SubCategory2(models.Model):
     def __str__(self):
         return self.name
 
-
 class Product(models.Model):
     vendor = models.ForeignKey(VendorAccount, on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=50)
     subcategory2 = models.ForeignKey(SubCategory2, on_delete=models.CASCADE, null=True, blank=True)
     size = models.CharField(max_length=50, null=True, blank=True)
-    color = models.CharField(max_length=50, null=True, blank=True)
+    # color = models.CharField(max_length=50, null=True, blank=True)
     product_for = models.CharField(max_length=7, choices=PRODUCTFOR_CHOICES, default='general')
     brand = models.CharField(max_length=50, null=True)
     tags = models.CharField(max_length=500, null=True, blank=True, default="blanktag")
     material = models.CharField(max_length=500, null=True, blank=True, default="blanktag")
     slug = models.SlugField(max_length=60, unique=True)
+    sku = models.CharField(max_length=50, null=True,blank=True,unique=True)
     in_stock = models.BooleanField(default=False)
     discount = models.IntegerField(null=True, blank=True)
     stock = models.IntegerField(null=True, blank=True)
@@ -68,6 +70,7 @@ class Product(models.Model):
     is_recycle = models.BooleanField(default=False)
     is_upcycle = models.BooleanField(default=False)
     is_ecofriendly = models.BooleanField(default=False)
+    has_variation = models.BooleanField(default=False)
     image = models.ImageField(upload_to=get_uplaod_file_name, default="")
     image2 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
     image3 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
@@ -75,6 +78,22 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class Variation(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    size = models.CharField(max_length=50, null=True, blank=True)
+    color = models.CharField(max_length=50, null=True, blank=True)
+    in_stock = models.BooleanField(default=False)
+    stock = models.IntegerField(null=True, blank=True)
+    mrp = models.FloatField(default=60.00, null=True, blank=True)
+    special_price = models.FloatField(null=True,blank=True)
+    our_price = models.FloatField(null=True,blank=True)
+    pub_date = models.DateField(null=True, blank=True, )
+    image = models.ImageField(upload_to=get_uplaod_file_name_variation, default="")
+    image2 = models.ImageField(upload_to=get_uplaod_file_name_variation, null=True, blank=True, )
+    image3 = models.ImageField(upload_to=get_uplaod_file_name_variation, null=True, blank=True, )
+
+    def __str__(self):
+        return self.product.name
 
 class Order(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE)

@@ -6,7 +6,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
-
 # Create your models here.
 
 
@@ -91,7 +90,7 @@ class VendorAccount(models.Model):
     vendor = models.OneToOneField(Account, default=None, on_delete=models.DO_NOTHING, primary_key=True, )
     email = models.EmailField(verbose_name="email", max_length=100)
     shop_number = models.IntegerField(null=True, blank=True)
-    shop_name = models.CharField(max_length=150, unique=True)
+    shop_name = models.CharField(max_length=150)
     shop_add = models.CharField(max_length=100)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=20)

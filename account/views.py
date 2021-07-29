@@ -14,22 +14,14 @@ from twilio.rest import Client
 from django.views.decorators.csrf import csrf_exempt
 from PayTm import Checksum2
 from django.http import HttpResponseRedirect, HttpResponse
+import random
+from django.core.mail import send_mail
+from django.conf import settings
 # ---------------------------------------------------
 # GLOBAL VARIABLES
 # ---------------------------------------------------
 MERCHANT_KEY = 'Ujzdeai9L@l%#6!o'
-usenamee = "notdefined@gmail.com"
-subsId = ""
-shopname = ""
-shop_add = ""
-plan = ""
-vendorname = ""
-vendoremail = ""
-mobile = ""
-promocode = ""
-code = {"starter10": 10, "economic20": 20, "advanced100": 100, "starter20": 20, "economic30": 30, "advanced80": 80,
-        "starter15": 15, "economic40": 40, "advanced150": 150}
-gst = ""
+otp=""
 msg = ""
 
 
@@ -38,6 +30,24 @@ msg = ""
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
+def otpemail(request,remail='kashish.iitdelhi@gmail.com',sub="Redopact",msg="Thank you for registering to our site"):
+    global otp
+    if request.method == 'POST':
+        otp_check = request.POST['otp']
+        if otp == otp_check:
+            return True
+        else:
+            print("wrong otp")
+            return render(request, "account/otp.html",{msg:'wrong otp'})
+    else:
+
+        otp =str(random.randint(1000, 9999))
+        subject = sub
+        message = otp
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [remail, ]
+        send_mail(subject, message, email_from, recipient_list)
+        return render(request, "account/otp.html")
 
 # -----------------------------------------------------------------------
 
@@ -107,68 +117,61 @@ def logoutuser(request):
 
 # @login_required(login_url="../login")
 def vendorregister(request):
-    global shopname
-    global shop_add
-    global plan
-    global vendorname
-    global vendoremail
-    global mobile
-    global promocode
-    global gst
+
 
     if request.method == 'POST':
-        email = request.user.email
+        name = request.POST['name']
         shop_number = request.POST.get('shop_number')
+        email = request.POST['email']
+        password = request.POST.get('password')
+        try:
+            user = Account.objects.create_user(
+                name=name, email=email, password=password, contact_number=shop_number, viewpass=password
+            )
+            user.save()
+            print("1")
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            msg = "User Registration Successful"
+        except IntegrityError as e:
+            msg = email + " is already registered,if you think there is a issue please contact us at 6264843506"
+            olduser = authenticate(email=email, password=password)
+            if olduser:
+                pass
+            else:
+                msg="this email is already registered as a user, please enter the correct password to become a vendor"
+        except Exception as e:
+            print(e)
+            msg=e
+
+
         shopname = request.POST.get('shopname').lower()
         gst = request.POST.get('gst')
         shop_add_flat = request.POST['address']
         shop_add_city = request.POST['city']
         shop_add_state = request.POST['state']
-        # shop_add_pincode = str(request.POST.get('shop_add_pincode'))
-        # shop_add = shop_add_flat + "," + shop_add_city + "," + shop_add_state + "," + shop_add_pincode
-        plan = request.POST['plan']
-        # subscription_amount = 50
-        vendor = Account.objects.get(email=email)
-        vendor.is_Vendor = True
-        vendor.save()
-        promocode = request.POST.get('promocode')
-
+        user.is_Vendor = True
+        user.save()
         try:
             user = VendorAccount.objects.create(
                 shop_name=shopname, shop_number=shop_number, shop_add=shop_add_flat, city=shop_add_city,
-                state=shop_add_state, gst=gst, vendor=vendor, email=email)
+                state=shop_add_state, gst=gst, vendor=user, email=email)
             user.save()
 
         except IntegrityError as e:
             e = str(e)
             if e == "UNIQUE constraint failed: account_vendoraccount.shop_name":
-                shopname = shopname + "#" + vendor.name[2:5]
+                shopname = shopname + "#" + name[2:5]
 
                 user = VendorAccount.objects.create(
-                    shop_name=shopname, shop_number=shop_number, shop_add=shop_add, gst=gst, vendor=vendor, email=email)
+                    shop_name=shopname, shop_number=shop_number, shop_add=shop_add, gst=gst, vendor=user, email=email)
                 user.save()
             else:
-                msg = "vendor already registered,if you think there is a issue please contact us at 6264843506"
+                msg = "vendor already registered,if you think there is a issue please contact us "
                 return render(request, "account/vendor_signup.html", {'msg': msg})
 
-        # twilio message
-        # account_sid = 'AC58aae686ada0a42728e123cfee24cd5b'
-        # auth_token = '1d2bfa8c3b98e92dd3d9c271fba9463e'
-        # client = Client(account_sid, auth_token)
-        #
-        # message = client.messages \
-        #     .create(
-        #     body="a new vendor has registored, email=" + email + "shopname =" + shopname + "and contact_number is " + str(
-        #         mobile),
-        #     from_='+14159696324',
-        #     to='+916264843506'
-        # )
 
-        # print(message.sid)
-
-        # return redirect("../subscription")
         msg = "Vendor Registration Successful"
-        return render(request, 'general/index.html', {'msg': msg})
+        return redirect('../otpemail/')
     else:
         return render(request, "account/vendor_signup.html")
 
@@ -546,3 +549,4 @@ def handlesubscription(request):
 def check(request):
 
     return HttpResponse("helli")
+

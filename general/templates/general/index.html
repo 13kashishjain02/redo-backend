@@ -31,13 +31,22 @@
       }
 </style>
 
+<!--text on image-->
+<style>
+    .img_txt_centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
 
 <!--<link href="{%static 'general/css/carousel.css'%}" rel="stylesheet">-->
 {% endblock %}
 {% block body%}
 
 
-    <div id="carousel1" class="carousel slide mb-3" data-bs-ride="carousel" style="height:50vh">
+<div id="carousel1" class="carousel slide mb-3" data-bs-ride="carousel" style="height:50vh">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -541,48 +550,22 @@
 <!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
           <div class="container-fluid pop-tags " >
               <div class="row mb-5">
+                {% for i in products|slice:":3"%}
                 <div class=" col-3 col-lg-2">
-                  <a href="#">
-                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
+                  <a href="../{{i.slug}}!">
+                      <img src="../media/{{i.image}}" alt=".." style="width: 100%; height: 50%;">
                   </a>
-                  <a style="font-size: 12px; font-weight: 400;" href="#">
-                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
+                  <a style="font-size: 12px; font-weight: 400;" href="../{{i.slug}}!">
+                      <h3 style="font-size: 12px; font-weight: 400;">{{i.name}}</h3>
                   </a>
-                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
+                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹{{i.mrp}}</h2>
                   <div>
                       <button style="font-size: 12px;" class="btn btn-outline-danger">
                           SHOP NOW
                       </button>
                   </div>
                 </div>
-                <div class=" col-3 col-lg-2">
-                  <a href="#">
-                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                  </a>
-                  <a style="font-size: 12px; font-weight: 400;" href="#">
-                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                  </a>
-                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                  <div>
-                      <button style="font-size: 12px;" class="btn btn-outline-danger">
-                          SHOP NOW
-                      </button>
-                  </div>
-                </div>
-                <div class="col-3 col-lg-2">
-                  <a href="#">
-                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
-                  </a>
-                  <a style="font-size: 12px; font-weight: 400;" href="#">
-                      <h3 style="font-size: 12px; font-weight: 400;">Recycled newspaper pencils</h3>
-                  </a>
-                  <h2 style="text-align: left; font-size: 18px; padding-bottom: 0;">₹200</h2>
-                  <div>
-                      <button style="font-size: 12px;" class="btn btn-outline-danger">
-                          SHOP NOW
-                      </button>
-                  </div>
-                </div>
+                {% endfor %}
                 <div class="col-3 col-lg-2">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt=".." style="width: 100%; height: 50%;">
@@ -822,6 +805,99 @@
     </div>
 <!-- end of product slider-->
 
+<h1 style="padding-top: 20px; padding-bottom: 20px; padding-left: 30px;" class="section-title">Shop BY<span> Material</span></h1>
+<div id="slider6" class="carousel slide mb-3" data-bs-ride="carousel" >
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#slider2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#slider2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#slider2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row mb-5">
+                  <div class=" col-6 col-lg-2  three-boxes">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                  </div>
+                  <div class=" col-6 col-lg-2  three-boxes">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                  </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row mb-5">
+                  <div class=" col-6 col-lg-2  three-boxes">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                  </div>
+                  <div class=" col-6 col-lg-2  three-boxes">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                  </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+<!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
+          <div class="container-fluid pop-tags " >
+              <div class="row mb-5">
+                  <div class=" col-6 col-lg-2  three-boxes">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                  </div>
+                  <div class=" col-6 col-lg-2  three-boxes">
+                      <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                  </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+                  <div class=" col-6 col-lg-2  three-boxes hide">
+                  <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" alt="robot-picture" class="rounded-circle  " height="20px">
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#slider6" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#slider6" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 
     <!--new gifts section-->
     <section id="gifts">
@@ -835,7 +911,7 @@
                         <div class="card bg-dark text-white">
                             <img src="{%static 'general/Images/gifts-section/gift1.jpg'%}" class="card-img" alt="...">
                             <div class="card-img-overlay">
-                                <h5 class="card-title">Card title</h5>
+                                <h2 class="card-title" style="color:teal">Gift for loved ones</h2>
                                 <h5 class="card-text">This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit longer.</h5>
                             </div>
@@ -848,7 +924,7 @@
                             <div class="card bg-dark text-white">
                                 <img src="{%static 'general/Images/gifts-section/gift3.jpg'%}" class="card-img" alt="...">
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title">Card title</h5>
+                                    <h2 class="card-title" style="color:teal">Gift for Kids</h2>
                                     <h5 class="card-text">This is a wider card with supporting text below as a
                                         natural lead-in to additional content. This content is a little bit longer.
                                     </h5>
@@ -861,7 +937,7 @@
                             <div class="card bg-dark text-white">
                                 <img src="{%static 'general/Images/gifts-section/gift3.jpg'%}" class="card-img" alt="...">
                                 <div class="card-img-overlay">
-                                    <h5 class="card-title">Card title</h5>
+                                    <h2 class="card-title" style="color:teal">Gift for Corporate</h2>
                                     <h5 class="card-text">This is a wider card with supporting text below as a
                                         natural lead-in to additional content. This content is a little bit longer.
                                     </h5>
@@ -875,7 +951,7 @@
                         <div class="card bg-dark text-white">
                             <img src="{%static 'general/Images/gifts-section/gift4.jpg'%}" class="card-img" alt="...">
                             <div class="card-img-overlay">
-                                <h5 class="card-title">Card title</h5>
+                                <h2 class="card-title" style="color:teal">Gift for Occasions</h2>
                                 <h5 class="card-text">This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit longer.</h5>
                             </div>
@@ -1491,7 +1567,7 @@
 <!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
           <div class="container-fluid pop-tags " >
               <div class="row mb-5">
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 ">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1500,7 +1576,7 @@
                   </a>
 
                 </div>
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 hide">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1509,7 +1585,7 @@
                   </a>
 
                 </div>
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 hide">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1525,7 +1601,7 @@
 <!--          <img src="{%static 'general/Images/featured-section/fimg3.jpg'%}" class="d-block w-100" alt="...">-->
           <div class="container-fluid pop-tags " >
               <div class="row mb-5">
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 ">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1534,7 +1610,7 @@
                   </a>
 
                 </div>
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 hide">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1543,7 +1619,7 @@
                   </a>
 
                 </div>
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 hide">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1559,7 +1635,7 @@
 <!--          <img src="{%static 'general/Images/featured-section/fimg2.jpg'%}" class="d-block w-100" alt="...">-->
           <div class="container-fluid pop-tags " >
               <div class="row mb-5">
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 ">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1568,7 +1644,7 @@
                   </a>
 
                 </div>
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 hide">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1577,7 +1653,7 @@
                   </a>
 
                 </div>
-                <div class=" col-4 ">
+                <div class=" col-12 col-lg-4 hide">
                   <a href="#">
                       <img src="{%static 'general/Images/featured-section/fimg5.jpg'%}" alt=".." style="width: 100%; height: 50%;">
                   </a>
@@ -1613,6 +1689,7 @@
               <div class="row">
                 <div class=" col-4 col-lg-2 mb-2">
                   <img src="{%static 'general/Images/vision-logos/commuinty.png'%}" alt="robot-picture" class="img-fluid " style="border-radius: 10%!important;">
+<!--                  <h2 class="img_txt_centered">Bamboo</h2>-->
                 </div>
                 <div class="col-4 col-lg-2 mb-2">
                   <img src="{%static 'general/Images/vision-logos/eco-friendly.png'%}" alt="politics-pic" class="img-fluid " style="border-radius: 10%!important;">

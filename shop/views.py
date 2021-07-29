@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Order, Cart
+from .models import Product, Order, Cart,Variation
 from account.models import VendorAccount
 from django.contrib.auth.decorators import login_required
 from datetime import date
@@ -88,13 +88,20 @@ def productView(request, slug):
     # Fetch the product using the id
     product = Product.objects.get(slug=slug)
 
-        # i.size = convertstrtolist(i.size)
-    if product.color:
-        product.color = re.split('; | ,|, |,| |\n', product.color)
+    # if product.color:
+    #     product.color = re.split('; | ,|, |,| |\n', product.color)
     if product.size:
         product.size = re.split('; | ,|, |,| |\n', product.size)
 
-    return render(request, 'shop/product page.html', {'product': product})
+    if product.has_variation:
+        variations = Variation.objects.filter(product=product)
+        color=[]
+        for i in variations:
+            color.append(i.color)
+        print(color)
+        return render(request, 'shop/product_page_variation.html', {'product': product,'color':color})
+    else:
+        return render(request, 'shop/product page.html', {'product': product})
 
 @login_required(login_url="../login")
 def placeorder(request):

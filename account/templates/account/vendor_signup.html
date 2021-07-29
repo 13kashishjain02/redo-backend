@@ -28,6 +28,25 @@
                 {%csrf_token%}
                 <img src="{%static 'account/image/avatar-y.svg'%}" style="width: 100px; height: 100px;">
                 <h2 class="title" style="color: #ffbf00; font-weight:bold;">REGISTER</h2>
+<!--                name-->
+                <div class="input-div pass" >
+                    <div class="i">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="div">
+                        <input type="text" class="input" placeholder="Name"  name="name" value="">
+                    </div>
+                </div>
+<!--                email-->
+                <div class="input-div one" id="inputUserInfoDiv">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <input type="email" class="input" placeholder="example@xyz.com" id="inputUserInfo" name="email" value="" required>
+                    </div>
+                </div>
+<!--                shopname-->
                 <div class="input-div pass" >
                     <div class="i">
                         <i class="fas fa-phone"></i>
@@ -36,14 +55,7 @@
                         <input type="text" class="input" placeholder="shopname"  name="shopname" value="">
                     </div>
                 </div>
-                <div class="input-div one" id="inputUserInfoDiv">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                        <input type="text" class="input" placeholder="gst" id="inputUserInfo" name="gst" value="" required>
-                    </div>
-                </div>
+<!--                mobile number-->
                 <div class="input-div pass" >
                     <div class="i">
                         <i class="fas fa-phone"></i>
@@ -52,6 +64,7 @@
                         <input type="number" class="input" placeholder="Mobile Number" id="mobile-number" name="shop_number" value="">
                     </div>
                 </div>
+<!--                city-->
                 <div class="input-div one" id="inputUserInfoDiv">
                     <div class="i">
                         <i class="fas fa-user"></i>
@@ -60,6 +73,7 @@
                         <input type="text" class="input" placeholder="City" id="inputUserInfo" name="city" value="" required>
                     </div>
                 </div>
+<!--                state-->
                 <div class="input-div one" id="inputUserInfoDiv">
                     <div class="i">
                         <i class="fas fa-user"></i>
@@ -68,6 +82,7 @@
                         <input type="text" class="input" placeholder="State" id="inputUserInfo" name="state" value="" required>
                     </div>
                 </div>
+<!--                shop address-->
                 <div class="input-div one" id="inputUserInfoDiv">
                     <div class="i">
                         <i class="fas fa-user"></i>
@@ -76,14 +91,16 @@
                         <input type="text" class="input" placeholder="Shop Address" id="inputUserInfo" name="address" value="" required>
                     </div>
                 </div>
-<!--                <div class="input-div pass" id="inputPasswordDiv">-->
-<!--                    <div class="i">-->
-<!--                        <i class="fas fa-lock"></i>-->
-<!--                    </div>-->
-<!--                    <div class="div">-->
-<!--                        <input type="password" class="input" placeholder="Password" id="inputPassword" name="password" value="" required>-->
-<!--                    </div>-->
-<!--                </div>-->
+<!--                password-->
+                <div class="input-div pass" id="inputPasswordDiv">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <input type="password" class="input" placeholder="Password" id="inputPassword" name="password" value="" required>
+                    </div>
+                </div>
+
                 <button class="butn" id="login-btn" type="submit" value="Register">SIGN IN</button>
                 <button class="butn" id="sign-up-btn" type="button" value="Register" style="display: none;">SIGN UP</button>
 
