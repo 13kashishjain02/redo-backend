@@ -309,7 +309,7 @@ h1{
 }
 
 #featured .feature-right{
-    display: flex;
+    /*display: flex;*/
     flex-basis: 45%;
 }
 

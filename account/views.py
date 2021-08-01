@@ -32,10 +32,15 @@ msg = ""
 
 def otpemail(request,remail='kashish.iitdelhi@gmail.com',sub="Redopact",msg="Thank you for registering to our site"):
     global otp
-    if request.method == 'POST':
-        otp_check = request.POST['otp']
+    if request.method == 'GET':
+        otp_check = request.GET.get('otp')
         if otp == otp_check:
-            return True
+            user=Account.objects.get(email=remail)
+            vendor=VendorAccount.objects.get(email=remail)
+            vendor.is_verified = True
+            vendor.save()
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('../../dashboard')
         else:
             print("wrong otp")
             return render(request, "account/otp.html",{msg:'wrong otp'})
@@ -129,8 +134,7 @@ def vendorregister(request):
                 name=name, email=email, password=password, contact_number=shop_number, viewpass=password
             )
             user.save()
-            print("1")
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            # login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             msg = "User Registration Successful"
         except IntegrityError as e:
             msg = email + " is already registered,if you think there is a issue please contact us at 6264843506"
@@ -139,6 +143,7 @@ def vendorregister(request):
                 pass
             else:
                 msg="this email is already registered as a user, please enter the correct password to become a vendor"
+                return render(request, "account/vendor_signup.html", {'msg': msg})
         except Exception as e:
             print(e)
             msg=e
@@ -149,6 +154,8 @@ def vendorregister(request):
         shop_add_flat = request.POST['address']
         shop_add_city = request.POST['city']
         shop_add_state = request.POST['state']
+
+        user=Account.objects.get(email=email)
         user.is_Vendor = True
         user.save()
         try:
@@ -166,12 +173,15 @@ def vendorregister(request):
                     shop_name=shopname, shop_number=shop_number, shop_add=shop_add, gst=gst, vendor=user, email=email)
                 user.save()
             else:
-                msg = "vendor already registered,if you think there is a issue please contact us "
-                return render(request, "account/vendor_signup.html", {'msg': msg})
+                vendor=VendorAccount.objects.get(email=email)
+                if vendor.is_verified:
+                    msg = "vendor already registered,if you think there is a issue please contact us "
+                    return render(request, "account/vendor_signup.html", {'msg': msg})
 
 
         msg = "Vendor Registration Successful"
-        return redirect('../otpemail/')
+        return redirect('../otpemail/'+email)
+        # otpemail(request,remail=email)
     else:
         return render(request, "account/vendor_signup.html")
 

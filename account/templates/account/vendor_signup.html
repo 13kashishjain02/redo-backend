@@ -15,7 +15,12 @@
     <section id="greenbar">
         <h2 id="redopact">REDOPACT</h2>
     </section>
-
+    {%if msg%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{msg}}!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endif%}
 
     <!--Login-->
     <!--<img class="wave-1" src="Images/wave-1.png">-->
@@ -101,12 +106,10 @@
                     </div>
                 </div>
 
-                <button class="butn" id="login-btn" type="submit" value="Register">SIGN IN</button>
+                <button class="butn" id="login-btn" type="submit" value="Register">SIGN UP</button>
                 <button class="butn" id="sign-up-btn" type="button" value="Register" style="display: none;">SIGN UP</button>
 
-                <p class="last-para-login">New User? <span class="change-to-signup" style="color: teal; font-weight: 800; cursor: pointer;"> SIGNUP</span></p>
-                <p class="last-para-signup" style="display: none;">Registered? <span class="change-to-login" style="color: teal; font-weight: 800; cursor: pointer;"> LOGIN</span></p>
-                <p class="vendor-signin" style="color: teal; font-weight: 700;cursor: pointer; margin: 10px auto;"><a>Vendor LogIn</a></p>
+
                 <p class="vendor-registration" style="color: teal; font-weight: 700; margin: 10px auto; display: none;"><a>Vendor Registration</a></p>
             </form>
            

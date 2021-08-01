@@ -107,7 +107,7 @@ class VendorAccount(models.Model):
     bank_ifsc_code = models.IntegerField(null=True, blank=True)
     bank_name = models.CharField(max_length=50, null=True, blank=True)
     bank_account_holder_name = models.CharField(max_length=60, null=True, blank=True)
-    is_blocked = models.BooleanField(default=False)
+    is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
     # objects= MyAccountManager()

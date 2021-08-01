@@ -18,7 +18,7 @@
 
     {%if msg%}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        {{msg}}!
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {%endif%}
@@ -29,8 +29,8 @@
             <img src="{%static 'account/image/login.png'%}" style="width: 800px; object-fit: cover; margin: 20px 20px 20px 2px;">
         </div>
         <div class="login-content">
-            <form method="post" action="../otpemail/" class="form">
-                {%csrf_token%}
+            <form method="get" action="../otpemail/" class="form">
+
                 <img src="{%static 'account/image/avatar-y.svg'%}" style="width: 100px; height: 100px;">
                 <h2 class="title" style="color: #ffbf00; font-weight:bold;">REGISTER</h2>
                 <div class="input-div pass" >
