@@ -32,8 +32,12 @@ msg = ""
 
 def otpemail(request,remail='kashish.iitdelhi@gmail.com',sub="Redopact",msg="Thank you for registering to our site"):
     global otp
-    if request.method == 'GET':
-        otp_check = request.GET.get('otp')
+    print("global otp",otp)
+    print(remail,"email")
+    if request.method == 'POST':
+        print("here")
+        otp_check = request.POST.get('otp')
+        print(otp,otp_check)
         if otp == otp_check:
             user=Account.objects.get(email=remail)
             vendor=VendorAccount.objects.get(email=remail)
@@ -47,6 +51,7 @@ def otpemail(request,remail='kashish.iitdelhi@gmail.com',sub="Redopact",msg="Tha
     else:
 
         otp =str(random.randint(1000, 9999))
+        print("otp is :",otp)
         subject = sub
         message = otp
         email_from = settings.EMAIL_HOST_USER

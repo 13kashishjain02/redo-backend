@@ -18,6 +18,7 @@ urlpatterns = [
     path('subscription/',views.subscription,name='subscription'),
     path('check/',views.check,name='check'),
     path('otpemail/<str:remail>',views.otpemail,name='otpemail'),
+    path('otpemail/',views.otpemail,name='otpemail'),
 
     path('social-auth/', include('social_django.urls', namespace="social")),
 ]

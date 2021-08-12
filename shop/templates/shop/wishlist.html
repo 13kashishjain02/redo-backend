@@ -1,0 +1,124 @@
+{% extends 'general/base.html' %}
+{%load static%}
+{% block title%}redopack{% endblock %}
+{% block head%}
+    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="{%static 'shop/css/mycart.css'%}">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+{% endblock %}
+
+{% block body%}
+    <div class="contain">
+        <h5 style="margin-left:10px; color: teal; font-weight: 700; margin-bottom: 40px; ">Home > My Cart</h5>
+        <div class="top">
+            <div class="top-left">
+                <div class="title">
+                    <h2 class="my-cart">MyCart</h2>
+                    <h3 class="pincode">Deliver to: <input  placeholder="pincode"></h3>
+                </div>
+                {%if cart%}
+                    {% for i in cart %}
+                        <div class="added-products">
+                            <div class="product-added">
+                                <div class="img-container">
+                                    <div class="image">
+                                        <a href="../{{i.slug}}!"><img src="../media/{{i.image}}"></a>
+                                    </div>
+                                    <div class="number-of-items">
+                                        <div class="plus">
+                                           <a href="../increaseqty?id={{i.product_id}}">+</a>
+                                        </div>
+                                        <div class="number">
+                                            {{i.qty}}
+                                        </div>
+                                        <div class="minus">
+                                            <a href="../decreaseqty?id={{i.product_id}}">-</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="../{{i.slug}}!">
+                                <div class="product-description">
+                                    <h3 class="product-name">{{i.name}}</h3>
+                                    <h5 class="packaging-details">Product Packaging : <span class="packaging-type" style="color:teal">Sustainable
+                                            Packaging</span></h5>
+                                    <h4 class="stock-availability" style="color: green;">In Stock</h4>
+
+                                    <br>
+                                    <h4 class="offered-price"> &#8377 {{i.special_price}} <span class="original-price" style="font-size: 1.4rem;"> &#8377
+                                        <strike>{{i.mrp}}</strike></span> <span class="offer" style="color: olive; font-size: 1.2rem; margin: 0px;">{{i.discount}}%off</span>
+                                    </h4>
+                                    <div class="buttons">
+                                        <a href="../"><button class="save-btn" type="button">Save For Later</button></a>
+                                        <button class="remove-btn" type="button">Remove</button>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {%else%}
+                    Your cart is empty
+                {%endif%}
+                <div class="top-bottom">
+                    <a href="../listing/"><button class="continue-shopping-btn">Continue Shopping</button></a>
+                    <a href="../placeorder/"><button class="place-order-btn">Place Order</button></a>
+                </div>
+            </div>
+        
+
+            <div class="top-right">
+                <h3 class="summary">Summary</h3>
+                <h3 class="total-price"><span>Price </span><span style="color:green;"> &#8377 {{total}}</span></h3>
+                <h3 class="discount"><span>Discount </span><span style="color:green;"> &#8377 0</span></h3>
+                <h3 class="carbon-footprint"><span>Carbon Footprint </span><span style="color:green;"> xxxxxxx</span></h3>
+                <h3 class="delivery-charge"><span>Delivery Charge </span><span style="color:green;"> &#8377 60</span></h3>
+                <span class="x" style="font-size: 1.4rem; margin: 2px 10px;">xxxxxxxxxxxx</span>
+                <br>
+                <br>
+                <h3 class="Subtotal">Subtotal ({{cart|length}} items)<span
+                        class="total-amount" style="color:rgb(226, 13, 13);">&#8377 {{final_total}}</span></h3>
+                <br>
+                <br>
+            </div>
+        </div>
+
+   
+    <div class="bottom">
+        <div class="bottom-title">
+            <h1>Delivery Feature</h1>
+        </div>
+        <div class="delivery-content">
+            <div class="delivery-feature-item" id="d-f-i-1" >
+                <i class="fas fa-shipping-fast"></i>
+                <h3 class="headline">Free Shipping Over Rs 2000</h3>
+                <h4 class="decrpton">All of our shipping is carbon-free, but when your order is over Rs 2000, it's
+                    free-free too.</h4>
+            </div>
+            <div class="delivery-feature-item" id="d-f-i-2">
+                <i class="fas fa-undo-alt"></i>
+                <h3 class="headline">Free Returns</h3>
+                <h4 class="decrpton">Unless otherwise specified, you can return any unused item within 30 days-we'll
+                    cover shipping!</h4>
+            </div>
+            <div class="delivery-feature-item"  id="d-f-i-3">
+                <i class="fas fa-paw"></i>
+                <h3 class="headline">Carbon Neutral Shipping</h3>
+                <h4 class="decrpton">Every shipment on Redopact is carbon-offset thanks to our partnership with Abc.org
+                </h4>
+            </div>
+            <div class="delivery-feature-item"  id="d-f-i-4" >
+                <i class="fas fa-phone-alt"></i>
+                <h3 class="headline">Customer Service</h3>
+                <h4 class="decrpton">Send us a message on live chat or give us a ring at 888-852-8935. Mon-Fri, 8am -
+                    5pm IST. Email us anytime at hello@earthhero.com </h4>
+            </div>
+            <div class="delivery-feature-item"  id="d-f-i-5" >
+                <i class="fas fa-globe-americas"></i>
+                <h3 class="headline">Building A Better Future</h3>
+                <h4 class="decrpton">1% of every purchase goes towards environmental non-profits</h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Order, Cart,Variation
+from .models import Product, Order, Cart,Variation,Wishlist
 from account.models import VendorAccount
 from django.contrib.auth.decorators import login_required
 from datetime import date
@@ -311,3 +311,17 @@ def listing(request):
 
 
 
+def wishlist(request):
+    try:
+        list = Wishlist.objects.get(user=request.user)
+        data=list.wishlist
+
+        print("hello!",data)
+        counter=0
+        total=0
+        final_total=0
+        print("trt")
+        return render(request, 'shop/wishlist.html')
+    except Exception as e:
+        print("except",e)
+        return render(request, 'shop/wishlist.html')

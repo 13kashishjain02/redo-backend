@@ -6,7 +6,8 @@
 body{
     height: 100vh;  
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color:#fff;
+    /*background-color:#fff;*/
+    background-color:#eaeded;
 }
 a{
     text-decoration: none;
@@ -309,7 +310,7 @@ h1{
 }
 
 #featured .feature-right{
-    display: flex;
+    /*display: flex;*/
     flex-basis: 45%;
 }
 
@@ -1678,7 +1679,7 @@ background-color: rgb(228, 225, 225);
 	border-radius: 20px;
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
-	width: 500px;
+	width: 666px;
 }
 
 #srch {
@@ -1714,7 +1715,7 @@ a:hover {
 }
 
 .header {
-  background: #c3d6c9;
+  background: #004953;
   border-bottom: 2px solid #000000;
   padding-bottom: 0px;
 }
