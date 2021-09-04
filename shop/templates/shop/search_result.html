@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="{%static 'shop/css/search.css'%}">
     <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
 
+    <style>
+      .img-fluid {
+        max-width: 100%;
+        height: auto;
+        padding: 14px;
+        }
+    </style>
 {% endblock %}
 
 {% block body%}
@@ -215,25 +222,25 @@
                             {% endif %}  
                             
                           </div>
-                          {%if i.is_recycle %}
+                          {%if i.is_recycled %}
                               <div class="ribbon sale">
                                 <div class="theribbon">RECYCLABLE</div>
                                 <div class="ribbon-background"></div>
                               </div>
                           {%endif%}
                               <!-- /.ribbon-->
-                          {%if i.is_upcycle  %}
+                          {%if i.is_upcycled  %}
                               <div class="ribbon new">
                                 <div class="theribbon">upcyclable</div>
                                 <div class="ribbon-background"></div>
                               </div>
                           {%endif%}
                         </div>
-                        <a href="../products/{{i.id}}" class="invisible"><img src="../media/{{i.image}}" alt="" class="img-fluid" Fop></a>
+                        <a href="../products/{{i.id}}" class="invisible"><img src="../media/{{i.image}}" alt="" class="img-fluid" style="padding: 14px;"></a>
                         <div class="text">
-                          <h3><a href="../products/{{i.id}}">{{i.name|slice:"0:20"}}..</a></h3>
-                          <p class="price"> 
-                            <del>Rs.{{i.mrp}}</del>Rs.{{i.special_price}}
+                          <h3><a href="../products/{{i.id}}">{{i.name|slice:"0:50"}}..</a></h3>
+                          <p class="price" style="color:#B12704">
+                            Rs.{{i.special_price}} <del style="color: #6b6868; font-size: 16px;"> Rs.{{i.mrp}}</del>
                           </p>
 <!--                          <p class="buttons"><a href="../products/{{i.id}}" class="btn btn-outline-secondary">View detail</a><a href="/cart_add/{{i.id}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>-->
                         </div>

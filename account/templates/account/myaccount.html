@@ -132,15 +132,7 @@
                     </div>
 
                   </div>
-<!--                  {%for field in account_form %}-->
-<!--        {% for error in field.errors %}-->
-<!--            {{error}}-->
-<!--        {%endfor%}-->
-<!--    {%endfor%}-->
 
-<!--    {%if account_form.non_field_errors %}-->
-<!--        {{account_form.non_field_errors}}-->
-<!--    {%endif%}-->
                     <p class="text-muted">Enter Password to proceed.</p>
 
                     <div class="form-group">
@@ -152,6 +144,69 @@
                     </div>
                   </div>
                 </form>
+              {%if request.user.is_Vendor %}
+              <div class="box">
+                <h1 class="mt-5">Seller details</h1>
+                <form method="post">
+                {%csrf_token%}
+                  <div class="row">
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="name">Bank Account number</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor.bank_account_number}}" value="{{vendor.bank_account_number}}" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Bank IFSC code</label>
+                        <input id="email" type="text" name="email" placeholder="{{vendor.bank_ifsc_code}}"  value="{{vendor.bank_ifsc_code}}" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Bank Account holder Name</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor.bank_account_holder_name}}" value="{{vendor.bank_account_holder_name}}" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Bank Name</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor.bank_name}}" value="{{vendor.bank_name}}" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                        <label for="name">GST</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor}}" value="{{vendor}}" class="form-control" >
+                      </div>
+                      <hr>
+                      <h1 class="mt-5">Social Links</h1>
+                      <div class="form-group">
+                        <label for="name">Facebook Page Link</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor.facebook_link}}" value="{{vendor.facebook_link}}" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Instagram page link</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor.instagram_link}}" value="{{vendor.instagram_link}}" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Youtube Channel link</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor.youtube_link}}" value="{{vendor.youtube_link}}" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Linkedin Link</label>
+                        <input id="name" type="text" name="name" placeholder="{{vendor.linkedin_link}}" value="{{vendor.linkedin_link}}" class="form-control" >
+                      </div>
+                    </div>
+
+                  </div>
+
+                    <p class="text-muted">Enter Password to proceed.</p>
+
+                    <div class="form-group">
+                      <label for="password">Password*</label>
+                      <input id="password" type="password" name="password" class="form-control" required/>
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              {%endif%}
               </div>
             </div>
           </div>

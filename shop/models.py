@@ -11,6 +11,9 @@ def get_uplaod_file_name(userpic, filename, ):
 def get_uplaod_file_name_variation(userpic, filename, ):
     return u'shop/%s/%s%s' % (str(userpic.product.vendor_id) + "/products", "", filename)
 
+def get_uplaod_category(userpic, filename, ):
+    return u'category/%s/%s%s' % (str(userpic.name), "", filename)
+
 PRODUCTFOR_CHOICES = (
     ('men', 'MEN'),
     ('women', 'WOMEN'),
@@ -22,7 +25,8 @@ PRODUCTFOR_CHOICES = (
 
 class Category(models.Model):
     name = models.CharField(max_length=40, default="")
-
+    image = models.ImageField(upload_to=get_uplaod_category,null=True, blank=True, )
+    mobile_image = models.ImageField(upload_to=get_uplaod_category,null=True, blank=True, )
     def __str__(self):
         return self.name
 
@@ -44,15 +48,16 @@ class SubCategory2(models.Model):
 
 class Product(models.Model):
     vendor = models.ForeignKey(VendorAccount, on_delete=models.DO_NOTHING)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=150)
+    category2 = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    subcategory1 = models.ForeignKey(SubCategory1, on_delete=models.CASCADE, null=True, blank=True)
     subcategory2 = models.ForeignKey(SubCategory2, on_delete=models.CASCADE, null=True, blank=True)
     size = models.CharField(max_length=50, null=True, blank=True)
-    # color = models.CharField(max_length=50, null=True, blank=True)
     product_for = models.CharField(max_length=7, choices=PRODUCTFOR_CHOICES, default='general')
     brand = models.CharField(max_length=50, null=True)
     tags = models.CharField(max_length=500, null=True, blank=True, default="blanktag")
-    material = models.CharField(max_length=500, null=True, blank=True, default="blanktag")
-    slug = models.SlugField(max_length=60, unique=True)
+    material = models.CharField(max_length=50, null=True, blank=True, default="")
+    slug = models.SlugField(max_length=170, unique=True)
     sku = models.CharField(max_length=50, null=True,blank=True,unique=True)
     in_stock = models.BooleanField(default=False)
     discount = models.IntegerField(null=True, blank=True)
@@ -62,16 +67,16 @@ class Product(models.Model):
     our_price = models.FloatField(null=True,blank=True)
     description = RichTextField(null=True, blank=True, )
     short_description = RichTextField(null=True, blank=True, )
-    weight = models.FloatField(default=5.00, null=True)
-    length= models.FloatField(default=50.00, null=True)
-    width = models.FloatField(default=50.00, null=True)
-    height = models.FloatField(default=50.00, null=True)
+    weight = models.FloatField(default=0.00, null=True)
+    length= models.FloatField(default=0.00, null=True)
+    width = models.FloatField(default=0.00, null=True)
+    height = models.FloatField(default=0.00, null=True)
     pub_date = models.DateField(null=True, blank=True, )
-    is_recycle = models.BooleanField(default=False)
-    is_upcycle = models.BooleanField(default=False)
+    is_recycled = models.BooleanField(default=False)
+    is_upcycled = models.BooleanField(default=False)
     is_ecofriendly = models.BooleanField(default=False)
     has_variation = models.BooleanField(default=False)
-    image = models.ImageField(upload_to=get_uplaod_file_name, default="")
+    image = models.ImageField(upload_to=get_uplaod_file_name,  null=True, blank=True,)
     image2 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
     image3 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
 
@@ -88,7 +93,7 @@ class Variation(models.Model):
     special_price = models.FloatField(null=True,blank=True)
     our_price = models.FloatField(null=True,blank=True)
     pub_date = models.DateField(null=True, blank=True, )
-    image = models.ImageField(upload_to=get_uplaod_file_name_variation, default="")
+    image = models.ImageField(upload_to=get_uplaod_file_name_variation, null=True, blank=True,)
     image2 = models.ImageField(upload_to=get_uplaod_file_name_variation, null=True, blank=True, )
     image3 = models.ImageField(upload_to=get_uplaod_file_name_variation, null=True, blank=True, )
 

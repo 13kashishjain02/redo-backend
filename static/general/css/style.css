@@ -526,6 +526,25 @@ background-color: rgb(228, 225, 225);
 /*end of video and vertical scroll*/
 /*trending*/
 
+@media screen and (max-width: 600px) {
+  #tre{
+    width:155px;
+    height:250px;
+    position: relative;
+    left: 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: olive 10px;
+    box-shadow: 0 0 5px black;
+  }
+}
+@media screen and (min-width: 600px){
 #tre{
     background-color: #fff;
     width:205px;
@@ -542,6 +561,7 @@ background-color: rgb(228, 225, 225);
     box-sizing: border-box;
     border: olive 10px;
     box-shadow: 0 0 5px black;
+}
 }
 #tre a{
     color: black;

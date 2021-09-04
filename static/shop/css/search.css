@@ -135,7 +135,7 @@
 
 #content .product {
   background: #fff;
-  border: solid 1px #e6e6e6;
+  /*border: solid 1px #e6e6e6;*/
   margin-bottom: 30px;
   /* entire container, keeps perspective */
   /* flip speed goes here */
@@ -676,3 +676,4 @@
   border-color: #145523 #145523 transparent transparent;
 }
 
+g

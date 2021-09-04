@@ -405,8 +405,13 @@ def account_view(request):
     # if not request.user.is_authenticated:
     #     return redirect("../login")
     global msg
+
     context = {"name": request.user.name, "email": request.user.email, "contact_number": request.user.contact_number,
                "msg": msg}
+    if request.user.is_Vendor:
+        vendor = VendorAccount.objects.get(email=request.user.email)
+    else:
+        vendor = None
     if request.POST:
         name = request.POST['name']
         contact_number = request.POST.get('contact_number')
@@ -416,10 +421,14 @@ def account_view(request):
         if user:
             userid = request.user.id
             Account.objects.filter(id=userid).update(name=name, email=email, contact_number=contact_number)
-            context = {"name": name, "email": email, "contact_number": contact_number, "msg": ""}
+
+            context = {"name": name, "email": email, "contact_number": contact_number, "msg": "",}
         else:
             msg = "Wrong Password"
             context["msg"] = msg
+
+    context["vendor"]=vendor
+    print(context)
     return render(request, 'account/myaccount.html', context)
 
 
@@ -439,7 +448,7 @@ def changepassword(request):
             Account.objects.filter(id=userid).update(viewpass=new_password, )
             msg = "Password Changed"
         else:
-            msg = "new password does not match with confirm password"
+            msg = "new password not match with confirm password"
     else:
         msg = "Wrong password"
     return redirect("../account")

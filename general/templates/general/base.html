@@ -19,6 +19,20 @@
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
     <title>{% block title%} {% endblock %}</title>
+
+    <!--product slider / hide box in mobile view-->
+    <style>
+        @media (max-width: 768px) {
+            .hide {
+              display: none;
+            }
+          }
+        @media (min-width: 769px) {
+            .hide_lap {
+              display: none;
+            }
+          }
+    </style>
     {% block head%} {% endblock %}
 </head>
 <body>
@@ -715,11 +729,11 @@
 
        }
        .accordion .dropdown-menu{
-        background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-
+        /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+        background:#ffffff
        }
        .accordion .dropdown-menu a{
-        color: #fff;
+        color: #000000;
        }
        .accordion .dropdown-item:hover{
         background-color: transparent;
