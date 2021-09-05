@@ -87,7 +87,7 @@ def get_uplaod_file_name_blog(userpic, filename,):
     return u'blog/%s/%s%s' % (str(userpic.blogger_id)+"/template","",filename)
 
 class VendorAccount(models.Model):
-    vendor = models.OneToOneField(Account, default=None, on_delete=models.DO_NOTHING, primary_key=True, )
+    vendor = models.OneToOneField(Account, default=None, on_delete=models.CASCADE, primary_key=True, )
     email = models.EmailField(verbose_name="email", max_length=100)
     shop_number = models.IntegerField(null=True, blank=True)
     shop_name = models.CharField(max_length=150)
@@ -128,7 +128,7 @@ class VendorAccount(models.Model):
 #         return True
 class BloggerAccount(models.Model):
     # Blogger_id = models.AutoField(primary_key=True)
-    blogger = models.OneToOneField(Account, default=None, on_delete=models.DO_NOTHING, primary_key=True, )
+    blogger = models.OneToOneField(Account, default=None, on_delete=models.CASCADE, primary_key=True, )
     email = models.EmailField(verbose_name="email", max_length=100)
     subscripton_amount = models.IntegerField(null=True, blank=True)
     blogname = models.CharField(max_length=30, unique=True)

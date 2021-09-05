@@ -33,7 +33,7 @@ class Category(models.Model):
 
 class SubCategory1(models.Model):
     name = models.CharField(max_length=40, default="")
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -41,13 +41,13 @@ class SubCategory1(models.Model):
 
 class SubCategory2(models.Model):
     name = models.CharField(max_length=40, default="")
-    subcategory1 = models.ForeignKey(SubCategory1, on_delete=models.DO_NOTHING)
+    subcategory1 = models.ForeignKey(SubCategory1, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 class Product(models.Model):
-    vendor = models.ForeignKey(VendorAccount, on_delete=models.DO_NOTHING)
+    vendor = models.ForeignKey(VendorAccount, on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
     category2 = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     subcategory1 = models.ForeignKey(SubCategory1, on_delete=models.CASCADE, null=True, blank=True)
@@ -118,13 +118,13 @@ class Order(models.Model):
         return self.status
 
 class Wishlist(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
     wishlist = models.ManyToManyField(Product)
     def __str__(self):
         return self.user.name
 
 class Cart(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
     cartdata = models.JSONField(default=list, blank=True, null=True)
     def __str__(self):
         return self.user.name
