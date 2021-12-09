@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../arranged/.idea/arranged.iml" filepath="$PROJECT_DIR$/../../arranged/.idea/arranged.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/redo-backend.iml" filepath="$PROJECT_DIR$/.idea/redo-backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../redopact/.idea/redopact.iml" filepath="$PROJECT_DIR$/../redopact/.idea/redopact.iml" />
     </modules>
   </component>
 </project>

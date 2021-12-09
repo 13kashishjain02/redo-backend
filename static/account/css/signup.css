@@ -21,17 +21,11 @@ body{
     font-size: 300%;
     color: white;
 }
-/* mobile-view */
-@media screen and (max-width:600px) {
+/* hiding left section for mobile view */
+@media screen and (max-width: 600px) {
     .banner{
         visibility: hidden;
         width: 0%;
-    }
-    .main{
-        margin: 0;
-    }
-    .main-content{
-        margin: 0 0;
     }
 }
 /* right section */
@@ -59,18 +53,21 @@ hr{
     margin-right: auto;
 }
 
-hr.colored {
-    border: 0;   /* in order to override TWBS stylesheet */
+hr.colored{
+    border: 0;
+    height: 1px;
+    background: -webkit-linear-gradient(left, rgba(0,73,83,1) 45%, rgba(119,119,119,1) 55%);
+}
+
+hr:before{
+    width: 45%;
+    left: 0;
+    content: '';
+    z-index: 1;
+    display: block;
+    position: absolute;
     height: 2.5px;
-    background: -webkit-linear-gradient(left, rgba(119,119,119,1) 60%, rgba(0,73,83,1) 40%);
-    }
-    hr::before{
-        width: 10%;
-        content: '';
-        height: 0px;
-        z-index: 1;
-        background: red;
-    }
+}
 /* email address */
 .sign{
     font-weight: 200;
@@ -78,10 +75,14 @@ hr.colored {
     font-size: 200%;
     word-spacing: 20px;
 }
-.login{
+.signup{
+    font-weight: bold;
     color: #004953;
-    font-size: 90%;
-    font-weight: 100;
+}
+.login{
+    color: #777777;
+    font-size: 60%;
+    font-weight: 80;
 }
 /* signup and login */
 .bar{
@@ -127,6 +128,7 @@ button{
 }
 .sign-up{
     color: #004953;
+    font-weight: bold;
 }
 /* icons */
 .google{

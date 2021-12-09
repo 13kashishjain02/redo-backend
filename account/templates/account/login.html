@@ -1,213 +1,51 @@
 {% extends 'general/base.html' %}
 {%load static%}
-{% block title%}redopack{% endblock %}
 {% block head%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- adding css -->
     <link rel="stylesheet" href="{%static 'account/css/login.css'%}">
-    <link rel="stylesheet" href="{%static 'shop/css/style.css'%}">
-    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
-<!--    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">-->
+    <!-- adding font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 {% endblock %}
-
 {% block body%}
-    <!------------Header--------------->
-<!--   <section id="graybar" style="width: 100vw; height: 6vh; background-color: gray;">-->
-<!--   </section>-->
-    <section id="greenbar">
-        <h2 id="redopact">REDOPACT</h2>
-    </section>
-
-
-    <!--Login-->
-    <!--<img class="wave-1" src="Images/wave-1.png">-->
-    <section class="container mt-4 mb-5" >
-        <div class="img">
-            <img src="{%static 'account/image/login.png'%}" style="width: 800px; object-fit: cover; margin: 20px 20px 20px 2px;">
+    <div class="cont">
+        <!-- left-portion -->
+        <div class="banner">
+            <p class="banner-text">we Missed you !</p>
+            <p class="banner-text">LOGIN BACK</p>
+<!--            <img src="images/LOGO.png" alt="">-->
         </div>
-        <div class="login-content">
-            <form method="post" action="../login/" class="form">
-                {%csrf_token%}
-                <img src="{%static 'account/image/avatar-y.svg'%}" style="width: 100px; height: 100px;">
-                <h2 class="title" style="color: #ffbf00; font-weight:bold;">LOGIN</h2>
-                <div class="input-div one" id="inputUserInfoDiv">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                        <input type="email" class="input" placeholder="example@xyz.com" id="inputUserInfo" name="email" value="" required>
-                    </div>
-                </div>
-                <div class="input-div pass" id="inputPasswordDiv">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="div">
-                        <input type="password" class="input" placeholder="Password" id="inputPassword" name="password" value="" required>
-                    </div>
-                </div>
-                <div class="input-div pass" id="mobile">
-                    <div class="i">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="div">
-                        <input class="input" placeholder="Mobile Number" id="mobile-number" name="mobile" value="">
+        <!-- right-portion -->
+        <div class="main">
+            <div class="main-content">
+                <div class="form">
+                    <hr class="colored">    
+                    <p class="sign">Sign-up <span class="bar">|</spa> <span class="login">Login</span></p>
+                    <form action="post" class="form">
+                        <label for="email">Email Address</label><br>
+                        <input class="input" type="text" id="email" value="Enter Email Address"><br>
+                        <label for="password">Password</label><br>
+                        <input class="input" type="password" id="password" name="Enter Password"><br>
+                        <p class="forgot-pass">Forgot Password?</p>
+                    </form>
+                    <!-- login-button -->
+                    <button><span class="login-but">Login</span></button>
+                    <p class="bot-text">No account <span class="sign-up">Sign Up?</span></p>
+                    <p class="bot-text">or continue with</p>
+                    <div class="icons">
+                        <!-- google-icon -->
+                        <img src="icons/google.png" class="google" alt="sign up with google">
+                        <!-- facebook-icon -->
+                        <img src="icons/facebook.png" class="facebook" alt="">
+                        <!-- linkedin-icon -->
+                        <img src="icons/linkedin.png" class="linkedin" alt="">
                     </div>
                 </div>
-                <input type="hidden" name="next" value="{{ request.GET.next }}"/>
-                <h5 class="otp-para" style="display: none; color: teal;">An OTP has been sent to your mobile number ending in XXXX and on email xxxxx23@gmail.com</h5>
-                <div class="input-div pass" id="otp" style="display: none;">
-                    <div class="div">
-                        <input class="input" placeholder="OTP" id="otp" name="otp" value="">
-                    </div>
-                </div>
-                <a id="resend-otp" href="#" style="color: teal; display: none;">Resend OTP</a>
-                <a id="forgot-password" href="#" style="color: teal;">Forgot Password?</a>
-                <button class="butn" id="login-btn" type="submit" value="Register">SIGN IN</button>
-                <button class="butn" id="sign-up-btn" type="button" value="Register" style="display: none;">SIGN UP</button>
-
-                <p class="last-para-login">New User? <a href="../register/"> <span class="" > <a href="../register/" style="color: teal; font-weight: 800; cursor: pointer;" >SIGNUP</a></span></p>
-                <p class="vendor-registration" style="color: teal; font-weight: 700; margin: 10px auto; display: none;"><a href="../vendorregister/">Vendor Registration</a></p>
-            </form>
-           
-        </div>
-
-       
-    </section>
-
-    <div class="forgot-pwd">
-        <div class="container-f">
-            <div class="forgot">
-                <h3>Forgot Password</h3>
-                <a href="#" class="cross"><i class="fas fa-times"></i></a>
             </div>
-
-            <h4>Please enter your email address to recieve a password reset link</h4>
-
-            <div class="email-input">
-                <input class="input" type="text" placeholder="Email Id">
-            </div>
-
-            <div class="forgot-pwd-btn btn">Submit</div>
-
         </div>
-
-
     </div>
-
-    <script>
-        const forgotPwd = document.querySelector(".forgot-pwd");
-        const forgotPassword = document.getElementById("forgot-password");
-        const loginBtn = document.getElementById("login-btn");
-        const inputUserInfo  = document.getElementById("inputUserInfo");
-        const inputUserInfoDiv  = document.getElementById("inputUserInfoDiv");
-        const inputPassword   = document.getElementById("inputPassword");
-        const inputPasswordDiv   = document.getElementById("inputPasswordDiv");
-        const loginContainer = document.querySelector(".container");
-        const wave1 = document.querySelector('.wave-1');
-        const cross = document.querySelector('.cross');
-        const forgotPwdBtn = document.querySelector('.forgot-pwd-btn');
-        const changeToSignup = document.querySelector('.change-to-signup');
-        const changeToLogin = document.querySelector('.change-to-login');
-        var test = document.getElementById('test');
-        const title = document.querySelector('.title');
-        const lastParaLogin = document.querySelector('.last-para-login');
-        const lastParaSignup = document.querySelector('.last-para-signup');
-        const mobile = document.getElementById('mobile');
-        const signupbtn = document.getElementById('sign-up-btn');
-        const svgimg = document.querySelector('.img');
-        const vendorLogin = document.querySelector('.vendor-signin');
-        const vendorRegister = document.querySelector('.vendor-registration');
-        const otpPara = document.querySelector('.otp-para');
-        const otpInput = document.getElementById('otp');
-        const resendOtp = document.getElementById('resend-otp');
-
-
-
-        //event listeners
-
-        changeToLogin.addEventListener('click',()=>{
-            lastParaLogin.style.display='block';
-            lastParaSignup.style.display='none';
-           title.innerHTML = 'LOGIN';
-           mobile.style.display = 'none';
-          loginBtn.style.display='block';
-          signupbtn.style.display='none';
-           forgotPassword.style.display = 'block';
-           svgimg.innerHTML = ' <img src="{%static 'account/image/login.png'%}" style="width: 800px; object-fit: cover; margin: 20px 20px 20px 2px;">';
-           vendorLogin.style.display = 'block';
-           vendorRegister.style.display = 'none';
-           resendOtp.style.display='none';
-           otpInput.style.display='none';
-           otpPara.style.display='none';
-           inputUserInfoDiv.style.display='grid';
-           inputPasswordDiv.style.display='grid';
-
-        })
-
-        changeToSignup.addEventListener('click',()=>{
-            loginBtn.style.display='none';
-          signupbtn.style.display='block';
-            lastParaLogin.style.display='none';
-            lastParaSignup.style.display='block';
-           title.innerHTML = 'SIGNUP';
-           mobile.style.display = 'grid';
-           forgotPassword.style.display = 'none';
-           svgimg.innerHTML = ' <img src="Images/signup.png" style="width: 800px; object-fit: cover; margin: 20px 20px 20px 2px;">';
-           vendorRegister.style.display = 'block';
-           vendorLogin.style.display = 'none';
-           resendOtp.style.display='none';
-           otpInput.style.display='none';
-           otpPara.style.display='none';
-           inputUserInfoDiv.style.display='grid';
-           inputPasswordDiv.style.display='grid';
-        });
-
-        signupbtn.addEventListener('click',()=>{
-            resendOtp.style.display='block';
-           otpInput.style.display='block';
-           otpPara.style.display='block';
-           loginBtn.style.display='none';
-           lastParaLogin.style.display='none';
-           lastParaSignup.style.display='block';
-           mobile.style.display = 'none';
-           title.innerHTML = 'SIGNUP';
-           forgotPassword.style.display = 'none';
-           svgimg.innerHTML = ' <img src="Images/signup.png" style="width: 800px; object-fit: cover; margin: 20px 20px 20px 2px;">';
-           vendorRegister.style.display = 'block';
-           vendorLogin.style.display = 'none';
-           inputUserInfoDiv.style.display='none';
-           inputPasswordDiv.style.display='none';
-        })
-        forgotPassword.addEventListener('click', () => {
-            forgotPwd.style.display = 'block';
-            loginContainer.style.filter = 'blur(20px)';
-            wave1.style.filter = 'blur(20px)';
-        });
-
-        cross.addEventListener('click',()=>{
-            forgotPwd.style.display = 'none';
-            loginContainer.style.filter = 'blur(0px)';
-            wave1.style.filter='blur(0px)';
-
-        });
-
-        forgotPwdBtn.addEventListener('click',()=>{
-            forgotPwd.style.display = 'none';
-            loginContainer.style.filter = 'blur(0px)';
-            wave1.style.filter='blur(0px)';
-        });
-
-
-
-        loginBtn.addEventListener('click', () =>{
-
-    if (inputUserInfo.value === '')
-    {
-       inputUserInfoDiv.style.border = '1px solid crimson';
-    }
-    else if (inputPassword.value === ''){
-        inputPasswordDiv.style.border = '1px solid crimson';
-    }
-});
-    </script>
-    <!--End Of Login-->
 {% endblock %}

@@ -1,0 +1,15 @@
+Django admin URL :
+http://bsa-iitd.in/admin/
+Username : admin
+Password : passwd123
+
+Remote Desktop File:
+Password : eM@ra9B)g2)s(4f9YtEbZfv*VsQdML2&
+
+Default email for all : 
+bsagsec@iitd.ac.in
+
+Image link format :
+/static/2021-2022/people/harsh.jpg
+(type the exact name and extension)
+

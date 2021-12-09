@@ -506,10 +506,10 @@ def listing(request):
         product = product_paginator.page(product_paginator.num_pages)
     except:
         product = product_paginator.page(PRODUCTS_PER_PAGE)
-    # return render(request, "shop/search_result.html",
-    #               {"product": product, 'page_obj': product, 'is_paginated': True, 'paginator': product_paginator})
-    return render(request, "shop/category.html",
+    return render(request, "shop/search_result.html",
                   {"product": product, 'page_obj': product, 'is_paginated': True, 'paginator': product_paginator})
+    # return render(request, "shop/category.html",
+    #               {"product": product, 'page_obj': product, 'is_paginated': True, 'paginator': product_paginator})
 
 
 def wishlist(request):

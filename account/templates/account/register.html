@@ -1,97 +1,54 @@
-{% extends 'general/base.html' %}
-{%load static%}
-{% block title%}redopack{% endblock %}
-{% block head%}
-    <link rel="stylesheet" href="{%static 'account/css/login.css'%}">
-    <link rel="stylesheet" href="{%static 'shop/css/style.css'%}">
-    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
-<!--    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">-->
-{% endblock %}
-
-{% block body%}
-    <!------------Header--------------->
-<!--   <section id="graybar" style="width: 100vw; height: 6vh; background-color: gray;">-->
-<!--   </section>-->
-    <section id="greenbar">
-        <h2 id="redopact">REDOPACT</h2>
-    </section>
-
-
-    <!--Login-->
-    <!--<img class="wave-1" src="Images/wave-1.png">-->
-    <section class="container mb-5" style="margin-top: 4rem!important;margin-bottom:7rem!important;">
-        <div class="img">
-            <img src="{%static 'account/image/login.png'%}" style="width: 800px; object-fit: cover; margin: 20px 20px 20px 2px;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- adding css -->
+    <link rel="stylesheet" href="css/signup.css">
+    <!-- adding font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <title>redo pack</title>
+</head>
+<body>
+    <div class="cont">
+        <!-- left-portion -->
+        <div class="banner">
+            <p class="banner-text">Get started for</p>
+            <p class="banner-text">ABSOLUTELY FREE</p>
+            <img src="images/LOGO.png" alt="">
         </div>
-        <div class="login-content">
-            <form method="post" action="../register/" class="form">
-                {%csrf_token%}
-                <img src="{%static 'account/image/avatar-y.svg'%}" style="width: 100px; height: 100px;">
-                <h2 class="title" style="color: #ffbf00; font-weight:bold;">REGISTER</h2>
-                <div class="input-div pass" >
-                    <div class="i">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="div">
-                        <input type="text" class="input" placeholder="Name"  name="name" value="">
-                    </div>
-                </div>
-                <div class="input-div one" id="inputUserInfoDiv">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                        <input type="email" class="input" placeholder="example@xyz.com" id="inputUserInfo" name="email" value="" required>
-                    </div>
-                </div>
-                <div class="input-div pass" >
-                    <div class="i">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="div">
-                        <input type="number" class="input" placeholder="Mobile Number" id="mobile-number" name="mobile" value="">
+        <!-- right-portion -->
+        <div class="main">
+            <div class="main-content">
+                <div class="form">
+                    <hr class="colored">    
+                    <p class="sign"><span class="signup"> Sign-up</span> <span class="bar">|</spa> <span class="login">Login</span></p>
+                    <form action="post" class="form">
+                        <label for="email">Email Address</label><br>
+                        <input class="input" type="text" id="email" value="Enter Email Address"><br>
+                        <label for="password">Password</label><br>
+                        <input class="input" type="password" id="password" name="Enter Password"><br>
+                        <label for="contact">Contact Number</label><br>
+                        <input type="text" class="input" id="contact" value="Enter contact number"><br>
+                    </form>
+                    <!-- register-button -->
+                    <button><span class="login-but">Register</span></button>
+                    <p class="bot-text">Already have account <span class="sign-up">Login here</span></p>
+                    <p class="bot-text">or continue with</p>
+                    <div class="icons">
+                        <!-- google-icon -->
+                        <img src="icons/google.png" class="google" alt="sign up with google">
+                        <!-- facebook-icon -->
+                        <img src="icons/facebook.png" class="facebook" alt="">
+                        <!-- linkedin-icon -->
+                        <img src="icons/linkedin.png" class="linkedin" alt="">
                     </div>
                 </div>
-                <div class="input-div pass" id="inputPasswordDiv">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="div">
-                        <input type="password" class="input" placeholder="Password" id="inputPassword" name="password" value="" required>
-                    </div>
-                </div>
-                <button class="butn" id="login-btn" type="submit" value="Register">SIGN IN</button>
-                <button class="butn" id="sign-up-btn" type="button" value="Register" style="display: none;">SIGN UP</button>
-
-                <p class="last-para-login">Already registerd? <span  ><a href="../login/" style="color: teal; font-weight: 800; cursor: pointer;"> SIGNIN </a></span></p>
-                <p class="last-para-signup" style="display: none;">Registered? <span class="change-to-login" style="color: teal; font-weight: 800; cursor: pointer;"> LOGIN</span></p>
-                <p class="vendor-registration" style="color: teal; font-weight: 700; margin: 10px auto; display: none;"><a>Vendor Registration</a></p>
-            </form>
-           
-        </div>
-
-       
-    </section>
-
-    <div class="forgot-pwd">
-        <div class="container-f">
-            <div class="forgot">
-                <h3>Forgot Password</h3>
-                <a href="#" class="cross"><i class="fas fa-times"></i></a>
             </div>
-
-            <h4>Please enter your email address to recieve a password reset link</h4>
-
-            <div class="email-input">
-                <input class="input" type="text" placeholder="Email Id">
-            </div>
-
-            <div class="forgot-pwd-btn btn">Submit</div>
-
         </div>
-
-
     </div>
-
-<!--End Of register-->
-{% endblock %}
+</body>
+</html>
