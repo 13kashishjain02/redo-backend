@@ -1,24 +1,18 @@
-body{
-    /* overflow: hidden; */
-    font-family: 'Raleway', sans-serif;
-    
-}
-
-/* *{
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 body{
-    height: 100vh;
+    height: 100vh;  
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /*background-color:#fff;*/
-    /* background-color:#eaeded;
+    background-color:#eaeded;
 }
 a{
     text-decoration: none;
-
-} */ */
+    
+}
 
 a:hover{
     cursor: pointer;
@@ -52,15 +46,15 @@ img{
     color: yellowgreen;
 }
 
-/* h1{
+h1{
     margin-bottom: 30px;
     font-weight: 700;
     font-size:xx-large;
-} */
+}
 
 /*header-section*/
 #header{
-
+    
     min-width: 100%;
     margin: 0;
     padding: 0;
@@ -177,7 +171,7 @@ img{
     padding: 0px;
     color: teal;
     font-size:25px;
-
+    
 }
 
 
@@ -214,7 +208,7 @@ img{
     height: 143px;
     background: url('Images/wave.png');
     animation: animate 10s linear infinite;
-
+    
 }
 .wave::before{
     content: ' ';
@@ -329,7 +323,7 @@ img{
     position: relative;
     align-items: center;
     justify-content: center;
-
+    
 }
 
 #featured .feature-item:hover{
@@ -390,8 +384,8 @@ img{
 
 #featured .feature-item:hover .feature-img {
     transform: scale(1.2);
-
-
+    
+   
 }
 
 /*end of feature section*/
@@ -437,7 +431,7 @@ img{
 }
 
 #video-and-vertical .col-7{
-
+    
 background-color: rgb(228, 225, 225);
    padding: 5px;
     margin: 15px;
@@ -850,7 +844,7 @@ background-color: rgb(228, 225, 225);
     align-items: center;
     padding: 0px;
   /*  background-color: blue;*/
-
+    
 }
 /*
 #testimonials .section-title{
@@ -859,12 +853,12 @@ background-color: rgb(228, 225, 225);
 
 #testimonials .testimonial-items{
    /* background-color: pink;*/
-
+   
     margin: 5px;
     margin-top: 5px;
     padding: 5px;
     display: flex;
-
+    
    /* box-shadow: 0px 0px 10px 0px olive;*/
 }
 
@@ -887,7 +881,7 @@ background-color: rgb(228, 225, 225);
     transform: scale(1.04);
 }
 
-
+  
 
 
 #testimonials .testimonial-content{
@@ -999,16 +993,16 @@ background-color: rgb(228, 225, 225);
     /*featured section*/
   /*  #featured .featured{
         min-width: 720px;
-
+       
     }*/
     #featured .feature-top{
         display: flex;
         flex-direction: column;
     }
-
+    
     #featured .feature-bottom{
         display: flex;
-        flex-direction: column;
+        flex-direction: column;    
     }
 
     #featured .feature-item{
@@ -1025,13 +1019,13 @@ background-color: rgb(228, 225, 225);
   #gifts .gifts{
        /* min-width: 720px;
        margin-top: 0px;
-
+       
     }
 
     #gifts .all-gifts{
         flex-direction: column;
         margin: 10px 0px;
-        padding: 0px;
+        padding: 0px;   
     }
 
     #gifts .middle{
@@ -1082,18 +1076,18 @@ background-color: rgb(228, 225, 225);
         text-align: center;
     }
 
+  
 
-
-    #vision .icon{
+    #vision .icon{ 
         margin: 5px;
         padding: 5px;
     }
-
+    
     #vision .icon-content{
         margin: 5px;
         padding: 5px;
     }
-
+    
     #vision .icon img {
         object-fit: contain;
         width: 110%;
@@ -1120,25 +1114,25 @@ background-color: rgb(228, 225, 225);
         flex-wrap: row;
         align-items: center;
         justify-content: center;
-    }
-
+    } 
+    
     #vision .social-item{
         margin: 15px 15px;
         padding: 5px;
         flex-basis: 25%;
     }
-
+    
     #vision .social-item img{
         width: 50%;
         height: 50%;
     }
-
-
+    
+    
     #vision .join-us-content{
         margin: 15px;
         padding: 5px;
     }
-
+    
     #vision .join-us-content h6{
         color: teal;
         font-size: 1.2rem;
@@ -1148,8 +1142,8 @@ background-color: rgb(228, 225, 225);
     #vision .email input{
          margin-right: 15rem;
     }
-
-
+    
+    
     #vision .recaptcha{
         margin: 15px;
         padding: 2px;
@@ -1161,18 +1155,18 @@ background-color: rgb(228, 225, 225);
     #vision .recaptcha input{
         flex-basis: 30%;
     }
-
-
+    
+    
     #vision .btn{
         margin: 0 15px;
         padding: 2px;
     }
-
-
+    
+    
     #vision .vision-image{
         display: none;
     }
-
+    
     /*end of vision section*/
 
     /*testimonial section*/
@@ -1214,7 +1208,7 @@ background-color: rgb(228, 225, 225);
         padding: 2px 10px;
         height: 80px;
     }
-
+   
     #footer .footer-item ul{
         display: none;
     }
@@ -1223,7 +1217,7 @@ background-color: rgb(228, 225, 225);
         cursor: pointer;
         margin: 2px 10px;
         padding: 2px 10px;
-
+      
     }
 
     #footer .footer-item h4:hover{
@@ -1245,13 +1239,13 @@ background-color: rgb(228, 225, 225);
         font-size: 1.2rem;
         text-align: center;
     }*/
-
+   
     /*end of footer*/
 
     #footer{
         display: none;
     }
-
+   
     /*footer-mobile*/
 
     #footer-mobile{
@@ -1259,7 +1253,7 @@ background-color: rgb(228, 225, 225);
         min-width: 100%;
         background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
     }
-
+        
     #footer-mobile .footer{
         width: 100%;
        /* background-color: violet;*/
@@ -1267,15 +1261,15 @@ background-color: rgb(228, 225, 225);
         justify-content: flex-start;
         /*margin: 5px;*/
         padding:5px;
-
+        
     }
-
+    
     #footer-mobile .footer-items{
         margin: 5px;
         padding: 5px;
       /* background-color: indigo;*/
     }
-
+    
     #footer-mobile .dropdown{
        /* background-color: turquoise;*/
         margin: 5px;
@@ -1340,13 +1334,13 @@ background-color: rgb(228, 225, 225);
 
     /*gifts section*/
    /* #gifts .gifts{
-        min-width: 450px;
+        min-width: 450px;   
     }
     #gifts .all-gifts{
         flex-direction: column;
         margin: 1px;
-        padding: 1px;
-        flex-wrap: wrap;
+        padding: 1px;  
+        flex-wrap: wrap; 
     }
 
     #gifts .gift-item{
@@ -1364,7 +1358,7 @@ background-color: rgb(228, 225, 225);
        flex-direction: row;
         align-items: center;
         justify-content: center;
-
+       
     }
 
     #gifts .middle .top{
@@ -1377,7 +1371,7 @@ background-color: rgb(228, 225, 225);
 
     #gifts .middle .gift-img{
         height: 100px;
-
+     
     }
 
     #gifts .left{
@@ -1440,17 +1434,17 @@ background-color: rgb(228, 225, 225);
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 5px;
+        border-radius: 5px; 
         margin: 10px;
         padding: 5px;
         flex-basis: 45%;
     }
-
+    
     #vision .icon-content{
         margin: 5px;
         padding: 5px;
     }
-
+    
     #vision .icon img {
         object-fit: contain;
         width: 80%;
@@ -1458,7 +1452,7 @@ background-color: rgb(228, 225, 225);
     }
 
     #vision .vision-description{
-
+       
         flex-direction: column;
         width: 100%
     }
@@ -1484,25 +1478,25 @@ background-color: rgb(228, 225, 225);
         flex-wrap: row;
         align-items: center;
         justify-content: center;
-    }
-
+    } 
+    
     #vision .social-item{
         margin: 5px 5px;
         padding: 5px;
         flex-basis: 25%;
     }
-
+    
     #vision .social-item img{
         width: 50%;
         height: 50%;
     }
-
-
+    
+    
     #vision .join-us-content{
         margin: 5px;
         padding: 5px;
     }
-
+    
     #vision .join-us-content h6{
         color: teal;
         font-size: 1rem;
@@ -1516,8 +1510,8 @@ background-color: rgb(228, 225, 225);
     #vision .email input{
          margin-right: 5rem;
     }
-
-
+    
+    
     #vision .recaptcha{
         width: 95%;
         margin: 5px;
@@ -1531,14 +1525,14 @@ background-color: rgb(228, 225, 225);
         flex-basis: 30%;
         font-size: 1rem;
     }
-
-
+    
+    
     #vision .btn{
         margin: 5px;
         padding: 2px;
     }
-
-
+    
+    
     #vision .vision-image{
         display: none;
     }
@@ -1561,25 +1555,25 @@ background-color: rgb(228, 225, 225);
          align-items: center;
          padding: 0px;
        /*  background-color: blue;*/
-
+         
      }
      /*
      #testimonials-mobile .section-title{
          background-color: pink;
      }*/
-
+     
      #testimonials-mobile .testimonial-items{
         /* background-color: pink;*/
-
+        
          margin: 5px;
          margin-top: 5px;
          padding: 5px;
-
+         
         /* box-shadow: 0px 0px 10px 0px olive;*/
      }
-
-
-
+     
+     
+     
      #testimonials-mobile .testimonial-item{
          display: flex;
          flex-direction: column;
@@ -1590,7 +1584,7 @@ background-color: rgb(228, 225, 225);
          transition: 0.3s ease transform;
          background-color: #fff;
      }
-
+     
      #testimonials-mobile .testimonial-item:hover{
          transform: scale(1.04);
      }
@@ -1625,7 +1619,7 @@ background-color: rgb(228, 225, 225);
     #footer{
         display: none;
     }
-
+   
     /*footer-mobile*/
 
     #footer-mobile{
@@ -1633,7 +1627,7 @@ background-color: rgb(228, 225, 225);
         min-width: 100%;
         background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
     }
-
+        
     #footer-mobile .footer{
         width: 100%;
        /* background-color: violet;*/
@@ -1641,15 +1635,15 @@ background-color: rgb(228, 225, 225);
         justify-content: flex-start;
         /*margin: 5px;*/
         padding:5px;
-
+        
     }
-
+    
     #footer-mobile .footer-items{
         margin: 5px;
         padding: 5px;
       /* background-color: indigo;*/
     }
-
+    
     #footer-mobile .dropdown{
        /* background-color: turquoise;*/
         margin: 5px;
@@ -2478,367 +2472,4 @@ li {
 
 .horVerSlider.fullscreen #vertical-slider:before {
     background: #FFFFFF;
-}
-
-
-
-/* code to hide perticular portion in responsive part */
-@media screen and (max-width: 620px) {
-    .hidden{
-        display: none;
-    }
-}
-.banner{
-    height: 482px;
-    background-color: #F2F2F2;
-    background-image: linear-gradient(30deg, rgba(7, 6, 72, 0.3), rgba(242,242,242,1), url('images/image1.jfif'));
-}
-.cont{
-    margin: 0 1%;
-}
-/* recycle section */
-.recycle{
-    display: flex;
-    margin: 4% 0%;
-}
-.recycle-item{
-    width: 31.5%;
-    height: 280px;
-    background-color: lightblue;
-    margin: 0 1%;
-    border-radius: 20px;
-}
-.recycle-content{
-    margin: 20% 12%;
-}
-.recycle-para{
-    font-weight: 600;
-    font-size: 2.5rem;
-}
-.recycle-button{
-    padding: 1.5% 34%;
-    border-width: 0;
-    font-weight: 625;
-    border-radius: 5px;
-    color: #15707c;
-}
-/* responsive code for recycle section */
-@media screen and (max-width:620px) {
-
-    .recycle-item{
-        width: 50%;
-    }
-}
-/* featured collection section */
-.featured-collection{
-    display: flex;
-    margin: 1.5% 0;
-}
-/* divided the section in two parts */
-.feature-heading{
-    color: #008080;
-}
-.left-part{
-    width: 66%;
-    height: 710px;
-    margin: 0 0.5%;
-}
-.right-part{
-    width: 33%;
-    height: 735px;
-    padding-bottom: 1%;
-}
-/* divided the left part in three sections  */
-.top{
-    display: flex;
-    height: 33%;
-}
-.middle{
-    height: 33%;
-    margin: 1% 0;
-}
-.bottom{
-    display: flex;
-    height: 33%;
-}
-/* made further parts in the left section */
-.item-left{
-    width: 50%;
-    margin-right: 1%;
-}
-.item-right{
-    width: 50%;
-}
-/* general css rule to set widht of image as its parent */
-.parent img{
-    width: 100%;
-    height: 100%;
-}
-/* end of feature section */
-/* buy 1 get free section */
-.buy1{
-    display: flex;
-    height: 600px;
-    background-color: #CCCCCC;
-    padding: 0%;
-    margin: 0%;
-}
-@media screen and (max-width: 620px){
-    .buy1{
-        flex-direction: row;
-    }
-    .buy1-box{
-        width: 100%;
-    }
-    .buy1-left{
-        width: 100%;
-        display: none;
-    }
-    .buy1-left p{
-        font-size: 1.5rem;
-    }
-    .buy1-right{
-        width: 100%;
-        z-index: 2;
-    }
-}
-@media screen and (min-width: 620px){
-    .buy1-box{
-        width: 50%;
-    }
-    .buy1-left{
-        width: 50%;
-    }
-    .buy1-right{
-        width: 50%;
-    }
-    .buy1-image{
-        height: 100%;
-    }
-}
-/* left portion */
-
-/* the line in the left portion */
-.buy1-left p{
-    margin: 20% 10%;
-    font-size: 4.5rem;
-    font-weight: 90%;
-}
-.buy1-left span{
-    color: #15707C;
-}
-/* right portion */
-.buy1-right{
-
-    margin: 2%;
-}
-/* sub divs to give proper layout */
-.buy1-subright{
-    display: flex;
-    width: 100%;
-    height: 50%;
-}
-/* for each box in the right section */
-.buy1-box{
-
-    margin: 2%;
-    position: relative;
-}
-/* for background image */
-.buy1-image{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-/* for bottom line */
-.buy1-box p{
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 15%;
-    font-size: 30px;
-    color: white;
-}
-/* for button in the bottom */
-.buy1-box button{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    background-color: #004953;
-    border: 0;
-    padding: 1% 0;
-}
-/* end of buy1 section */
-/* vision */
-@media screen and (max-width: 620px){
-    .vision{
-        flex-direction: column;
-        height: 900px;
-    }
-    .vision-left{
-        width: 100%;
-    }
-    .vision-img{
-        height: 230%;
-    }
-    .vision-right{
-        width: 100%;
-    }
-    .vision-box{
-        margin: 12% 0% 10% 5%;
-        width: 90%;
-        height: 300%;
-    }
-    .vision-icons{
-        position: relative;
-        align-items: center;
-        margin-left: 21%;
-    }
-    .vision-icons .icons{
-        width: 2rem;
-        height: 2rem;
-        margin: 1% 4.5%;
-        padding: 6.1% 6%;
-        border-radius: 100%;
-        background-color: #CCCCCC;
-    }
-}
-@media screen and (min-width: 620px){
-    .vision{
-        height: 900px;
-    }
-    .vision-left{
-        width: 55%;
-    }
-    .vision-right{
-        width: 45%;
-    }
-    .vision-img{
-        height: 110%;
-    }
-    .vision-box{
-        margin: 12% 0% 10% 5%;
-        width: 85%;
-        height: 50%;
-    }
-    .vision-icons{
-        position: absolute;
-        right: 5%;
-    }
-    .vision-icons .icons{
-        width: 2.5rem;
-        height: 2rem;
-        margin: 0 5%;
-        padding: 7%;
-        border-radius: 100%;
-        background-color: #CCCCCC;
-    }
-}
-.vision{
-    display: flex;
-
-}
-/* css for background image */
-.vision-img{
-    width: 100%;
-    /* height: 105%; */
-    opacity: 30%;
-    z-index: -2;
-    position: absolute;
-}
-/* left portion */
-.vision-left{
-    position: relative;
-    /* width: 55%; */
-    height: 90%;
-}
-.vision-left-content{
-    margin: 12% 0 10% 5%;
-}
-/* paragraph in the left section */
-.visionl-para{
-    margin-top: 15%;
-    margin-right: 4%;
-    font-weight: 450;
-}
-.vision-email{
-    margin-top: 10%;
-    font-weight: bold;
-}
-/* input button in form */
-.vision-form input{
-    padding-right: 11%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-left: 2%;
-    background-color: #CCCCCC;
-    border: 0;
-    border-radius: 10px;
-    color: #004953;
-}
-.vision-form button{
-    margin-left: 1%;
-    border: 0;
-    background-color: #15707C;
-    color: white;
-    padding: 1% 2%;
-    border-radius: 5px;
-}
-/* right portion */
-/* .vision-right{
-    width: 45%;
-} */
-/* whitish box in right portion */
-.vision-box{
-
-    /* width: 85%;
-    height: 50%; */
-    background-color: #C4C4C4;
-}
-/* div for icons */
-.vision-icons{
-    display: flex;
-    /* position: absolute;
-    right: 5%; */
-}
-
-
-/* footer */
-#footer{
-    background-color: #004953;
-    padding: 5% 0;
-}
-.footer{
-    display: flex;
-}
-.footer-content{
-    width: 20%;
-    margin-left: 2%;
-}
-.footer-heading{
-    color: #F67171;
-    padding-bottom: 5%;
-}
-.footer-list{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-.footer-list li{
-    color: white;
-}
-.footer-icons{
-    margin: 0 40%;
-    margin-top: 5%;
-}
-.footer-icons .icons{
-    margin: 0 3%;
-    padding: 7%;
-    border-radius: 100%;
-    background-color: #CCCCCC;
-}
-@media screen and (max-width: 620px) {
-    .footer-content{
-        width: 50%;
-    }
 }

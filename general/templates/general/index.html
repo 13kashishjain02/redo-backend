@@ -1,11 +1,23 @@
-{% extends 'general/base.html' %}
+{% extends 'general/base2.html' %}
 {%load static%}
 {% block title%}Home{% endblock %}
 {% block head%}
     <link rel="stylesheet" href="{%static 'general/css/index-style.css'%}">
     <link rel="stylesheet" href="{%static 'general/css/home.css'%}">
 
-
+    <!--product slider / hide box in mobile view-->
+     <style>
+        @media (max-width: 768px) {
+            .hide {
+              display: none;
+            }
+          }
+        @media (min-width: 769px) {
+            .hide_lap {
+              display: none;
+            }
+          }
+    </style>
 {% endblock %}
 {% block body%}
 
