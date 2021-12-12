@@ -28,7 +28,7 @@
 
                     <div class="mid-img">
                         <i class="fas fa-heart  heart"></i>
-                        <img src="{%static 'general/images/shoes.jfif'%}" class="mid-image" alt="">
+                        <img src="../media/{{product.image}}" class="mid-image" alt="">
                     </div>
                     <div class="mid-bot">
                         <div class="blue"></div>
@@ -41,7 +41,7 @@
             <div class="product-right">
                 <div class="right-head">
                     <div class="head-l">
-                        <h1>Reda</h1>
+                        <h1>{{product.name}}</h1>
                         <p>420,173 Ratings & 2,563 Reviews</p>
                     </div>
                     <div class="head-r">
@@ -58,9 +58,15 @@
                     </ul>
                 </div>
                 <div class="third-part row">
+                    {%if product.special_price%}
                     <div class="price col-md-6 col-sm-6">
-                        <p class="price-text" style="font-size: 2.5rem; "><strong>&#x20b9; 4000</strong> <span style="font-size: 2rem; text-decoration: line-through;">&#x20b9; 5000</span></p>
+                        <p class="price-text" style="font-size: 2.5rem; "><strong>&#x20b9; {{product.special_price}}</strong> <span style="font-size: 2rem; text-decoration: line-through;">&#x20b9; {{product.mrp}}</span></p>
                     </div>
+                    {%else%}
+                    <div class="price col-md-6 col-sm-6">
+                        <p class="price-text" style="font-size: 2.5rem; "><strong>&#x20b9; {{product.mrp}}</strong> </p>
+                    </div>
+                    {%endif%}
                     <div class="size col-md-6 col-sm-6" style="display: flex;">
                         <div class="size-text" style="width: 30%; margin-top: 2%; margin-left: 2%;">
                             <p style="font-size: 1.5rem; margin: 0; padding: 0;"><strong>Size: </strong></p>
