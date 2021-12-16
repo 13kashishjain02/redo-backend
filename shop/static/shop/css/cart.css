@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 28px;
+}
+
+body {
+    background-color: #E5E5E5;
+}
+
+.card img {
+    aspect-ratio: 3/4;
+    max-width: 143px;
+}
+
+.cart-card {
+    background-color: #E5E5E5;
+    border: 0px;
+}
+
+.listing {
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.totalList {
+    color: #333333;
+    background-color: rgba(204, 204, 204, 0.2) !important;
+    border-radius: 1rem;
+    margin: 0.5rem 0.2rem;
+}
+
+.half-container {
+    width: 50%;
+}
+
+.scroller {
+    height: 18rem;
+    overflow-y: scroll;
+}
+
+.scroller::-webkit-scrollbar {
+    width: 9px
+}
+
+.scroller::-webkit-scrollbar-track {
+    background: #cccccc;
+    border-radius: 20px
+}
+
+.scroller::-webkit-scrollbar-thumb {
+    background: #004953;
+    border-radius: 20px
+}
+
+.carousel-cell:not(.uniqueCollection, .specialCollection, .blog-carousel, .shop-carousel, .testimonial-carousel) {
+    width: 20%;
+    margin-right: 5px;
+    background: #F2F2F2;
+    box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+    border-radius: 30px;
+}
+
+.carousel-cell:hover:not(.uniqueCollection, .specialCollection, .blog-carousel, .shop-carousel, .testimonial-carousel) {
+    box-shadow: 0px 4px 15px #004953;
+}
+
+.arrows {
+    display: inline-block;
+    cursor: pointer
+}
+
+.arrows i:not(.blogArrow) {
+    border-radius: 50%;
+    border: 1px solid #004953;
+    padding: 5px;
+    background-color: #004953;
+    color: white;
+    font-size: 15px;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease
+}
+
+.arrows:hover i {
+    color: #606264
+}
+
+.prev_arrow {
+    margin-right: 15px
+}
+
+.DisplayinMobile {
+    display: none;
+}
+
+@media screen and ( max-width: 990px) {
+    .noDisplayinMobile {
+        display: none;
+    }
+    .DisplayinMobile {
+        display: block;
+    }
+}
+
+
+/* For iPads, Tablets. */
+
+@media screen and ( max-width: 768px) {
+    html {
+        font-size: 20px;
+    }
+    .noDisplayinMobile {
+        display: none;
+    }
+    .carousel-cell:not(.uniqueCollection, .specialCollection, .blog-carousel, .shop-carousel, .testimonial-carousel) {
+        width: 33%;
+        min-width: 0.4vw;
+    }
+    .half-container {
+        width: 90%;
+    }
+}
+
+
+/* For Mobiles */
+
+@media screen and ( max-width: 480px) {
+    html {
+        font-size: 18px;
+    }
+    .noDisplayinMobile {
+        display: none;
+    }
+    .carousel-cell:not(.uniqueCollection, .specialCollection, .blog-carousel, .shop-carousel, .testimonial-carousel) {
+        width: 50%;
+        min-width: 0.5vw;
+    }
+    .half-container {
+        width: 90%;
+    }
+}

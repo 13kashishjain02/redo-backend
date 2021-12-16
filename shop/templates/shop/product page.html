@@ -67,23 +67,30 @@
                         <p class="price-text" style="font-size: 2.5rem; "><strong>&#x20b9; {{product.mrp}}</strong> </p>
                     </div>
                     {%endif%}
-                    <div class="size col-md-6 col-sm-6" style="display: flex;">
-                        <div class="size-text" style="width: 30%; margin-top: 2%; margin-left: 2%;">
-                            <p style="font-size: 1.5rem; margin: 0; padding: 0;"><strong>Size: </strong></p>
-                        </div>
-                        <div class="size-div" style="display: flex; width: 70%; margin-top: 2% ;">
-                            <div class="size-box">6</div>
-                            <div class="size-box">7</div>
-                            <div class="size-box">8</div>
-                            <div class="size-box">9</div>
-                            <div class="size-box">10</div>
-                        </div>
+<!--                    <div class="size col-md-6 col-sm-6" style="display: flex;">-->
+<!--                        <div class="size-text" style="width: 30%; margin-top: 2%; margin-left: 2%;">-->
+<!--                            <p style="font-size: 1.5rem; margin: 0; padding: 0;"><strong>Size: </strong></p>-->
+<!--                        </div>-->
+<!--                        <div class="size-div" style="display: flex; width: 70%; margin-top: 2% ;">-->
+<!--                            <div class="size-box">6</div>-->
+<!--                            <div class="size-box">7</div>-->
+<!--                            <div class="size-box">8</div>-->
+<!--                            <div class="size-box">9</div>-->
+<!--                            <div class="size-box">10</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+                <form method="post" action="../addtocart/" >
+                    {%csrf_token%}
+                    <div class="shop-now">
+                        <input type="hidden" name="qty" value="1">
+<!--                        <input type="hidden" name="image" value="{{product.image}}">-->
+                        <input type="hidden" name="id" value="{{product.id}}">
+                        <button type="submit" class="shop">Add to cart</button>
+                        <button type="submit" class="add">Buy Now</button>
                     </div>
-                </div>
-                <div class="shop-now">
-                    <button class="shop">Add to cart</button>
-                    <button class="add">Buy Now</button>
-                </div>
+                </form>
             </div>
         </div>
         <div class="second-s">
