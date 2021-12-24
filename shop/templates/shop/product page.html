@@ -3,6 +3,21 @@
 {% block title%}Myproducts - Elpizo{% endblock %}
 {% block head%}
     <link rel="stylesheet" href="{%static 'shop/css/product.css'%}">
+<!--    overflow-->
+    <style>
+#overflowTest {
+
+  color: black;
+  padding: 15px;
+  width: 100%;
+  height: 300px;
+
+
+  background: #f2f2f2;
+  border: none;
+  overflow: auto
+}
+</style>
 
 {% endblock %}
 {% block body%}
@@ -48,7 +63,7 @@
                         <h1>10% off</h1>
                     </div>
                 </div>
-                <div class="description ">
+                <div class="description" id="overflowTest">
                     <h3>Product Description</h3>
                     <ul class="description-point">
                         <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat consequatur consectetur et odio nulla, provident iusto dicta voluptate obcaecati optio accusantium maiores? Odit quasi eius quisquam nobis corporis possimus ullam?</li>
@@ -94,25 +109,25 @@
             </div>
         </div>
         <div class="second-s">
-            <div class="info info1">
-                <p>Detail</p>
-                <hr align="left">
+            <div class="info info1 " style="margin-top:20px; margin-bottom:-25px">
+                <p style="font-size:25px">Description</p>
+<!--                <hr align="left">-->
             </div>
-            <div class="info">
-                <p>Warranty</p>
-            </div>
-            <div class="info">
-                <p>Custom Engrave</p>
-            </div>
-            <div class="info">
-                <p>How to Adjust</p>
-            </div>
-            <div class="info">
-                <p>How to Care</p>
-            </div>
-            <div class="info">
-                <p>Gallery</p>
-            </div>
+<!--            <div class="info">-->
+<!--                <p>Warranty</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>Custom Engrave</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>How to Adjust</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>How to Care</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>Gallery</p>-->
+<!--            </div>-->
         </div>
         <hr>
         <div class="below-s">

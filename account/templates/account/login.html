@@ -1,4 +1,4 @@
-{% extends 'general/base.html' %}
+{% extends 'general/base2.html' %}
 {%load static%}
 {% block head%}
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
         <div class="main">
             <div class="main-content">
                 <div class="form">
-                    <hr class="colored">    
+                    <hr class="colored">
                     <p class="sign">Sign-up <span class="bar">|</span> <span class="login">Login</span></p>
                     <form method="post" action="../login/" class="form">
                         {%csrf_token%}
@@ -50,4 +50,6 @@
             </div>
         </div>
     </div>
+
+
 {% endblock %}

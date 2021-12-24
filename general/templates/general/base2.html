@@ -2,7 +2,7 @@
 {%load static%}
 <html>
 <head>
-<!--  <title>Redopact Search page</title>-->
+    {% block title%} {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
@@ -15,285 +15,345 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
-<style>
-* {
-  margin: 0px;
-  padding: 0px;
-}
+    <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
 
-body {
-  background-color: #f2f2f2;
-  font-family: sans-serif;
-}
+    body {
+      background-color: #f2f2f2;
+      font-family: sans-serif;
+    }
 
-.login, .menu-head, .cat {
-  display: none;
-}
+    .login, .menu-head, .cat {
+      display: none;
+    }
 
-/* search bar */
-.search-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #004953;
-  padding: 0px 45px;
-}
+    /* search bar */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #004953;
+      padding: 0px 45px;
+    }
 
-.burger {
-  display: none;
-}
+    .burger {
+      display: none;
+    }
 
-.line {
-  background-color: white;
-  width: 20px;
-  height: 3px;
-  margin: 0px 5px
-}
+    .line {
+      background-color: white;
+      width: 20px;
+      height: 3px;
+      margin: 0px 5px
+    }
 
-.big-line {
-  margin: 5px;
-  background-color: white;
-  width: 30px;
-  height: 3px;
-}
+    .big-line {
+      margin: 5px;
+      background-color: white;
+      width: 30px;
+      height: 3px;
+    }
 
-.search {
-  display: flex;
-  padding: 5px 15px;
-  background-color: #f3f4f9;
-  width: 600px;
-  border-radius: 8px;
-  border: 1px solid #f3f4f9;
-}
+    .search {
+      display: flex;
+      padding: 5px 15px;
+      background-color: #f3f4f9;
+      width: 600px;
+      border-radius: 8px;
+      border: 1px solid #f3f4f9;
+    }
 
-.search-btn {
-  background-color: #f3f4f9;
-  border: 1px solid #f3f4f9;
-  outline: none;
-  font-size: 1.2rem;
-  color: #777;
-}
+    .search-btn {
+      background-color: #f3f4f9;
+      border: 1px solid #f3f4f9;
+      outline: none;
+      font-size: 1.2rem;
+      color: #777;
+    }
 
-.sb {
-  background-color: #f3f4f9;
-  width: 100%;
-  border: 1px solid #f3f4f9;
-  outline: none;
-  font-weight: 400;
-  font-size: 0.8rem;
-  margin-left: 35px;
-  color: #777;
-}
+    .sb {
+      background-color: #f3f4f9;
+      width: 100%;
+      border: 1px solid #f3f4f9;
+      outline: none;
+      font-weight: 400;
+      font-size: 0.8rem;
+      margin-left: 35px;
+      color: #777;
+    }
 
-.search-res {
-  display: none;
-}
-/* /search bar */
+    .search-res {
+      display: none;
+    }
+    /* /search bar */
 
-/*nav-bar*/
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  padding: 10px;
-}
+    /*nav-bar*/
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      padding: 10px;
+    }
 
-.content {
-  color: #004953;
-  margin: 10px 0px 10px 10px;
-}
+    .content {
+      color: #004953;
+      margin: 10px 0px 10px 10px;
+    }
 
-.fa-chevron-down {
-  vertical-align: middle;
-}
-/* nav-bar finished */
+    .fa-chevron-down {
+      vertical-align: middle;
+    }
+    /* nav-bar finished */
 
-/*content below nav-bar*/
+    /*content below nav-bar*/
 
-.drop-pc {
-  position: relative;
-}
+    .drop-pc {
+      position: relative;
+    }
 
-.dd-pc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .dd-pc {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.drop-down-pc {
-  display: none;
-  position: absolute;
-  z-index: 100;
-  padding: 15px 0px;
-  background-color: white;
-  width: 200px;
-}
+    .drop-down-pc {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      padding: 15px 0px;
+      background-color: white;
+      width: 200px;
+    }
 
-.drop-pc:hover .drop-down-pc {
-  display: block;
-}
+    .drop-pc:hover .drop-down-pc {
+      display: block;
+    }
 
-.d-pc {
-  list-style: none;
-  color: #004953;
-  padding: 10px 20px;
-  text-transform: capitalize;
-}
+    .d-pc {
+      list-style: none;
+      color: #004953;
+      padding: 10px 20px;
+      text-transform: capitalize;
+    }
 
-.d-pc:hover {
-  background-color: #f2f2f2;
-}
+    .d-pc:hover {
+      background-color: #f2f2f2;
+    }
 
-#arrow-pc {
-  margin-left: 5px;
-  margin-right: 10px;
-  color: #004953;
-}
+    #arrow-pc {
+      margin-left: 5px;
+      margin-right: 10px;
+      color: #004953;
+    }
 
-.show {
-  display: flex !important;
-}
+    .show {
+      display: flex !important;
+    }
 
-@media screen and (max-width: 640px) {
+    @media screen and (max-width: 640px) {
 
-.search-bar {
-  margin-bottom: 10px;
-  padding: 0px;
-  width: 100%;
-}
+    .search-bar {
+      margin-bottom: 10px;
+      padding: 0px;
+      width: 100%;
+    }
 
-.burger {
-  display: flex;
-  flex-direction: column;
-}
+    .burger {
+      display: flex;
+      flex-direction: column;
+    }
 
-.search {
-  display: none !important;
-}
+    .search {
+      display: none !important;
+    }
 
-.sb, .search-btn {
-  background-color: #fff;
-  border: 1px solid #fff;
-}
+    .sb, .search-btn {
+      background-color: #fff;
+      border: 1px solid #fff;
+    }
 
-.search-res {
-  display: flex;
-  margin: auto;
-  padding: 5px 5px;
-  background-color: #fff;
-  width: 90%;
-  border-radius: 8px;
-  border: 1px solid #004953;
-}
+    .search-res {
+      display: flex;
+      margin: auto;
+      padding: 5px 5px;
+      background-color: #fff;
+      width: 90%;
+      border-radius: 8px;
+      border: 1px solid #004953;
+    }
 
-.fa-headphones{
-  display: none !important;
-}
+    .fa-headphones{
+      display: none !important;
+    }
 
-.nav {
-    display: none;
-    position: fixed;
-    top: 0px;
-    /* bottom: 0px; */
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: #004953;
-    padding: 0px;
-    width: 80%;
-    height: auto;
-    z-index: 100;
-  }
+    .nav {
+        display: none;
+        position: fixed;
+        top: 0px;
+        /* bottom: 0px; */
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        background-color: #004953;
+        padding: 0px;
+        width: 80%;
+        height: auto;
+        z-index: 100;
+      }
 
-  .menu-head {
-    width: 100%;
-    display: none;
-    justify-content: flex-end;
-    background-color: #fff;
-    padding: 10px 0px;
-  }
+      .menu-head {
+        width: 100%;
+        display: none;
+        justify-content: flex-end;
+        background-color: #fff;
+        padding: 10px 0px;
+      }
 
-  .cross {
-    color: #004953;
-    font-size: 1.6rem;
-    padding: 0px 10px;
-  }
+      .cross {
+        color: #004953;
+        font-size: 1.6rem;
+        padding: 0px 10px;
+      }
 
-  .login {
-    display: none;
-    width: 100%;
-    border-bottom: 1px solid white;
-  }
+      .login {
+        display: none;
+        width: 100%;
+        border-bottom: 1px solid white;
+      }
 
-  .m {
-    color: white;
-    margin: 0px 10px;
-    padding: 10px 0px;
-  }
+      .m {
+        color: white;
+        margin: 0px 10px;
+        padding: 10px 0px;
+      }
 
-  .cat {
-    display: none;
-    color: white;
-    margin: 5px 10px 0px;
-    padding: 5px 0px;
-  }
+      .cat {
+        display: none;
+        color: white;
+        margin: 5px 10px 0px;
+        padding: 5px 0px;
+      }
 
-  .content {
-    color: #fff;
-    margin: 10px 0px 10px 10px;
-  }
+      .content {
+        color: #fff;
+        margin: 10px 0px 10px 10px;
+      }
 
-  .drop-pc {
-    position: initial;
-    width: 100%;
-  }
+      .drop-pc {
+        position: initial;
+        width: 100%;
+      }
 
-  .drop-down-pc {
-    display: none;
-    position: initial;
-    /* z-index: 100; */
-    margin: 0px 10px;
-    padding: 15px 0px;
-    background-color: white;
-    width: auto;
-    border-radius: 10px;
-  }
+      .drop-down-pc {
+        display: none;
+        position: initial;
+        /* z-index: 100; */
+        margin: 0px 10px;
+        padding: 15px 0px;
+        background-color: white;
+        width: auto;
+        border-radius: 10px;
+      }
 
-  .drop-pc:hover .drop-down-pc {
-    display: block;
-  }
+      .drop-pc:hover .drop-down-pc {
+        display: block;
+      }
 
-  .dd-pc {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+      .dd-pc {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-  #arrow-pc {
-    margin-left: 5px;
-    margin-right: 10px;
-    color: #fff;
-  }
+      #arrow-pc {
+        margin-left: 5px;
+        margin-right: 10px;
+        color: #fff;
+      }
 
-  .d-pc {
-    list-style: none;
-    color: #004953;
-    padding: 10px 20px;
-    text-transform: capitalize;
-  }
+      .d-pc {
+        list-style: none;
+        color: #004953;
+        padding: 10px 20px;
+        text-transform: capitalize;
+      }
 
-  .d-pc:hover {
-    background-color: #f2f2f2;
-  }
+      .d-pc:hover {
+        background-color: #f2f2f2;
+      }
 
-  .dil {
-    display: none !important;
-  }
-}
-</style>
+      .dil {
+        display: none !important;
+      }
+    }
+    /* footer */
+    #footer {
+      background-color: #004953;
+      padding: 2% 0;
+    }
+
+    .footer,
+    .contents {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+    }
+
+    .footer-content {
+      margin: 0px 30px;
+    }
+
+    .footer-heading {
+      color: #f67171;
+      padding-bottom: 5%;
+    }
+
+    .footer-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-list li {
+      color: white;
+      padding: 1% 0;
+    }
+
+    .footer-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 40%;
+      margin-top: 5%;
+    }
+
+    .footer-icons .icons {
+      margin: 0 3%;
+      padding: 7%;
+      border-radius: 100%;
+      background-color: #cccccc;
+    }
+    /* footer finished */
+    @media screen and (max-width: 640px) {
+      .footer {
+        flex-direction: column;
+      }
+      .contents {
+        margin: 25px 0px;
+      }
+
+      .footer-list {
+        line-height: 1.3;
+      }
+    }
+
+    </style>
     {% block head%} {% endblock %}
-    {% block title%} {% endblock %}
 </head>
 <body>
 <nav class="search-bar">
@@ -531,5 +591,83 @@ function appear() {
   }
 </script>
 {% block body%} {% endblock %}
+
+  <footer>
+    <div id="footer">
+        <div class="footer">
+          <div class="contents">
+            <div class="footer-content">
+              <h2 class="footer-heading">Explore</h2>
+              <ul class="footer-list">
+                <li>Redopact for Business</li>
+                <li>Custom Gift Boxes</li>
+                <li>Bulk</li>
+                <li>Custon Branding</li>
+                <li>Deals</li>
+                <li>Clearance</li>
+              </ul>
+            </div>
+            <div class="footer-content">
+              <h2 class="footer-heading">Get Involved</h2>
+              <ul class="footer-list">
+                <li>Become a Supplier</li>
+                <li>Job Opportunities</li>
+                <li>Affiliates</li>
+                <li>In the Press</li>
+                <li>Redopact Rewards</li>
+              </ul>
+            </div>
+          </div>
+          <div class="contents">
+            <div class="footer-content">
+              <h2 class="footer-heading">Support</h2>
+              <ul class="footer-list">
+                <li>My Account</li>
+                <li>FAQs</li>
+                <li>Shipping & Returns</li>
+                <li>Privacy Policy</li>
+                <li>Terms & Conditions</li>
+                <li>Contact Us</li>
+              </ul>
+            </div>
+            <div class="footer-content">
+              <h2 class="footer-heading">About Us</h2>
+              <ul class="footer-list">
+                <li>Impact</li>
+                <li>Our Story</li>
+                <li>Meet The team</li>
+                <li>Sustainability Logos</li>
+                <li>Our Footprint</li>
+                <li>Blog</li>
+                <li>Land Acknowledgement</li>
+              </ul>
+            </div>
+          </div>
+          <div class="contents">
+            <div class="footer-content">
+              <h2 class="footer-heading">Contact Us</h2>
+              <ul class="footer-list">
+                <li>
+                  <strong>info@upciclo.com</strong> <br />
+                  (General queries)
+                </li>
+                <li><strong>sales@upciclo.com</strong><br />(Seller queries)</li>
+                <li>
+                  <strong>support@upciclo.com</strong><br />(Technical queries)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-icons">
+          <i
+            style="background-color: #f67171; color: white"
+            class="fab fa-facebook-f icons"
+          ></i>
+          <i class="fab fa-twitter icons"></i>
+          <i class="fab fa-linkedin-in icons"></i>
+        </div>
+    </div>
+  </footer>
 </body>
 </html>

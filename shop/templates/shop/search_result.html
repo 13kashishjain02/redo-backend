@@ -103,9 +103,9 @@ body {
 
 /*content below nav-bar*/
 .result {
-  margin: 25px;
+  margin: 20px 25px;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -144,7 +144,7 @@ body {
       max-width: 250px;
       background-color: #004953;
       padding: 10px 15px;
-      border-radius: 25px;
+      /* border-radius: 25px; */
     }
 
     .filter-btn {
@@ -162,12 +162,12 @@ body {
     .cover {
       color: #f2f2f2;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 16px;
     }
 
     #arrow {
       color: #f2f2f2;
-      font-size: 20px;
+      font-size: 18px;
       margin-left: 5px;
     }
 
@@ -175,16 +175,16 @@ body {
       z-index: 100;
       display: none;
       position: absolute;
-      background-color: #004953;
-      padding: 15px;
-      border-radius: 25px;
+      background-color: #fff;
+      padding: 10px;
+      /* border-radius: 25px; */
     }
 
     .d {
       list-style: none;
       padding: 10px;
-      font-size: 20px;
-      color: #f2f2f2;
+      font-size: 16px;
+      color: #000;
       font-weight: 500;
     }
 
@@ -276,7 +276,7 @@ div.price {
 .size {
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .numbers {
@@ -330,9 +330,9 @@ div.price {
 
 /* corresponding products */
 .products {
-  display: flex;
-  flex-direction: column;
-  margin-top: -15px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-top: -15px;
   margin-left: 10px;
 }
 
@@ -347,7 +347,7 @@ div.price {
 .box {
   margin: 15px 7px 15px 8px;
   position: relative;
-  width: 235px;
+  /* width: 235px; */
   box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
 }
 
@@ -655,6 +655,10 @@ div.price {
 
 @media screen and (max-width: 640px) {
 
+  .dis, .drop {
+    display: none;
+  }
+
   .f-cross {
     display: block;
       color: #004953;
@@ -701,7 +705,7 @@ div.price {
 
   .result {
       margin: 25px 0px 0px 8px;
-    flex-direction: column;
+      align-items: baseline;
   }
 
   .left {
@@ -748,6 +752,7 @@ div.price {
   }
 
   .products {
+      grid-template-columns: 50% 50%;
     margin-left: 0;
       margin-top: 0px;
   }
@@ -882,6 +887,7 @@ div.price {
 
     .filter-btn {
       display: block;
+      border-radius: 0;
     }
 
     img.picture {
@@ -1124,12 +1130,12 @@ div.price {
   <section> <!--Content below nav-bar-->
   <div class="result">
     <div class="left">
-      <p class="dis">Showing results for: <span class="big">"Shoes"</span></p>
+      <!-- <p class="dis">Showing results for: <span class="big">"Shoes"</span></p> -->
       <p class="nr">55 search results found for the keyword "Shoes"</p>
     </div>
     <div class="right">
       <p class="dis">
-        Sort by nearest match:
+        Sort:
       </p>
       <div class="drop" onmouseover="myFunc()" onclick="nn()"><!--drop-down-->
         <div class="dd">
@@ -1173,7 +1179,7 @@ div.price {
 
     <div class="size"><!--Size filter-->
       <p class="s1">Size:</p>
-      <br /><br />
+      <br />
 
       <div class="s">
         <form class="sizes"><!--differnet sizes-->
@@ -1226,7 +1232,7 @@ div.price {
 
     <div class="ho"><!--Home + Office-->
       <p class="s1">Home + Office:</p>
-      <br />
+
       <form class="names"> <!--name-->
         <div class="opts">
           <input type="checkbox" id="office" class="n1" />
@@ -1261,7 +1267,6 @@ div.price {
 
     <div class="ho"><!--product type-->
       <p class="s1">Product type</p>
-      <br />
 
       <form class="names"><!--names-->
         <div class="opts">
@@ -1286,7 +1291,6 @@ div.price {
 
     <div class="ho"><!--sustaniblity feature-->
       <p class="s1">Sustaniblity Feature:</p>
-      <br />
 
       <form class="names">
         <div class="opts">
@@ -1308,10 +1312,12 @@ div.price {
         <p style="color: #004953">See More...</p>
       </form>
     </div>
+
+
 
     <div class="ho"><!--branad-->
       <p class="s1">Branad:</p>
-      <br />
+
 
       <form class="names">
         <div class="opts">
@@ -1334,9 +1340,10 @@ div.price {
       </form>
     </div>
 
-    <div class="ho" style="border-bottom: none"><!--gender-->
+
+    <div class="ho"><!--gender-->
       <p class="s1">Gender:</p>
-      <br />
+
 
       <form class="names">
         <div class="opts">
@@ -1359,6 +1366,30 @@ div.price {
       </form>
     </div>
 
+    <div class="ho" style="border-bottom: none"><!--branad-->
+      <p class="s1">Sort:</p>
+
+      <form class="names">
+        <div class="opts">
+          <input type="checkbox" id="sneakers" class="n1" />
+          <label for="sneakers">Sort by price low to high</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="lace" class="n1" />
+          <label for="lace">Sort by price high to low</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="slip" class="n1" />
+          <label for="slip">Newest first</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="duffle" class="n1" />
+          <label for="duffle">Populartity</label>
+        </div>
+        <p style="color: #004953">See More...</p>
+      </form>
+    </div>
+
     <div class="btns"><!--apply and reset buttons-->
       <button class="btn">Apply Filter</button>
       <button class="btnr">Reset Filter</button>
@@ -1367,432 +1398,280 @@ div.price {
   </aside>
 
   <div class="products"><!--products-->
-      <div class="list"><!--four products-->
-        <div class="b">
-        <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
-            </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
           </div>
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
             </div>
           </div>
         </div>
-        <div class="b">
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
+    </div>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
-            </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
           </div>
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="list"><!--four products-->
-        <div class="b">
-        <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
-            </div>
+    </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
           </div>
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
             </div>
           </div>
         </div>
-        <div class="b">
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
-            </div>
+    </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
           </div>
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="list"><!--four products-->
-        <div class="b">
-        <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
-            </div>
+    </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
           </div>
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
             </div>
           </div>
         </div>
-        <div class="b">
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
-            </div>
+    </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
           </div>
-          <div class="box">
-            <div class="picture">
-              <!--images-->
-              <img
-                class="picture"
-                src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-                width="200"
-                height="250"
-              />
-              <p class="text">Recycled</p>
-              <p class="heart"><i class="fas fa-heart"></i></p>
-            </div>
-            <div class="info">
-              <!--detail-->
-              <div class="name-rating">
-                <p class="brand-name">Brand Name</p>
-                <p class="rating">
-                  4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                  ><i class="fas fa-star-half-alt"></i>
-                </p>
-              </div>
-              <p class="name">Men's Alex Redwood Hemp Shoes</p>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
 
-              <div class="prices">
-                <p class="price">Rs 700 <span class="act-price">1200</span></p>
-                <div class="carts">
-                  <p class="minus">-</p>
-                  <p><i class="fas fa-shopping-cart"></i></p>
-                  <p class="plus">+</p>
-                </div>
-              </div>
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
             </div>
           </div>
         </div>
-      </div>
+    </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
+          </div>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
+
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <img
+            class="picture"
+            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            width="200"
+            height="250"
+          />
+          <p class="text">Recycled</p>
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">Brand Name</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
+          </div>
+          <p class="name">Men's Alex Redwood Hemp Shoes</p>
+
+          <div class="prices">
+            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
   </div>
   </section>
