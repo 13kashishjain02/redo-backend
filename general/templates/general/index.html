@@ -1,25 +1,22 @@
-{% extends 'general/base2.html' %}
-{%load static%}
-{% block title%}Home{% endblock %}
-{% block head%}
-    <link rel="stylesheet" href="{%static 'general/css/index-style.css'%}">
-    <link rel="stylesheet" href="{%static 'general/css/home.css'%}">
+{% extends 'general/base2.html' %} {%load static%} {% block title%}Home{% endblock %} {% block head%}
+<link rel="stylesheet" href="{%static 'general/css/index-style.css'%}">
+<link rel="stylesheet" href="{%static 'general/css/home.css'%}">
 
-    <!--product slider / hide box in mobile view-->
-     <style>
-        @media (max-width: 768px) {
-            .hide {
-              display: none;
-            }
-          }
-        @media (min-width: 769px) {
-            .hide_lap {
-              display: none;
-            }
-          }
-    </style>
-{% endblock %}
-{% block body%}
+<!--product slider / hide box in mobile view-->
+<style>
+    @media (max-width: 768px) {
+        .hide {
+            display: none;
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .hide_lap {
+            display: none;
+        }
+    }
+</style>
+{% endblock %} {% block body%}
 
 
 <body>
@@ -132,8 +129,11 @@
                     <h3 style="color: green;position: absolute; right: 0;">It’ll blow your mind.</h3>
                     <div class="visionl-para">
                         <p>Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugit commodi at quas itaque quaerat dolores error, excepturi ducimus ab corporis quae saepe explicabo iusto libero harum facilis suscipit, sed recusandae ad rem. Corrupti, dolorem eius? Quod dolorum alias, aut exercitationem temporibus nobis odio quas facere nam assumenda, ea nihil?</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde animi accusantium ipsam deleniti libero maiores voluptates deserunt, at commodi qui reprehenderit exercitationem quisquam cupiditate corrupti! Minima cum qui nostrum consequatur, suscipit nam commodi neque. Deserunt, voluptatum laborum maiores adipisci ullam excepturi. Molestiae itaque similique animi. Non exercitationem blanditiis nesciunt porro omnis dolorem maiores consectetur? Illum repellat sequi veritatis maxime doloremque!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugit commodi at quas itaque quaerat dolores error, excepturi ducimus ab corporis quae saepe explicabo iusto libero harum facilis suscipit, sed recusandae ad rem. Corrupti,
+                            dolorem eius? Quod dolorum alias, aut exercitationem temporibus nobis odio quas facere nam assumenda, ea nihil?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde animi accusantium ipsam deleniti libero maiores voluptates deserunt, at commodi qui reprehenderit exercitationem quisquam cupiditate corrupti! Minima cum qui nostrum
+                            consequatur, suscipit nam commodi neque. Deserunt, voluptatum laborum maiores adipisci ullam excepturi. Molestiae itaque similique animi. Non exercitationem blanditiis nesciunt porro omnis dolorem maiores consectetur? Illum
+                            repellat sequi veritatis maxime doloremque!</p>
                     </div>
                     <!-- entering email portion -->
                     <p class="vision-email">Enter your mail address to subscribe</p>
@@ -160,8 +160,8 @@
 
 
 
-        <!-- Browsing History Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+    <!-- Browsing History Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
         <!--Container for Heading and arrow keys -->
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <span class="navbar-brand" style="color: #008080;font-weight: 600;">
@@ -363,7 +363,7 @@
     </div>
 
     <!--Recommendation Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
 
         <!--Container for Heading and arrow keys -->
         <div class="container-fluid d-flex justify-content-between align-items-center">
@@ -511,7 +511,7 @@
     </div>
 
     <!-- Unique Collection Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
 
         <!--Container for Heading and arrow keys -->
         <div class="container-fluid d-flex justify-content-between align-items-center mb-2">
@@ -732,7 +732,7 @@
     </div>
 
     <!-- Special Collection Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
 
         <!--Container for Heading and arrow keys -->
         <div class="container-fluid d-flex justify-content-between align-items-center mb-2">
@@ -1021,7 +1021,7 @@
     </div>
 
     <!-- Blog Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
         <div class="row">
             <!-- Heading -->
             <div class="col-md-4 col-sm-12 col-12 d-flex align-items-center" style="font-size: calc(0.9rem + 0.5vw);">
@@ -1158,7 +1158,7 @@
 
 
     <!-- Shop by Material Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
         <div class="row">
             <!-- Heading -->
             <div class="col-md-4 col-sm-12 col-12 d-flex align-items-center" style="font-size: calc(0.9rem + 0.5vw);">
@@ -1261,7 +1261,7 @@
 
 
     <!-- Testimonial Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
 
         <!--Container for Heading and arrow keys -->
         <div class="container-fluid d-flex justify-content-end align-items-center">
@@ -1324,7 +1324,7 @@
     </div>
 
 
-        <!-- footer -->
+    <!-- footer -->
     <div id="footer">
         <div class="footer">
             <div class="footer-content">
