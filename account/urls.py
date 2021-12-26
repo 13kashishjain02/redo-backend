@@ -14,8 +14,6 @@ urlpatterns = [
     path('customise-blogger-template/',views.customise_blogger_template,name='customise_blogger_template'),
     path('changepassword/',views.changepassword,name='changepassword'),
     # path('accounts/', include('django.contrib.auth.urls')),
-    path('handlesubscription/',views.handlesubscription,name='handlesubscription'),
-    path('subscription/',views.subscription,name='subscription'),
     path('check/',views.check,name='check'),
     path('otpemail/<str:remail>',views.otpemail,name='otpemail'),
     path('otpemail/',views.otpemail,name='otpemail'),

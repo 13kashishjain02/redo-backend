@@ -4,7 +4,7 @@ from .models import Product, Order,Category,SubCategory2,SubCategory1,Wishlist,C
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('vendor', 'name', 'pub_date',)
+    list_display = ('vendor', 'name', 'pub_date','id')
     # subcategory2__name works as subcategory2.name
     search_fields = ('id', 'name',  'subcategory2__name','subcategory2__subcategory1__name', 'price', 'product_for')
     readonly_fields = ()
