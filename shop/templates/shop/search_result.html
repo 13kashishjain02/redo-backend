@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<head>
+{% extends 'general/base2.html' %}
+{%load static%}
+{% block head%}
     <title>Redopact Search page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -332,6 +333,8 @@ div.price {
 .products {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+    justify-content: start;
+    align-content: start;
     margin-top: -15px;
   margin-left: 10px;
 }
@@ -922,211 +925,8 @@ div.price {
 
 
 </style>
-</head>
-
-<body>
-
-  <nav class="search-bar">
-    <div class="burger" onclick="appear()">
-      <div class="line"></div>
-      <div class="big-line"></div>
-      <div class="line"></div>
-    </div>
-    <div class="img">
-      <img
-        src="https://raw.githubusercontent.com/13kashishjain02/redo-frontend/main/images/LOGO.png?token=AU47YQB4I7LLXR3CQEFXKNLBVDJFI"
-        width="200px"
-        height="50px"
-      />
-    </div>
-    <form class="search">
-      <button type="submit" class="search-btn">
-        <i class="fas fa-search"></i>
-      </button>
-      <input
-        type="search"
-        class="sb"
-        placeholder="Search for fruit salad combos"
-      />
-    </form>
-    <div class="logo">
-      <i
-        class="far fa-user"
-        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-      ></i>
-      <i
-        class="far fa-heart dil"
-        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-      ></i>
-      <i
-        class="fas fa-shopping-cart"
-        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-      ></i>
-      <i
-        class="fas fa-headphones"
-        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-      ></i>
-    </div>
-  </nav>
-  <form class="search-res">
-    <button type="submit" class="search-btn">
-      <i class="fas fa-search"></i>
-    </button>
-    <input
-      type="search"
-      class="sb"
-      placeholder="Search for fruit salad combos"
-    />
-  </form>
-
-
-  <nav class="nav"><!--nav-bar-->
-    <div class="menu-head">
-      <p class="cross" onclick="disappear()"><i class="far fa-times-circle"></i></p>
-    </div>
-    <div class="login">
-      <p class="m"><i class="far fa-user"></i> Login/Register</p>
-    </div>
-    <div class="login">
-      <p class="m"><i class="fas fa-shopping-cart"></i> Cart</p>
-    </div>
-    <p class="cat">Category</p>
-    <div class="drop-pc" onmouseover="dropFunc(0)" onmouseout="leaveFunc(0)">
-      <div class="dd-pc">
-        <p class="content">Personal Care</p>
-        <i class="fas fa-chevron-down" id = arrow-pc></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">Bathroom accessories</li>
-        <li class="d-pc">Body hygiene</li>
-        <li class="d-pc">Oral hygiene</li>
-        <li class="d-pc">Female hygiene</li>
-        <li class="d-pc">Kits</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(1)" onmouseout="leaveFunc(1)">
-      <div class="dd-pc">
-        <p class="content">Cary Ons</p>
-        <i class="fas fa-chevron-down" id = arrow-pc></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">bags and pouches</li>
-        <li class="d-pc">wallets and clutches</li>
-        <li class="d-pc">basket</li>
-        <li class="d-pc">mobile cover</li>
-        <li class="d-pc">face mask</li>
-        <li class="d-pc">goggles</li>
-        <li class="d-pc">stoles and scarves</li>
-        <li class="d-pc">tie and belts</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(2)" onmouseout="leaveFunc(2)">
-      <div class="dd-pc">
-        <p class="content">Stationary</p>
-        <i class="fas fa-chevron-down" id='arrow-pc'></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">paper and pen</li>
-        <li class="d-pc">plantable stationary</li>
-        <li class="d-pc">stands and pouches</li>
-        <li class="d-pc">stationary Kits</li>
-        <li class="d-pc">notebooks</li>
-        <li class="d-pc">packaging</li>
-        <li class="d-pc">office</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(3)" onmouseout="leaveFunc(3)">
-      <div class="dd-pc">
-        <p class="content">Sweet Home</p>
-        <i class="fas fa-chevron-down" id='arrow-pc'></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">furniture</li>
-        <li class="d-pc">home decor</li>
-        <li class="d-pc">mandir</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(4)" onmouseout="leaveFunc(4)">
-      <div class="dd-pc">
-        <p class="content">Fashion</p>
-        <i class="fas fa-chevron-down" id='arrow-pc'></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">clothes</li>
-        <li class="d-pc">footwear</li>
-        <li class="d-pc">jewellery</li>
-        <li class="d-pc">scrunchies</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(5)" onmouseout="leaveFunc(5)">
-      <div class="dd-pc">
-        <p class="content">Garden</p>
-        <i class="fas fa-chevron-down" id='arrow-pc'></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">pots</li>
-        <li class="d-pc">planters</li>
-        <li class="d-pc">outdoor furniture</li>
-        <li class="d-pc">plants</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(6)" onmouseout="leaveFunc(6)">
-      <div class="dd-pc">
-        <p class="content">GymFreak</p>
-        <i class="fas fa-chevron-down" id='arrow-pc'></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">yoga mat</li>
-        <li class="d-pc">massage ball</li>
-        <li class="d-pc">sipper</li>
-        <li class="d-pc">duffel bag</li>
-        <li class="d-pc">hand towel</li>
-        <li class="d-pc">cap</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(7)" onmouseout="leaveFunc(7)">
-      <div class="dd-pc">
-        <p class="content">Kids</p>
-        <i class="fas fa-chevron-down" id='arrow-pc'></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">toys</li>
-        <li class="d-pc">stationary</li>
-        <li class="d-pc">friendship band</li>
-        <li class="d-pc">kids wear</li>
-        <li class="d-pc">reusable diapers</li>
-        <li class="d-pc">nursery needs</li>
-      </ul>
-    </div>
-    <div class="drop-pc" onmouseover="dropFunc(8)" onmouseout="leaveFunc(8)">
-      <div class="dd-pc">
-        <p class="content">Kitchen</p>
-        <i class="fas fa-chevron-down" id='arrow-pc'></i>
-      </div>
-      <ul class="drop-down-pc">
-        <li class="d-pc">cultery</li>
-        <li class="d-pc">cookware</li>
-        <li class="d-pc">serving ware</li>
-        <li class="d-pc">household supplies</li>
-        <li class="d-pc">Kits</li>
-      </ul>
-    </div>
-    <p class="content">Books</p>
-    <div
-        class="login"
-        style="border-top: 1px solid white; height: 45px"
-      ></div>
-      <div class="login">
-        <p class="m">Become a supplier</p>
-      </div>
-      <div class="login" style="align-items: center; justify-content: center;">
-        <i class="fas fa-headphones" style="display: block !important; color: white; margin: 0px 3px 0px 10px;"></i>
-        <p class="m">
-           +91 1234567890 / info@redopact.com
-        </p>
-      </div>
-  </nav>
-
+{% endblock %}
+{% block body%}
   <section> <!--Content below nav-bar-->
   <div class="result">
     <div class="left">
@@ -1398,33 +1198,42 @@ div.price {
   </aside>
 
   <div class="products"><!--products-->
-
+    {% for i in product %}
     <div class="box">
         <div class="picture">
           <!--images-->
+          <a href="../{{i.slug}}!">
           <img
             class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
+            src="../media/{{i.image}}"
             width="200"
             height="250"
           />
+          </a>
+          {%if i.is_recycled %}
           <p class="text">Recycled</p>
+          {%endif%}
           <p class="heart"><i class="fas fa-heart"></i></p>
         </div>
         <div class="info">
           <!--detail-->
           <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
+            <p class="brand-name">{{i.brand}}</p>
             <p class="rating">
               4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
               ><i class="fas fa-star"></i><i class="fas fa-star"></i
               ><i class="fas fa-star-half-alt"></i>
             </p>
           </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
+
+          <a href="../{{i.slug}}!" style="color: #000000; text-decoration: none;"><p class="name">{{i.name|slice:"0:50"}}</p></a>
 
           <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
+            {%if i.special_price%}
+            <p class="price">Rs {{i.special_price}} <span class="act-price">{{i.mrp}}</span></p>
+            {%else%}
+            <p class="price">Rs {{i.mrp}} </p>
+            {%endif%}
             <div class="carts">
               <p class="minus">-</p>
               <p><i class="fas fa-shopping-cart"></i></p>
@@ -1433,245 +1242,7 @@ div.price {
           </div>
         </div>
     </div>
-
-    <div class="box">
-        <div class="picture">
-          <!--images-->
-          <img
-            class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-            width="200"
-            height="250"
-          />
-          <p class="text">Recycled</p>
-          <p class="heart"><i class="fas fa-heart"></i></p>
-        </div>
-        <div class="info">
-          <!--detail-->
-          <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
-            <p class="rating">
-              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star-half-alt"></i>
-            </p>
-          </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-          <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
-            <div class="carts">
-              <p class="minus">-</p>
-              <p><i class="fas fa-shopping-cart"></i></p>
-              <p class="plus">+</p>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="picture">
-          <!--images-->
-          <img
-            class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-            width="200"
-            height="250"
-          />
-          <p class="text">Recycled</p>
-          <p class="heart"><i class="fas fa-heart"></i></p>
-        </div>
-        <div class="info">
-          <!--detail-->
-          <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
-            <p class="rating">
-              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star-half-alt"></i>
-            </p>
-          </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-          <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
-            <div class="carts">
-              <p class="minus">-</p>
-              <p><i class="fas fa-shopping-cart"></i></p>
-              <p class="plus">+</p>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="picture">
-          <!--images-->
-          <img
-            class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-            width="200"
-            height="250"
-          />
-          <p class="text">Recycled</p>
-          <p class="heart"><i class="fas fa-heart"></i></p>
-        </div>
-        <div class="info">
-          <!--detail-->
-          <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
-            <p class="rating">
-              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star-half-alt"></i>
-            </p>
-          </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-          <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
-            <div class="carts">
-              <p class="minus">-</p>
-              <p><i class="fas fa-shopping-cart"></i></p>
-              <p class="plus">+</p>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="picture">
-          <!--images-->
-          <img
-            class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-            width="200"
-            height="250"
-          />
-          <p class="text">Recycled</p>
-          <p class="heart"><i class="fas fa-heart"></i></p>
-        </div>
-        <div class="info">
-          <!--detail-->
-          <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
-            <p class="rating">
-              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star-half-alt"></i>
-            </p>
-          </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-          <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
-            <div class="carts">
-              <p class="minus">-</p>
-              <p><i class="fas fa-shopping-cart"></i></p>
-              <p class="plus">+</p>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="picture">
-          <!--images-->
-          <img
-            class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-            width="200"
-            height="250"
-          />
-          <p class="text">Recycled</p>
-          <p class="heart"><i class="fas fa-heart"></i></p>
-        </div>
-        <div class="info">
-          <!--detail-->
-          <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
-            <p class="rating">
-              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star-half-alt"></i>
-            </p>
-          </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-          <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
-            <div class="carts">
-              <p class="minus">-</p>
-              <p><i class="fas fa-shopping-cart"></i></p>
-              <p class="plus">+</p>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="picture">
-          <!--images-->
-          <img
-            class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-            width="200"
-            height="250"
-          />
-          <p class="text">Recycled</p>
-          <p class="heart"><i class="fas fa-heart"></i></p>
-        </div>
-        <div class="info">
-          <!--detail-->
-          <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
-            <p class="rating">
-              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star-half-alt"></i>
-            </p>
-          </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-          <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
-            <div class="carts">
-              <p class="minus">-</p>
-              <p><i class="fas fa-shopping-cart"></i></p>
-              <p class="plus">+</p>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="box">
-        <div class="picture">
-          <!--images-->
-          <img
-            class="picture"
-            src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg"
-            width="200"
-            height="250"
-          />
-          <p class="text">Recycled</p>
-          <p class="heart"><i class="fas fa-heart"></i></p>
-        </div>
-        <div class="info">
-          <!--detail-->
-          <div class="name-rating">
-            <p class="brand-name">Brand Name</p>
-            <p class="rating">
-              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star"></i><i class="fas fa-star"></i
-              ><i class="fas fa-star-half-alt"></i>
-            </p>
-          </div>
-          <p class="name">Men's Alex Redwood Hemp Shoes</p>
-
-          <div class="prices">
-            <p class="price">Rs 700 <span class="act-price">1200</span></p>
-            <div class="carts">
-              <p class="minus">-</p>
-              <p><i class="fas fa-shopping-cart"></i></p>
-              <p class="plus">+</p>
-            </div>
-          </div>
-        </div>
-    </div>
+    {% endfor %}
   </div>
   </div>
   </section>
@@ -1686,84 +1257,6 @@ div.price {
   </div>
   </section>
 
-
-  <footer>
-    <div id="footer">
-        <div class="footer">
-          <div class="contents">
-            <div class="footer-content">
-              <h2 class="footer-heading">Explore</h2>
-              <ul class="footer-list">
-                <li>Redopact for Business</li>
-                <li>Custom Gift Boxes</li>
-                <li>Bulk</li>
-                <li>Custon Branding</li>
-                <li>Deals</li>
-                <li>Clearance</li>
-              </ul>
-            </div>
-            <div class="footer-content">
-              <h2 class="footer-heading">Get Involved</h2>
-              <ul class="footer-list">
-                <li>Become a Supplier</li>
-                <li>Job Opportunities</li>
-                <li>Affiliates</li>
-                <li>In the Press</li>
-                <li>Redopact Rewards</li>
-              </ul>
-            </div>
-          </div>
-          <div class="contents">
-            <div class="footer-content">
-              <h2 class="footer-heading">Support</h2>
-              <ul class="footer-list">
-                <li>My Account</li>
-                <li>FAQs</li>
-                <li>Shipping & Returns</li>
-                <li>Privacy Policy</li>
-                <li>Terms & Conditions</li>
-                <li>Contact Us</li>
-              </ul>
-            </div>
-            <div class="footer-content">
-              <h2 class="footer-heading">About Us</h2>
-              <ul class="footer-list">
-                <li>Impact</li>
-                <li>Our Story</li>
-                <li>Meet The team</li>
-                <li>Sustainability Logos</li>
-                <li>Our Footprint</li>
-                <li>Blog</li>
-                <li>Land Acknowledgement</li>
-              </ul>
-            </div>
-          </div>
-          <div class="contents">
-            <div class="footer-content">
-              <h2 class="footer-heading">Contact Us</h2>
-              <ul class="footer-list">
-                <li>
-                  <strong>info@upciclo.com</strong> <br />
-                  (General queries)
-                </li>
-                <li><strong>sales@upciclo.com</strong><br />(Seller queries)</li>
-                <li>
-                  <strong>support@upciclo.com</strong><br />(Technical queries)
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-icons">
-          <i
-            style="background-color: #f67171; color: white"
-            class="fab fa-facebook-f icons"
-          ></i>
-          <i class="fab fa-twitter icons"></i>
-          <i class="fab fa-linkedin-in icons"></i>
-        </div>
-    </div>
-  </footer>
 
   <script>//drop down script
     const drop = document.querySelector(".drop-down");
@@ -1907,5 +1400,5 @@ div.price {
     filters.classList.toggle('visible')
   }
 </script>
-</body>
-</html>
+{% endblock %}
+
