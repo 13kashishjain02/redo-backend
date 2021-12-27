@@ -1,673 +1,615 @@
-<!DOCTYPE html>
-{%load static%}
+<!DOCTYPE html> {%load static%}
 <html>
+
 <head>
     {% block title%} {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
     <style>
-    * {
-      margin: 0px;
-      padding: 0px;
-    }
-
-    body {
-      background-color: #f2f2f2;
-      font-family: sans-serif;
-    }
-
-    .login, .menu-head, .cat {
-      display: none;
-    }
-
-    /* search bar */
-    .search-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #004953;
-      padding: 0px 45px;
-    }
-
-    .burger {
-      display: none;
-    }
-
-    .line {
-      background-color: white;
-      width: 20px;
-      height: 3px;
-      margin: 0px 5px
-    }
-
-    .big-line {
-      margin: 5px;
-      background-color: white;
-      width: 30px;
-      height: 3px;
-    }
-
-    .search {
-      display: flex;
-      padding: 5px 15px;
-      background-color: #f3f4f9;
-      width: 600px;
-      border-radius: 8px;
-      border: 1px solid #f3f4f9;
-    }
-
-    .search-btn {
-      background-color: #f3f4f9;
-      border: 1px solid #f3f4f9;
-      outline: none;
-      font-size: 1.2rem;
-      color: #777;
-    }
-
-    .sb {
-      background-color: #f3f4f9;
-      width: 100%;
-      border: 1px solid #f3f4f9;
-      outline: none;
-      font-weight: 400;
-      font-size: 0.8rem;
-      margin-left: 35px;
-      color: #777;
-    }
-
-    .search-res {
-      display: none;
-    }
-    /* /search bar */
-
-    /*nav-bar*/
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #fff;
-      padding: 10px;
-    }
-
-    .content {
-      color: #004953;
-      margin: 10px 0px 10px 10px;
-    }
-
-    .fa-chevron-down {
-      vertical-align: middle;
-    }
-    /* nav-bar finished */
-
-    /*content below nav-bar*/
-
-    .drop-pc {
-      position: relative;
-    }
-
-    .dd-pc {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .drop-down-pc {
-      display: none;
-      position: absolute;
-      z-index: 100;
-      padding: 15px 0px;
-      background-color: white;
-      width: 200px;
-    }
-
-    .drop-pc:hover .drop-down-pc {
-      display: block;
-    }
-
-    .d-pc {
-      list-style: none;
-      color: #004953;
-      padding: 10px 20px;
-      text-transform: capitalize;
-    }
-
-    .d-pc:hover {
-      background-color: #f2f2f2;
-    }
-
-    #arrow-pc {
-      margin-left: 5px;
-      margin-right: 10px;
-      color: #004953;
-    }
-
-    .show {
-      display: flex !important;
-    }
-
-    @media screen and (max-width: 640px) {
-
-    .search-bar {
-      margin-bottom: 10px;
-      padding: 0px;
-      width: 100%;
-    }
-
-    .burger {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .search {
-      display: none !important;
-    }
-
-    .sb, .search-btn {
-      background-color: #fff;
-      border: 1px solid #fff;
-    }
-
-    .search-res {
-      display: flex;
-      margin: auto;
-      padding: 5px 5px;
-      background-color: #fff;
-      width: 90%;
-      border-radius: 8px;
-      border: 1px solid #004953;
-    }
-
-    .fa-headphones{
-      display: none !important;
-    }
-
-    .nav {
-        display: none;
-        position: fixed;
-        top: 0px;
-        /* bottom: 0px; */
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        background-color: #004953;
-        padding: 0px;
-        width: 80%;
-        height: auto;
-        z-index: 100;
-      }
-
-      .menu-head {
-        width: 100%;
-        display: none;
-        justify-content: flex-end;
-        background-color: #fff;
-        padding: 10px 0px;
-      }
-
-      .cross {
-        color: #004953;
-        font-size: 1.6rem;
-        padding: 0px 10px;
-      }
-
-      .login {
-        display: none;
-        width: 100%;
-        border-bottom: 1px solid white;
-      }
-
-      .m {
-        color: white;
-        margin: 0px 10px;
-        padding: 10px 0px;
-      }
-
-      .cat {
-        display: none;
-        color: white;
-        margin: 5px 10px 0px;
-        padding: 5px 0px;
-      }
-
-      .content {
-        color: #fff;
-        margin: 10px 0px 10px 10px;
-      }
-
-      .drop-pc {
-        position: initial;
-        width: 100%;
-      }
-
-      .drop-down-pc {
-        display: none;
-        position: initial;
-        /* z-index: 100; */
-        margin: 0px 10px;
-        padding: 15px 0px;
-        background-color: white;
-        width: auto;
-        border-radius: 10px;
-      }
-
-      .drop-pc:hover .drop-down-pc {
-        display: block;
-      }
-
-      .dd-pc {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      #arrow-pc {
-        margin-left: 5px;
-        margin-right: 10px;
-        color: #fff;
-      }
-
-      .d-pc {
-        list-style: none;
-        color: #004953;
-        padding: 10px 20px;
-        text-transform: capitalize;
-      }
-
-      .d-pc:hover {
-        background-color: #f2f2f2;
-      }
-
-      .dil {
-        display: none !important;
-      }
-    }
-    /* footer */
-    #footer {
-      background-color: #004953;
-      padding: 2% 0;
-    }
-
-    .footer,
-    .contents {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-    }
-
-    .footer-content {
-      margin: 0px 30px;
-    }
-
-    .footer-heading {
-      color: #f67171;
-      padding-bottom: 5%;
-    }
-
-    .footer-list {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .footer-list li {
-      color: white;
-      padding: 1% 0;
-    }
-
-    .footer-icons {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 40%;
-      margin-top: 5%;
-    }
-
-    .footer-icons .icons {
-      margin: 0 3%;
-      padding: 7%;
-      border-radius: 100%;
-      background-color: #cccccc;
-    }
-    /* footer finished */
-    @media screen and (max-width: 640px) {
-      .footer {
-        flex-direction: column;
-      }
-      .contents {
-        margin: 25px 0px;
-      }
-
-      .footer-list {
-        line-height: 1.3;
-      }
-    }
-
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        body {
+            background-color: #f2f2f2;
+            font-family: sans-serif;
+        }
+        
+        .login,
+        .menu-head,
+        .cat {
+            display: none;
+        }
+        /* search bar */
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #004953;
+            padding: 0px 45px;
+        }
+        
+        .burger {
+            display: none;
+        }
+        
+        .line {
+            background-color: white;
+            width: 20px;
+            height: 3px;
+            margin: 0px 5px
+        }
+        
+        .big-line {
+            margin: 5px;
+            background-color: white;
+            width: 30px;
+            height: 3px;
+        }
+        
+        .search {
+            display: flex;
+            padding: 5px 15px;
+            background-color: #f3f4f9;
+            width: 600px;
+            border-radius: 8px;
+            border: 1px solid #f3f4f9;
+        }
+        
+        .search-btn {
+            background-color: #f3f4f9;
+            border: 1px solid #f3f4f9;
+            outline: none;
+            font-size: 1.2rem;
+            color: #777;
+        }
+        
+        .sb {
+            background-color: #f3f4f9;
+            width: 100%;
+            border: 1px solid #f3f4f9;
+            outline: none;
+            font-weight: 400;
+            font-size: 0.8rem;
+            margin-left: 35px;
+            color: #777;
+        }
+        
+        .search-res {
+            display: none;
+        }
+        /* /search bar */
+        /*nav-bar*/
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            padding: 10px;
+        }
+        
+        .content {
+            color: #004953;
+            margin: 10px 0px 10px 10px;
+        }
+        
+        .fa-chevron-down {
+            vertical-align: middle;
+        }
+        /* nav-bar finished */
+        /*content below nav-bar*/
+        
+        .drop-pc {
+            position: relative;
+        }
+        
+        .dd-pc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .drop-down-pc {
+            display: none;
+            position: absolute;
+            z-index: 100;
+            padding: 15px 0px;
+            background-color: white;
+            width: 200px;
+        }
+        
+        .drop-pc:hover .drop-down-pc {
+            display: block;
+        }
+        
+        .d-pc {
+            list-style: none;
+            color: #004953;
+            padding: 10px 20px;
+            text-transform: capitalize;
+        }
+        
+        .d-pc:hover {
+            background-color: #f2f2f2;
+        }
+        
+        #arrow-pc {
+            margin-left: 5px;
+            margin-right: 10px;
+            color: #004953;
+        }
+        
+        .show {
+            display: flex !important;
+        }
+        
+        @media screen and (max-width: 640px) {
+            .search-bar {
+                margin-bottom: 10px;
+                padding: 0px;
+                width: 100%;
+            }
+            .burger {
+                display: flex;
+                flex-direction: column;
+            }
+            .search {
+                display: none !important;
+            }
+            .sb,
+            .search-btn {
+                background-color: #fff;
+                border: 1px solid #fff;
+            }
+            .search-res {
+                display: flex;
+                margin: auto;
+                padding: 5px 5px;
+                background-color: #fff;
+                width: 90%;
+                border-radius: 8px;
+                border: 1px solid #004953;
+            }
+            .fa-headphones {
+                display: none !important;
+            }
+            .nav {
+                display: none;
+                position: fixed;
+                top: 0px;
+                /* bottom: 0px; */
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                background-color: #004953;
+                padding: 0px;
+                width: 80%;
+                height: auto;
+                z-index: 100;
+            }
+            .menu-head {
+                width: 100%;
+                display: none;
+                justify-content: flex-end;
+                background-color: #fff;
+                padding: 10px 0px;
+            }
+            .cross {
+                color: #004953;
+                font-size: 1.6rem;
+                padding: 0px 10px;
+            }
+            .login {
+                display: none;
+                width: 100%;
+                border-bottom: 1px solid white;
+            }
+            .m {
+                color: white;
+                margin: 0px 10px;
+                padding: 10px 0px;
+            }
+            .cat {
+                display: none;
+                color: white;
+                margin: 5px 10px 0px;
+                padding: 5px 0px;
+            }
+            .content {
+                color: #fff;
+                margin: 10px 0px 10px 10px;
+            }
+            .drop-pc {
+                position: initial;
+                width: 100%;
+            }
+            .drop-down-pc {
+                display: none;
+                position: initial;
+                /* z-index: 100; */
+                margin: 0px 10px;
+                padding: 15px 0px;
+                background-color: white;
+                width: auto;
+                border-radius: 10px;
+            }
+            .drop-pc:hover .drop-down-pc {
+                display: block;
+            }
+            .dd-pc {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            #arrow-pc {
+                margin-left: 5px;
+                margin-right: 10px;
+                color: #fff;
+            }
+            .d-pc {
+                list-style: none;
+                color: #004953;
+                padding: 10px 20px;
+                text-transform: capitalize;
+            }
+            .d-pc:hover {
+                background-color: #f2f2f2;
+            }
+            .dil {
+                display: none !important;
+            }
+        }
+        /* footer */
+        
+        #footer {
+            background-color: #004953;
+            padding: 2% 0;
+        }
+        
+        .footer,
+        .contents {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+        }
+        
+        .footer-content {
+            margin: 0px 30px;
+        }
+        
+        .footer-heading {
+            color: #f67171;
+            padding-bottom: 5%;
+        }
+        
+        .footer-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer-list li {
+            color: white;
+            padding: 1% 0;
+        }
+        
+        .footer-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 40%;
+            margin-top: 5%;
+        }
+        
+        .footer-icons .icons {
+            margin: 0 3%;
+            padding: 7%;
+            border-radius: 100%;
+            background-color: #cccccc;
+        }
+        /* footer finished */
+        
+        @media screen and (max-width: 640px) {
+            .footer {
+                flex-direction: column;
+            }
+            .contents {
+                margin: 25px 0px;
+            }
+            .footer-list {
+                line-height: 1.3;
+            }
+        }
     </style>
     {% block head%} {% endblock %}
 </head>
+
 <body>
-<nav class="search-bar">
-  <div class="burger" onclick="appear()"><!--three horizontal lines-->
-    <div class="line"></div>
-    <div class="big-line"></div>
-    <div class="line"></div>
-  </div>
-  <div class="img"><!--logo-->
-    <a href="../../">
-      <img
-        src="https://raw.githubusercontent.com/13kashishjain02/redo-frontend/main/images/LOGO.png?token=AU47YQB4I7LLXR3CQEFXKNLBVDJFI"
-        width="200px"
-        height="50px"
-      />
-    </a>
-  </div>
-  <form action="../listing/" method="get" class="search"><!--search bar-->
-    <button type="submit" class="search-btn">
+    <nav class="search-bar">
+        <div class="burger" onclick="appear()">
+            <!--three horizontal lines-->
+            <div class="line"></div>
+            <div class="big-line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="img">
+            <!--logo-->
+            <a href="../../">
+                <img src="https://raw.githubusercontent.com/13kashishjain02/redo-frontend/main/images/LOGO.png?token=AU47YQB4I7LLXR3CQEFXKNLBVDJFI" width="200px" height="50px" />
+            </a>
+        </div>
+        <form action="../listing/" method="get" class="search">
+            <!--search bar-->
+            <button type="submit" class="search-btn">
       <i class="fas fa-search"></i>
     </button>
-    <input
-      type="search"
-      class="sb"
-      placeholder="Search for fruit salad combos"
-      name="search"
-    />
-  </form>
-  <div class="logo"><!--user, heart, car and headphones logo-->
-    <i
-      class="far fa-user"
-      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-    ></i>
-    <i
-      class="far fa-heart dil"
-      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-    ></i>
-    <i
-      class="fas fa-shopping-cart"
-      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-    ></i>
-    <i
-      class="fas fa-headphones"
-      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-    ></i>
-  </div>
-</nav>
-<form action="../listing/" method="get" class="search-res"><!--search bar for responsive-->
-  <button type="submit" class="search-btn">
+            <input type="search" class="sb" placeholder="Search for fruit salad combos" name="search" />
+        </form>
+        <div class="logo">
+            <!--user, heart, car and headphones logo-->
+            <i class="far fa-user" style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"></i>
+            <i class="far fa-heart dil" style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"></i>
+            <i class="fas fa-shopping-cart" style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"></i>
+            <i class="fas fa-headphones" style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"></i>
+        </div>
+    </nav>
+    <form action="../listing/" method="get" class="search-res">
+        <!--search bar for responsive-->
+        <button type="submit" class="search-btn">
     <i class="fas fa-search"></i>
   </button>
-  <input
-    type="search"
-    class="sb"
-    placeholder="Search for fruit salad combos"
-    name="search"
-  />
-</form>
+        <input type="search" class="sb" placeholder="Search for fruit salad combos" name="search" />
+    </form>
 
 
-<nav class="nav"><!--nav-bar-->
-  <div class="menu-head">
-    <p class="cross" onclick="appear()"><i class="far fa-times-circle"></i></p>
-  </div>
-  <div class="login">
-    <p class="m"><i class="far fa-user"></i> Login/Register</p>
-  </div>
-  <div class="login">
-    <p class="m"><i class="fas fa-shopping-cart"></i> Cart</p>
-  </div>
-  <p class="cat">Category</p>
-  <div class="drop-pc" onmouseover="dropFunc(0)" onmouseout="dropFunc(0)">
-    <div class="dd-pc">
-      <p class="content">Personal Care</p>
-      <i class="fas fa-chevron-down" id = arrow-pc></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">Bathroom accessories</li>
-      <li class="d-pc">Body hygiene</li>
-      <li class="d-pc">Oral hygiene</li>
-      <li class="d-pc">Female hygiene</li>
-      <li class="d-pc">Kits</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(1)" onmouseout="dropFunc(1)">
-    <div class="dd-pc">
-      <p class="content">Cary Ons</p>
-      <i class="fas fa-chevron-down" id = arrow-pc></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">bags and pouches</li>
-      <li class="d-pc">wallets and clutches</li>
-      <li class="d-pc">basket</li>
-      <li class="d-pc">mobile cover</li>
-      <li class="d-pc">face mask</li>
-      <li class="d-pc">goggles</li>
-      <li class="d-pc">stoles and scarves</li>
-      <li class="d-pc">tie and belts</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(2)" onmouseout="dropFunc(2)">
-    <div class="dd-pc">
-      <p class="content">Stationary</p>
-      <i class="fas fa-chevron-down" id='arrow-pc'></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">paper and pen</li>
-      <li class="d-pc">plantable stationary</li>
-      <li class="d-pc">stands and pouches</li>
-      <li class="d-pc">stationary Kits</li>
-      <li class="d-pc">notebooks</li>
-      <li class="d-pc">packaging</li>
-      <li class="d-pc">office</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(3)" onmouseout="dropFunc(3)">
-    <div class="dd-pc">
-      <p class="content">Sweet Home</p>
-      <i class="fas fa-chevron-down" id='arrow-pc'></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">furniture</li>
-      <li class="d-pc">home decor</li>
-      <li class="d-pc">mandir</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(4)" onmouseout="dropFunc(4)">
-    <div class="dd-pc">
-      <p class="content">Fashion</p>
-      <i class="fas fa-chevron-down" id='arrow-pc'></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">clothes</li>
-      <li class="d-pc">footwear</li>
-      <li class="d-pc">jewellery</li>
-      <li class="d-pc">scrunchies</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(5)" onmouseout="dropFunc(5)">
-    <div class="dd-pc">
-      <p class="content">Garden</p>
-      <i class="fas fa-chevron-down" id='arrow-pc'></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">pots</li>
-      <li class="d-pc">planters</li>
-      <li class="d-pc">outdoor furniture</li>
-      <li class="d-pc">plants</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(6)" onmouseout="dropFunc(6)">
-    <div class="dd-pc">
-      <p class="content">GymFreak</p>
-      <i class="fas fa-chevron-down" id='arrow-pc'></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">yoga mat</li>
-      <li class="d-pc">massage ball</li>
-      <li class="d-pc">sipper</li>
-      <li class="d-pc">duffel bag</li>
-      <li class="d-pc">hand towel</li>
-      <li class="d-pc">cap</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(7)" onmouseout="dropFunc(7)">
-    <div class="dd-pc">
-      <p class="content">Kids</p>
-      <i class="fas fa-chevron-down" id='arrow-pc'></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">toys</li>
-      <li class="d-pc">stationary</li>
-      <li class="d-pc">friendship band</li>
-      <li class="d-pc">kids wear</li>
-      <li class="d-pc">reusable diapers</li>
-      <li class="d-pc">nursery needs</li>
-    </ul>
-  </div>
-  <div class="drop-pc" onmouseover="dropFunc(8)" onmouseout="dropFunc(8)">
-    <div class="dd-pc">
-      <p class="content">Kitchen</p>
-      <i class="fas fa-chevron-down" id='arrow-pc'></i>
-    </div>
-    <ul class="drop-down-pc">
-      <li class="d-pc">cultery</li>
-      <li class="d-pc">cookware</li>
-      <li class="d-pc">serving ware</li>
-      <li class="d-pc">household supplies</li>
-      <li class="d-pc">Kits</li>
-    </ul>
-  </div>
-  <p class="content">Books</p>
-  <div
-      class="login"
-      style="border-top: 1px solid white; height: 45px"
-    ></div>
-    <div class="login">
-      <p class="m">Become a supplier</p>
-    </div>
-    <div class="login" style="align-items: center; justify-content: center;">
-      <i class="fas fa-headphones" style="display: block !important; color: white; margin: 0px 3px 0px 10px;"></i>
-      <p class="m">
-         +91 1234567890 / info@redopact.com
-      </p>
-    </div>
-</nav>
-<script> //script for menu appear and disappear
-  const nav = document.querySelector('.nav')
-  const menuHead = document.querySelector('.menu-head');
-  const login = document.querySelectorAll('.login');
-  const cat = document.querySelector('.cat');
+    <nav class="nav">
+        <!--nav-bar-->
+        <div class="menu-head">
+            <p class="cross" onclick="appear()"><i class="far fa-times-circle"></i></p>
+        </div>
+        <div class="login">
+            <p class="m"><i class="far fa-user"></i> Login/Register</p>
+        </div>
+        <div class="login">
+            <p class="m"><i class="fas fa-shopping-cart"></i> Cart</p>
+        </div>
+        <p class="cat">Category</p>
+        <div class="drop-pc" onmouseover="dropFunc(0)" onmouseout="dropFunc(0)">
+            <div class="dd-pc">
+                <p class="content">Personal Care</p>
+                <i class="fas fa-chevron-down" id=a rrow-pc></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">Bathroom accessories</li>
+                <li class="d-pc">Body hygiene</li>
+                <li class="d-pc">Oral hygiene</li>
+                <li class="d-pc">Female hygiene</li>
+                <li class="d-pc">Kits</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(1)" onmouseout="dropFunc(1)">
+            <div class="dd-pc">
+                <p class="content">Cary Ons</p>
+                <i class="fas fa-chevron-down" id=a rrow-pc></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">bags and pouches</li>
+                <li class="d-pc">wallets and clutches</li>
+                <li class="d-pc">basket</li>
+                <li class="d-pc">mobile cover</li>
+                <li class="d-pc">face mask</li>
+                <li class="d-pc">goggles</li>
+                <li class="d-pc">stoles and scarves</li>
+                <li class="d-pc">tie and belts</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(2)" onmouseout="dropFunc(2)">
+            <div class="dd-pc">
+                <p class="content">Stationary</p>
+                <i class="fas fa-chevron-down" id='arrow-pc'></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">paper and pen</li>
+                <li class="d-pc">plantable stationary</li>
+                <li class="d-pc">stands and pouches</li>
+                <li class="d-pc">stationary Kits</li>
+                <li class="d-pc">notebooks</li>
+                <li class="d-pc">packaging</li>
+                <li class="d-pc">office</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(3)" onmouseout="dropFunc(3)">
+            <div class="dd-pc">
+                <p class="content">Sweet Home</p>
+                <i class="fas fa-chevron-down" id='arrow-pc'></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">furniture</li>
+                <li class="d-pc">home decor</li>
+                <li class="d-pc">mandir</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(4)" onmouseout="dropFunc(4)">
+            <div class="dd-pc">
+                <p class="content">Fashion</p>
+                <i class="fas fa-chevron-down" id='arrow-pc'></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">clothes</li>
+                <li class="d-pc">footwear</li>
+                <li class="d-pc">jewellery</li>
+                <li class="d-pc">scrunchies</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(5)" onmouseout="dropFunc(5)">
+            <div class="dd-pc">
+                <p class="content">Garden</p>
+                <i class="fas fa-chevron-down" id='arrow-pc'></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">pots</li>
+                <li class="d-pc">planters</li>
+                <li class="d-pc">outdoor furniture</li>
+                <li class="d-pc">plants</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(6)" onmouseout="dropFunc(6)">
+            <div class="dd-pc">
+                <p class="content">GymFreak</p>
+                <i class="fas fa-chevron-down" id='arrow-pc'></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">yoga mat</li>
+                <li class="d-pc">massage ball</li>
+                <li class="d-pc">sipper</li>
+                <li class="d-pc">duffel bag</li>
+                <li class="d-pc">hand towel</li>
+                <li class="d-pc">cap</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(7)" onmouseout="dropFunc(7)">
+            <div class="dd-pc">
+                <p class="content">Kids</p>
+                <i class="fas fa-chevron-down" id='arrow-pc'></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">toys</li>
+                <li class="d-pc">stationary</li>
+                <li class="d-pc">friendship band</li>
+                <li class="d-pc">kids wear</li>
+                <li class="d-pc">reusable diapers</li>
+                <li class="d-pc">nursery needs</li>
+            </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(8)" onmouseout="dropFunc(8)">
+            <div class="dd-pc">
+                <p class="content">Kitchen</p>
+                <i class="fas fa-chevron-down" id='arrow-pc'></i>
+            </div>
+            <ul class="drop-down-pc">
+                <li class="d-pc">cultery</li>
+                <li class="d-pc">cookware</li>
+                <li class="d-pc">serving ware</li>
+                <li class="d-pc">household supplies</li>
+                <li class="d-pc">Kits</li>
+            </ul>
+        </div>
+        <p class="content">Books</p>
+        <div class="login" style="border-top: 1px solid white; height: 45px"></div>
+        <div class="login">
+            <p class="m">Become a supplier</p>
+        </div>
+        <div class="login" style="align-items: center; justify-content: center;">
+            <i class="fas fa-headphones" style="display: block !important; color: white; margin: 0px 3px 0px 10px;"></i>
+            <p class="m">
+                +91 1234567890 / info@redopact.com
+            </p>
+        </div>
+    </nav>
+    <script>
+        //script for menu appear and disappear
+        const nav = document.querySelector('.nav')
+        const menuHead = document.querySelector('.menu-head');
+        const login = document.querySelectorAll('.login');
+        const cat = document.querySelector('.cat');
 
-function appear() {
-  const burger = document.querySelector('.burger');
-  nav.classList.toggle('show')
-  menuHead.classList.toggle('show');
-  login.forEach((e) => e.classList.toggle('show'));
-  cat.classList.toggle('show');
-}
-</script>
+        function appear() {
+            const burger = document.querySelector('.burger');
+            nav.classList.toggle('show')
+            menuHead.classList.toggle('show');
+            login.forEach((e) => e.classList.toggle('show'));
+            cat.classList.toggle('show');
+        }
+    </script>
 
-<script>//script for drop down menu content
-  const dropPc = document.querySelectorAll(".drop-down-pc");
-  function dropFunc(x) {
-    const arrowPc = document.querySelectorAll("#arrow-pc");
-    if (arrowPc[x].attributes[0].value == "fas fa-chevron-down") {
-      dropPc[x].style.display = "block";
-      arrowPc[x].classList.remove("fa-chevron-down");
-      arrowPc[x].classList.add("fa-chevron-up");
-    }else {
-      dropPc[x].style.display = "none";
-      arrowPc[x].classList.remove("fa-chevron-up");
-      arrowPc[x].classList.add("fa-chevron-down");
-    }
-  }
-</script>
-{% block body%} {% endblock %}
+    <script>
+        //script for drop down menu content
+        const dropPc = document.querySelectorAll(".drop-down-pc");
 
-  <footer>
+        function dropFunc(x) {
+            const arrowPc = document.querySelectorAll("#arrow-pc");
+            if (arrowPc[x].attributes[0].value == "fas fa-chevron-down") {
+                dropPc[x].style.display = "block";
+                arrowPc[x].classList.remove("fa-chevron-down");
+                arrowPc[x].classList.add("fa-chevron-up");
+            } else {
+                dropPc[x].style.display = "none";
+                arrowPc[x].classList.remove("fa-chevron-up");
+                arrowPc[x].classList.add("fa-chevron-down");
+            }
+        }
+    </script>
+    {% block body%} {% endblock %}
+
+    <!-- footer -->
     <div id="footer">
         <div class="footer">
-          <div class="contents">
             <div class="footer-content">
-              <h2 class="footer-heading">Explore</h2>
-              <ul class="footer-list">
-                <li>Redopact for Business</li>
-                <li>Custom Gift Boxes</li>
-                <li>Bulk</li>
-                <li>Custon Branding</li>
-                <li>Deals</li>
-                <li>Clearance</li>
-              </ul>
+                <h2 class="footer-heading">Explore</h2>
+                <ul class="footer-list">
+                    <li>Redopact for Business</li>
+                    <li>Custom Gift Boxes</li>
+                    <li>Bulk</li>
+                    <li>Custon Branding</li>
+                    <li>Deals</li>
+                    <li>Clearance</li>
+                </ul>
             </div>
             <div class="footer-content">
-              <h2 class="footer-heading">Get Involved</h2>
-              <ul class="footer-list">
-                <li>Become a Supplier</li>
-                <li>Job Opportunities</li>
-                <li>Affiliates</li>
-                <li>In the Press</li>
-                <li>Redopact Rewards</li>
-              </ul>
-            </div>
-          </div>
-          <div class="contents">
-            <div class="footer-content">
-              <h2 class="footer-heading">Support</h2>
-              <ul class="footer-list">
-                <li>My Account</li>
-                <li>FAQs</li>
-                <li>Shipping & Returns</li>
-                <li>Privacy Policy</li>
-                <li>Terms & Conditions</li>
-                <li>Contact Us</li>
-              </ul>
+                <h2 class="footer-heading">Get Involved</h2>
+                <ul class="footer-list">
+                    <li>Become a Supplier</li>
+                    <li>Job Opportunities</li>
+                    <li>Affiliates</li>
+                    <li>In the Press</li>
+                    <li>Redopact Rewards</li>
+                </ul>
             </div>
             <div class="footer-content">
-              <h2 class="footer-heading">About Us</h2>
-              <ul class="footer-list">
-                <li>Impact</li>
-                <li>Our Story</li>
-                <li>Meet The team</li>
-                <li>Sustainability Logos</li>
-                <li>Our Footprint</li>
-                <li>Blog</li>
-                <li>Land Acknowledgement</li>
-              </ul>
+                <h2 class="footer-heading">Support</h2>
+                <ul class="footer-list">
+                    <li>My Account</li>
+                    <li>FAQs</li>
+                    <li>Shipping & Returns</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms & Conditions</li>
+                    <li>Contact Us</li>
+                </ul>
             </div>
-          </div>
-          <div class="contents">
             <div class="footer-content">
-              <h2 class="footer-heading">Contact Us</h2>
-              <ul class="footer-list">
-                <li>
-                  <strong>info@upciclo.com</strong> <br />
-                  (General queries)
-                </li>
-                <li><strong>sales@upciclo.com</strong><br />(Seller queries)</li>
-                <li>
-                  <strong>support@upciclo.com</strong><br />(Technical queries)
-                </li>
-              </ul>
+                <h2 class="footer-heading">About Us</h2>
+                <ul class="footer-list">
+                    <li>Impact</li>
+                    <li>Our Story</li>
+                    <li>Meet The team</li>
+                    <li>Sustainability Logos</li>
+                    <li>Our Footprint</li>
+                    <li>Blog</li>
+                    <li>Land Acknowledgement</li>
+                </ul>
             </div>
-          </div>
+            <div class="footer-content">
+                <h2 class="footer-heading">Contact Us</h2>
+                <ul class="footer-list">
+                    <li><strong>info@upciclo.com</strong> <br> (General queries)</li>
+                    <li><strong>sales@upciclo.com</strong><br>(Seller queries)</li>
+                    <li><strong>support@upciclo.com</strong><br>(Technical queries)</li>
+                </ul>
+            </div>
         </div>
         <div class="footer-icons">
-          <i
-            style="background-color: #f67171; color: white"
-            class="fab fa-facebook-f icons"
-          ></i>
-          <i class="fab fa-twitter icons"></i>
-          <i class="fab fa-linkedin-in icons"></i>
+            <i style="background-color: #F67171; color: white; width: 3.5rem;" class="fab fa-facebook-f icons"></i>
+            <i class="fab fa-twitter icons"></i>
+            <i class="fab fa-linkedin-in icons"></i>
         </div>
     </div>
-  </footer>
 </body>
+
 </html>

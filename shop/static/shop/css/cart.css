@@ -2,9 +2,10 @@
     box-sizing: border-box;
 }
 
-html {
-    font-size: 28px;
-}
+
+/* html {
+    font-size: 16px;
+} */
 
 body {
     background-color: #E5E5E5;
@@ -111,9 +112,9 @@ body {
 /* For iPads, Tablets. */
 
 @media screen and ( max-width: 768px) {
-    html {
+    /* html {
         font-size: 20px;
-    }
+    } */
     .noDisplayinMobile {
         display: none;
     }
@@ -130,9 +131,9 @@ body {
 /* For Mobiles */
 
 @media screen and ( max-width: 480px) {
-    html {
+    /* html {
         font-size: 18px;
-    }
+    } */
     .noDisplayinMobile {
         display: none;
     }
