@@ -365,7 +365,7 @@
   <div class="img"><!--logo-->
     <a href="../../">
       <img
-        src="https://raw.githubusercontent.com/13kashishjain02/redo-frontend/main/images/LOGO.png?token=AU47YQB4I7LLXR3CQEFXKNLBVDJFI"
+        src="{%static 'general/images/logo.png'%}"
         width="200px"
         height="50px"
       />
@@ -383,22 +383,39 @@
     />
   </form>
   <div class="logo"><!--user, heart, car and headphones logo-->
+    {%if request.user.is_authenticated %}
+    <a href="../../account/">
     <i
       class="far fa-user"
       style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
     ></i>
+    </a>
+    <a href="../../wishlist/">
     <i
       class="far fa-heart dil"
       style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
     ></i>
-    <i
-      class="fas fa-shopping-cart"
-      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-    ></i>
-    <i
-      class="fas fa-headphones"
-      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-    ></i>
+    </a>
+    <a href="../../cart">
+      <i
+        class="fas fa-shopping-cart"
+        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+      ></i>
+    </a>
+    {%else%}
+    <a href="../../login/">
+       <i
+        class="far fa-user"
+        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+      ></i>
+    </a>
+    {%endif%}
+    <a href="../../contactus/">
+      <i
+        class="fas fa-headphones"
+        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+      ></i>
+    </a>
   </div>
 </nav>
 <form action="../listing/" method="get" class="search-res"><!--search bar for responsive-->

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%load static%}
 <html>
   <head>
     <title>Redopact Wishlist</title>
@@ -608,218 +609,257 @@
   </head>
 
   <body>
-    <nav class="search-bar">
-      <div class="burger" onclick="appear()">
-        <!--three horizontal lines-->
-        <div class="line"></div>
-        <div class="big-line"></div>
-        <div class="line"></div>
-      </div>
-      <div class="img">
-        <!--logo-->
-        <img
-          src="https://raw.githubusercontent.com/13kashishjain02/redo-frontend/main/images/LOGO.png?token=AU47YQB4I7LLXR3CQEFXKNLBVDJFI"
-          width="200px"
-          height="50px"
-        />
-      </div>
-      <form class="search">
-        <!--search bar-->
-        <button type="submit" class="search-btn">
-          <i class="fas fa-search"></i>
-        </button>
-        <input
-          type="search"
-          class="sb"
-          placeholder="Search for fruit salad combos"
-        />
-      </form>
-      <div class="logo">
-        <!--user, heart, car and headphones logo-->
-        <i
-          class="far fa-user"
-          style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-        ></i>
-        <i
-          class="far fa-heart dil"
-          style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-        ></i>
-        <i
-          class="fas fa-shopping-cart"
-          style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-        ></i>
-        <i
-          class="fas fa-headphones"
-          style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
-        ></i>
-      </div>
-    </nav>
-    <form class="search-res">
-      <!--search bar for responsive-->
-      <button type="submit" class="search-btn">
-        <i class="fas fa-search"></i>
-      </button>
-      <input
-        type="search"
-        class="sb"
-        placeholder="Search for fruit salad combos"
+<nav class="search-bar">
+  <div class="burger" onclick="appear()"><!--three horizontal lines-->
+    <div class="line"></div>
+    <div class="big-line"></div>
+    <div class="line"></div>
+  </div>
+  <div class="img"><!--logo-->
+    <a href="../../">
+      <img
+        src="{%static 'general/images/logo.png'%}"
+        width="200px"
+        height="50px"
       />
-    </form>
+    </a>
+  </div>
+  <form action="../listing/" method="get" class="search"><!--search bar-->
+    <button type="submit" class="search-btn">
+      <i class="fas fa-search"></i>
+    </button>
+    <input
+      type="search"
+      class="sb"
+      placeholder="Search for fruit salad combos"
+      name="search"
+    />
+  </form>
+  <div class="logo"><!--user, heart, car and headphones logo-->
+    {%if request.user.is_authenticated %}
+    <a href="../../account/">
+    <i
+      class="far fa-user"
+      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+    ></i>
+    </a>
+    <a href="../../wishlist/">
+    <i
+      class="far fa-heart dil"
+      style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+    ></i>
+    </a>
+    <a href="../../cart">
+      <i
+        class="fas fa-shopping-cart"
+        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+      ></i>
+    </a>
+    {%else%}
+    <a href="../../login/">
+       <i
+        class="far fa-user"
+        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+      ></i>
+    </a>
+    {%endif%}
+    <a href="../../contactus/">
+      <i
+        class="fas fa-headphones"
+        style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+      ></i>
+    </a>
+  </div>
+</nav>
+<form action="../listing/" method="get" class="search-res"><!--search bar for responsive-->
+  <button type="submit" class="search-btn">
+    <i class="fas fa-search"></i>
+  </button>
+  <input
+    type="search"
+    class="sb"
+    placeholder="Search for fruit salad combos"
+    name="search"
+  />
+</form>
 
-    <nav class="nav">
-      <!--nav-bar-->
-      <div class="menu-head">
-        <p class="cross" onclick="appear()">
-          <i class="far fa-times-circle"></i>
-        </p>
-      </div>
-      <div class="login">
-        <p class="m"><i class="far fa-user"></i> Login/Register</p>
-      </div>
-      <div class="login">
-        <p class="m"><i class="fas fa-shopping-cart"></i> Cart</p>
-      </div>
-      <p class="cat">Category</p>
-      <div class="drop-pc" onmouseover="dropFunc(0)" onmouseout="dropFunc(0)">
-        <div class="dd-pc">
-          <p class="content">Personal Care</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">Bathroom accessories</li>
-          <li class="d-pc">Body hygiene</li>
-          <li class="d-pc">Oral hygiene</li>
-          <li class="d-pc">Female hygiene</li>
-          <li class="d-pc">Kits</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(1)" onmouseout="dropFunc(1)">
-        <div class="dd-pc">
-          <p class="content">Cary Ons</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">bags and pouches</li>
-          <li class="d-pc">wallets and clutches</li>
-          <li class="d-pc">basket</li>
-          <li class="d-pc">mobile cover</li>
-          <li class="d-pc">face mask</li>
-          <li class="d-pc">goggles</li>
-          <li class="d-pc">stoles and scarves</li>
-          <li class="d-pc">tie and belts</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(2)" onmouseout="dropFunc(2)">
-        <div class="dd-pc">
-          <p class="content">Stationary</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">paper and pen</li>
-          <li class="d-pc">plantable stationary</li>
-          <li class="d-pc">stands and pouches</li>
-          <li class="d-pc">stationary Kits</li>
-          <li class="d-pc">notebooks</li>
-          <li class="d-pc">packaging</li>
-          <li class="d-pc">office</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(3)" onmouseout="dropFunc(3)">
-        <div class="dd-pc">
-          <p class="content">Sweet Home</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">furniture</li>
-          <li class="d-pc">home decor</li>
-          <li class="d-pc">mandir</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(4)" onmouseout="dropFunc(4)">
-        <div class="dd-pc">
-          <p class="content">Fashion</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">clothes</li>
-          <li class="d-pc">footwear</li>
-          <li class="d-pc">jewellery</li>
-          <li class="d-pc">scrunchies</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(5)" onmouseout="dropFunc(5)">
-        <div class="dd-pc">
-          <p class="content">Garden</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">pots</li>
-          <li class="d-pc">planters</li>
-          <li class="d-pc">outdoor furniture</li>
-          <li class="d-pc">plants</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(6)" onmouseout="dropFunc(6)">
-        <div class="dd-pc">
-          <p class="content">GymFreak</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">yoga mat</li>
-          <li class="d-pc">massage ball</li>
-          <li class="d-pc">sipper</li>
-          <li class="d-pc">duffel bag</li>
-          <li class="d-pc">hand towel</li>
-          <li class="d-pc">cap</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(7)" onmouseout="dropFunc(7)">
-        <div class="dd-pc">
-          <p class="content">Kids</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">toys</li>
-          <li class="d-pc">stationary</li>
-          <li class="d-pc">friendship band</li>
-          <li class="d-pc">kids wear</li>
-          <li class="d-pc">reusable diapers</li>
-          <li class="d-pc">nursery needs</li>
-        </ul>
-      </div>
-      <div class="drop-pc" onmouseover="dropFunc(8)" onmouseout="dropFunc(8)">
-        <div class="dd-pc">
-          <p class="content">Kitchen</p>
-          <i class="fas fa-chevron-down" id="arrow-pc"></i>
-        </div>
-        <ul class="drop-down-pc">
-          <li class="d-pc">cultery</li>
-          <li class="d-pc">cookware</li>
-          <li class="d-pc">serving ware</li>
-          <li class="d-pc">household supplies</li>
-          <li class="d-pc">Kits</li>
-        </ul>
-      </div>
-      <p class="content">Books</p>
-      <div
-        class="login"
-        style="border-top: 1px solid white; height: 45px"
-      ></div>
-      <div class="login">
-        <p class="m">Become a supplier</p>
-      </div>
-      <div class="login" style="align-items: center; justify-content: center">
-        <i
-          class="fas fa-headphones"
-          style="
-            display: block !important;
-            color: white;
-            margin: 0px 3px 0px 10px;
-          "
-        ></i>
-        <p class="m">+91 1234567890 / info@redopact.com</p>
-      </div>
-    </nav>
+
+<nav class="nav"><!--nav-bar-->
+  <div class="menu-head">
+    <p class="cross" onclick="appear()"><i class="far fa-times-circle"></i></p>
+  </div>
+  <div class="login">
+    <p class="m"><i class="far fa-user"></i> Login/Register</p>
+  </div>
+  <div class="login">
+    <p class="m"><i class="fas fa-shopping-cart"></i> Cart</p>
+  </div>
+  <p class="cat">Category</p>
+  <div class="drop-pc" onmouseover="dropFunc(0)" onmouseout="dropFunc(0)">
+    <div class="dd-pc">
+      <p class="content">Personal Care</p>
+      <i class="fas fa-chevron-down" id = arrow-pc></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">Bathroom accessories</li>
+      <li class="d-pc">Body hygiene</li>
+      <li class="d-pc">Oral hygiene</li>
+      <li class="d-pc">Female hygiene</li>
+      <li class="d-pc">Kits</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(1)" onmouseout="dropFunc(1)">
+    <div class="dd-pc">
+      <p class="content">Cary Ons</p>
+      <i class="fas fa-chevron-down" id = arrow-pc></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">bags and pouches</li>
+      <li class="d-pc">wallets and clutches</li>
+      <li class="d-pc">basket</li>
+      <li class="d-pc">mobile cover</li>
+      <li class="d-pc">face mask</li>
+      <li class="d-pc">goggles</li>
+      <li class="d-pc">stoles and scarves</li>
+      <li class="d-pc">tie and belts</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(2)" onmouseout="dropFunc(2)">
+    <div class="dd-pc">
+      <p class="content">Stationary</p>
+      <i class="fas fa-chevron-down" id='arrow-pc'></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">paper and pen</li>
+      <li class="d-pc">plantable stationary</li>
+      <li class="d-pc">stands and pouches</li>
+      <li class="d-pc">stationary Kits</li>
+      <li class="d-pc">notebooks</li>
+      <li class="d-pc">packaging</li>
+      <li class="d-pc">office</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(3)" onmouseout="dropFunc(3)">
+    <div class="dd-pc">
+      <p class="content">Sweet Home</p>
+      <i class="fas fa-chevron-down" id='arrow-pc'></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">furniture</li>
+      <li class="d-pc">home decor</li>
+      <li class="d-pc">mandir</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(4)" onmouseout="dropFunc(4)">
+    <div class="dd-pc">
+      <p class="content">Fashion</p>
+      <i class="fas fa-chevron-down" id='arrow-pc'></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">clothes</li>
+      <li class="d-pc">footwear</li>
+      <li class="d-pc">jewellery</li>
+      <li class="d-pc">scrunchies</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(5)" onmouseout="dropFunc(5)">
+    <div class="dd-pc">
+      <p class="content">Garden</p>
+      <i class="fas fa-chevron-down" id='arrow-pc'></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">pots</li>
+      <li class="d-pc">planters</li>
+      <li class="d-pc">outdoor furniture</li>
+      <li class="d-pc">plants</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(6)" onmouseout="dropFunc(6)">
+    <div class="dd-pc">
+      <p class="content">GymFreak</p>
+      <i class="fas fa-chevron-down" id='arrow-pc'></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">yoga mat</li>
+      <li class="d-pc">massage ball</li>
+      <li class="d-pc">sipper</li>
+      <li class="d-pc">duffel bag</li>
+      <li class="d-pc">hand towel</li>
+      <li class="d-pc">cap</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(7)" onmouseout="dropFunc(7)">
+    <div class="dd-pc">
+      <p class="content">Kids</p>
+      <i class="fas fa-chevron-down" id='arrow-pc'></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">toys</li>
+      <li class="d-pc">stationary</li>
+      <li class="d-pc">friendship band</li>
+      <li class="d-pc">kids wear</li>
+      <li class="d-pc">reusable diapers</li>
+      <li class="d-pc">nursery needs</li>
+    </ul>
+  </div>
+  <div class="drop-pc" onmouseover="dropFunc(8)" onmouseout="dropFunc(8)">
+    <div class="dd-pc">
+      <p class="content">Kitchen</p>
+      <i class="fas fa-chevron-down" id='arrow-pc'></i>
+    </div>
+    <ul class="drop-down-pc">
+      <li class="d-pc">cultery</li>
+      <li class="d-pc">cookware</li>
+      <li class="d-pc">serving ware</li>
+      <li class="d-pc">household supplies</li>
+      <li class="d-pc">Kits</li>
+    </ul>
+  </div>
+  <p class="content">Books</p>
+  <div
+      class="login"
+      style="border-top: 1px solid white; height: 45px"
+    ></div>
+    <div class="login">
+      <p class="m">Become a supplier</p>
+    </div>
+    <div class="login" style="align-items: center; justify-content: center;">
+      <i class="fas fa-headphones" style="display: block !important; color: white; margin: 0px 3px 0px 10px;"></i>
+      <p class="m">
+         +91 1234567890 / info@redopact.com
+      </p>
+    </div>
+</nav>
+<script> //script for menu appear and disappear
+  const nav = document.querySelector('.nav')
+  const menuHead = document.querySelector('.menu-head');
+  const login = document.querySelectorAll('.login');
+  const cat = document.querySelector('.cat');
+
+function appear() {
+  const burger = document.querySelector('.burger');
+  nav.classList.toggle('show')
+  menuHead.classList.toggle('show');
+  login.forEach((e) => e.classList.toggle('show'));
+  cat.classList.toggle('show');
+}
+</script>
+
+<script>//script for drop down menu content
+  const dropPc = document.querySelectorAll(".drop-down-pc");
+  function dropFunc(x) {
+    const arrowPc = document.querySelectorAll("#arrow-pc");
+    if (arrowPc[x].attributes[0].value == "fas fa-chevron-down") {
+      dropPc[x].style.display = "block";
+      arrowPc[x].classList.remove("fa-chevron-down");
+      arrowPc[x].classList.add("fa-chevron-up");
+    }else {
+      dropPc[x].style.display = "none";
+      arrowPc[x].classList.remove("fa-chevron-up");
+      arrowPc[x].classList.add("fa-chevron-down");
+    }
+  }
+</script>
 
     <p class="headline">Home > Clothing + Accessories > Men > Shoes > Reda</p>
     <h2 class="head">GC's Wishlist</h2>
