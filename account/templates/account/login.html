@@ -1,55 +1,51 @@
-{% extends 'general/base2.html' %}
-{%load static%}
-{% block head%}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- adding css -->
-    <link rel="stylesheet" href="{%static 'account/css/login.css'%}">
-    <!-- adding font link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-{% endblock %}
-{% block body%}
-    <div class="cont">
-        <!-- left-portion -->
-        <div class="banner">
-            <p class="banner-text">we Missed you !</p>
-            <p class="banner-text">LOGIN BACK</p>
-<!--            <img src="images/LOGO.png" alt="">-->
-        </div>
-        <!-- right-portion -->
-        <div class="main">
-            <div class="main-content">
-                <div class="form">
-                    <hr class="colored">
-                    <p class="sign">Sign-up <span class="bar">|</span> <span class="login">Login</span></p>
-                    <form method="post" action="../login/" class="form">
-                        {%csrf_token%}
-                        <label for="email">Email Address</label><br>
-                        <input class="input" type="text" id="email" name="email" placeholder="Enter Email Address"><br>
-                        <label for="password">Password</label><br>
-                        <input class="input" type="password" id="password" name="password"><br>
-                        <p class="forgot-pass">Forgot Password?</p>
-                        <button type="submit"><span class="login-but">Login</span></button>
-                    </form>
-                    <!-- login-button -->
+{% extends 'general/base2.html' %} {%load static%} {% block head%}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- adding css -->
+<link rel="stylesheet" href="{%static 'account/css/login.css'%}">
+<!-- adding font link -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> {% endblock %} {% block body%}
+<div class="cont">
+    <!-- left-portion -->
+    <div class="banner">
+        <p class="banner-text">we Missed you !</p>
+        <p class="banner-text">LOGIN BACK</p>
+        <!--            <img src="images/LOGO.png" alt="">-->
+    </div>
+    <!-- right-portion -->
+    <div class="main">
+        <div class="main-content">
+            <div class="form">
+                <hr class="colored">
+                <p class="sign">Sign-up <span class="bar">|</span>Login</p>
+                <form method="post" action="../login/" class="form">
+                    {%csrf_token%}
+                    <label for="email">Email Address</label><br>
+                    <input class="input" type="text" id="email" name="email" placeholder="Enter Email Address"><br>
+                    <label for="password">Password</label><br>
+                    <input class="input" type="password" id="password" name="password"><br>
+                    <p class="forgot-pass">Forgot Password?</p>
+                    <button type="submit"><span class="login-but">Login</span></button>
+                </form>
+                <!-- login-button -->
 
-                    <p class="bot-text">No account <span class="sign-up">Sign Up?</span></p>
-                    <p class="bot-text">or continue with</p>
-                    <div class="icons">
-                        <!-- google-icon -->
-                        <img src="icons/google.png" class="google" alt="sign up with google">
-                        <!-- facebook-icon -->
-                        <img src="icons/facebook.png" class="facebook" alt="">
-                        <!-- linkedin-icon -->
-                        <img src="icons/linkedin.png" class="linkedin" alt="">
-                    </div>
+                <p class="bot-text">No account <span class="sign-up">Sign Up?</span></p>
+                <p class="bot-text">or continue with</p>
+                <div class="icons">
+                    <!-- google-icon -->
+                    <img src="icons/google.png" class="google" alt="sign up with google">
+                    <!-- facebook-icon -->
+                    <img src="icons/facebook.png" class="facebook" alt="">
+                    <!-- linkedin-icon -->
+                    <img src="icons/linkedin.png" class="linkedin" alt="">
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'general/base.html' %} {%load static%} {% block title%}redopack{% endblock %} {% block head%}
+<link rel="stylesheet" href="{%static 'account/css/login.css'%}">
+<link rel="stylesheet" href="{%static 'shop/css/style.css'%}">
+<link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+<!--    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">-->
+{% endblock %} {% block body%} {% if msg %}
+<div class="alert" style="background-color: red;">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>{{msg}}!</strong>
+</div>
+{% endif %}
+<form method="post" action="###" class="form">
+    {%csrf_token%}
+    <!-- kyc -->
+    <div class="input-div pass">
+        <div class="div">
+            <input type="number" class="input" placeholder="Aadhaar" name="aadhaar" value="">
+        </div>
+    </div>
+    <button class="butn" id="login-btn" type="submit" value="Register">SUBMIT</button>
+</form>
+{%endblock%}

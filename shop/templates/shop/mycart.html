@@ -1,232 +1,404 @@
-{% extends 'general/base2.html' %}
-{%load static%}
-{% block head%}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- GoogleFonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap" rel="stylesheet">
+{% extends 'general/base2.html' %} {%load static%} {% block head%}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- GoogleFonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap" rel="stylesheet">
 
-    <!--Flickity CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!--Flickity CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<!-- FontAwesome CSS -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-    <!-- Applied CSS -->
-    <link rel="stylesheet" href="{%static 'shop/css/cart.css'%}">
+<!-- Applied CSS -->
+<link rel="stylesheet" href="{%static 'shop/css/cart.css'%}">
 
-{% endblock %}
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    body {
+        background-color: #f2f2f2;
+        font-family: sans-serif;
+    }
+    
+    .login,
+    .menu-head,
+    .cat {
+        display: none;
+    }
+    /* search bar */
+    
+    .search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #004953;
+        padding: 0px 45px;
+    }
+    
+    .burger {
+        display: none;
+    }
+    
+    .line {
+        background-color: white;
+        width: 20px;
+        height: 3px;
+        margin: 0px 5px
+    }
+    
+    .big-line {
+        margin: 5px;
+        background-color: white;
+        width: 30px;
+        height: 3px;
+    }
+    
+    .search {
+        display: flex;
+        padding: 5px 15px;
+        background-color: #f3f4f9;
+        width: 600px;
+        border-radius: 8px;
+        border: 1px solid #f3f4f9;
+    }
+    
+    .search-btn {
+        background-color: #f3f4f9;
+        border: 1px solid #f3f4f9;
+        outline: none;
+        font-size: 1.2rem;
+        color: #777;
+    }
+    
+    .sb {
+        background-color: #f3f4f9;
+        width: 100%;
+        border: 1px solid #f3f4f9;
+        outline: none;
+        font-weight: 400;
+        font-size: 0.8rem;
+        margin-left: 35px;
+        color: #777;
+    }
+    
+    .search-res {
+        display: none;
+    }
+    /* /search bar */
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 10px;
+    }
+    
+    .content {
+        color: #004953;
+        margin: 10px 0px 10px 10px;
+    }
+    
+    .fa-chevron-down {
+        vertical-align: middle;
+    }
+    /* nav-bar finished */
+    
+    .drop-pc {
+        position: relative;
+    }
+    
+    .dd-pc {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .drop-down-pc {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        padding: 15px 0px;
+        background-color: white;
+        width: 200px;
+    }
+    
+    .drop-pc:hover .drop-down-pc {
+        display: block;
+    }
+    
+    .d-pc {
+        list-style: none;
+        color: #004953;
+        padding: 10px 20px;
+        text-transform: capitalize;
+    }
+    
+    .d-pc:hover {
+        background-color: #f2f2f2;
+    }
+    
+    #arrow-pc {
+        margin-left: 5px;
+        margin-right: 10px;
+        color: #004953;
+    }
+    
+    .show {
+        display: flex !important;
+    }
+    
+    @media screen and (max-width: 640px) {
+        .search-bar {
+            margin-bottom: 10px;
+            padding: 0px;
+            width: 100%;
+        }
+        .burger {
+            display: flex;
+            flex-direction: column;
+        }
+        .search {
+            display: none !important;
+        }
+        .sb,
+        .search-btn {
+            background-color: #fff;
+            border: 1px solid #fff;
+        }
+        .search-res {
+            display: flex;
+            margin: auto;
+            padding: 5px 5px;
+            background-color: #fff;
+            width: 90%;
+            border-radius: 8px;
+            border: 1px solid #004953;
+        }
+        .fa-headphones {
+            display: none !important;
+        }
+        .nav {
+            display: none;
+            position: fixed;
+            top: 0px;
+            /* bottom: 0px; */
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            background-color: #004953;
+            padding: 0px;
+            width: 80%;
+            height: auto;
+            z-index: 100;
+        }
+        .menu-head {
+            width: 100%;
+            display: none;
+            justify-content: flex-end;
+            background-color: #fff;
+            padding: 10px 0px;
+        }
+        .cross {
+            color: #004953;
+            font-size: 1.6rem;
+            padding: 0px 10px;
+        }
+        .login {
+            display: none;
+            width: 100%;
+            border-bottom: 1px solid white;
+        }
+        .m {
+            color: white;
+            margin: 0px 10px;
+            padding: 10px 0px;
+        }
+        .cat {
+            display: none;
+            color: white;
+            margin: 5px 10px 0px;
+            padding: 5px 0px;
+        }
+        .content {
+            color: #fff;
+            margin: 10px 0px 10px 10px;
+        }
+        .drop-pc {
+            position: initial;
+            width: 100%;
+        }
+        .drop-down-pc {
+            display: none;
+            position: initial;
+            /* z-index: 100; */
+            margin: 0px 10px;
+            padding: 15px 0px;
+            background-color: white;
+            width: auto;
+            border-radius: 10px;
+        }
+        .drop-pc:hover .drop-down-pc {
+            display: block;
+        }
+        .dd-pc {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #arrow-pc {
+            margin-left: 5px;
+            margin-right: 10px;
+            color: #fff;
+        }
+        .d-pc {
+            list-style: none;
+            color: #004953;
+            padding: 10px 20px;
+            text-transform: capitalize;
+        }
+        .d-pc:hover {
+            background-color: #f2f2f2;
+        }
+        .dil {
+            display: none !important;
+        }
+    }
+    /* footer */
+    
+    #footer {
+        background-color: #004953;
+        padding: 2% 0;
+    }
+    
+    .footer,
+    .contents {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+    }
+    
+    .footer-content {
+        margin: 0px 30px;
+    }
+    
+    .footer-heading {
+        color: #f67171;
+        padding-bottom: 5%;
+    }
+    
+    .footer-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .footer-list li {
+        color: white;
+        padding: 1% 0;
+    }
+    
+    .footer-icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 40%;
+        margin-top: 5%;
+    }
+    
+    .footer-icons .icons {
+        margin: 0 3%;
+        padding: 7%;
+        border-radius: 100%;
+        background-color: #cccccc;
+    }
+    /* footer finished */
+    
+    @media screen and (max-width: 640px) {
+        .footer {
+            flex-direction: column;
+        }
+        .contents {
+            margin: 25px 0px;
+        }
+        .footer-list {
+            line-height: 1.3;
+        }
+    }
+</style>
 
-{% block body%}
-    <!-- Heading -->
-    <div class="container text-center" style="font-weight: 600; font-size: 1rem; font-family: 'Raleway', sans-serif;">Your cart items</div>
+{% endblock %} {% block body%}
+<!-- Heading -->
+<div class="container text-center" style="font-weight: 600; font-size: 1rem; font-family: 'Raleway', sans-serif;">Your cart items</div>
 
-    <!-- Listing (Not displayed in mobile view) -->
-    <div class="container mt-2 noDisplayinMobile" style="border-bottom: 2px solid #004953; font-family: 'Raleway', sans-serif;">
-        <div class="half-container d-flex justify-content-between align-items-center">
-            <span class="listing w-50">Product</span>
-            <div class="d-flex justify-content-between align-items-center w-50">
-                <span class="listing ms-3">M.R.P.</span>
-                <span class="listing ms-2">Special Price</span>
-                <span class="listing">Delivery</span>
-            </div>
+<!-- Listing (Not displayed in mobile view) -->
+<div class="container mt-2 noDisplayinMobile" style="border-bottom: 2px solid #004953; font-family: 'Raleway', sans-serif;">
+    <div class="half-container d-flex justify-content-between align-items-center">
+        <span class="listing w-50">Product</span>
+        <div class="d-flex justify-content-between align-items-center w-50">
+            <span class="listing ms-3">M.R.P.</span>
+            <span class="listing ms-2">Special Price</span>
+            <span class="listing">Delivery</span>
         </div>
     </div>
+</div>
 
-    <!-- Scrollbar Section and total in desktop view -->
-    <div class="container mt-3 noDisplayinMobile" style="font-family: 'Raleway', sans-serif;">
-        <div class="row">
-            <div class="col col-sm-12 col-md-7 col-12 scroller">
-                {%if cart%}
-                    {% for i in cart %}
-                    <div class="card cart-card mb-1">
-                        <div class="row">
-                            <div class="col-sm-11 col-11 col-md-11 d-flex justify-content-between align-items-center" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
-                                <div class="d-flex justify-content-start align-items-center">
-                                    <a href="../{{i.slug}}!">
-                                        <img src="../media/{{i.image}}" class="image-fluid pt-2 pb-2 me-1">
+<!-- Scrollbar Section and total in desktop view -->
+<div class="container mt-3 noDisplayinMobile" style="font-family: 'Raleway', sans-serif;">
+    <div class="row">
+        <div class="col col-sm-12 col-md-7 col-12 scroller">
+            {%if cart%} {% for i in cart %}
+            <div class="card cart-card mb-1">
+                <div class="row">
+                    <div class="col-sm-11 col-11 col-md-11 d-flex justify-content-between align-items-center" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <a href="../{{i.slug}}!">
+                                <img src="../media/{{i.image}}" class="image-fluid pt-2 pb-2 me-1">
+                            </a>
+                            <div class="d-flex flex-column">
+                                <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">{{i.name}}</span>
+                                <div class="d-flex justify-content-between align-items-center mt-1 mb-1">
+                                    <span style="font-size: 0.7rem; line-height: 0.8rem;">Color</span>
+                                    <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <a href="../increaseqty?id={{i.product_id}}">
+                                        <i class="bi bi-plus-circle" style="color: green;"></i>
                                     </a>
-                                    <div class="d-flex flex-column">
-                                        <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">{{i.name}}</span>
-                                        <div class="d-flex justify-content-between align-items-center mt-1 mb-1">
-                                            <span style="font-size: 0.7rem; line-height: 0.8rem;">Color</span>
-                                            <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center mt-1">
-                                            <a href="../increaseqty?id={{i.product_id}}">
-                                                <i class="bi bi-plus-circle" style="color: green;"></i>
-                                            </a>
-                                            <span>{{i.qty}}</span>
-                                            <a href="../decreaseqty?id={{i.product_id}}">
-                                                <i class="bi bi-dash-circle" style="color: red;"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    <span>{{i.qty}}</span>
+                                    <a href="../decreaseqty?id={{i.product_id}}">
+                                        <i class="bi bi-dash-circle" style="color: red;"></i>
+                                    </a>
                                 </div>
-                                <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">&#8377 {{i.special_price}}</span>
-                                <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">&#8377 {{i.mrp}} </span>
-                                <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">&#8377 60</span>
-                            </div>
-                            <div class="col-sm-1 col-1 col-md-1 ps-0 d-flex align-items-center justify-content-center">
-                                <i class="bi bi-x-circle" style="color: red; background-color: #E5E5E5;"></i>
                             </div>
                         </div>
+                        <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">&#8377 {{i.special_price}}</span>
+                        <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">&#8377 {{i.mrp}} </span>
+                        <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">&#8377 60</span>
                     </div>
-                    {% endfor %}
-                {%else%}
-                    Your cart is empty
-                {%endif%}
-            </div>
-            <div class="col col-sm-12 col-md-5 col-12">
-                <div class="card" style="border-radius: 1rem;box-shadow: 0px 4px 15px rgba(119, 119, 119, 0.2);">
-                    <div class="card-body totalList">
-                        <div class="d-flex justify-content-between align-items-center mb-1">
-                            <span style="font-size: 0.75rem;">Subtotal</span>
-                            <span style="font-size: 0.9rem; letter-spacing: 0.02em;">Rp 2.152.000</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-1 mt-1">
-                            <span style="font-size: 0.75rem;">Promo Code</span>
-                            <span style="color: red; letter-spacing: 0.02em;font-size: 0.75rem;">35% OFF</span>
-                            <span style="font-size: 0.5rem; font-family: 'Montserrat', sans-serif; font-weight: bold; letter-spacing: 0.02rem;">INDONESIA</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-1">
-                            <span style="font-size: 0.75rem;">Total</span>
-                            <span style="font-size: 0.9rem; letter-spacing: 0.02em;">Rp 2.152.000</span>
-                        </div>
-                    </div>
-                    <div class="card-footer border-0" style="background-color: white; padding-left: 0.2rem; padding-right: 0.2rem;">
-                        <button type="button" class="btn w-100 text-center rounded-1 text-light" style="font-weight: bold; background-color:#15707C; font-family: 'Mulish', sans-serif;padding-right: 0.5rem; padding-left: 0.5rem;">Place Order</button>
+                    <div class="col-sm-1 col-1 col-md-1 ps-0 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-x-circle" style="color: red; background-color: #E5E5E5;"></i>
                     </div>
                 </div>
             </div>
+            {% endfor %} {%else%} Your cart is empty {%endif%}
         </div>
-    </div>
-
-
-    <!-- Scrollbar Section and total in mobile and tablets view -->
-    <div class="container mt-3 DisplayinMobile" style="font-family: 'Raleway', sans-serif;">
-        <div class="col col-sm-12 col-md-7 col-12 scroller w-100">
-            <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
-                <div class="row g-0">
-                    <div class="col-md-4 col-sm-4 col-4">
-                        <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-8">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
-                                <i class="bi bi-x-circle" style="color: red;"></i>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
-                                <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
-                                <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
-                                <div class="d-flex justify-content-between align-items-center mt-1">
-                                    <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
-                                    <span>2</span>
-                                    <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
-                <div class="row g-0">
-                    <div class="col-md-4 col-sm-4 col-4">
-                        <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-8">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
-                                <i class="bi bi-x-circle" style="color: red;"></i>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
-                                <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
-                                <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
-                                <div class="d-flex justify-content-between align-items-center mt-1">
-                                    <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
-                                    <span>2</span>
-                                    <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
-                <div class="row g-0">
-                    <div class="col-md-4 col-sm-4 col-4">
-                        <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-8">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
-                                <i class="bi bi-x-circle" style="color: red;"></i>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
-                                <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
-                                <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
-                                <div class="d-flex justify-content-between align-items-center mt-1">
-                                    <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
-                                    <span>2</span>
-                                    <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
-                <div class="row g-0">
-                    <div class="col-md-4 col-sm-4 col-4">
-                        <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-8">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
-                                <i class="bi bi-x-circle" style="color: red;"></i>
-                            </div>
-                            <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
-                                <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
-                                <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
-                                <div class="d-flex justify-content-between align-items-center mt-1">
-                                    <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
-                                    <span>2</span>
-                                    <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-12 col-md-5 col-12 w-100">
+        <div class="col col-sm-12 col-md-5 col-12">
             <div class="card" style="border-radius: 1rem;box-shadow: 0px 4px 15px rgba(119, 119, 119, 0.2);">
                 <div class="card-body totalList">
                     <div class="d-flex justify-content-between align-items-center mb-1">
@@ -249,369 +421,507 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Browsing History Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.55rem + 0.1vw); font-family: 'Raleway', sans-serif;">
-        <!--Container for Heading and arrow keys -->
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <span class="navbar-brand" style="color: #008080;font-weight: 600;">
+
+<!-- Scrollbar Section and total in mobile and tablets view -->
+<div class="container mt-3 DisplayinMobile" style="font-family: 'Raleway', sans-serif;">
+    <div class="col col-sm-12 col-md-7 col-12 scroller w-100">
+        <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
+            <div class="row g-0">
+                <div class="col-md-4 col-sm-4 col-4">
+                    <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
+                </div>
+                <div class="col-md-8 col-sm-8 col-8">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
+                            <i class="bi bi-x-circle" style="color: red;"></i>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
+                            <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
+                            <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
+                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
+                                <span>2</span>
+                                <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
+            <div class="row g-0">
+                <div class="col-md-4 col-sm-4 col-4">
+                    <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
+                </div>
+                <div class="col-md-8 col-sm-8 col-8">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
+                            <i class="bi bi-x-circle" style="color: red;"></i>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
+                            <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
+                            <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
+                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
+                                <span>2</span>
+                                <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
+            <div class="row g-0">
+                <div class="col-md-4 col-sm-4 col-4">
+                    <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
+                </div>
+                <div class="col-md-8 col-sm-8 col-8">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
+                            <i class="bi bi-x-circle" style="color: red;"></i>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
+                            <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
+                            <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
+                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
+                                <span>2</span>
+                                <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-1" style="background-color: rgba(0, 73, 83,0.1); border-radius: 1rem;">
+            <div class="row g-0">
+                <div class="col-md-4 col-sm-4 col-4">
+                    <img src="./images/dwKiHoqqxk8.png" class="img-fluid pt-2 pb-2 ps-2 me-1">
+                </div>
+                <div class="col-md-8 col-sm-8 col-8">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="mb-1" style="font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15px; line-height: 1rem; ">Denim Shoes</span>
+                            <i class="bi bi-x-circle" style="color: red;"></i>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center mt-1 mb-1">
+                            <span style="font-size: 0.7rem; line-height: 0.8rem;padding-right: 0.4rem;">Color</span>
+                            <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15px;">Red</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span style="font-weight: bold; font-size: 0.75rem; letter-spacing: 0.15px;">270.34</span>
+                            <div class="d-flex justify-content-between align-items-center mt-1">
+                                <i class="bi bi-plus-circle" style="color: green;padding-right: 0.4rem;"></i>
+                                <span>2</span>
+                                <i class="bi bi-dash-circle" style="color: red;padding-left: 0.4rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-sm-12 col-md-5 col-12 w-100">
+        <div class="card" style="border-radius: 1rem;box-shadow: 0px 4px 15px rgba(119, 119, 119, 0.2);">
+            <div class="card-body totalList">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span style="font-size: 0.75rem;">Subtotal</span>
+                    <span style="font-size: 0.9rem; letter-spacing: 0.02em;">Rp 2.152.000</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-1 mt-1">
+                    <span style="font-size: 0.75rem;">Promo Code</span>
+                    <span style="color: red; letter-spacing: 0.02em;font-size: 0.75rem;">35% OFF</span>
+                    <span style="font-size: 0.5rem; font-family: 'Montserrat', sans-serif; font-weight: bold; letter-spacing: 0.02rem;">INDONESIA</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-1">
+                    <span style="font-size: 0.75rem;">Total</span>
+                    <span style="font-size: 0.9rem; letter-spacing: 0.02em;">Rp 2.152.000</span>
+                </div>
+            </div>
+            <div class="card-footer border-0" style="background-color: white; padding-left: 0.2rem; padding-right: 0.2rem;">
+                <button type="button" class="btn w-100 text-center rounded-1 text-light" style="font-weight: bold; background-color:#15707C; font-family: 'Mulish', sans-serif;padding-right: 0.5rem; padding-left: 0.5rem;">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Browsing History Slider -->
+<div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.55rem + 0.1vw); font-family: 'Raleway', sans-serif;">
+    <!--Container for Heading and arrow keys -->
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <span class="navbar-brand" style="color: #008080;font-weight: 600;">
             BROWSING HISTORY</span>
-            <div class="d-flex">
-                <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
-                <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
-            </div>
-        </div>
-
-
-        <!-- Slider items -->
-        <div class="main-carousel">
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-
+        <div class="d-flex">
+            <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
+            <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
         </div>
     </div>
 
-    <!--Recommendation Slider -->
-    <div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.55rem + 0.1vw); font-family: 'Raleway', sans-serif;">
 
-        <!--Container for Heading and arrow keys -->
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <span class="navbar-brand" style="color: #008080;font-weight: 600;">
+    <!-- Slider items -->
+    <div class="main-carousel">
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 2 (2).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!--Recommendation Slider -->
+<div class="container carousel-container mt-4 mb-4" style="font-size: calc(0.55rem + 0.1vw); font-family: 'Raleway', sans-serif;">
+
+    <!--Container for Heading and arrow keys -->
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <span class="navbar-brand" style="color: #008080;font-weight: 600;">
             RECOMMENDATION</span>
-            <div class="d-flex">
-                <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
-                <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
-            </div>
-        </div>
-
-        <!-- Slider items -->
-        <div class="main-carousel">
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <div class="card">
-                    <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
-                    </div>
-                    <ul class="list-group list-group-flush" style="border: none;">
-                        <li class="list-group-item" style="border: none;">size</li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
-                            <div class="price">
-                                <span style="color:#004953;;">Rs 700</span>
-                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
-                            </div>
-                            <div>
-                                <i class="bi bi-dash-square" style="color: 
-                                #004953;"></i>
-                                <i class="bi bi-cart2" style="color: 
-                            #222222;"></i>
-                                <i class="bi bi-plus-square-fill" style="color: 
-                            #004953;"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="d-flex">
+            <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
+            <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
         </div>
     </div>
 
+    <!-- Slider items -->
+    <div class="main-carousel">
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-cell">
+            <div class="card">
+                <img src="./images/Rackle-Shoes-Red-1 1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                </div>
+                <ul class="list-group list-group-flush" style="border: none;">
+                    <li class="list-group-item" style="border: none;">size</li>
+                    <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                        <div class="price">
+                            <span style="color:#004953;;">Rs 700</span>
+                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                        </div>
+                        <div>
+                            <i class="bi bi-dash-square" style="color: 
+                                #004953;"></i>
+                            <i class="bi bi-cart2" style="color: 
+                            #222222;"></i>
+                            <i class="bi bi-plus-square-fill" style="color: 
+                            #004953;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- jQuery CDN plugin for flickity slider -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<!-- jQuery CDN plugin for flickity slider -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 
-    <!--Flickity JavaScript -->
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<!--Flickity JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <!-- Applied JavaScript -->
+<!-- Applied JavaScript -->
 
-    <script src="{%static 'general/css/home.js'%}"></script>
+<script src="{%static 'general/css/home.js'%}"></script>
 {% endblock %}
