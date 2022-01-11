@@ -142,6 +142,7 @@ def placeorder(request):
                                        address=address, address2=address2, contact_number=contact_number,
                                        landmark=landmark,city=city,state=state, total=total)
         c_order.save()
+        Cart.objects.filter(user=request.user).delete()
         global orderid
         orderid = str(c_order.id)
         # return redirect('../paytmcheckout')
@@ -526,3 +527,13 @@ def wishlist(request):
     except Exception as e:
         print("except",e)
         return render(request, 'shop/wishlist.html')
+
+import datetime
+
+def vendororders(request):
+    data = Order.objects.all()
+    data=data.values()
+
+
+
+    return render(request, 'shop/vendororders.html')

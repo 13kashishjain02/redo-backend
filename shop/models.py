@@ -2,6 +2,14 @@ from django.db import models
 from account.models import VendorAccount,Account
 from ckeditor.fields import RichTextField
 
+# addproduct
+from django.utils.text import slugify
+from django.db.utils import IntegrityError
+import math
+
+# from sorl.thumbnail import ImageField, get_thumbnail
+import datetime
+from PIL import Image
 
 # Create your models here.
 
@@ -20,6 +28,14 @@ PRODUCTFOR_CHOICES = (
     ('boy', 'BOY'),
     ('girl', 'GIRL'),
     ('general', 'GENERAL'),
+)
+STATUS = (
+    ('waiting', 'NOTPLACED'),
+    ('placed', 'PLACED'),
+    ('accepted', 'ACCEPTED'),
+    ('packed', 'PACKED'),
+    ('shipped', 'SHIPPED'),
+    ('delivered', 'DELIVERED'),
 )
 
 
@@ -110,9 +126,14 @@ class Order(models.Model):
     city = models.CharField(max_length=20, default="")
     contact_number = models.IntegerField()
     total = models.IntegerField(null=True)
-    status = models.CharField(max_length=15, default="order noted")
+    status = models.CharField(max_length=10, choices=STATUS, default='waiting')
+    date = models.DateField(null=True, blank=True,)
     order_list = models.JSONField(default=list, blank=True, null=True)
-    previous_order = models.JSONField(default=list, blank=True, null=True)
+    transaction_id = models.CharField(max_length=20, default="")
+
+    def save(self, *args, **kwargs):
+        self.date = datetime.date.today()
+        super(Order, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.status

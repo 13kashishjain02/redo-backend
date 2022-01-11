@@ -1,6 +1,5 @@
 {% extends 'general/base2.html' %}
 {%load static%}
-{% block title%}Myproducts - Elpizo{% endblock %}
 {% block head%}
     <link rel="stylesheet" href="{%static 'shop/css/product.css'%}">
 <!--    overflow-->
@@ -72,6 +71,7 @@
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, sapiente.</li>
                     </ul>
                 </div>
+
                 <div class="third-part row">
                     {%if product.special_price%}
                     <div class="price col-md-6 col-sm-6">
@@ -106,6 +106,16 @@
                         <button type="submit" class="add">Buy Now</button>
                     </div>
                 </form>
+                <!-- AddToAny BEGIN -->
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style mt-3">
+                        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                        <a class="a2a_button_whatsapp"></a>
+                        <a class="a2a_button_facebook"></a>
+                        <a class="a2a_button_twitter"></a>
+                        <a class="a2a_button_email"></a>
+                        </div>
+                        <script async src="https://static.addtoany.com/menu/page.js"></script>
+                <!-- AddToAny END -->
             </div>
         </div>
         <div class="second-s">

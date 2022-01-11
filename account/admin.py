@@ -1,9 +1,13 @@
 from django.contrib import admin
 from account.models import Account, VendorAccount, BloggerAccount
 # from django.contrib.auth.admin import UserAdmin
-
+from shop.models import Order
 
 # Register your models here.
+class OrderInline(admin.TabularInline):
+    model = Order
+    extra = 3
+
 
 
 class AccountAdmin(admin.ModelAdmin):
@@ -13,7 +17,7 @@ class AccountAdmin(admin.ModelAdmin):
     ordering = ('email',)
     filter_horizontal = ()
     list_filter = ()
-
+    inlines = [OrderInline, ]
 
 class VendorAdmin(admin.ModelAdmin):
     list_display = ('vendor', 'gst',)
@@ -22,6 +26,7 @@ class VendorAdmin(admin.ModelAdmin):
     ordering = ()
     filter_horizontal = ()
     list_filter = ()
+
 
 
 admin.site.register(Account, AccountAdmin)

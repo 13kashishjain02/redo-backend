@@ -59,6 +59,7 @@ class Account(AbstractBaseUser):
     viewpass = models.CharField(max_length=30, null=True, blank=True)
     name = models.CharField(max_length=100, null=True, blank=True)
     contact_number = models.IntegerField(null=True, blank=True, default=00000)
+    order_history = models.JSONField(default=list, blank=True, null=True)
     is_superuser = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_Vendor = models.BooleanField(default=False)
