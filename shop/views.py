@@ -518,12 +518,24 @@ def wishlist(request):
         print("except",e)
         return render(request, 'shop/wishlist.html')
 
-import datetime
-
 def vendororders(request):
+    vendor = VendorAccount.objects.get(email=request.user.email)
+    data=vendor.order_list
+    return render(request, 'shop/vendororders.html',{"data":data})
+
+def maintenance(request):
+    vendoremail = request.user.email
+    temp = []
     data = Order.objects.all()
-    data=data.values()
-
-
-
-    return render(request, 'shop/vendororders.html')
+    data = data.values()
+    for order in data:
+        for list in order["order_list"]:
+            if list["vendor_email"] == vendoremail:
+                list["date"] = str(order["date"])
+                list["order_id"] = order["id"]
+                list["status"] = order["status"]
+                temp.append(list)
+    vendor = VendorAccount.objects.get(email=vendoremail)
+    vendor.order_list = temp
+    vendor.save()
+    return redirect("../")

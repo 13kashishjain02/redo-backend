@@ -94,6 +94,7 @@ class VendorAccount(models.Model):
     shop_name = models.CharField(max_length=150)
     shop_add = models.CharField(max_length=200)
     city = models.CharField(max_length=30)
+    pincode = models.IntegerField(null=True, blank=True)
     state = models.CharField(max_length=20)
     gst = models.CharField(max_length=30 ,null=True, blank=True)
     vat = models.CharField(max_length=30, null=True, blank=True)
@@ -107,11 +108,12 @@ class VendorAccount(models.Model):
     linkedin_link = models.CharField(max_length=200, null=True, blank=True)
     youtube_link = models.CharField(max_length=200, null=True, blank=True)
     # pinterest_link = models.CharField(max_length=200, null=True, blank=True)
-    pickup_address = models.CharField(max_length=200, null=True, blank=True)
+    # pickup_address = models.CharField(max_length=200, null=True, blank=True)
     bank_account_number=models.IntegerField(null=True, blank=True)
     bank_ifsc_code = models.IntegerField(null=True, blank=True)
     bank_name = models.CharField(max_length=50, null=True, blank=True)
     bank_account_holder_name = models.CharField(max_length=100, null=True, blank=True)
+    order_list = models.JSONField(default=list, blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     logo = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
@@ -127,6 +129,8 @@ class VendorAccount(models.Model):
 #
 #     def has_module_perms(self, app_label):
 #         return True
+
+
 class BloggerAccount(models.Model):
     # Blogger_id = models.AutoField(primary_key=True)
     blogger = models.OneToOneField(Account, default=None, on_delete=models.CASCADE, primary_key=True, )

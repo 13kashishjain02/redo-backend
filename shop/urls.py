@@ -22,5 +22,7 @@ urlpatterns = [
     path('increaseqty/', cart.increaseqty, name='increaseqty'),
     path('decreaseqty/', cart.decreaseqty, name='decreaseqty'),
 
+    path('maintenance/', views.maintenance, name='maintenance'),
+
 ]
    
