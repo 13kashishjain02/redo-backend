@@ -1313,51 +1313,48 @@
     </div>
 
     <!-- Add Variation Table -->
-
-    <form method="post">
-        {%csrf_token%}
-        <div class="table-responsive mt-2 mb-2">
-            <table class="table table-secondary table-striped table-hover" id='table'>
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">Color</th>
-                        <th scope="col">Size</th>
-                        <th scope="col">Seller SKU</th>
-                        <th scope="col">MRP</th>
-                        <th scope="col">Special Price</th>
-                        <th scope="col">Quantity</th>
-                    </tr>
-                </thead>
-                <tbody id='tablebody'>
-                    <tr class="text-center" id='row'>
-                        <td>
-                            <div class="btn-group dropend">
-                                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='colorButton'></button>
-                                <ul class="dropdown-menu">
-                                    <button type="button" class="btn btn-primary btn-lg border-2 border border-dark" onclick="fillColor('blue')"></button>
-                                    <button type="button" class="btn btn-secondary btn-lg border-2 border border-dark" onclick="fillColor('grey')"></button>
-                                    <button type="button" class="btn btn-success btn-lg border-2 border border-dark" onclick="fillColor('green')"></button>
-                                    <button type="button" class="btn btn-lg border-2 border border-dark" style="background-color: red;" onclick="fillColor('red')"></button>
-                                    <button type="button" class="btn btn-warning btn-lg border-2 border border-dark" onclick="fillColor('yellow')"></button>
-                                    <button type="button" class="btn btn-lg border-2 border border-dark" style="background-color: brown;" onclick="fillColor('brown')"></button>
-                                    <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" onclick="fillColor('black')"></button>
-                                    <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: orange;" onclick="fillColor('orange')"></button>
-                                    <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: pink;" onclick="fillColor('pink')"></button>
-                                    <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: purple;" onclick="fillColor('purple')"></button>
-                                    <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: maroon;" onclick="fillColor('maroon')"></button>
-                                    <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: navy;" onclick="fillColor('navy blue')"></button>
-                                    <button type="button" class="btn btn-light btn-lg border-2 border border-dark" onclick="fillColor('white')"></button>
-                                    <button type="button" class="btn btn-light btn-lg border-2 border border-dark" style="background-color: #91d370;
+    <div class="table-responsive mt-2 mb-2">
+        <table class="table table-secondary table-striped table-hover" id='table'>
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Color</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Seller SKU</th>
+                    <th scope="col">MRP</th>
+                    <th scope="col">Special Price</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody id='tablebody'>
+                <tr class="text-center" id='row'>
+                    <td>
+                        <div class="btn-group dropend">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='colorButton'></button>
+                            <ul class="dropdown-menu">
+                                <button type="button" class="btn btn-primary btn-lg border-2 border border-dark" onclick="fillColor('blue')"></button>
+                                <button type="button" class="btn btn-secondary btn-lg border-2 border border-dark" onclick="fillColor('grey')"></button>
+                                <button type="button" class="btn btn-success btn-lg border-2 border border-dark" onclick="fillColor('green')"></button>
+                                <button type="button" class="btn btn-lg border-2 border border-dark" style="background-color: red;" onclick="fillColor('red')"></button>
+                                <button type="button" class="btn btn-warning btn-lg border-2 border border-dark" onclick="fillColor('yellow')"></button>
+                                <button type="button" class="btn btn-lg border-2 border border-dark" style="background-color: brown;" onclick="fillColor('brown')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" onclick="fillColor('black')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: orange;" onclick="fillColor('orange')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: pink;" onclick="fillColor('pink')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: purple;" onclick="fillColor('purple')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: maroon;" onclick="fillColor('maroon')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: navy;" onclick="fillColor('navy blue')"></button>
+                                <button type="button" class="btn btn-light btn-lg border-2 border border-dark" onclick="fillColor('white')"></button>
+                                <button type="button" class="btn btn-light btn-lg border-2 border border-dark" style="background-color: #91d370;
 									background-image: linear-gradient(319deg, #91d370 0%, #bca0ff 37%, #f2cd54 100%);
 									" onclick="fillColor('multicolor')"></button>
 
 
 
-                                </ul>
-                            </div>
-                        </td>
-                        <td>
-                            <select class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="form-select form-select-sm text-center" aria-label=".form-select-sm example" onchange="changesize(this)">
 								<option selected>Select Size</option>
 								<option value="xs">xs</option>
 								<option value="s">s</option>
@@ -1365,66 +1362,124 @@
 								<option value="L">L</option>
 								<option value="xL">xL</option>
 								<option value="xxL">xxL</option>
-							</select>
-                        </td>
-                        <td>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="SKU" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-primary" onclick="addRow()">Add Variation</button>
-            <button type="button" class="btn btn-danger" onclick="deleteRow()">Delete Variation</button>
-        </div>
-    </form>
-    <!-- Add Variation Table Script -->
-    <script>
-        const colorButton = document.getElementById('colorButton')
-        fillColor = (color) => {
-            colorButton.innerHTML = color
-        }
+						</select>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="SKU" aria-label="Username" aria-describedby="basic-addon1" onchange="changesku(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" onchange="changemrp(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" onchange="changesp(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" onchange="changequantity(this)">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" onclick="addRow()">Add Variation</button>
+        <button type="button" class="btn btn-danger" onclick="deleteRow()">Delete Variation</button>
+    </div>
 
-        function addRow() {
-            var tr = document.getElementById('row').cloneNode(true);
-            document.getElementById('tablebody').appendChild(tr);
-        }
-
-        function deleteRow() {
-            var oRows = document.getElementById('table').getElementsByTagName('tr');
-            var iRowCount = oRows.length;
-            if (iRowCount == 2) {
-                return false;
-            }
-            document.getElementById('table').deleteRow(-1)
-            return true;
-        }
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <input type="hidden" id='addvariationfileds'>
 
     <div class="text-center" style=" margin-top:10px;">
-        <button type="submit" class="btn btn-primary mb-4" value="required" /><i class="fa fa-plus"></i> Add product</button>
+        <button type="submit" class="btn btn-primary mb-4" value="required" onclick="submitaddvariation()"><i class="fa fa-plus"></i> Add product</button>
     </div>
     </form>
 </div>
+<!-- Add Variation Table Script -->
+<script>
+    const colorButton = document.getElementById('colorButton')
+    const sku = []
+    const mrp = []
+    const sp = []
+    const quantity = []
+    const colors = []
+    const size = []
 
+    function submitaddvariation() {
+        const input = document.getElementById('submitaddvariation')
+        const array = [colors, size, sku, mrp, sp, quantity]
+        input.value = array
+    }
+
+    function changesku(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        sku[index - 1] = value
+        console.log(sku)
+    }
+
+    function changemrp(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        mrp[index - 1] = value
+        console.log(mrp)
+    }
+
+    function changesp(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        sp[index - 1] = value
+        console.log(sp)
+    }
+
+    function changesize(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        size[index - 1] = value
+        console.log(size)
+    }
+
+    function changequantity(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        quantity[index - 1] = value
+        console.log(quantity)
+    }
+    fillColor = (color) => {
+        colorButton.innerHTML = color
+        colors.push(color)
+        console.log(colors)
+    }
+
+    function addRow() {
+        var tr = document.getElementById('row').cloneNode(true);
+        document.getElementById('tablebody').appendChild(tr);
+    }
+
+    function deleteRow() {
+        var oRows = document.getElementById('table').getElementsByTagName('tr');
+        var iRowCount = oRows.length;
+        if (iRowCount == 2) {
+            return false;
+        }
+        document.getElementById('table').deleteRow(-1)
+        size.pop()
+        colors.pop()
+        mrp.pop()
+        sp.pop()
+        sku.pop()
+        quantity.pop()
+        return true;
+    }
+</script>
 <script>
     function displayCategory(id, elementValue) {
         console.log(elementValue.value);
@@ -1657,4 +1712,8 @@
         }
     }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 {% endblock %}
