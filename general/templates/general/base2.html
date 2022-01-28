@@ -14,7 +14,7 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <style>
     * {
       margin: 0px;
@@ -28,6 +28,10 @@
 
     .login, .menu-head, .cat {
       display: none;
+    }
+
+    .show {
+      display: flex !important;
     }
 
     /* search bar */
@@ -610,7 +614,7 @@ function appear() {
 {% block body%} {% endblock %}
 
   <footer>
-    <div id="footer">
+    <div style="background-color: #004953;">
         <div class="footer">
           <div class="contents">
             <div class="footer-content">

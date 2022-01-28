@@ -239,7 +239,7 @@ body {
     width: 47%;
     height: 3rem;
     font-size: 130%;
-    border-radius: 3em;
+    /*border-radius: 3em;*/
 }
 
 
@@ -1969,7 +1969,7 @@ a:hover{
 }
 
 .logo {
-    width: 90px;
+    width: 230px;
 }
 
 .flex-container {
