@@ -68,21 +68,11 @@ def olist(username):
 # general views
 # --------------------------------------------------------------
 def myorders(request):
-    data = Order.objects.get(user=request.user)
-    # previous_order=order.previous_order
-    counter=0
-    # print(data)
-    # for i in data:
-    #     product = Product.objects.get(id=i["product_id"])
-    #     data[counter]["mrp"] = product.mrp
-    #     data[counter]["special_price"] = product.special_price
-    #     data[counter]["our_price"] = product.our_price
-    #     data[counter]["name"] = product.name
-    #     data[counter]["image"] = product.image
-    #     data[counter]["discount"] = math.floor(100 - (product.special_price / product.mrp) * 100)
-    #     counter+=1
+    data = Order.objects.filter(user=request.user).values()
+    print(data)
+    # print(data[0].)
 
-    return render(request, 'shop/myorder.html',{"order":data})
+    return render(request, 'shop/myorder.html',{"orders":data})
 
 
 def productView(request, slug):
@@ -142,6 +132,7 @@ def placeorder(request):
                                        address=address, address2=address2, contact_number=contact_number,
                                        landmark=landmark,city=city,state=state, total=total)
         c_order.save()
+        Cart.objects.filter(user=request.user).delete()
         global orderid
         orderid = str(c_order.id)
         # return redirect('../paytmcheckout')
@@ -526,3 +517,25 @@ def wishlist(request):
     except Exception as e:
         print("except",e)
         return render(request, 'shop/wishlist.html')
+
+def vendororders(request):
+    vendor = VendorAccount.objects.get(email=request.user.email)
+    data=vendor.order_list
+    return render(request, 'shop/vendororders.html',{"data":data})
+
+def maintenance(request):
+    vendoremail = request.user.email
+    temp = []
+    data = Order.objects.all()
+    data = data.values()
+    for order in data:
+        for list in order["order_list"]:
+            if list["vendor_email"] == vendoremail:
+                list["date"] = str(order["date"])
+                list["order_id"] = order["id"]
+                list["status"] = order["status"]
+                temp.append(list)
+    vendor = VendorAccount.objects.get(email=vendoremail)
+    vendor.order_list = temp
+    vendor.save()
+    return redirect("../")

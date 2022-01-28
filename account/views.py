@@ -453,7 +453,24 @@ def changepassword(request):
         msg = "Wrong password"
     return redirect("../account")
 
-
+@login_required(login_url="../login")
+def getKYC(request):
+    if request.method == 'POST':
+        aadhaar = request.POST['aadhaar']
+        pan = request.POST['pan']
+        companypan = request.POST['companypan']
+        aadhaarImage = request.POST['aadhaarImage']
+        panImage = request.POST['panImage']
+        companyPanImage = request.POST['companypanImage']
+        VendorAccount.aadhaar_card = aadhaar
+        VendorAccount.pan = pan
+        VendorAccount.companypan = companypan
+        VendorAccount.aadhaar_image = aadhaarImage
+        VendorAccount.pan_image = panImage
+        VendorAccount.companypan_image = companyPanImage
+        
+    else:
+        return render(request,"account/kyc.html")    
 
 def check(request):
 

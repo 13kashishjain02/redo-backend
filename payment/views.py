@@ -15,8 +15,10 @@ from django.http import HttpResponse
 from twilio.rest import Client
 import datetime
 import random
-# from cart.models import Cartdata
+
+# import functions and models
 from shop import views
+from shop.models import Order,Cart
 
 username = ""
 
@@ -109,6 +111,14 @@ def payusuccess(request):
         "Your Transaction ID for this transaction is ", txnid
         print
         "We have received a payment of Rs. ", amount, ". Your order will soon be shipped."
+    # if status=="success":
+    #     print("helollllooo",request.user.email)
+    #     Cart.objects.filter(user=request.user).delete()
+    #     print("jkadshfjksah")
+    #     order = Order.objects.filter(user=request.user)
+    #     print(order,order[0],order[0].date)
+    #     order.transaction_id = txnid
+    #     order.status = 'placed'
     return render(request, 'payment/payusuccess.html', {"txnid": txnid, "status": status, "amount": amount})
 
 

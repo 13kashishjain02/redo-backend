@@ -1,221 +1,281 @@
-{% extends 'general/base.html' %}
-{%load static%}
+{% extends 'general/base.html' %} {%load static%} {% block title%}UpdateProduct-Elpizo{% endblock %} {% block head%}
+<link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
-{% block title%}UpdateProduct-Elpizo{% endblock %}
-{% block head%}
-    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <style>
-	#Category1 {
-      display: none;
-   }
-   #Category2 {
-      display: none;
-   }
-   #SubCategory1 {
-      display: none;
-   }
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+    #Category1 {
+        display: none;
+    }
+    
+    #Category2 {
+        display: none;
+    }
+    
+    #SubCategory1 {
+        display: none;
+    }
 </style>
 <style>
-	#PersonalCare {
-      display: none;
-   }
-   #Carry-ons {
-      display: none;
-   }
-   #Stationery{
-   	display: none;
-   }
-   #Kitchen{
-   	display: none;
-   }
-   #Home{
-   	display: none;
-   }
-   #Fashion{
-   	display:none;
-   }
-   #Garden{
-   	display: none;
-   }
-   #Gym{
-   	display: none;
-   }
-   #Kids{
-   	display: none;
-   }
-   #Books{
-   	display: none;
-   }
-   #Bathroom {
-      display: none;
-   }
-   #Body_hygiene{
-   	display:none;
-   }
-   #Oral_hygiene{
-   	display: none;
-   }
-   #female_hygiene{
-   	display: none;
-   }
-   #kits{
-   	display: none;
-   }
-   #bags{
-   	display:none;
-   }
-   #wallets{
-   	display: none;
-   }
-   #baskets{
-   	display: none;
-   }
-   #mobile_cover{
-   	display: none;
-   }
-   #facemask{
-   	display: none;
-   }
-   #googles{
-   	display: none;
-   }
-   #stoles{
-   	display: none;
-   }
-   #tie{
-   	display: none;
-   }
-   #plantable{
-   	display: none;
-   }
-   #pens{
-   	display:none;
-   }
-   #notebooks{
-   	display: none;
-   }
-   #stands{
-   	display: none;
-   }
-   #office{
-   	display:none;
-   }
-   #packaging{
-   	display: none;
-   }
-   #cutlery{
-   	display: none;
-   }
-   #cookware{
-   	display: none;
-   }
-   #serving{
-   	display:none;
-   }
-   #household{
-   	display: none;
-   }
-   #kit{
-   	display: none;
-   }
-   #furniture{
-   	display: none;
-   }
-   #home_decor{
-   	display: none;
-   }
-   #mandir{
-   	display: none;
-   }
-   #clothes{
-   	display: none;
-   }
-   #footwear{
-   	display:none;
-   }
-   #pots{
-   	display: none;
-   }
-   #planters{
-   	display: none;
-   }
-   #outdoor{
-   	display: none;
-   }
-   #plants{
-   	display: none;
-   }
-   #yoga{
-   	display: none;
-   }
-   #massage{
-   	display:none;
-   }
-   #sipper{
-   	display: none;
-   }
-   #duffel{
-   	display: none;
-   }
-   #hand_towel{
-   	display: none;
-   }
-   #cap{
-   	display:none;
-   }
-   #toys{
-   	display: none;
-   }
-   #station{
-   	display: none;
-   }
-   #friendship{
-   	display: none;
-   }
-   #kids_wear{
-   	display: none;
-   }
-   #diapers{
-   	display: none;
-   }
-   #nursery{
-   	display: none;
-   }
-   #disposable_cutlery{
-   	display: none;
-   }
-   #reusable_cutlery{
-   	display: none;
-   }
-   #mens_wear{
-   	display: none;
-   }
-   #ladies_wear{
-   	display: none;
-   }
-   #clothes_kids{
-   	display: none;
-   }
-   #mens_footwear{
-   	display: none;
-   }
-   #ladies_footwear{
-      display: none;
-   }
-   #kids_footwear{
-   	display: none;
-   }
+    #PersonalCare {
+        display: none;
+    }
+    
+    #Carry-ons {
+        display: none;
+    }
+    
+    #Stationery {
+        display: none;
+    }
+    
+    #Kitchen {
+        display: none;
+    }
+    
+    #Home {
+        display: none;
+    }
+    
+    #Fashion {
+        display: none;
+    }
+    
+    #Garden {
+        display: none;
+    }
+    
+    #Gym {
+        display: none;
+    }
+    
+    #Kids {
+        display: none;
+    }
+    
+    #Books {
+        display: none;
+    }
+    
+    #Bathroom {
+        display: none;
+    }
+    
+    #Body_hygiene {
+        display: none;
+    }
+    
+    #Oral_hygiene {
+        display: none;
+    }
+    
+    #female_hygiene {
+        display: none;
+    }
+    
+    #kits {
+        display: none;
+    }
+    
+    #bags {
+        display: none;
+    }
+    
+    #wallets {
+        display: none;
+    }
+    
+    #baskets {
+        display: none;
+    }
+    
+    #mobile_cover {
+        display: none;
+    }
+    
+    #facemask {
+        display: none;
+    }
+    
+    #googles {
+        display: none;
+    }
+    
+    #stoles {
+        display: none;
+    }
+    
+    #tie {
+        display: none;
+    }
+    
+    #plantable {
+        display: none;
+    }
+    
+    #pens {
+        display: none;
+    }
+    
+    #notebooks {
+        display: none;
+    }
+    
+    #stands {
+        display: none;
+    }
+    
+    #office {
+        display: none;
+    }
+    
+    #packaging {
+        display: none;
+    }
+    
+    #cutlery {
+        display: none;
+    }
+    
+    #cookware {
+        display: none;
+    }
+    
+    #serving {
+        display: none;
+    }
+    
+    #household {
+        display: none;
+    }
+    
+    #kit {
+        display: none;
+    }
+    
+    #furniture {
+        display: none;
+    }
+    
+    #home_decor {
+        display: none;
+    }
+    
+    #mandir {
+        display: none;
+    }
+    
+    #clothes {
+        display: none;
+    }
+    
+    #footwear {
+        display: none;
+    }
+    
+    #pots {
+        display: none;
+    }
+    
+    #planters {
+        display: none;
+    }
+    
+    #outdoor {
+        display: none;
+    }
+    
+    #plants {
+        display: none;
+    }
+    
+    #yoga {
+        display: none;
+    }
+    
+    #massage {
+        display: none;
+    }
+    
+    #sipper {
+        display: none;
+    }
+    
+    #duffel {
+        display: none;
+    }
+    
+    #hand_towel {
+        display: none;
+    }
+    
+    #cap {
+        display: none;
+    }
+    
+    #toys {
+        display: none;
+    }
+    
+    #station {
+        display: none;
+    }
+    
+    #friendship {
+        display: none;
+    }
+    
+    #kids_wear {
+        display: none;
+    }
+    
+    #diapers {
+        display: none;
+    }
+    
+    #nursery {
+        display: none;
+    }
+    
+    #disposable_cutlery {
+        display: none;
+    }
+    
+    #reusable_cutlery {
+        display: none;
+    }
+    
+    #mens_wear {
+        display: none;
+    }
+    
+    #ladies_wear {
+        display: none;
+    }
+    
+    #clothes_kids {
+        display: none;
+    }
+    
+    #mens_footwear {
+        display: none;
+    }
+    
+    #ladies_footwear {
+        display: none;
+    }
+    
+    #kids_footwear {
+        display: none;
+    }
 </style>
 
 <!--    checkbox style-->
-  <style>
-
+<style>
     label.check {
         cursor: pointer
     }
-
+    
     label.check input {
         position: absolute;
         top: 0;
@@ -223,7 +283,7 @@
         visibility: hidden;
         pointer-events: none
     }
-
+    
     label.check span {
         padding: 7px 14px;
         border: 2px solid #8f37aa;
@@ -232,28 +292,26 @@
         border-radius: 3px;
         text-transform: uppercase
     }
-
+    
     label.check input:checked+span {
         border-color: #8f37aa;
         background-color: #8f37aa;
         color: #fff
     }
-  </style>
+</style>
 
-{% endblock %}
-{% block body%}
-	{%if msg%}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{msg}}!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {%endif%}
-    <div class="row" style="padding-top: 10px; padding-left: 10px; padding-right: 10px;">
+{% endblock %} {% block body%} {%if msg%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{msg}}!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{%endif%}
+<div class="row" style="padding-top: 10px; padding-left: 10px; padding-right: 10px;">
 
-        <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
-            <div class="container" style="border:2px solid black; padding-left: 15px;">
-                <br>
-                <form method="post" enctype="multipart/form-data" >
+    <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
+        <div class="container" style="border:2px solid black; padding-left: 15px;">
+            <br>
+            <form method="post" enctype="multipart/form-data">
                 {%csrf_token%}
                 <h2>Add Product</h2>
                 <hr style="border: 1px solid lightgrey; background: lightgrey;">
@@ -275,10 +333,10 @@
                 </div>
                 <input type="text" name="brand" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-				<div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     SKU
                 </div>
-                <input type="text" name="sku" style="width: 100%; border:1px solid lightgrey; height:30px;" >
+                <input type="text" name="sku" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
                 <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
                     Weight (in kg)*
@@ -323,34 +381,31 @@
                 </div>
                 <div class="mb-3">
                     <hr>
-                  <b><u>Image 1*</u></b><input type="file" name="myfile" required/><br>
-                    <hr>
-                  Image 2 <input type="file" name="myfile2"><br>
-                    <hr>
-                  Image 3 <input type="file" name="myfile3">
+                    <b><u>Image 1*</u></b><input type="file" name="myfile" required/><br>
+                    <hr> Image 2 <input type="file" name="myfile2"><br>
+                    <hr> Image 3 <input type="file" name="myfile3">
                 </div>
-            </div>
         </div>
-        <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
-            <div class="container" style="border:2px solid black;">
-                <br>
-                <h5 style="font-weight: 400; font-size: 20px;">Description and Category</h5>
-                <p style="font-weight: 500;">
-                    <div style="font-weight: 400;">Description, Tags and Category are the most crucial data which will make the user buy the product.</div>
-                </p>
-                <hr style="border: 1px solid lightgrey; background: lightgrey;">
-                <p style="font-weight: 500;">
-                    {{ form.media}}
-                    {{form}}
-                    <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+    </div>
+    <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
+        <div class="container" style="border:2px solid black;">
+            <br>
+            <h5 style="font-weight: 400; font-size: 20px;">Description and Category</h5>
+            <p style="font-weight: 500;">
+                <div style="font-weight: 400;">Description, Tags and Category are the most crucial data which will make the user buy the product.</div>
+            </p>
+            <hr style="border: 1px solid lightgrey; background: lightgrey;">
+            <p style="font-weight: 500;">
+                {{ form.media}} {{form}}
+                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
                     Material*
                 </div>
                 <input type="text" name="material" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-				<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Category
                 </div></label>
-			      <select id="inputState" class="form-control" name="category" onchange="displayCategory('Category2', this)">
+                <select id="inputState" class="form-control" name="category" onchange="displayCategory('Category2', this)">
 			        <option >Choose...</option>
 			        <option value="Personal Care">Personal Care</option>
 			        <option value="Carry-ons">Carry-ons</option>
@@ -364,11 +419,11 @@
 			        <option value="Books">Books</option>
 
 			      </select>
-			    <div id="Carry-ons">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <div id="Carry-ons">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Carry-ons
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat1('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat1('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Bags and pouches">Bags and pouches</option>
 			        <option value="Wallet and clutches">Wallet and clutches</option>
@@ -379,12 +434,12 @@
 			        <option value="Stoles and scarves">Stoles and scarves</option>
 			        <option value="Tie and belts">Tie and belts</option>
 			      </select>
-			    </div>
-			    <div id="PersonalCare">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="PersonalCare">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Personal Care
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Bathroom accessories">Bathroom accessories</option>
 			        <option value="Body hygiene">Body hygiene</option>
@@ -392,12 +447,12 @@
 			        <option value="Female hygiene">Female hygiene</option>
 			        <option value="Kits">Kits</option>
 			      </select>
-			    </div>
-			    <div id="Stationery">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Stationery">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Stationery
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat2('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat2('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Plantable stationery">Plantable stationery</option>
 			        <option value="Pens and pencils">Pens and pencils</option>
@@ -407,12 +462,12 @@
 			        <option value="Packaging">Packaging</option>
 			        <option value="Stationery kits">Stationery kits</option>
 			      </select>
-			    </div>
-			    <div id="Kitchen">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Kitchen">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Kitchen
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat3('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat3('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Cutlery">Cutlery</option>
 			        <option value="Cookware">Cookware</option>
@@ -420,47 +475,47 @@
 			        <option value="Household supplies">Household supplies</option>
 			        <option value="Kit">Kit</option>
 			      </select>
-			    </div>
-			    <div id="Home">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Home">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Home sweet home
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat4('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat4('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Furniture">Furniture</option>
 			        <option value="Home decor">Home decor</option>
 			        <option value="Mandir">Mandir</option>
 			      </select>
-			    </div>
-			    <div id="Fashion">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Fashion">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Fashion
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat5('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat5('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Clothes">Clothes</option>
 			        <option value="Footwear">Footwear</option>
 			        <option value="Jewellery">Jewellery</option>
 			        <option value="Scrunchies">Scrunchies</option>
 			      </select>
-			    </div>
-			    <div id="Garden">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Garden">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Garden
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat6('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat6('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Pots">Pots</option>
 			        <option value="Planters">Planters</option>
 			        <option value="Outdoor furniture">Outdoor furniture</option>
 			        <option value="Plants">Plants</option>
 			      </select>
-			    </div>
-			    <div id="Gym">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Gym">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Gym freak
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat7('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat7('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Yoga mat">Yoga mat</option>
 			        <option value="Massage ball">Massage ball</option>
@@ -469,12 +524,12 @@
 			        <option value="Hand towel">Hand towel</option>
 			        <option value="Cap">Cap</option>
 			      </select>
-			    </div>
-			    <div id="Kids">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Kids">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Kids
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat8('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat8('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Toys">Toys</option>
 			        <option value="Stationery">Stationery</option>
@@ -483,24 +538,24 @@
 			        <option value="Reusable diapers">Reusable diapers</option>
 			        <option value="Nursery needs">Nursery needs</option>
 			      </select>
-			    </div>
-			    <div id="Books">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Books">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Books
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat9('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" name="subcategory1" onchange="displaySubcat9('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="Books">Books</option>
 			      </select>
-			    </div>
-			    <!--End of category division-->
+                </div>
+                <!--End of category division-->
 
-			    <!--Start of personal care division-->
-			    <div id="Bathroom">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of personal care division-->
+                <div id="Bathroom">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Bathroom accessories
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="Toilet roll">Toilet roll</option>
 			        <option value="Scrub">Scrub</option>
@@ -510,12 +565,12 @@
 			        <option value="Toothbrush holder">Toothbrush holder</option>
 			        <option value="Others">Others</option>
 			      </select>
-			    </div>
-			    <div id="Body_hygiene">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Body_hygiene">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Body hygiene
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="Shaving brush">Shaving brush</option>
 			        <option value="Hot and cold massager">Hot and cold massager</option>
@@ -527,47 +582,47 @@
 			        <option value="Cotton balls">Cotton balls</option>
 			        <option value="Bamboo razer">Bamboo razer</option>
 			      </select>
-			    </div>
-			    <div id="Oral_hygiene">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="Oral_hygiene">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Oral hygiene
                 </div></label>
-			      <select id="inputState" class="form-control" name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="Tooth brush">Tooth brush</option>
 			        <option value="Tongue cleaner">Tongue cleaner</option>
 			        <option value="Tooth pick">Tooth pick</option>
 			      </select>
-			    </div>
-			    <div id="female_hygiene">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="female_hygiene">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Female hygiene
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Sanitary pads</option>
 			        <option value="1">Panty liner</option>
 			        <option value="2">Menstrual cup</option>
 			      </select>
-			    </div>
-			    <div id="kits">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="kits">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Kits
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Combo</option>
 			      </select>
-			    </div>
+                </div>
 
-			    <!--End of personal care division-->
+                <!--End of personal care division-->
 
-			    <!--Start of bags and pouches division-->
-			    <div id="bags">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of bags and pouches division-->
+                <div id="bags">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Bags and pouches
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Bagpack</option>
 			        <option value="1">Handbags</option>
@@ -576,102 +631,102 @@
 			        <option value="4">Duffle bags</option>
 			        <option value="5">Laptop bags</option>
 			      </select>
-			    </div>
-			    <div id="wallets">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="wallets">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Wallets and clutches
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Pouches</option>
 			        <option value="1">Card holders</option>
 			        <option value="2">Wallets</option>
 			      </select>
-			    </div>
-			    <div id="baskets">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="baskets">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Baskets
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Baskets</option>
 			      </select>
-			    </div>
-			    <div id="mobile_cover">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="mobile_cover">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Mobile cover
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Mobile cover</option>
 			      </select>
-			    </div>
-			    <div id="facemask">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="facemask">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Face mask
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Face mask</option>
 			      </select>
-			    </div>
-			    <div id="googles">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="googles">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Googles
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Googles</option>
 			      </select>
-			    </div>
-			    <div id="stoles">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="stoles">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Stoles and scarves
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Stoles and scarves</option>
 			      </select>
-			    </div>
-			    <div id="tie">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="tie">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Tie and belts
                 </div></label>
-			      <select id="inputState" class="form-control"  name="subcategory2">
+                    <select id="inputState" class="form-control" name="subcategory2">
 			        <option >Choose...</option>
 			        <option value="0">Tie and belts</option>
 			      </select>
-			    </div>
-			    <!--End of carryons division-->
+                </div>
+                <!--End of carryons division-->
 
-			    <!--Start of stationery division-->
-			    <div id="plantable">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of stationery division-->
+                <div id="plantable">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Plantable stationery
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Seed paper</option>
 			        <option value="1">Colored seed paper</option>
 			        <option value="2">Seed paper card</option>
 			        <option value="3">Seed greeting cards</option>
 			      </select>
-			    </div>
-			    <div id="pens">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="pens">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Pens and pencils
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Recyclable paper pencil</option>
 			        <option vlaue="1">Recyclable paper pen</option>
 			      </select>
-			    </div>
-			    <div id="notebooks">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="notebooks">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Notebooks
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Diary</option>
 			        <option value="1">Exercise book</option>
@@ -679,12 +734,12 @@
 			        <option value="3">Students notebook</option>
 			        <option value="4">Papers</option>
 			      </select>
-			    </div>
-			    <div id="stands">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="stands">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Stands and pouches
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Pen stand</option>
 			        <option value="1">Pouches</option>
@@ -692,12 +747,12 @@
 			        <option value="3">Card holder</option>
 			        <option value="4">Mobile holder</option>
 			      </select>
-			    </div>
-			    <div id="office">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="office">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Office
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Notepads</option>
 			        <option value="1">Notepad box</option>
@@ -710,35 +765,35 @@
 			        <option value="8">Card holder</option>
 			        <option value="9">Mobile holder</option>
 			      </select>
-			    </div>
-			    <div id="packaging">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="packaging">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Packaging
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Ecofriendly packaging tapes : Kraft paper tape</option>
 			        <option value="1">Biodegradable bubble wrap</option>
 			      </select>
-			    </div>
-			    <!--End of stationery division-->
-			    <!--Start of kitchen division-->
-			    <div id="cutlery">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <!--End of stationery division-->
+                <!--Start of kitchen division-->
+                <div id="cutlery">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Cutlery
                 </div></label>
-			      <select id="inputState" class="form-control" onchange="displaySubsubcat('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" onchange="displaySubsubcat('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="0">Disposables cutlery</option>
 			        <option value="1">Reusable cutlery</option>
 			      </select>
-			    </div>
-			    <!--Start of disposable cutlery section-->
-			    <div id="disposable_cutlery">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <!--Start of disposable cutlery section-->
+                <div id="disposable_cutlery">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Disposables cutlery
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Disposable plates</option>
 			        <option value="1">Disposable bowls</option>
@@ -746,15 +801,15 @@
 			        <option value="3">Disposable container</option>
 			        <option value="4">Disposable glass</option>
 			      </select>
-			    </div>
-			    <!--End of disposable cutlery section-->
+                </div>
+                <!--End of disposable cutlery section-->
 
-			    <!--Start of reusable cutlery -->
-			    <div id="reusable_cutlery">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of reusable cutlery -->
+                <div id="reusable_cutlery">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Reusable cutlery
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Straws</option>
 			        <option value="1">Plates</option>
@@ -763,13 +818,13 @@
 			        <option value="4">Cups</option>
 			        <option value="5">Dahi pot</option>
 			      </select>
-			    </div>
-			    <!--End of reusable cutlery-->
-			    <div id="cookware">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <!--End of reusable cutlery-->
+                <div id="cookware">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Cookware
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Frying pan</option>
 			        <option value="1">Pressure cooker</option>
@@ -777,12 +832,12 @@
 			        <option value="3">Tawa</option>
 			        <option value="4">Pans</option>
 			      </select>
-			    </div>
-			    <div id="serving">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="serving">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Serving ware
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Tea cups</option>
 			        <option value="1">Coffee mug</option>
@@ -790,12 +845,12 @@
 			        <option value="3">Kettle</option>
 			        <option value="4">Jugs</option>
 			      </select>
-			    </div>
-			    <div id="household">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="household">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Household supplies
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Waste bin</option>
 			        <option value="1">Bottle cleaner</option>
@@ -811,38 +866,38 @@
 			        <option value="11">Kitchen towel roll</option>
 			        <option value="12">Tissue paper</option>
 			      </select>
-			    </div>
-			    <div id="kit">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="kit">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Kit
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Party kit</option>
 			        <option value="1">Outing kit</option>
 			        <option value="2">Dinner set</option>
 			        <option value="3">Tea set</option>
 			      </select>
-			    </div>
+                </div>
 
-			    <!--End of kitchen division-->
+                <!--End of kitchen division-->
 
-			    <!--Start of home divisions-->
-			    <div id="furniture">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of home divisions-->
+                <div id="furniture">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Furniture
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Indoor</option>
 			        <option value="1">Outdoor</option>
 			      </select>
-			    </div>
-			    <div id="home_decor">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="home_decor">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Home decor
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Candles</option>
 			        <option value="1">Lantern</option>
@@ -853,12 +908,12 @@
 			        <option value="6">Toys</option>
 			        <option value="7">Mats and durries</option>
 			      </select>
-			    </div>
-			    <div id="mandir">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="mandir">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Mandir
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Incense stick</option>
 			        <option value="1">Mats</option>
@@ -866,631 +921,799 @@
 			        <option value="3">Incense cones</option>
 			        <option value="4">Clay murtis</option>
 			      </select>
-			    </div>
-			    <!--End of home division-->
+                </div>
+                <!--End of home division-->
 
-			    <!--Start of fashion division-->
-			    <div id="clothes">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of fashion division-->
+                <div id="clothes">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Clothes
                 </div></label>
-			      <select id="inputState" class="form-control" onchange="displaySubsubcat1('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" onchange="displaySubsubcat1('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="0">Men</option>
 			        <option value="1">Women</option>
 			        <option value="2">Kids</option>
 			      </select>
-			    </div>
-			    <!--Start of mens wear section-->
-			    <div id="mens_wear">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <!--Start of mens wear section-->
+                <div id="mens_wear">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Men
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Mens wear</option>
 			      </select>
-			    </div>
+                </div>
 
-			    <div id="ladies_wear">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <div id="ladies_wear">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Women
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Ladies wear</option>
 			      </select>
-			    </div>
+                </div>
 
-			    <div id="clothes_kids">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <div id="clothes_kids">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Kids
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Kids wear</option>
 			      </select>
-			    </div>
-			    <!--End of mens wear section-->
-			    <div id="footwear">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <!--End of mens wear section-->
+                <div id="footwear">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Footwear
                 </div></label>
-			      <select id="inputState" class="form-control" onchange="displaySubsubcat2('hideValuesOnSelect', this)">
+                    <select id="inputState" class="form-control" onchange="displaySubsubcat2('hideValuesOnSelect', this)">
 			        <option >Choose...</option>
 			        <option value="0">Men</option>
 			        <option value="1">Women</option>
 			        <option value="2">Kids</option>
 			      </select>
-			    </div>
-			    <!--Start of footwear division-->
-			    <div id="mens_footwear">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <!--Start of footwear division-->
+                <div id="mens_footwear">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Men
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Mens wear</option>
 			        <option value="1">General for both</option>
 			      </select>
-			    </div>
+                </div>
 
-			    <div id="ladies_footwear">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <div id="ladies_footwear">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Women
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Ladies wear</option>
 			        <option value="1">General for both</option>
 			      </select>
-			    </div>
+                </div>
 
-			    <div id="kids_footwear">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <div id="kids_footwear">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Kids
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Kids wear</option>
 			      </select>
-			    </div>
-			    <!--End of footwear division-->
-			    <!--End of fashion division-->
+                </div>
+                <!--End of footwear division-->
+                <!--End of fashion division-->
 
-			    <!--Start of garden division -->
-			    <div id="pots">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of garden division -->
+                <div id="pots">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Pots
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Pots</option>
 			      </select>
-			    </div>
-			    <div id="planters">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="planters">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Planters
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Planters</option>
 			      </select>
-			    </div>
-			    <div id="outdoor">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="outdoor">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Outdoor furniture
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Outdoor furniture</option>
 			      </select>
-			    </div>
-			    <div id="plants">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="plants">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Plants
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Plants</option>
 			      </select>
-			    </div>
-			    <!--End of garden division-->
+                </div>
+                <!--End of garden division-->
 
-			    <!--Start of gym division-->
-			    <div id="yoga">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of gym division-->
+                <div id="yoga">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Yoga mat
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Yoga mat</option>
 			      </select>
-			    </div>
-			    <div id="massage">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="massage">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Massage ball
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Massage ball</option>
 			      </select>
-			    </div>
-			    <div id="sipper">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="sipper">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Sipper
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Sipper</option>
 			      </select>
-			    </div>
-			    <div id="duffel">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="duffel">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Duffel bag
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Duffel bag</option>
 			      </select>
-			    </div>
-			    <div id="hand_towel">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="hand_towel">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Hand towel
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Hand towel</option>
 			      </select>
-			    </div>
-			    <div id="cap">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="cap">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Cap
                 </div></label>
-			      <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control">
 			        <option >Choose...</option>
 			        <option value="0">Cap</option>
 			      </select>
-			    </div>
-			    <!--End of gym division-->
+                </div>
+                <!--End of gym division-->
 
-			    <!--Start of kids section-->
-			    <div id="toys">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                <!--Start of kids section-->
+                <div id="toys">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Toys
                 </div></label>
-			      <select id="inputState" name="subcategory2" class="form-control">
+                    <select id="inputState" name="subcategory2" class="form-control">
 			        <option >Choose...</option>
 			        <option value="Toys">Toys</option>
 			      </select>
-			    </div>
-			    <div id="station">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="station">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Stationery
                 </div></label>
-			      <select id="inputState" name="subcategory2" class="form-control">
+                    <select id="inputState" name="subcategory2" class="form-control">
 			        <option >Choose...</option>
 			        <option value="Stationery">Stationery</option>
 			      </select>
-			    </div>
-			    <div id="friendship">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="friendship">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Friendship band
                 </div></label>
-			      <select id="inputState" name="subcategory2" class="form-control">
+                    <select id="inputState" name="subcategory2" class="form-control">
 			        <option >Choose...</option>
 			        <option value="Friendship band">Friendship band</option>
 			      </select>
-			    </div>
-			    <div id="kids_wear">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="kids_wear">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Kids wear
                 </div></label>
-			      <select id="inputState" name="subcategory2" class="form-control">
+                    <select id="inputState" name="subcategory2" class="form-control">
 			        <option >Choose...</option>
 			        <option value="Kids wear">Kids wear</option>
 			      </select>
-			    </div>
-			    <div id="diapers">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="diapers">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Reusable diapers
                 </div></label>
-			      <select id="inputState" name="subcategory2" class="form-control">
+                    <select id="inputState" name="subcategory2" class="form-control">
 			        <option >Choose...</option>
 			        <option value="Reusable diapers">Reusable diapers</option>
 			      </select>
-			    </div>
-			    <div id="nursery">
-			    	<label for="inputState" ><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                </div>
+                <div id="nursery">
+                    <label for="inputState"><div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
                     Nursery needs
                 </div></label>
-			      <select id="inputState" name="subcategory2" class="form-control">
+                    <select id="inputState" name="subcategory2" class="form-control">
 			        <option >Choose...</option>
 			        <option value="Nursery needs">Nursery needs</option>
 			      </select>
-			    </div>
-			    <!--End of kids section-->
+                </div>
+                <!--End of kids section-->
 
-                </p>
+            </p>
 
 
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
+        <div class="container" style="border:2px solid black; padding-left: 15px;">
+            <br>
+            <h2>Add Variation 1</h2>
+            <hr style="border: 1px solid lightgrey; background: lightgrey;">
+            <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
+                Sizes
+            </div>
+            <input type="text" name="vsizes1" style="width: 100%; border:1px solid lightgrey; height:30px;">
+
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Color
+            </div>
+            <input type="text" name="color1" style="width: 100%; border:1px solid lightgrey; height:30px;">
+
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                M.R.P.*
+            </div>
+            <input type="number" name="vmrp1" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Special Price
+            </div>
+            <input type="number" name="vsprice1" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                Stock available*
+            </div>
+            <input type="text" name="vstock1" style="width: 100%; border:1px solid lightgrey; height:30px;">
+
+            <div class="mb-3">
+                <hr>
+                <b><u>Image 1*</u></b><input type="file" name="variation1_i1" /><br>
+                <hr> Image 2 <input type="file" name="variation1_i2"><br>
+                <hr> Image 3 <input type="file" name="variation1_i3">
             </div>
         </div>
-		<div class="col-md-6 col-xs-12" style="padding-top: 10px;">
-            <div class="container" style="border:2px solid black; padding-left: 15px;">
-                <br>
-                <h2>Add Variation 1</h2>
-                <hr style="border: 1px solid lightgrey; background: lightgrey;">
-                <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
-                    Sizes
-                </div>
-                <input type="text" name="vsizes1" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Color
-                </div>
-                <input type="text" name="color1" style="width: 100%; border:1px solid lightgrey; height:30px;">
-
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    M.R.P.*
-                </div>
-                <input type="number" name="vmrp1" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Special Price
-                </div>
-                <input type="number" name="vsprice1" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    Stock available*
-                </div>
-                <input type="text" name="vstock1" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-
-                <div class="mb-3">
-                    <hr>
-                  <b><u>Image 1*</u></b><input type="file" name="variation1_i1" /><br>
-                    <hr>
-                  Image 2 <input type="file" name="variation1_i2"><br>
-                    <hr>
-                  Image 3 <input type="file" name="variation1_i3">
-                </div>
+        <div class="container" style="border:2px solid black; padding-left: 15px;">
+            <br>
+            <h2>Add Variation 2</h2>
+            <hr style="border: 1px solid lightgrey; background: lightgrey;">
+            <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
+                Sizes
             </div>
-			<div class="container" style="border:2px solid black; padding-left: 15px;">
-                <br>
-                <h2>Add Variation 2</h2>
-                <hr style="border: 1px solid lightgrey; background: lightgrey;">
-                <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
-                    Sizes
-                </div>
-                <input type="text" name="vsizes2" style="width: 100%; border:1px solid lightgrey; height:30px;" >
+            <input type="text" name="vsizes2" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Color
-                </div>
-                <input type="text" name="color2" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Color
+            </div>
+            <input type="text" name="color2" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    M.R.P.*
-                </div>
-                <input type="number" name="vmrp2" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Special Price
-                </div>
-                <input type="number" name="vsprice2" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    Stock available*
-                </div>
-                <input type="text" name="vstock2" style="width: 100%; border:1px solid lightgrey; height:30px;" >
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                M.R.P.*
+            </div>
+            <input type="number" name="vmrp2" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Special Price
+            </div>
+            <input type="number" name="vsprice2" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                Stock available*
+            </div>
+            <input type="text" name="vstock2" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-                <div class="mb-3">
-                    <hr>
-                  <b><u>Image 1*</u></b><input type="file" name="variation2_i1" /><br>
-                    <hr>
-                  Image 2 <input type="file" name="variation2_i2"><br>
-                    <hr>
-                  Image 3 <input type="file" name="variation2_i3">
-                </div>
+            <div class="mb-3">
+                <hr>
+                <b><u>Image 1*</u></b><input type="file" name="variation2_i1" /><br>
+                <hr> Image 2 <input type="file" name="variation2_i2"><br>
+                <hr> Image 3 <input type="file" name="variation2_i3">
             </div>
         </div>
-		<div class="col-md-6 col-xs-12" style="padding-top: 10px;">
-            <div class="container" style="border:2px solid black; padding-left: 15px;">
-                <br>
-                <h2>Add Variation 3</h2>
-                <hr style="border: 1px solid lightgrey; background: lightgrey;">
-                <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
-                    Sizes
-                </div>
-                <input type="text" name="vsizes3" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Color
-                </div>
-                <input type="text" name="color3" style="width: 100%; border:1px solid lightgrey; height:30px;">
-
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    M.R.P.*
-                </div>
-                <input type="number" name="vmrp3" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Special Price
-                </div>
-                <input type="number" name="vsprice3" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    Stock available*
-                </div>
-                <input type="text" name="vstock3" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-
-                <div class="mb-3">
-                    <hr>
-                  <b><u>Image 1*</u></b><input type="file" name="variation3_i1" /><br>
-                    <hr>
-                  Image 2 <input type="file" name="variation3_i2"><br>
-                    <hr>
-                  Image 3 <input type="file" name="variation3_i3">
-                </div>
+    </div>
+    <div class="col-md-6 col-xs-12" style="padding-top: 10px;">
+        <div class="container" style="border:2px solid black; padding-left: 15px;">
+            <br>
+            <h2>Add Variation 3</h2>
+            <hr style="border: 1px solid lightgrey; background: lightgrey;">
+            <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
+                Sizes
             </div>
-			<div class="container" style="border:2px solid black; padding-left: 15px;">
-                <br>
-                <h2>Add Variation 4</h2>
-                <hr style="border: 1px solid lightgrey; background: lightgrey;">
-                <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
-                    Sizes
-                </div>
-                <input type="text" name="vsizes4" style="width: 100%; border:1px solid lightgrey; height:30px;" >
+            <input type="text" name="vsizes3" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Color
-                </div>
-                <input type="text" name="color4" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Color
+            </div>
+            <input type="text" name="color3" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    M.R.P.*
-                </div>
-                <input type="number" name="vmrp4" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
-                    Special Price
-                </div>
-                <input type="number" name="vsprice4" style="width: 100%; border:1px solid lightgrey; height:30px;" >
-                <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
-                    Stock available*
-                </div>
-                <input type="text" name="vstock4" style="width: 100%; border:1px solid lightgrey; height:30px;" >
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                M.R.P.*
+            </div>
+            <input type="number" name="vmrp3" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Special Price
+            </div>
+            <input type="number" name="vsprice3" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                Stock available*
+            </div>
+            <input type="text" name="vstock3" style="width: 100%; border:1px solid lightgrey; height:30px;">
 
-                <div class="mb-3">
-                    <hr>
-                  <b><u>Image 1*</u></b><input type="file" name="variation4_i1" /><br>
-                    <hr>
-                  Image 2 <input type="file" name="variation4_i2"><br>
-                    <hr>
-                  Image 3 <input type="file" name="variation4_i3">
-                </div>
+            <div class="mb-3">
+                <hr>
+                <b><u>Image 1*</u></b><input type="file" name="variation3_i1" /><br>
+                <hr> Image 2 <input type="file" name="variation3_i2"><br>
+                <hr> Image 3 <input type="file" name="variation3_i3">
             </div>
         </div>
-		<div class="text-center" style=" margin-top:10px;">
-                    <button type="submit" class="btn btn-primary mb-4" value="required" /><i class="fa fa-plus"></i> Add product</button>
-		</div>
-        </form>
+        <div class="container" style="border:2px solid black; padding-left: 15px;">
+            <br>
+            <h2>Add Variation 4</h2>
+            <hr style="border: 1px solid lightgrey; background: lightgrey;">
+            <div style="text-decoration: underline; font-weight: 700; padding-bottom: 10px;">
+                Sizes
+            </div>
+            <input type="text" name="vsizes4" style="width: 100%; border:1px solid lightgrey; height:30px;">
+
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Color
+            </div>
+            <input type="text" name="color4" style="width: 100%; border:1px solid lightgrey; height:30px;">
+
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                M.R.P.*
+            </div>
+            <input type="number" name="vmrp4" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 400; padding-bottom: 10px; padding-top: 15px;">
+                Special Price
+            </div>
+            <input type="number" name="vsprice4" style="width: 100%; border:1px solid lightgrey; height:30px;">
+            <div style="font-weight: 700; text-decoration:underline; padding-bottom: 10px; padding-top: 15px;">
+                Stock available*
+            </div>
+            <input type="text" name="vstock4" style="width: 100%; border:1px solid lightgrey; height:30px;">
+
+            <div class="mb-3">
+                <hr>
+                <b><u>Image 1*</u></b><input type="file" name="variation4_i1" /><br>
+                <hr> Image 2 <input type="file" name="variation4_i2"><br>
+                <hr> Image 3 <input type="file" name="variation4_i3">
+            </div>
+        </div>
     </div>
 
+    <!-- Add Variation Table -->
+    <div class="table-responsive mt-2 mb-2">
+        <table class="table table-secondary table-striped table-hover" id='table'>
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Color</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Seller SKU</th>
+                    <th scope="col">MRP</th>
+                    <th scope="col">Special Price</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody id='tablebody'>
+                <tr class="text-center" id='row'>
+                    <td>
+                        <div class="btn-group dropend">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='colorButton'></button>
+                            <ul class="dropdown-menu">
+                                <button type="button" class="btn btn-primary btn-lg border-2 border border-dark" onclick="fillColor('blue')"></button>
+                                <button type="button" class="btn btn-secondary btn-lg border-2 border border-dark" onclick="fillColor('grey')"></button>
+                                <button type="button" class="btn btn-success btn-lg border-2 border border-dark" onclick="fillColor('green')"></button>
+                                <button type="button" class="btn btn-lg border-2 border border-dark" style="background-color: red;" onclick="fillColor('red')"></button>
+                                <button type="button" class="btn btn-warning btn-lg border-2 border border-dark" onclick="fillColor('yellow')"></button>
+                                <button type="button" class="btn btn-lg border-2 border border-dark" style="background-color: brown;" onclick="fillColor('brown')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" onclick="fillColor('black')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: orange;" onclick="fillColor('orange')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: pink;" onclick="fillColor('pink')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: purple;" onclick="fillColor('purple')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: maroon;" onclick="fillColor('maroon')"></button>
+                                <button type="button" class="btn btn-dark btn-lg border-2 border border-dark" style="background-color: navy;" onclick="fillColor('navy blue')"></button>
+                                <button type="button" class="btn btn-light btn-lg border-2 border border-dark" onclick="fillColor('white')"></button>
+                                <button type="button" class="btn btn-light btn-lg border-2 border border-dark" style="background-color: #91d370;
+									background-image: linear-gradient(319deg, #91d370 0%, #bca0ff 37%, #f2cd54 100%);
+									" onclick="fillColor('multicolor')"></button>
+
+
+
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="form-select form-select-sm text-center" aria-label=".form-select-sm example" onchange="changesize(this)">
+								<option selected>Select Size</option>
+								<option value="xs">xs</option>
+								<option value="s">s</option>
+								<option value="m">m</option>
+								<option value="L">L</option>
+								<option value="xL">xL</option>
+								<option value="xxL">xxL</option>
+						</select>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="SKU" aria-label="Username" aria-describedby="basic-addon1" onchange="changesku(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" onchange="changemrp(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" onchange="changesp(this)">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" onchange="changequantity(this)">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" onclick="addRow()">Add Variation</button>
+        <button type="button" class="btn btn-danger" onclick="deleteRow()">Delete Variation</button>
+    </div>
+
+    <input type="hidden" id='addvariationfileds'>
+
+    <div class="text-center" style=" margin-top:10px;">
+        <button type="submit" class="btn btn-primary mb-4" value="required" onclick="submitaddvariation()"><i class="fa fa-plus"></i> Add product</button>
+    </div>
+    </form>
+</div>
+<!-- Add Variation Table Script -->
 <script>
-   function displayCategory(id, elementValue) {
-   	console.log(elementValue.value);
-   	if (elementValue.value=='Personal Care'){
-   		document.getElementById('PersonalCare').style.display = elementValue.value == 'Personal Care' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Carry-ons'){
-      document.getElementById('Carry-ons').style.display = elementValue.value == 'Carry-ons' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Stationery'){
-   		document.getElementById('Stationery').style.display=elementValue.value=='Stationery' ? 'block': 'none';
-   	}
-   	if(elementValue.value=='Kitchen'){
-   		document.getElementById('Kitchen').style.display=elementValue.value=='Kitchen' ? 'block': 'none';
-   	}
-   	if(elementValue.value=='Home sweet home'){
-   		document.getElementById('Home').style.display=elementValue.value=='Home sweet home' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Fashion'){
-   		document.getElementById('Fashion').style.display=elementValue.value=='Fashion' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Garden'){
-   		document.getElementById('Garden').style.display=elementValue.value=='Garden' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Gym freak'){
-   		document.getElementById('Gym').style.display=elementValue.value=='Gym freak' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Kids'){
-   		document.getElementById('Kids').style.display=elementValue.value=='Kids' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Books'){
-   		document.getElementById('Books').style.display=elementValue.value=='Books' ? 'block' : 'none';
-   	}
-   }
-   function displaySubcat(id, elementValue) {
-   	console.log(elementValue.value);
-   	if(elementValue.value=='Bathroom accessories'){
-      document.getElementById('Bathroom').style.display = elementValue.value == 'Bathroom accessories' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Body hygiene'){
-      document.getElementById('Body_hygiene').style.display = elementValue.value == 'Body hygiene' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Oral hygiene'){
-   		document.getElementById('Oral_hygiene').style.display=elementValue.value == 'Oral hygiene' ? 'block' : 'none';
-   	}
-   	if(elementValue.value=='Female hygiene'){
-   		document.getElementById('female_hygiene').style.display=elementValue.value=='Female hygiene'?'block':'none';
-   	}
-   	if(elementValue.value=='Kits'){
-   		document.getElementById('kits').style.display=elementValue.value=='Kits'? 'block':'none';
-   	}
-   }
-   function displaySubcat1(id,elementValue){
-   	if(elementValue.value=='bags'){
-   		document.getElementById('bags').style.display=elementValue.value=='bags'?'block':'none';
-   	}
-   	if(elementValue.value=='wallets'){
-   		document.getElementById('wallets').style.display=elementValue.value=='wallets'?'block':'none';
-   	}
-   	if(elementValue.value=='baskets'){
-   		document.getElementById('baskets').style.display=elementValue.value=='baskets'?'block':'none';
-   	}
-   	if(elementValue.value=='mobile_cover'){
-   		document.getElementById('mobile_cover').style.display=elementValue.value=='mobile_cover'?'block':'none';
-   	}
-   	if(elementValue.value=='facemask'){
-   		document.getElementById('facemask').style.display=elementValue.value=='facemask'?'block':'none';
-   	}
-   	if(elementValue.value=='googles'){
-   		document.getElementById('googles').style.display=elementValue.value=='googles'?'block':'none';
-   	}
-   	if(elementValue.value=='stoles'){
-   		document.getElementById('stoles').style.display=elementValue.value=='stoles'?'block':'none';
-   	}
-   	if(elementValue.value=='tie'){
-   		document.getElementById('tie').style.display=elementValue.value=='tie'?'block':'none';
-   	}
-   }
-   function displaySubcat2(id,elementValue){
-   	if(elementValue.value=='plantable'){
-   		document.getElementById('plantable').style.display=elementValue.value=='plantable'?'block':'none';
-   	}
-   	if(elementValue.value=='pens'){
-   		document.getElementById('pens').style.display=elementValue.value=='pens'?'block':'none';
-   	}
-   	if(elementValue.value=='notebooks'){
-   		document.getElementById('notebooks').style.display=elementValue.value=='notebooks'?'block':'none';
-   	}
-   	if(elementValue.value=='stands'){
-   		document.getElementById('stands').style.display=elementValue.value=='stands'?'block':'none';
-   	}
-   	if(elementValue.value=='office'){
-   		document.getElementById('office').style.display=elementValue.value=='office'?'block':'none';
-   	}
-   	if(elementValue.value=='packaging'){
-   		document.getElementById('packaging').style.display=elementValue.value=='packaging'?'block':'none';
-   	}
+    const colorButton = document.getElementById('colorButton')
+    const sku = []
+    const mrp = []
+    const sp = []
+    const quantity = []
+    const colors = []
+    const size = []
 
-   }
-   function displaySubcat3(id,elementValue){
-   	if(elementValue.value=='cutlery'){
-   		document.getElementById('cutlery').style.display=elementValue.value=='cutlery'?'block':'none';
-   	}
-   	if(elementValue.value=='cookware'){
-   		document.getElementById('cookware').style.display=elementValue.value=='cookware'?'block':'none';
-   	}
-   	if(elementValue.value=='serving'){
-   		document.getElementById('serving').style.display=elementValue.value=='serving'?'block':'none';
-   	}
-   	if(elementValue.value=='household'){
-   		document.getElementById('household').style.display=elementValue.value=='household'?'block':'none';
-   	}
-   	if(elementValue.value=='kit'){
-   		document.getElementById('kit').style.display=elementValue.value=='kit'?'block':'none';
-   	}
-   }
-   function displaySubcat4(id,elementValue){
-   	if(elementValue.value=='furniture'){
-   		document.getElementById('furniture').style.display=elementValue.value=='furniture'?'block':'none';
-   	}
-   	if(elementValue.value=='home_decor'){
-   		document.getElementById('home_decor').style.display=elementValue.value=='home_decor'?'block':'none';
-   	}
-   	if(elementValue.value=='Mandir'){
-   		document.getElementById('mandir').style.display=elementValue.value=='Mandir'?'block':'none';
-   	}
-   }
-   function displaySubcat5(id,elementValue){
-   	if(elementValue.value=='clothes'){
-   		document.getElementById('clothes').style.display=elementValue.value=='clothes'?'block':'none';
-   	}
-   	if(elementValue.value=='footwear'){
-   		document.getElementById('footwear').style.display=elementValue.value=='footwear'?'block':'none';
-   	}
-   }
-   function displaySubcat6(id,elementValue){
-   	if(elementValue.value=='pots'){
-   		document.getElementById('pots').style.display=elementValue.value=='pots'?'block':'none';
-   	}
-   	if(elementValue.value=='planters'){
-   		document.getElementById('planters').style.display=elementValue.value=='planters'?'block':'none';
-   	}
-   	if(elementValue.value=='outdoor'){
-   		document.getElementById('outdoor').style.display=elementValue.value=='outdoor'?'block':'none';
-   	}
-   	if(elementValue.value=='plants'){
-   		document.getElementById('plants').style.display=elementValue.value=='plants'?'block':'none';
-   	}
-   }
-   function displaySubcat7(id,elementValue){
-   	if(elementValue.value=='yoga'){
-   		document.getElementById('yoga').style.display=elementValue.value=='yoga'?'block':'none';
-   	}
-   	if(elementValue.value=='massage'){
-   		document.getElementById('massage').style.display=elementValue.value=='massage'?'block':'none';
-   	}
-   	if(elementValue.value=='sipper'){
-   		document.getElementById('sipper').style.display=elementValue.value=='sipper'?'block':'none';
-   	}
-   	if(elementValue.value=='duffel'){
-   		document.getElementById('duffel').style.display=elementValue.value=='duffel'?'block':'none';
-   	}
-   	if(elementValue.value=='hand_towel'){
-   		document.getElementById('hand_towel').style.display=elementValue.value=='hand_towel'?'block':'none';
-   	}
-   	if(elementValue.value=='cap'){
-   		document.getElementById('cap').style.display=elementValue.value=='cap'?'block':'none';
-   	}
-   }
-   function displaySubcat8(id,elementValue){
-   	if(elementValue.value=='toys'){
-   		document.getElementById('toys').style.display=elementValue.value=='toys'?'block':'none';
-   	}
-   	if(elementValue.value=='station'){
-   		document.getElementById('station').style.display=elementValue.value=='station'?'block':'none';
-   	}
-   	if(elementValue.value=='friendship'){
-   		document.getElementById('friendship').style.display=elementValue.value=='friendship'?'block':'none';
-   	}
-   	if(elementValue.value=='kids_wear'){
-   		document.getElementById('kids_wear').style.display=elementValue.value=='kids_wear'?'block':'none';
-   	}
-   	if(elementValue.value=='diapers'){
-   		document.getElementById('diapers').style.display=elementValue.value=='diapers'?'block':'none';
-   	}
-   	if(elementValue.value=='nursery'){
-   		document.getElementById('nursery').style.display=elementValue.value=='nursery'?'block':'none';
-   	}
-   }
-   function displaySubsubcat(id,elementValue){
-   	if(elementValue.value=='disposable_cutlery'){
-   		document.getElementById('disposable_cutlery').style.display=elementValue.value=='disposable_cutlery'?'block':'none';
-   	}
-   	if(elementValue.value=='reusable_cutlery'){
-   		document.getElementById('reusable_cutlery').style.display=elementValue.value=='reusable_cutlery'?'block':'none';
-   	}
-   }
+    function submitaddvariation() {
+        const input = document.getElementById('submitaddvariation')
+        const array = [colors, size, sku, mrp, sp, quantity]
+        input.value = array
+    }
 
-   function displaySubsubcat1(id,elementValue){
-   	if(elementValue.value=='mens_wear'){
-   		document.getElementById('mens_wear').style.display=elementValue.value=='mens_wear'?'block':'none';
-   	}
-   	if(elementValue.value=='ladies_wear'){
-   		document.getElementById('ladies_wear').style.display=elementValue.value=='ladies_wear'?'block':'none';
-   	}
-   	if(elementValue.value=='clothes_kids'){
-   		document.getElementById('clothes_kids').style.display=elementValue.value=='clothes_kids'?'block':'none';
-   	}
-   }
-    function displaySubsubcat2(id,elementValue){
-   	if(elementValue.value=='mens_footwear'){
-   		document.getElementById('mens_footwear').style.display=elementValue.value=='mens_footwear'?'block':'none';
-   	}
-   	if(elementValue.value=='ladies_footwear'){
-   		document.getElementById('ladies_footwear').style.display=elementValue.value=='ladies_footwear'?'block':'none';
-   	}
-   	if(elementValue.value=='kids_footwear'){
-   		document.getElementById('kids_footwear').style.display=elementValue.value=='kids_footwear'?'block':'none';
-   	}
-   }
+    function changesku(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        sku[index - 1] = value
+        console.log(sku)
+    }
 
+    function changemrp(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        mrp[index - 1] = value
+        console.log(mrp)
+    }
 
+    function changesp(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        sp[index - 1] = value
+        console.log(sp)
+    }
+
+    function changesize(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        size[index - 1] = value
+        console.log(size)
+    }
+
+    function changequantity(element) {
+        const value = element.value
+        const index = element.closest('tr').rowIndex
+        console.log(index)
+        quantity[index - 1] = value
+        console.log(quantity)
+    }
+    fillColor = (color) => {
+        colorButton.innerHTML = color
+        colors.push(color)
+        console.log(colors)
+    }
+
+    function addRow() {
+        var tr = document.getElementById('row').cloneNode(true);
+        document.getElementById('tablebody').appendChild(tr);
+    }
+
+    function deleteRow() {
+        var oRows = document.getElementById('table').getElementsByTagName('tr');
+        var iRowCount = oRows.length;
+        if (iRowCount == 2) {
+            return false;
+        }
+        document.getElementById('table').deleteRow(-1)
+        size.pop()
+        colors.pop()
+        mrp.pop()
+        sp.pop()
+        sku.pop()
+        quantity.pop()
+        return true;
+    }
 </script>
+<script>
+    function displayCategory(id, elementValue) {
+        console.log(elementValue.value);
+        if (elementValue.value == 'Personal Care') {
+            document.getElementById('PersonalCare').style.display = elementValue.value == 'Personal Care' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Carry-ons') {
+            document.getElementById('Carry-ons').style.display = elementValue.value == 'Carry-ons' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Stationery') {
+            document.getElementById('Stationery').style.display = elementValue.value == 'Stationery' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Kitchen') {
+            document.getElementById('Kitchen').style.display = elementValue.value == 'Kitchen' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Home sweet home') {
+            document.getElementById('Home').style.display = elementValue.value == 'Home sweet home' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Fashion') {
+            document.getElementById('Fashion').style.display = elementValue.value == 'Fashion' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Garden') {
+            document.getElementById('Garden').style.display = elementValue.value == 'Garden' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Gym freak') {
+            document.getElementById('Gym').style.display = elementValue.value == 'Gym freak' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Kids') {
+            document.getElementById('Kids').style.display = elementValue.value == 'Kids' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Books') {
+            document.getElementById('Books').style.display = elementValue.value == 'Books' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat(id, elementValue) {
+        console.log(elementValue.value);
+        if (elementValue.value == 'Bathroom accessories') {
+            document.getElementById('Bathroom').style.display = elementValue.value == 'Bathroom accessories' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Body hygiene') {
+            document.getElementById('Body_hygiene').style.display = elementValue.value == 'Body hygiene' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Oral hygiene') {
+            document.getElementById('Oral_hygiene').style.display = elementValue.value == 'Oral hygiene' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Female hygiene') {
+            document.getElementById('female_hygiene').style.display = elementValue.value == 'Female hygiene' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Kits') {
+            document.getElementById('kits').style.display = elementValue.value == 'Kits' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat1(id, elementValue) {
+        if (elementValue.value == 'bags') {
+            document.getElementById('bags').style.display = elementValue.value == 'bags' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'wallets') {
+            document.getElementById('wallets').style.display = elementValue.value == 'wallets' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'baskets') {
+            document.getElementById('baskets').style.display = elementValue.value == 'baskets' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'mobile_cover') {
+            document.getElementById('mobile_cover').style.display = elementValue.value == 'mobile_cover' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'facemask') {
+            document.getElementById('facemask').style.display = elementValue.value == 'facemask' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'googles') {
+            document.getElementById('googles').style.display = elementValue.value == 'googles' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'stoles') {
+            document.getElementById('stoles').style.display = elementValue.value == 'stoles' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'tie') {
+            document.getElementById('tie').style.display = elementValue.value == 'tie' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat2(id, elementValue) {
+        if (elementValue.value == 'plantable') {
+            document.getElementById('plantable').style.display = elementValue.value == 'plantable' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'pens') {
+            document.getElementById('pens').style.display = elementValue.value == 'pens' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'notebooks') {
+            document.getElementById('notebooks').style.display = elementValue.value == 'notebooks' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'stands') {
+            document.getElementById('stands').style.display = elementValue.value == 'stands' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'office') {
+            document.getElementById('office').style.display = elementValue.value == 'office' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'packaging') {
+            document.getElementById('packaging').style.display = elementValue.value == 'packaging' ? 'block' : 'none';
+        }
+
+    }
+
+    function displaySubcat3(id, elementValue) {
+        if (elementValue.value == 'cutlery') {
+            document.getElementById('cutlery').style.display = elementValue.value == 'cutlery' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'cookware') {
+            document.getElementById('cookware').style.display = elementValue.value == 'cookware' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'serving') {
+            document.getElementById('serving').style.display = elementValue.value == 'serving' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'household') {
+            document.getElementById('household').style.display = elementValue.value == 'household' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'kit') {
+            document.getElementById('kit').style.display = elementValue.value == 'kit' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat4(id, elementValue) {
+        if (elementValue.value == 'furniture') {
+            document.getElementById('furniture').style.display = elementValue.value == 'furniture' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'home_decor') {
+            document.getElementById('home_decor').style.display = elementValue.value == 'home_decor' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'Mandir') {
+            document.getElementById('mandir').style.display = elementValue.value == 'Mandir' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat5(id, elementValue) {
+        if (elementValue.value == 'clothes') {
+            document.getElementById('clothes').style.display = elementValue.value == 'clothes' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'footwear') {
+            document.getElementById('footwear').style.display = elementValue.value == 'footwear' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat6(id, elementValue) {
+        if (elementValue.value == 'pots') {
+            document.getElementById('pots').style.display = elementValue.value == 'pots' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'planters') {
+            document.getElementById('planters').style.display = elementValue.value == 'planters' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'outdoor') {
+            document.getElementById('outdoor').style.display = elementValue.value == 'outdoor' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'plants') {
+            document.getElementById('plants').style.display = elementValue.value == 'plants' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat7(id, elementValue) {
+        if (elementValue.value == 'yoga') {
+            document.getElementById('yoga').style.display = elementValue.value == 'yoga' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'massage') {
+            document.getElementById('massage').style.display = elementValue.value == 'massage' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'sipper') {
+            document.getElementById('sipper').style.display = elementValue.value == 'sipper' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'duffel') {
+            document.getElementById('duffel').style.display = elementValue.value == 'duffel' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'hand_towel') {
+            document.getElementById('hand_towel').style.display = elementValue.value == 'hand_towel' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'cap') {
+            document.getElementById('cap').style.display = elementValue.value == 'cap' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubcat8(id, elementValue) {
+        if (elementValue.value == 'toys') {
+            document.getElementById('toys').style.display = elementValue.value == 'toys' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'station') {
+            document.getElementById('station').style.display = elementValue.value == 'station' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'friendship') {
+            document.getElementById('friendship').style.display = elementValue.value == 'friendship' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'kids_wear') {
+            document.getElementById('kids_wear').style.display = elementValue.value == 'kids_wear' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'diapers') {
+            document.getElementById('diapers').style.display = elementValue.value == 'diapers' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'nursery') {
+            document.getElementById('nursery').style.display = elementValue.value == 'nursery' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubsubcat(id, elementValue) {
+        if (elementValue.value == 'disposable_cutlery') {
+            document.getElementById('disposable_cutlery').style.display = elementValue.value == 'disposable_cutlery' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'reusable_cutlery') {
+            document.getElementById('reusable_cutlery').style.display = elementValue.value == 'reusable_cutlery' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubsubcat1(id, elementValue) {
+        if (elementValue.value == 'mens_wear') {
+            document.getElementById('mens_wear').style.display = elementValue.value == 'mens_wear' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'ladies_wear') {
+            document.getElementById('ladies_wear').style.display = elementValue.value == 'ladies_wear' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'clothes_kids') {
+            document.getElementById('clothes_kids').style.display = elementValue.value == 'clothes_kids' ? 'block' : 'none';
+        }
+    }
+
+    function displaySubsubcat2(id, elementValue) {
+        if (elementValue.value == 'mens_footwear') {
+            document.getElementById('mens_footwear').style.display = elementValue.value == 'mens_footwear' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'ladies_footwear') {
+            document.getElementById('ladies_footwear').style.display = elementValue.value == 'ladies_footwear' ? 'block' : 'none';
+        }
+        if (elementValue.value == 'kids_footwear') {
+            document.getElementById('kids_footwear').style.display = elementValue.value == 'kids_footwear' ? 'block' : 'none';
+        }
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 {% endblock %}

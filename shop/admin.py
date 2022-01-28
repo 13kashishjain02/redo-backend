@@ -12,9 +12,17 @@ class ProductAdmin(admin.ModelAdmin):
     filter_horizontal = ()
     list_filter = ()
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('user','date','id')
+    search_fields = ('id', 'used__name',  'date')
+    readonly_fields = ()
+    ordering = ('date',)
+    filter_horizontal = ()
+    list_filter = ()
+
 
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Order)
+admin.site.register(Order,OrderAdmin)
 admin.site.register(Wishlist)
 admin.site.register(Variation)
 admin.site.register(Cart)
