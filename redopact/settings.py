@@ -243,3 +243,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = '13nobody02@gmail.com'
 EMAIL_HOST_PASSWORD = 'Kashish2002@'
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'

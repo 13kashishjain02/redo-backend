@@ -1,57 +1,171 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- adding css -->
-    <link rel="stylesheet" href="css/signup.css">
-    <!-- adding font link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-    <title>redo pack</title>
-</head>
+    <title>Signup | Redopact</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+ 
+    </head>
 
-<body>
-    <div class="cont">
-        <!-- left-portion -->
-        <div class="banner">
-            <p class="banner-text">Get started for</p>
-            <p class="banner-text">ABSOLUTELY FREE</p>
-            <img src="images/LOGO.png" alt="">
+    <style>
+
+    .login .row .login-right .switch{
+    display: flex;
+}
+
+    </style>
+
+
+    <body>
+
+
+
+
+<div class="container-fluid login">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 text-center p-5 login-left">
+            <h4 class="text-primary">Get started for</h4> 
+            <h1 class="text-primary display-5" style="font-weight: bolder;"><b>ABSOLUTELY  FREE</b></h1>
+
+           <div class="mt-5">
+            <img class="img-fluid" src="{% static 'general/images/Signup.png' %}" alt="" style="width: 80%;"> 
+           </div>
+
+          
         </div>
-        <!-- right-portion -->
-        <div class="main">
-            <div class="main-content">
-                <div class="form">
-                    <hr class="colored">
-                    <p class="sign"><span class="signup"> Sign-up</span> <span class="bar">|</span> <span class="login">Login</span></p>
-                    <form action="post" class="form">
-                        <label for="email">Email Address</label><br>
-                        <input class="input" type="text" id="email" value="Enter Email Address"><br>
-                        <label for="password">Password</label><br>
-                        <input class="input" type="password" id="password" name="Enter Password"><br>
-                        <label for="contact">Contact Number</label><br>
-                        <input type="text" class="input" id="contact" value="Enter contact number"><br>
-                    </form>
-                    <!-- register-button -->
-                    <button><span class="login-but">Register</span></button>
-                    <p class="bot-text">Already have account <span class="sign-up">Login here</span></p>
-                    <p class="bot-text">or continue with</p>
-                    <div class="icons">
-                        <!-- google-icon -->
-                        <img src="icons/google.png" class="google" alt="sign up with google">
-                        <!-- facebook-icon -->
-                        <img src="icons/facebook.png" class="facebook" alt="">
-                        <!-- linkedin-icon -->
-                        <img src="icons/linkedin.png" class="linkedin" alt="">
-                    </div>
-                </div>
-            </div>
+        <!-- style="background-color: #FBE7E7;" -->
+        <div class="col-sm-12 col-md-6 col-lg-6 login-right p-5" >
+                   <div class="switch mt-5">
+                       <div class="">
+                           <h3 class="text-primary">
+                              <b>Signup</b>
+                           </h3>
+                       </div>
+                        <div class="border-end p-2 border-dark"></div>
+                        <div class="">
+                        <h3 class="px-3"> <a href="/login/" style="text-decoration:none">Login</a></h3>
+                         </div>
+                    </div>  
+
+
+                    <div class="login-form mt-5">
+                        {% if messages %}
+
+                        {% for message in messages %}
+
+                        <span class="container-fluid text-dark alert alert-success text-center py-3 px-5">
+                            {{message}}
+                        </span> <br> <br>
+
+                        {%endfor%}
+
+                        {%endif%}
+                    <form method="POST"> {% csrf_token %}
+                        <div class="form-group">
+                            {% if email %}
+
+                       
+
+                        <span class="text-danger">
+                            {{email}}
+                        </span>
+
+                        <br>
+                       
+
+                        {%endif%}
+                            <label for="exampleInputEmail1" class="form-label text-dark mt-2">
+                                <span style="color: black;">Email address</span>
+                            </label>
+                            <input style="border: 2px solid #1A4953;" value="{{email_v}}" name="email" type="email" class="form-control bg-white" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                          <br>
+                          <div class="form-group">
+                            {% if password %}
+
+                       
+
+                            <span class="text-danger">
+                                {{password}}
+                            </span>
+    
+                            <br>
+                           
+    
+                            {%endif%}
+                            <label for="exampleInputPassword1" class="form-label mt-2" style="color: black;">Password</label>
+                            <input style="border: 2px solid #1A4953;" value="{{password_v}}"  name="password" type="password" class="form-control bg-white" id="exampleInputPassword1" placeholder="Password" required>
+                          </div>
+                          <div class="form-group"> <br>
+                            {% if contact1  %}
+
+                       
+
+                            <span class="text-danger">
+                                {{contact1}}
+                            </span>
+    
+                            <br>
+                           
+    
+                            {%endif%}
+
+                            {% if contact  %}
+
+                       
+
+                            <span class="text-danger">
+                                {{contact}}
+                            </span>
+    
+                            <br>
+                           
+    
+                            {%endif%}
+                            <label for="exampleInputcontact" class="form-label mt-2" style="color: black;">Contact Number</label>
+                            <input style="border: 2px solid #1A4953;" value="{{contact_v}}"  name="contact" type="tel" class="form-control bg-white" id="exampleInputcontact" placeholder="+91" required>
+                          </div>
+                        </div>
+
+                        <br> <br>
+
+                        <div class="text-center d-grid">
+                            <button class="btn bg-primary text-white py-3" style="border-radius: 4px;">Create Account</button>
+                        </div>
+
+                        <div class="text-center py-3">
+                            <span>Already have an account? <a href="/login/" class="text-primary" style="text-decoration: none;">Login here</a></span>
+                        </div>
+
+                        <div class="text-center py-5">
+                            <span>or continue</span> <br> <br>
+                           <span class="bg-white p-3 shadow-sm" style="border-radius: 6px;">
+                            <img src="{% static 'general/images/google.png' %}" width="30px" alt=""> Login with Google
+                           </span>
+                        </div>
+                    </form> 
+
+
+
+
+
+                   
         </div>
     </div>
-</body>
 
+
+</div>
+
+
+
+</body>
 </html>
+

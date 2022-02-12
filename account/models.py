@@ -5,9 +5,14 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
+
+
+phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', 
+                                message = "Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
 
 class MyAccountManager(BaseUserManager):
     # create_user deals with creating the user of costumer type
@@ -58,7 +63,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(verbose_name="email", max_length=100, unique=True)
     viewpass = models.CharField(max_length=30, null=True, blank=True)
     name = models.CharField(max_length=100, null=True, blank=True)
-    contact_number = models.IntegerField(null=True, blank=True, default=00000)
+    contact_number = models.CharField(max_length=100, null=True, blank=True, validators=[phone_regex])
     order_history = models.JSONField(default=list, blank=True, null=True)
     is_superuser = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)

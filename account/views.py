@@ -1,9 +1,10 @@
+from multiprocessing import context
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.utils import IntegrityError
 from .models import Account, VendorAccount, BloggerAccount
 # from cart.models import Cartdata
-from django.contrib.auth.models import auth, User
+from django.contrib.auth import get_user_model
 from django.contrib.auth import logout, login, authenticate
 from account.forms import AccountAuthenticationForm
 import requests
@@ -17,6 +18,15 @@ from django.http import HttpResponseRedirect, HttpResponse
 import random
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth.hashers import make_password
+import re
+
+
+User = get_user_model()
+phone_pattern = '^\+?1?\d{9,15}$'
+password_pattern = '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$'
+
 # ---------------------------------------------------
 # GLOBAL VARIABLES
 # ---------------------------------------------------
@@ -62,61 +72,64 @@ def otpemail(request,remail='kashish.iitdelhi@gmail.com',sub="Redopact",msg="Tha
 # -----------------------------------------------------------------------
 
 def userregister(request):
+    context = {}
     if request.method == 'POST':
-        name = request.POST['name']
-        contact_number = int(request.POST['mobile'])
-        email = request.POST['email']
-        password = request.POST.get('password')
-        try:
-            user = Account.objects.create_user(
-                name=name, email=email, password=password, contact_number=contact_number, viewpass=password
+        email = 'email' in request.POST and request.POST['email']
+        password = 'password' in request.POST and request.POST['password']
+        contact = 'contact' in request.POST and request.POST['contact']
+
+        context['email_v'] = email
+        context['password_v'] = password
+        context['contact_v'] = contact
+
+        if User.objects.filter(email=email).exists():
+            context['email'] = 'This email Address is already exists'
+
+        elif not re.search(password_pattern,password):
+            context['password'] = 'Your password must contain at 8 charcters, at least 1 number, 1 uppercase and 1 non-alphanumeric character.'
+        
+        elif User.objects.filter(contact_number=contact).exists():
+            context['contact'] = 'This phone number is already exists'
+
+        elif not re.search(phone_pattern,contact):
+            context['contact1'] = 'Phone number is not valid'
+            
+        else:
+            User.objects.create(
+                email = email,
+                password = make_password(password),
+                contact_number = contact
             )
-            user.save()
-            print("1")
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            msg = "User Registration Successful"
-            print("1")
-            return redirect("../")
-        except IntegrityError as e:
-            msg = email + " is already registered,if you think there is a issue please contact us at 6264843506"
-            print("3")
-            return render(request, "account/register.html", {'msg': msg})
-        except Exception as e:
-            print(e)
-            print("2")
-        # return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-    else:
-        return render(request, "account/register.html")
+            context['email_v'] = ''
+            context['password_v'] = ''
+            context['contact_v'] = ''
+            messages.success(request,'Account Created')
+
+        
+
+        
+    return render(request, "account/register.html",context=context)
 
 
 def userlogin(request):
-    msg = ""
-    user = request.user
-    if user.is_authenticated:
-        return redirect("../")
-    else:
-        if request.POST:
-                email = request.POST.get('email')
-                password = request.POST.get('password')
-                user = authenticate(email=email, password=password)
-                if user:
-                    login(request, user)
-                    request.user = user
-                    next = request.POST.get('next', '../')
-                    if next == "":
-                        next="../"
-                    return redirect(next)
-                    # return redirect('../')
-                else:
-                    msg = "invalid Email or password"
-        else:
-            form = AccountAuthenticationForm()
-        return render(request, 'account/login.html', {"form": form, "msg": msg})
-    # username=BaseUserManager.normalize_email(username)
+    context = {}
+    if request.method == "POST":
+        email = 'email' in request.POST and request.POST['email']
+        password = 'password' in request.POST and request.POST['password']
+        
+        context['email'] = email
+        context['password'] = password
+        
+        user = authenticate(email=email,password=password)
 
-    context['login form'] = form
-    print("context :", context)
-    return render(request, 'account/register.html', context)
+        if user is not None:
+            login(request,user)
+            return redirect('/')
+        else:
+            messages.error(request,'Email or password is invalid')
+
+
+    return render(request, 'account/login.html',context=context)
 
 
 @login_required(login_url="../login")

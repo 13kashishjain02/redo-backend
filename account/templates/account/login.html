@@ -1,51 +1,114 @@
-{% extends 'general/base2.html' %} {%load static%} {% block head%}
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- adding css -->
-<link rel="stylesheet" href="{%static 'account/css/login.css'%}">
-<!-- adding font link -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> {% endblock %} {% block body%}
-<div class="cont">
-    <!-- left-portion -->
-    <div class="banner">
-        <p class="banner-text">we Missed you !</p>
-        <p class="banner-text">LOGIN BACK</p>
-        <!--            <img src="images/LOGO.png" alt="">-->
-    </div>
-    <!-- right-portion -->
-    <div class="main">
-        <div class="main-content">
-            <div class="form">
-                <hr class="colored">
-                <p class="sign">Sign-up <span class="bar">|</span>Login</p>
-                <form method="post" action="../login/" class="form">
-                    {%csrf_token%}
-                    <label for="email">Email Address</label><br>
-                    <input class="input" type="text" id="email" name="email" placeholder="Enter Email Address"><br>
-                    <label for="password">Password</label><br>
-                    <input class="input" type="password" id="password" name="password"><br>
-                    <p class="forgot-pass">Forgot Password?</p>
-                    <button type="submit"><span class="login-but">Login</span></button>
-                </form>
-                <!-- login-button -->
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Redopact</title>
 
-                <p class="bot-text">No account <span class="sign-up">Sign Up?</span></p>
-                <p class="bot-text">or continue with</p>
-                <div class="icons">
-                    <!-- google-icon -->
-                    <img src="icons/google.png" class="google" alt="sign up with google">
-                    <!-- facebook-icon -->
-                    <img src="icons/facebook.png" class="facebook" alt="">
-                    <!-- linkedin-icon -->
-                    <img src="icons/linkedin.png" class="linkedin" alt="">
-                </div>
-            </div>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- adding css -->
+    <!-- <link rel="stylesheet" href="{%static 'account/css/login.css'%}"> -->
+    <!-- adding font link -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">  -->
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'account/css/login.css'%}">
+    
+
+
+
+
+<div class="container-fluid login">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 text-center p-5 login-left">
+            <h4 class="text-primary">we Missed you !!</h4> 
+            <h1 class="text-primary display-5" style="font-weight: bolder;"><b>LOGIN BACK</b></h1>
+
+           <div class="logo">
+            <img class="img-fluid" src="{% static 'general/images/Signin.png'%}" alt="">
+           </div>
+        </div>
+        <!-- style="background-color: #FBE7E7;" -->
+        <div class="col-sm-12 col-md-6 col-lg-6 login-right p-5" >
+                   <div class="mx-auto d-flex mt-5">
+                       <div class="">
+                           <h3>
+                               <a href="/register/" style="text-decoration:none">Signup</a>
+                           </h3>
+                       </div>
+                        <div class="border-end p-2 border-dark"></div>
+                        <div class="">
+                        <h3 class="px-3 text-primary">Login</h3>
+                         </div>
+                    </div>  
+
+
+                    <div class="login-form mt-5">
+                        {% if messages %}
+
+                        {% for message in messages %}
+
+                        <span class="container-fluid text-dark text-center py-3 alert alert-danger">
+                            {{message}}
+                        </span>
+
+                        {%endfor%}
+
+                        {%endif%}
+                    <form method="POST"> {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label text-dark mt-4">
+                                <span style="color: black;">Email address</span>
+                            </label>
+                            <input style="border: 2px solid #1A4953;" value="{{email}}" name="email" type="email" class="form-control bg-white" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1" class="form-label mt-4" style="color: black;">Password</label>
+                            <input style="border: 2px solid #1A4953;" value="{{password}}" name="password" type="password" class="form-control bg-white" id="exampleInputPassword1" placeholder="Password" required>
+                            <label for="" class="py-2">
+                                <a href="" style="text-decoration:none; color: black;">Forget Password</a>
+                            </label>
+                          </div>
+                        </div>
+
+                        <br> <br>
+
+                        <div class="text-center d-grid">
+                            <button class="btn bg-primary text-white py-3" style="border-radius: 4px;">Login</button>
+                        </div>
+
+                        <div class="text-center py-3">
+                            <span>No account  <a href="/register/" class="text-primary" style="text-decoration: none;">Sign Up?</a></span>
+                        </div>
+
+                        <div class="text-center py-5">
+                            <span>or continue</span> <br> <br>
+                           <span class="bg-white p-3 shadow-sm" style="border-radius: 6px;">
+                            <img src="{% static 'general/images/google.png' %}" width="30px" alt=""> Login with Google
+                           </span>
+                        </div>
+                    </form> 
+
+
+
+
+
+                   
         </div>
     </div>
+
+
 </div>
 
 
-{% endblock %}
+
+</body>
+</html>
+
