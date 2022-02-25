@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redopact | Cart</title>
+
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+
+    <style>
+        .nav-panel .nav-header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+        }
+
+        .cart .cart-item{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart .cart-item .items{
+            display: flex;
+        }
+
+
+        .cart .bill .coupon , .mrp , .c-discount, .d-charge, .t-bill{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container-fluid nav-panel">
+
+        <div class="nav-header container py-3">
+
+            <div class="logo">
+                <a href="/"><img src="{% static 'general/images/Redopact.png' %}" width="150px" alt="logo"></a>
+            </div>
+
+            <div class="position">
+                <h5 style="font-size: 13px;color: #7B7D89;"><span class="" style="border-bottom: 2px solid #20BD99;color: #20BD99;">CART</span> --------- ADDRESS --------- Payment</h5>
+            </div>
+
+            <div class="secure">
+              <img src="{% static 'general/images/sprite-secure.png'%}" width="30px" alt=""> <span style="color: #5C606E;font-size: 13px;">100% SECURE</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container mt-5">
+        <ol class="breadcrumb px-3">
+            <li class="breadcrumb-item"><a href="/" style="text-decoration: none;">Home</a></li>
+            <li class="breadcrumb-item active">Cart</li>
+          </ol>
+      
+          <h4 class="mt-5 px-3"><span class="text-primary">My cart -</span> 4 Items</h4>
+    </div>
+
+
+    <div class="cart container my-5">
+        <div class="row">
+
+
+            <div class="col-sm-12 col-md-12 col-lg-8">
+
+                <div class="cart-item border p-3">
+                   
+                     <div class="items">
+                        <img src="{% static 'general/images/product2.webp' %}" class="img-fluid" style="width: 150px;" alt="">
+                        <div class="items-details p-3">
+                            <span style="color: black;">Louis Philippe Jeans</span><br>
+                            <span style="font-weight: 200;">Men Navy Blue Solid Slim Fit T-shirt</span><br>
+                            <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
+                            <h5>Rs. 1049</h5> <br>
+                            <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
+                        </div>  
+                     </div> 
+                     <span class="px-3" style="font-size: 25px;"> <i class="fa-solid fa-xmark"></i></span>
+                           
+                 </div>
+
+                 <div class="cart-item border p-3 mt-3">
+                   
+                    <div class="items">
+                       <img src="{% static 'general/images/product3.webp' %}" class="img-fluid" style="width: 150px;" alt="">
+                       <div class="items-details p-3">
+                           <span style="color: black;">Roadster</span><br>
+                           <span style="font-weight: 200;">Men Navy Blue Skinny Fit Light Fade Stretchable Jeans</span><br>
+                           <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
+                           <h5>Rs. 569</h5> <br>
+                           <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
+                       </div>  
+                    </div> 
+                    <span class="px-3" style="font-size: 25px;"> <i class="fa-solid fa-xmark"></i></span>
+                          
+                </div>
+
+                <div class="cart-item border p-3 mt-3">
+                   
+                    <div class="items">
+                       <img src="{% static 'general/images/product4.webp' %}" class="img-fluid" style="width: 150px;" alt="">
+                       <div class="items-details p-3">
+                           <span style="color: black;">Roadster</span><br>
+                           <span style="font-weight: 200;">Men Navy Blue Skinny Fit Light Fade Stretchable Jeans</span><br>
+                           <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
+                           <h5>Rs. 569</h5> <br>
+                           <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
+                       </div>  
+                    </div> 
+                    <span class="px-3" style="font-size: 25px;"> <i class="fa-solid fa-xmark"></i></span>
+                          
+                </div>
+
+                <div class="cart-item border p-3 mt-3">
+                   
+                    <div class="items">
+                       <img src="{% static 'general/images/product5.webp' %}" class="img-fluid" style="width: 150px;" alt="">
+                       <div class="items-details p-3">
+                           <span style="color: black;">Roadster</span><br>
+                           <span style="font-weight: 200;">Men Navy Blue Skinny Fit Light Fade Stretchable Jeans</span><br>
+                           <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
+                           <h5>Rs. 569</h5> <br>
+                           <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
+                       </div>  
+                    </div> 
+                    <span class="px-3" style="font-size: 25px;"> <i class="fa-solid fa-xmark"></i></span>
+                          
+                </div>
+
+                 
+
+            </div>
+
+
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                  <div class="bill border px-3 py-4">
+                <h5 style="color:#7B7D89;font-size: 14px;">Coupons</h5> <br>
+                <div class="coupon">
+                    <h5 style="font-size: 13px;"><i class="fa-solid fa-tag"></i> Apply Coupon</h5>
+                    <button class="btn btn-outline-primary py-1 mx-5" style="font-size: 12px;">Apply</button>
+                </div>
+                <hr>
+                <h6>price details (item 3)</h6> <br>
+                <div class="mrp">
+                    <h5 style="font-size: 13px;color:#5C606E;">Total MRP</h5>
+                    <h5 style="font-size: 13px;color:#20BD99;">₹ 1049</h5>
+                </div>
+
+                <div class="c-discount mt-2">
+                    <h5 style="font-size: 13px;color:#5C606E;">Coupon Discount</h5>
+                    <h5 style="font-size: 13px;color:#20BD99;">₹ 100</h5>
+                </div>
+
+                <div class="d-charge mt-2">
+                    <h5 style="font-size: 13px;color:#5C606E;">Delivery Charge</h5>
+                    <h5 style="font-size: 13px;color:#20BD99;">₹ 30</h5>
+                </div>
+
+                <hr>
+
+                <div class="t-bill mt-2">
+                    <h5 style="font-size: 13px;color:black;">Total Amount</h5>
+                    <h5 style="font-size: 13px;color:#20BD99;">₹ 1179</h5>
+                </div>
+
+                <div class="mt-5 text-center">
+                    <a href="/checkout/address/" class="btn bg-primary text-white px-5 shadow" style="border-radius: 4px;">Place Order</a>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>

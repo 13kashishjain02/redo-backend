@@ -9,7 +9,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
  
     </head>
 
@@ -102,7 +109,8 @@
     
                             {%endif%}
                             <label for="exampleInputPassword1" class="form-label mt-2" style="color: black;">Password</label>
-                            <input style="border: 2px solid #1A4953;" value="{{password_v}}"  name="password" type="password" class="form-control bg-white" id="exampleInputPassword1" placeholder="Password" required>
+                            <i class="fa-solid fa-lock" id="lock-unlock" onclick="LockUnlock()" style="float: right;position: relative;top: 3.5rem;right: 0.8rem;cursor: pointer;"></i>
+                            <input style="border: 2px solid #1A4953;" id="password" value="{{password_v}}"  name="password" type="password" class="form-control bg-white" id="exampleInputPassword1" placeholder="Password" required>
                           </div>
                           <div class="form-group"> <br>
                             {% if contact1  %}
@@ -164,7 +172,20 @@
 
 </div>
 
-
+<script>
+    function LockUnlock() {
+      const lu = document.getElementById("lock-unlock");
+      const password = document.getElementById("password");
+      if(lu.className  == 'fa-solid fa-lock'){
+          lu.setAttribute('class','fa-solid fa-lock-open');
+          password.type = "text";
+      }
+      else{
+        lu.setAttribute('class','fa-solid fa-lock');
+        password.type = "password";
+      }
+    }
+</script>
 
 </body>
 </html>

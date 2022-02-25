@@ -1,5 +1,5 @@
 from django.contrib import admin
-from account.models import Account, VendorAccount, BloggerAccount
+from account.models import Account, VendorAccount, BloggerAccount,Profile,Address
 # from django.contrib.auth.admin import UserAdmin
 from shop.models import Order
 
@@ -35,3 +35,23 @@ admin.site.register(BloggerAccount)
 
 # admin.site.register(Account)
 # admin.site.register(VendorAccount)
+
+
+
+from .models import Unique
+
+
+@admin.register(Unique)
+class AdminUnique(admin.ModelAdmin):
+    list_display = ['user','uuid']
+    
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user','gender','image','dob','location']
+
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ['id','user','pincode','state','address','town','city']
+    

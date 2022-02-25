@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from django.contrib import messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,6 +52,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'social_django',
+    'fontawesomefree',
+    'django_cleanup',
 ]
 SITE_ID = 1
 
@@ -241,9 +244,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = '13nobody02@gmail.com'
-EMAIL_HOST_PASSWORD = 'Kashish2002@'
+EMAIL_HOST_USER = 'aashishkumar12376@gmail.com'
+EMAIL_HOST_PASSWORD = '9818908306'
 
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}

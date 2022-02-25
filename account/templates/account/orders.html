@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redopact | My Orders</title>
+
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+
+    <style>
+        .orders .recent-orders{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .orders .recent-orders .order-detils{
+            display: flex;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    {%include 'general/Navbar.html' %}
+
+
+    <div class="orders container mt-5">
+
+
+        <div class="row">
+            <div class="col-sm-3 py-5">
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">Orders</li>
+                  </ol>
+
+                <div class="list-group">
+                    <a style="font-size: 14px;" href="/account" class="list-group-item list-group-item-action"><i class="fa-solid fa-user px-1"></i> My Profile</a>
+                    <a style="font-size: 14px;" href="/account/edit" class="list-group-item list-group-item-action"><i class="fa-solid fa-pen-to-square px-1"></i> Edit Profile</a>
+                    <a style="font-size: 14px;" href="/account/address" class="list-group-item list-group-item-action"><i class="fa-solid fa-location-arrow px-1"></i> My Addressess</a>
+                    <a style="font-size: 14px;" href="/account/orders" class="list-group-item list-group-item-action bg-primary text-white"><i class="fa-solid fa-basket-shopping px-1"></i> My Orders</a>
+                    <a style="font-size: 14px;" href="/logout" class="list-group-item list-group-item-action"><i class="fa-solid fa-right-from-bracket px-1"></i> Logout</a>
+                  </div>
+
+            </div>
+
+            <div class="col-sm-8 p-5">
+
+
+                <h3 class="text-center text-primary">My Orders</h3> <br> <br>
+
+                  <h5>Recents Orders</h5> 
+
+            <div class="border p-3 mt-4" style="border-radius: 8px;">
+                <span class="text-primary"><i class="fa-solid fa-truck"></i> Delivered </span> <span class="text-primary">| On Tue, 2 Nov</span>
+                <div class="recent-orders pt-4">
+                    <div class="order-detils">
+                        <img src="{%static 'general/images/product1.webp' %}" style="width: 70px;" alt="">
+                        <div class="o-details px-3">
+                            <h5>DILLINGER</h5>
+                            <span>Men Black Solid Round Neck Pure Cotton T-shirt</span><br>
+                            <span>Size: M</span>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="border p-3 mt-4" style="border-radius: 8px;">
+                <span class="text-primary"><i class="fa-solid fa-truck"></i> Delivered </span> <span class="text-primary">| On Tue, 2 Nov</span>
+                <div class="recent-orders pt-4">
+                    <div class="order-detils">
+                        <img src="{%static 'general/images/product1.webp' %}" style="width: 70px;" alt="">
+                        <div class="o-details px-3">
+                            <h5>DILLINGER</h5>
+                            <span>Men Black Solid Round Neck Pure Cotton T-shirt</span><br>
+                            <span>Size: M</span>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="border p-3 mt-4" style="border-radius: 8px;">
+                <span class="text-primary"><i class="fa-solid fa-truck"></i> Delivered </span> <span class="text-primary">| On Tue, 2 Nov</span>
+                <div class="recent-orders pt-4">
+                    <div class="order-detils">
+                        <img src="{%static 'general/images/product1.webp' %}" style="width: 70px;" alt="">
+                        <div class="o-details px-3">
+                            <h5>DILLINGER</h5>
+                            <span>Men Black Solid Round Neck Pure Cotton T-shirt</span><br>
+                            <span>Size: M</span>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <a href="/account/orders/details/?OrderId=jbrvkfwqqnsddhdjshjdhjsdje"><i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+
+                </div>
+            </div>
+                   
+
+
+
+                
+                
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>

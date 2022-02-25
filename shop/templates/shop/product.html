@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redopact</title>
+
+
+  <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+
+    <style>
+        .product-base{
+            display: flex;
+            justify-content: space-between;
+            /* align-items: center; */
+        }
+        .products .product-filter{
+            width: 25%;
+            float: left;
+        }
+
+        .products .show-products{
+            width: 75%;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+  {%include 'general/Navbar.html' %}
+
+
+
+
+  <div class="product-base mt-5 container">
+      <div class="product-left-base">
+        <ol class="breadcrumb px-3">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Men T-Shirts</li>
+        </ol>
+        <span>Men T-Shirts - 65920 items</span>
+      </div>
+
+      <div class="product-right-base">
+        <div class="form-group">
+            <!-- <label for="exampleSelect1" class="form-label mt-4">Sort by nearest match :</label> -->
+            <select class="form-select bg-white" style="border: 2px solid #1A4953;" id="exampleSelect1">
+              <option>Sort by : popularity</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+      </div>
+  </div>
+
+
+
+
+  <div class="products container mt-5">
+      
+    <div class="product-filter border-top border-start  p-3">
+        <h5>Filters</h5>
+    </div>
+
+
+    <div class="show-products border-top border-start px-3">
+        <div class="row">
+          
+          
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center ">
+             <div class="shadow-sm border py-5">
+              <img src="{% static 'general/images/product2.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+              <h5>Louis Philippe Jeans</h5>
+              <p class="">Rs.1,049 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,899</span> <span style="color: orangered;">(Rs. 1300 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+             </div>
+            </div>
+  
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
+              <div class="shadow-sm border py-5">
+                <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+              <h5>Roadster Jeans</h5>
+              <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+              </div>
+            </div>
+  
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
+              <div class="shadow-sm border py-5">
+                <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+              <h5>WROGN Shirts</h5>
+              <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+              </div>
+            </div>
+  
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
+              <div class="shadow-sm border py-5">
+              <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+              <h5>WROGN Jeans</h5>
+              <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center ">
+                <div class="shadow-sm border py-5">
+                 <img src="{% static 'general/images/product2.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+                 <h5>Louis Philippe Jeans</h5>
+                 <p class="">Rs.1,049 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,899</span> <span style="color: orangered;">(Rs. 1300 OFF)</span></span></p>
+                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+                </div>
+               </div>
+     
+               <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
+                 <div class="shadow-sm border py-5">
+                   <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+                 <h5>Roadster Jeans</h5>
+                 <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+                 </div>
+               </div>
+     
+               <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
+                 <div class="shadow-sm border py-5">
+                   <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+                 <h5>WROGN Shirts</h5>
+                 <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+                 </div>
+               </div>
+     
+               <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
+                 <div class="shadow-sm border py-5">
+                 <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+                 <h5>WROGN Jeans</h5>
+                 <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+                 </div>
+               </div>
+  
+  
+  
+  
+          </div>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

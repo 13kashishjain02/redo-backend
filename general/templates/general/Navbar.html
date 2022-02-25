@@ -1,0 +1,268 @@
+{% load static %}
+
+
+
+<style>
+    a{
+        text-decoration: none;
+        transition: 0.4s ease-in-out;
+    }
+    a:hover{
+        color: #1A4953;
+    }
+    .nav{
+        /* margin-top: 0.5rem; */
+    }
+    .nav .nav-cnt{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+        .nav .nav-cnt .logo .mob-bars{
+            display: none;
+        }
+        .nav .nav-cnt .logo{
+            display: flex;
+            align-items: center;
+        }
+    .nav .nav-cnt .search input{
+        width: 35rem;
+        border: 1.9px solid #1A4953;
+        background-color: white;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        font-size: 13px;
+        border-radius: 5rem;
+    }
+    .nav .nav-cnt .search{
+        display: flex;
+        align-items: center;
+    }
+    .nav .nav-cnt .search .search-icon{
+        position: relative;
+        left: 2rem;
+    }
+
+    .nav .nav-cnt .auth i{
+        font-size: 23px;
+        /* margin: 0 0.3rem; */
+        
+    }
+    .products-section{
+        display: inline-block;
+    }
+    .products-section .products{
+        display: flex;
+        align-items: centers;
+        justify-content: space-around;
+    }
+
+    .products-section .products a{
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+
+
+
+
+    @media screen and (max-width:991px) {
+        .nav{
+            margin-top: 0rem;
+        }
+        .nav .nav-cnt .search{
+            display: none;
+        }
+
+        .nav .nav-cnt .logo .mob-bars{
+            display: block;
+            font-size: 30px;
+        }
+        .products-section{
+            display: none;
+            margin-top: -2rem;
+        }
+    }
+</style>
+
+
+
+<div class="container-fluid nav py-2">
+
+    <div class="nav-cnt container">
+        <div class="logo">
+            <i class="fa-solid fa-bars-staggered mob-bars"></i> 
+            <a href="/"><img src="{% static 'general/images/Redopact.png' %}" width="150px" alt="logo"></a>
+        </div>
+
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i> 
+            <input type="search" class="form-control px-5" placeholder="Search for products brands & more">
+        </div>
+
+        <div class="auth">
+            {% if user.is_authenticated %}
+           
+          <a class="px-2" href="/wishlist/"><i class="fa-solid fa-heart text-primary"></i></a>
+          <a class="px-2" href="/checkout/cart/"> <i class="fa-solid fa-cart-arrow-down text-primary"></i></a>
+          <a class="px-2" href="/account/"> 
+            <img src="{{user.profile.image.url}}" style="width: 40px;border-radius: 50%;" alt="">
+          </a>
+            {%else%}
+
+            <a href="/login/" class="px-3 text-primary">Login</a>
+            <a href="/register/" class="text-primary">Register</a>
+
+            {%endif%}
+        </div>
+    </div>
+  
+</div>
+
+
+
+<section class="container-fluid products-section p-4 mt-2 bg-primary shadow-lg">
+
+    <div class="products">
+
+
+        <div class="dropdown">
+            <a class="text-white" id="PersonalCare" data-bs-toggle="dropdown" aria-expanded="false">Personal Care <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="PersonalCare">
+                <li><a class="dropdown-item" href="#">Bathroom Accessories</a></li>
+                <li><a class="dropdown-item" href="#">Body Hygiene</a></li>
+                <li><a class="dropdown-item" href="#">Oral Hygiene</a></li>
+                <li><a class="dropdown-item" href="#">Female Hygiene</a></li>
+                <li><a class="dropdown-item" href="#">Kits</a></li>
+              </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="text-white" id="CarryOns" data-bs-toggle="dropdown" aria-expanded="false">Carry Ons <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="CarryOns">
+                <li><a class="dropdown-item" href="#">Bags And Pouches</a></li>
+                <li><a class="dropdown-item" href="#">Wallets And Clutches</a></li>
+                <li><a class="dropdown-item" href="#">Basket</a></li>
+                <li><a class="dropdown-item" href="#">Mobile Cover</a></li>
+                <li><a class="dropdown-item" href="#">Face Mask</a></li>
+                <li><a class="dropdown-item" href="#">Goggles</a></li>
+                <li><a class="dropdown-item" href="#">Stoles And Scarves</a></li>
+                <li><a class="dropdown-item" href="#">Tie And Belts</a></li>
+              </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="text-white" id="Stationary" data-bs-toggle="dropdown" aria-expanded="false">Stationary <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Stationary">
+                <li><a class="dropdown-item" href="#">Paper And Pen</a></li>
+                <li><a class="dropdown-item" href="#">Plantable Stationary</a></li>
+                <li><a class="dropdown-item" href="#">Stands And Pouches</a></li>
+                <li><a class="dropdown-item" href="#">Stationary Kits</a></li>
+                <li><a class="dropdown-item" href="#">Notebooks</a></li>
+                <li><a class="dropdown-item" href="#">Packaging</a></li>
+                <li><a class="dropdown-item" href="#">Office</a></li>
+              </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="text-white" id="SweetHome" data-bs-toggle="dropdown" aria-expanded="false">Sweet Home <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="SweetHome">
+                <li><a class="dropdown-item" href="#">Furniture</a></li>
+                <li><a class="dropdown-item" href="#">Home Decor</a></li>
+                <li><a class="dropdown-item" href="#">Mandir</a></li>
+              </ul>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="text-white" id="Fashion" data-bs-toggle="dropdown" aria-expanded="false">Fashion <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Fashion">
+                <li><a class="dropdown-item" href="#">Clothes</a></li>
+                <li><a class="dropdown-item" href="#">Jewellery</a></li>
+                <li><a class="dropdown-item" href="#">Footwear</a></li>
+                <li><a class="dropdown-item" href="#">Scrunchies</a></li>
+              </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="text-white" id="Garden" data-bs-toggle="dropdown" aria-expanded="false">Garden <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Garden">
+                <li><a class="dropdown-item" href="#">Pots</a></li>
+                <li><a class="dropdown-item" href="#">Planters</a></li>
+                <li><a class="dropdown-item" href="#">Outdoor Furniture</a></li>
+                <li><a class="dropdown-item" href="#">Plants</a></li>
+              </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="text-white" id="GYMFreak" data-bs-toggle="dropdown" aria-expanded="false">GYMFreak <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="GYMFreak">
+                <li><a class="dropdown-item" href="#">Yoga Mat</a></li>
+                <li><a class="dropdown-item" href="#">Massage Ball</a></li>
+                <li><a class="dropdown-item" href="#">Sipper</a></li>
+                <li><a class="dropdown-item" href="#">Duffel Bag</a></li>
+                <li><a class="dropdown-item" href="#">Hand Towel</a></li>
+                <li><a class="dropdown-item" href="#">Cap</a></li>
+              </ul>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="text-white" id="Kids" data-bs-toggle="dropdown" aria-expanded="false">Kids <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Kids">
+                <li><a class="dropdown-item" href="#">Toys</a></li>
+                <li><a class="dropdown-item" href="#">Stationary</a></li>
+                <li><a class="dropdown-item" href="#">Friendship Band</a></li>
+                <li><a class="dropdown-item" href="#">Kids Wear</a></li>
+                <li><a class="dropdown-item" href="#">Reusable Diapers</a></li>
+                <li><a class="dropdown-item" href="#">Nursery Needs</a></li>
+              </ul>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="text-white" id="Kitchen" data-bs-toggle="dropdown" aria-expanded="false">Kitchen <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Kitchen">
+                <li><a class="dropdown-item" href="#">Cultery</a></li>
+                <li><a class="dropdown-item" href="#">Cookware</a></li>
+                <li><a class="dropdown-item" href="#">Serving Ware</a></li>
+                <li><a class="dropdown-item" href="#">Household Supplies</a></li>
+                <li><a class="dropdown-item" href="#">Kits</a></li>
+              </ul>
+        </div>
+       
+
+        <div class="dropdown">
+            <a class="text-white" id="Books" data-bs-toggle="dropdown" aria-expanded="false">Books</a>
+            
+            <!-- <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Books">
+                <li><a class="dropdown-item" href="#">Cultery</a></li>
+                <li><a class="dropdown-item" href="#">Cookware</a></li>
+                <li><a class="dropdown-item" href="#">Serving Ware</a></li>
+                <li><a class="dropdown-item" href="#">Household Supplies</a></li>
+                <li><a class="dropdown-item" href="#">Kits</a></li>
+              </ul> -->
+        </div>
+
+       
+        
+        
+        
+       
+        
+       
+
+    </div>
+
+</section>
+

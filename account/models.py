@@ -1,3 +1,5 @@
+from distutils.command.upload import upload
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
@@ -6,6 +8,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 from django.core.validators import RegexValidator
+import uuid
 
 # Create your models here.
 
@@ -61,10 +64,10 @@ class MyAccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField(verbose_name="email", max_length=100, unique=True)
-    viewpass = models.CharField(max_length=30, null=True, blank=True)
+    # viewpass = models.CharField(max_length=30, null=True, blank=True)
     name = models.CharField(max_length=100, null=True, blank=True)
     contact_number = models.CharField(max_length=100, null=True, blank=True, validators=[phone_regex])
-    order_history = models.JSONField(default=list, blank=True, null=True)
+    # order_history = models.JSONField(default=list, blank=True, null=True)
     is_superuser = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_Vendor = models.BooleanField(default=False)
@@ -158,3 +161,42 @@ class BloggerAccount(models.Model):
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# my models
+
+class Unique(models.Model):
+    user = models.OneToOneField(Account,on_delete=models.CASCADE)
+    uuid = models.UUIDField(default=uuid.uuid4,editable=False)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(Account,on_delete=models.CASCADE)
+    gender = models.CharField(max_length=100,choices=(('Male','Male'),('Female','Female')),blank=True)
+    image = models.ImageField(default='default.png',upload_to="profile")
+    dob = models.DateField(verbose_name="Date of Birth",null=True)
+    location = models.CharField(max_length=100,blank=True)
+
+class Address(models.Model):
+    user = models.ForeignKey(Account,on_delete=models.CASCADE)
+    pincode = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    address = models.TextField()
+    town = models.CharField(max_length=500)
+    city = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return str(self.id)

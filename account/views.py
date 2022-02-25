@@ -1,3 +1,5 @@
+from email import message
+import email
 from multiprocessing import context
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -6,7 +8,6 @@ from .models import Account, VendorAccount, BloggerAccount
 # from cart.models import Cartdata
 from django.contrib.auth import get_user_model
 from django.contrib.auth import logout, login, authenticate
-from account.forms import AccountAuthenticationForm
 import requests
 import json
 from datetime import date
@@ -21,7 +22,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 import re
-
+from .helpers import mail
+import uuid
+from .models import Unique,Profile,Address
 
 User = get_user_model()
 phone_pattern = '^\+?1?\d{9,15}$'
@@ -71,6 +74,9 @@ def otpemail(request,remail='kashish.iitdelhi@gmail.com',sub="Redopact",msg="Tha
 
 # -----------------------------------------------------------------------
 
+# User Regsitration
+
+
 def userregister(request):
     context = {}
     if request.method == 'POST':
@@ -83,7 +89,7 @@ def userregister(request):
         context['contact_v'] = contact
 
         if User.objects.filter(email=email).exists():
-            context['email'] = 'This email Address is already exists'
+            context['email'] = 'This email address is already exists'
 
         elif not re.search(password_pattern,password):
             context['password'] = 'Your password must contain at 8 charcters, at least 1 number, 1 uppercase and 1 non-alphanumeric character.'
@@ -111,6 +117,9 @@ def userregister(request):
     return render(request, "account/register.html",context=context)
 
 
+# ----------------------------------------------------------------
+# User Login
+
 def userlogin(request):
     context = {}
     if request.method == "POST":
@@ -124,6 +133,7 @@ def userlogin(request):
 
         if user is not None:
             login(request,user)
+            messages.success(request,'Welcome to Redopact. You are authenticated')
             return redirect('/')
         else:
             messages.error(request,'Email or password is invalid')
@@ -132,10 +142,206 @@ def userlogin(request):
     return render(request, 'account/login.html',context=context)
 
 
+# ----------------------------------------------------------------
+# Reset password
+
+
+def reset(request):
+    context = {}
+    if request.method == "POST":
+        email = 'email' in request.POST and request.POST['email']
+        context['email_v'] = email
+        if User.objects.filter(email=email).exists():
+            generate_new_uuid = uuid.uuid4()
+            user = User.objects.get(email=email)
+            change_uuid = Unique.objects.get(user=user)
+            change_uuid.uuid = generate_new_uuid
+            change_uuid.save()
+
+            get_uuid = Unique.objects.get(user=user)
+            mail(
+                message=f'Reset password link - http://127.0.0.1:8000/reset-password/{get_uuid.uuid}',
+                subject='Reset Password',
+                email=email
+            )
+
+            messages.success(request,'A reset password link has been send to your email')
+        else:
+            context['email'] = "Sorry !! we didn't find any account with this email address "
+           
+    return render(request,'account/reset.html',context=context)
+
+
+
+def reset_password(request,uid):
+    context = {}
+    try:
+        if Unique.objects.filter(uuid=uid).exists():
+            if request.method == "POST":
+                password = 'password' in request.POST and request.POST['password']
+
+                if not re.search(password_pattern,password):
+                    context['password'] = 'Your password must contain at 8 charcters, at least 1 number, 1 uppercase and 1 non-alphanumeric character.'
+                
+                else:
+                    get_user_email = Unique.objects.get(uuid=uid)
+                    change_password = User.objects.get(email=get_user_email.user)
+                    change_password.password = make_password(password)
+                    change_password.save()
+
+                    #change uuid
+                    chng_uuid = Unique.objects.get(user=get_user_email.user)
+                    chng_uuid.uuid = uuid.uuid4()
+                    chng_uuid.save()
+
+                    messages.success(request,'Your password has been changed successfully !!')
+                    return redirect('/login/')
+        else:
+            return redirect('/login/')
+
+    except:
+        return redirect('/login/')
+    
+    return render(request,'account/reset_password.html',context=context)
+
+
+
+
+# ----------------------------------------------------------------
+# Edit profile
+
+
+
+@login_required
+def edit_profile(request):
+    if request.method == "POST":
+        email = 'email' in request.POST and request.POST['email']
+        contact = 'contact' in request.POST and request.POST['contact']
+        name = 'name' in request.POST and request.POST['name']
+        location = 'location' in request.POST and request.POST['location']
+        image = 'image' in request.FILES and request.FILES['image']
+        gender = 'gender' in request.POST and request.POST['gender']
+        dob = 'dob' in request.POST and request.POST['dob']
+
+        user = User.objects.get(email=request.user)
+        user.email = email
+        user.contact_number = contact
+        user.name = name
+        print(image)
+        profile = Profile.objects.get(user=request.user)
+        if image:
+            profile.image = image
+        profile.gender = gender
+        profile.dob = dob
+        profile.location = location
+
+        profile.save()
+        user.save()
+    
+        messages.success(request,'Profile has been updated !!')
+    return render(request,'account/edit-profile.html')
+
+
+
+
+# ----------------------------------------------------------------
+# address
+
+
+@login_required
+def address(request):
+    if request.method == "POST" and 'edit-address' in request.POST:
+        id = 'id' in request.POST and request.POST['id']
+        pincode = 'pincode' in request.POST and request.POST['pincode']
+        state = 'state' in request.POST and request.POST['state']
+        address = 'address' in request.POST and request.POST['address']
+        town = 'town' in request.POST and request.POST['town']
+        city = 'city' in request.POST and request.POST['city']
+
+        update_address = Address.objects.get(id=id)
+        update_address.pincode = pincode
+        update_address.state = state
+        update_address.address = address
+        update_address.town = town
+        update_address.city = city
+
+        update_address.save()
+
+        messages.success(request,'Address has been updated !!')
+    
+    elif request.method == "POST" and 'remove-address' in request.POST:
+        id = 'id' in request.POST and request.POST['id']
+        count = Address.objects.filter(user=request.user).count()
+        if count <= 1:
+            messages.error(request,'You cannot remove this address ')
+        else:
+            Address.objects.get(id=id).delete()
+            messages.success(request,'Address has been removed !!')
+
+    elif request.method == "POST" and 'add-address' in request.POST:
+        pincode = 'pincode' in request.POST and request.POST['pincode']
+        state = 'state' in request.POST and request.POST['state']
+        address = 'address' in request.POST and request.POST['address']
+        town = 'town' in request.POST and request.POST['town']
+        city = 'city' in request.POST and request.POST['city']
+
+        Address.objects.create(
+            user = request.user,
+            pincode = pincode,
+            state = state,
+            address = address,
+            town = town,
+            city = city
+        )
+
+        messages.success(request,'New address has been added !!')
+            
+
+
+
+    addressess = Address.objects.filter(user=request.user)
+
+    return render(request,'account/address.html',context={'addressess':addressess})
+
+
+
+
+# ----------------------------------------------------------------
+# orders
+
+@login_required
+def orders(request):
+    return render(request,'account/orders.html')
+
+@login_required
+def order_details(request):
+    print(request.GET.get('Order_Id'))
+    return render(request,'account/order-details.html')
+
+
+
+
+
 @login_required(login_url="../login")
 def logoutuser(request):
     logout(request)
     return redirect("../")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # @login_required(login_url="../login")
@@ -442,7 +648,7 @@ def account_view(request):
 
     context["vendor"]=vendor
     print(context)
-    return render(request, 'account/myaccount.html', context)
+    return render(request, 'account/profile.html', context)
 
 
 @login_required(login_url="../login")

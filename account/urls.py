@@ -4,6 +4,17 @@ from . import views
 urlpatterns = [
     path('register/',views.userregister,name='register'),
     path('login/',views.userlogin,name='login'),
+    path('reset/',views.reset,name="reset"),
+    path('reset-password/<slug:uid>/',views.reset_password,name="reset_password"),
+    path('account/edit/',views.edit_profile,name="edit_profile"),
+    path("account/address/", views.address, name="address"),
+    path("account/orders/", views.orders, name="orders"),
+    path("account/orders/details/", views.order_details, name="order_details"),
+
+
+
+
+
     path('vendorregister/',views.vendorregister,name='vendorregistration'),
     path('bloggerregister',views.bloggerregister,name='bloggerregister'),
     path('logout/',views.logoutuser,name='logout'),

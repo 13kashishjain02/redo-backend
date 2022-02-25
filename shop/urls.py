@@ -3,6 +3,19 @@ from django.contrib import admin
 from . import views,cart
 urlpatterns = [
     # path("product/<int:myid>", views.productView, name="ProductView"),
+
+    path('checkout/cart/',views.cart,name="cart"),
+    path('checkout/address/',views.address,name="address"),
+    path("checkout/payment/", views.payment, name="payment"),
+    path('products/<slug:category>/',views.products,name="products"),
+
+
+
+
+
+
+
+
     path("<slug:slug>!/", views.productView, name="ProductView"),
     path('dashboard',views.dashboard,name='dashboard'),
     path('addproduct',views.addproduct,name='addproduct'),

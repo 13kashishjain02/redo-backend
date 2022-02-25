@@ -12,6 +12,7 @@ from django.core.paginator import Paginator
 from django.views.generic import ListView
 from django.db.utils import IntegrityError
 import re
+from account.models import Address
 
 MERCHANT_KEY = 'Ujzdeai9L@l%#6!o';
 username = ""
@@ -539,3 +540,28 @@ def maintenance(request):
     vendor.order_list = temp
     vendor.save()
     return redirect("../")
+
+
+
+
+
+
+
+@login_required
+def cart(request):
+    return render(request,'shop/cart.html')
+
+@login_required
+def address(request):
+    address = Address.objects.filter(user=request.user)
+
+    return render(request,'shop/address.html',context={'address':address})
+
+
+@login_required
+def payment(request):
+    return render(request,'shop/payment.html')
+
+
+def products(request,category):
+    return render(request,'shop/product.html')
