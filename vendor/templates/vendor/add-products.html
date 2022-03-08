@@ -1,0 +1,345 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redopact | Add Products</title>
+
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    <style>
+            
+    </style>
+
+</head>
+<body>
+    
+    {% include 'general/Navbar.html' %}
+
+    <div class="container my-5">
+        <h4>
+            <a href="/vendor/account/"><i class="fa-solid fa-arrow-left"></i> Back to account</a>
+        </h4>
+    </div>
+
+        <div class="container mt-5">
+            <h5>Add Products</h5> <hr>
+            <ul>
+                <li>While uploading your product try to be as precise as possible!
+                    All the fields marked with * are compulsory</li>
+                <li>If you have any questions, please feel free to contact us,our customer service center is working for you 24/7</li>
+            </ul>
+        </div>
+
+
+        <div class="add-products my-5 container">
+            <form method="post" enctype="multipart/form-data"> {%csrf_token%}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group has-success">
+                            <label class="form-label mt-4" for="inputValid">Product Name</label>
+                            <input type="text" name="p_name" style="background: white;border: 1px solid #1A4953;font-size:14px;" required placeholder="Product name" class="form-control is-valid" id="inputValid">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Brand Name</label>
+                            <input name="b_name" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control is-valid" id="inputValid" aria-describedby="emailHelp" placeholder="Brand name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product SKU</label>
+                            <input name="sku" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product sku">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product Weight (in kg)</label>
+                            <input name="weight" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product weight">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product length (in cm)</label>
+                            <input name="length" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product length">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product height (in cm)</label>
+                            <input name="height" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product height">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product width (in cm)</label>
+                            <input name="width" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product width">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product MRP</label>
+                            <input name="mrp" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product mrp">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product Special Price</label>
+                            <input name="s_price" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product special price">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product Stock</label>
+                            <input name="stock" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product stock">
+                        </div>
+
+                        <label class="form-check-label mt-4 text-dark">Choose Product Type</label> <br>
+                        <div class="form-check form-check-inline mt-2">
+                            <input name="recycled" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="RECYCLED">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox1">RECYCLED</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input name="upcycled" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="UPCYCLED">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox2">UPCYCLED</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input name="ecofriendly" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="ECOFRIENDLY">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox3">ECOFRIENDLY</label>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Product Image - 1</label>
+                            <input name="p_image1" required style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control" type="file" id="formFile">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Product Image - 2</label>
+                            <input name="p_image2" required style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control" type="file" id="formFile">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Product Image - 3</label>
+                            <input name="p_image3" required style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control" type="file" id="formFile">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Product Image - 4</label>
+                            <input name="p_image4" required style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control" type="file" id="formFile">
+                          </div>
+                    </div>
+                    <div class="col-sm-6">
+                       <!-- <label class="text-dark mt-4">{{desc.short_desc.label}}</label> <br>
+                        <div class="mt-1">
+                            {{desc.media}} {{desc.short_desc}}
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="exampleTextarea" class="form-label mt-4">Short Description</label>
+                            <textarea name="s_desc" style="background: white;border: 1px solid #1A4953;font-size:14px;" placeholder="Short Description" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleTextarea" class="form-label mt-4">Description</label>
+                            <textarea name="l_desc" style="background: white;border: 1px solid #1A4953;font-size:14px;" placeholder="Description" class="form-control" id="exampleTextarea" rows="14"></textarea>
+                        </div>
+                      
+
+                        <!-- <label class="text-dark mt-4">{{desc.desc.label}}</label> <br>
+                        <div class="mt-1">
+                            {{desc.media}} {{desc.desc}}
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product Tags</label>
+                            <input name="p_tags" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product Tags">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleSelect1" class="form-label mt-4">Select Product Material</label>
+                            <select name="material" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-select" id="exampleSelect1">
+                              <option value="Areca Leaf ">Areca Leaf</option>
+                              <option value="Baggasee">Baggasee</option>
+                              <option value="Bamboo">Bamboo</option>
+                              <option value="Bamboo Fiber">Bamboo Fiber</option>
+                              <option value="banana fiber">banana fiber</option>
+                              <option value="Brass">Brass</option>
+                              <option value="Bronze">Bronze</option>
+                              <option value="cactus">cactus</option>
+                              <option value="cane">cane</option>
+                              <option value="Clay">Clay</option>
+                              <option value="Cork">Cork</option>
+                              <option value="Corn fiber">Corn fiber</option>
+                              <option value="corn husk">corn husk</option>
+                              <option value="cow dung">cow dung</option>
+                              <option value="Hemp">Hemp</option>
+                              <option value="Jute">Jute</option>
+                              <option value="Kansa">Kansa</option>
+                              <option value="Kauna grass">Kauna grass</option>
+                              <option value="linen">linen</option>
+                              <option value="longpi">longpi</option>
+                              <option value="Lyocell">Lyocell</option>
+                              <option value="Mangowood">Mangowood</option>
+                              <option value="Mushroom fiber">Mushroom fiber</option>
+                              <option value="Neem wood">Neem wood</option>
+                              <option value="Organic wool">Organic wool</option>
+                              <option value="Organic cotton">Organic cotton</option>
+                              <option value="pinatex">pinatex</option>
+                              <option value="pine needles">pine needles</option>
+                              <option value="ramie">ramie</option>
+                              <option value="rattan">rattan</option>
+                              <option value="Recycled Plastic">Recycled Plastic</option>
+                              <option value="Recycled Rubber">Recycled Rubber</option>
+                              <option value="rhino dung">rhino dung</option>
+                              <option value="sabai grass">sabai grass</option>
+                              <option value="Spider silk">Spider silk</option>
+                              <option value="Sea weed">Sea weed</option>
+                              <option value="Steel">Steel</option>
+                              <option value="terracota">terracota</option>
+                              <option value="The Sikki Grass">The Sikki Grass</option>
+                              <option value="water hyacinth">water hyacinth</option>
+                              <option value="water reed">water reed</option>
+                              <option value="WHEAT STRAW">WHEAT STRAW</option>
+                              <option value="Wood">Wood</option>
+                              <option value="Silk">Silk</option>
+                              <option value="Other">Other</option>
+                             
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleSelect1" class="form-label mt-4">Select Product Category</label>
+                            <select name="category" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-select" id="category">
+                                <option >Choose</option>
+                                <option value="Personal Care">Personal Care</option>
+                                <option value="Carry Ons">Carry Ons</option>
+                                <option value="Stationary">Stationary</option>
+                                <option value="Kitchen">Kitchen</option>
+                                <option value="Sweet Home">Sweet Home</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Garden">Garden</option>
+                                <option value="Gym Freak">Gym Freak</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Books">Books</option>
+                            </select>
+
+                            <div class="form-group d-none" id="s-category">
+                                <label for="exampleSelect1" class="form-label mt-4">Select Product Sub Category</label>
+                                <select name="sub_category1" id="s-category-options" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-select" id="exampleSelect1">
+                                </select>
+                          </div>
+                    </div>
+                </div>
+                <div class="d-grid mt-5">
+                    <button class="btn bg-primary text-white shadow-sm" style="border-radius: 4px;">Save</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+    
+     
+
+
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script>
+
+
+  window.onload = function(){
+
+
+    const personal_care = ['Bathroom Accessories','Body Hygiene','Oral Hygiene','Female Hygiene','Kits']
+    const carry_ons = ['Bags And Pouches','Wallets And Clutches','Basket','Mobile Cover','Face Mask','Goggles','Stoles And Scarves','Tie And Belts']
+    const stationary = ['Paper And Pen','Plantable Stationary','Stands And Pouches','Stationary Kits','Notebooks','Packaging','Office']
+    const sweet_home = ['Furniture','Home Decor','Mandir']
+    const kitchen = ['Cultery','Cookware','Serving Ware','Household Supplies','Kits']
+    const fashion = ['Clothes','Jewellery','Footwear','Scrunchies']
+    const garden = ['Pots','Planters','Outdoor Furniture','Plants']
+    const gym_freak = ['Yoga Mat','Massage Ball','Sipper','Duffel Bag','Hand Towel','Cap']
+    const kids = ['Toys','Stationary','Friendship Band','Kids Wear','Reusable Diapers','Nursery Needs']
+
+    const category = document.getElementById('category')
+    const scategory = document.getElementById('s-category')
+    const scategory_option = document.getElementById('s-category-options')
+
+    category.onchange = function(event) {
+
+    scategory.setAttribute('class','d-block')
+    
+    scategory_option.length = 0
+    
+    if(event.target.value == 'Choose' || event.target.value == 'Books'){
+        scategory.setAttribute('class','d-none')
+    }
+    if(event.target.value == 'Personal Care' ){
+
+        for(var x in personal_care){
+            scategory_option.options[scategory_option.options.length] = new Option(personal_care[x],personal_care[x]);
+        }
+    }
+    if(event.target.value == 'Carry Ons' ){
+        for(var x in carry_ons){
+            scategory_option.options[scategory_option.options.length] = new Option(carry_ons[x],carry_ons[x]);
+        } 
+    }
+
+    if(event.target.value == 'Stationary' ){
+        for(var x in stationary){
+            scategory_option.options[scategory_option.options.length] = new Option(stationary[x],stationary[x]);
+        }
+    }
+
+    if(event.target.value == 'Kitchen' ){
+        for(var x in kitchen){
+            scategory_option.options[scategory_option.options.length] = new Option(kitchen[x],kitchen[x]);
+        }
+    }
+
+    if(event.target.value == 'Sweet Home' ){
+        for(var x in sweet_home){
+            scategory_option.options[scategory_option.options.length] = new Option(sweet_home[x],sweet_home[x]);
+        }
+    }
+
+    if(event.target.value == 'Fashion' ){
+        for(var x in fashion){
+            scategory_option.options[scategory_option.options.length] = new Option(fashion[x],fashion[x]);
+        }
+    }
+
+    if(event.target.value == 'Garden' ){
+        for(var x in garden){
+            scategory_option.options[scategory_option.options.length] = new Option(garden[x],garden[x]);
+        }
+    }
+
+    if(event.target.value == 'Gym Freak' ){
+        for(var x in gym_freak){
+            scategory_option.options[scategory_option.options.length] = new Option(gym_freak[x],gym_freak[x]);
+        }
+    }
+
+    if(event.target.value == 'Kids' ){
+        for(var x in kids){
+            scategory_option.options[scategory_option.options.length] = new Option(kids[x],kids[x]);
+        }
+    }
+  }
+  }
+</script>
+
+
+
+
+
+</body>
+</html>

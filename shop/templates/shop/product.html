@@ -29,8 +29,10 @@
 
         .products .show-products{
             width: 75%;
-            float: right;
+            /* float: right; */
+            margin-left: auto;
         }
+        
     </style>
 </head>
 <body>
@@ -72,95 +74,127 @@
   <div class="products container mt-5">
       
     <div class="product-filter border-top border-start  p-3">
-        <h5>Filters</h5>
+        <h5>Filters</h5> <hr style="color: #CACED2;"/>
+
+        <h6 class="mt-4 px-1">Price</h6>
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
+            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+              Rs. 200 to 300
+            </label>
+        </div>
+
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
+            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+              Rs. 300 to 500
+            </label>
+        </div>
+
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
+            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+              Rs. 500 to 700
+            </label>
+        </div>
+
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
+            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+              Rs. 700 to 1000
+            </label>
+        </div>
+
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
+            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+              Rs. 1000+
+            </label>
+        </div>
+
+
+
     </div>
 
 
-    <div class="show-products border-top border-start px-3">
+    <div class="show-products border-top border-start px-3 pb-5 mb-5">
         <div class="row">
           
           
+           {% if products %}
+           
+           {% for pro in products %}
+           
+         
             <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center ">
-             <div class="shadow-sm border py-5">
-              <img src="{% static 'general/images/product2.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-              <h5>Louis Philippe Jeans</h5>
-              <p class="">Rs.1,049 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,899</span> <span style="color: orangered;">(Rs. 1300 OFF)</span></span></p>
-              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+              
+              <div class="shadow-sm border py-5">
+                <a href="/{{pro.id}}/buy/">
+               <img src="{{pro.image.url}}" class="img-fluid" width="70%" alt=""> 
+              </a>
+               <br> <br>
+               <h5>{{pro.brand}}</h5>
+               <span style="font-size:13px">{{pro.name}}</span> 
+               <p class="">Rs.{{pro.mrp}} <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.{{pro.mrp}}</span> <span style="color: orangered;">(Rs. {{pro.discount}} OFF)</span></span></p>
+               <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+              </div>
              </div>
-            </div>
-  
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
-              <div class="shadow-sm border py-5">
-                <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-              <h5>Roadster Jeans</h5>
-              <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-              </div>
-            </div>
-  
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
-              <div class="shadow-sm border py-5">
-                <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-              <h5>WROGN Shirts</h5>
-              <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-              </div>
-            </div>
-  
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
-              <div class="shadow-sm border py-5">
-              <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-              <h5>WROGN Jeans</h5>
-              <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-              <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-              </div>
-            </div>
+          
+           
+           {% endfor %}
 
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center ">
-                <div class="shadow-sm border py-5">
-                 <img src="{% static 'general/images/product2.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-                 <h5>Louis Philippe Jeans</h5>
-                 <p class="">Rs.1,049 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,899</span> <span style="color: orangered;">(Rs. 1300 OFF)</span></span></p>
-                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-                </div>
-               </div>
-     
-               <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
-                 <div class="shadow-sm border py-5">
-                   <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-                 <h5>Roadster Jeans</h5>
-                 <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-                 </div>
-               </div>
-     
-               <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
-                 <div class="shadow-sm border py-5">
-                   <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-                 <h5>WROGN Shirts</h5>
-                 <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-                 </div>
-               </div>
-     
-               <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center">
-                 <div class="shadow-sm border py-5">
-                 <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-                 <h5>WROGN Jeans</h5>
-                 <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-                 <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-                 </div>
-               </div>
+           {% else %}
+           no products
+           {% endif %}
   
-  
-  
-  
+           
+
+
+                 <!-- pagination -->
+
+                 <div class="mt-5 shadow-sm pt-3">
+                    <nav aria-label="...">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">&laquo;</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                              </li>
+                              <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                              </li>
+                              <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                              </li>
+                              <li class="page-item">
+                                <a class="page-link" href="#">4</a>
+                              </li>
+                              <li class="page-item">
+                                <a class="page-link" href="#">5</a>
+                              </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">&raquo;</a>
+                          </li>
+                        </ul>
+                      </nav>
+                    
+                  </div>
+
+               </div>  
           </div>
     </div>
 
-
-
   </div>
+
+
+ 
+
+
+
+
+  {%include 'general/footer.html'%}
+
 
 
 

@@ -65,9 +65,9 @@ class SubCategory2(models.Model):
 class Product(models.Model):
     vendor = models.ForeignKey(VendorAccount, on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
-    category2 = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
-    subcategory1 = models.ForeignKey(SubCategory1, on_delete=models.CASCADE, null=True, blank=True)
-    subcategory2 = models.ForeignKey(SubCategory2, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.CharField(max_length=100)
+    subcategory1 = models.CharField(max_length=100,blank=True)
+    subcategory2 = models.CharField(max_length=100,blank=True)
     size = models.CharField(max_length=50, null=True, blank=True)
     product_for = models.CharField(max_length=7, choices=PRODUCTFOR_CHOICES, default='general')
     brand = models.CharField(max_length=50, null=True)
@@ -87,14 +87,15 @@ class Product(models.Model):
     length= models.FloatField(default=0.00, null=True)
     width = models.FloatField(default=0.00, null=True)
     height = models.FloatField(default=0.00, null=True)
-    pub_date = models.DateField(null=True, blank=True, )
+    pub_date = models.DateField(auto_now_add=True)
     is_recycled = models.BooleanField(default=False)
     is_upcycled = models.BooleanField(default=False)
     is_ecofriendly = models.BooleanField(default=False)
     has_variation = models.BooleanField(default=False)
-    image = models.ImageField(upload_to=get_uplaod_file_name,  null=True, blank=True,)
-    image2 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
-    image3 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, )
+    image = models.ImageField(upload_to=get_uplaod_file_name,  null=True, blank=True, max_length=500)
+    image2 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, max_length=500 )
+    image3 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, max_length=500 )
+    image4 = models.ImageField(upload_to=get_uplaod_file_name, null=True, blank=True, max_length=500 )
 
     def __str__(self):
         return self.name

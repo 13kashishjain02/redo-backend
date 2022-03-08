@@ -1,0 +1,148 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redopact | Vendor Account</title>
+
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    
+    {% include 'general/Navbar.html' %}
+
+
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="list-group shadow-sm">
+                    <a href="/vendor/account/" style="font-size:14px;" class="list-group-item list-group-item-action active">My Account</a>
+                    <a href="/vendor/documents/upload/" style="font-size:14px;" class="list-group-item list-group-item-action">Upload Documents</a>
+                    <a href="/vendor/add-products/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">Add Products</a>
+                    <a href="/vendor/add-products/variations/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">Add Products with Variations</a>
+                    <a href="/vendor/orders/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">Your Orders</a>
+                    <a href="/logout/" style="font-size:14px;" class="list-group-item list-group-item-action">Logout</a>
+                  </div>
+            </div>
+
+            <div class="col-sm-9 mt-3">
+               
+
+                    <form method="POST" class="row g-3 border shadow-sm px-3 pt-5 pb-5"> {%csrf_token%}
+                        {% if messages%}
+
+                        {% for message in messages %}
+
+                        <div class="alert text-center alert-{{message.tags}}">
+                            {{message}}
+                        </div>
+
+                        {%endfor%}
+                        {%endif%}
+                        <h2 class="text-center">My Account</h2>
+                        <div class="col-md-12">
+                          <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Email</label>
+                          <input name="email" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.email}}" placeholder="Enter Email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Shop Name</label>
+                            <input name="shop_name" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.shop_name}}" placeholder="Enter Shop Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Shop Number</label>
+                            <input name="shop_number" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.shop_number}}" placeholder="Enter Shop Number">
+                        </div>
+            
+                        <div class="col-md-4">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">State</label>
+                            <input name="state" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.state}}" placeholder="Enter State" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">City</label>
+                            <input name="city" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.city}}" placeholder="Enter City" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Pincode</label>
+                            <input name="pincode" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.pincode}}" placeholder="Enter Pincode" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Shop Address</label>
+                           <textarea name="shop_address" placeholder="Shop Address" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control" id="" cols="30" rows="5" required>{{user.vendoraccount.shop_add}}</textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">GST Number</label>
+                            <input name="gst_number" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.gst}}" placeholder="Enter GST Number">
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">VAT Number</label>
+                            <input name="vat_number" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.vat}}" placeholder="Enter VAT Number">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">PAN Number</label>
+                            <input name="pan_number" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.pan}}" placeholder="Enter PAN Number">
+                        </div>
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Company PAN Number</label>
+                            <input name="company_pan_number" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.companypan}}" placeholder="Enter Company PAN Number">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Bank Name</label>
+                            <input name="bank_name" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.bank_name}}" placeholder="Enter Bank Name">
+                        </div>
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Bank Account Holder Name</label>
+                            <input name="bank_account_holder_name" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.bank_account_holder_name}}" placeholder="Enter Bank Account Holder Name">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Bank Account Number</label>
+                            <input name="bank_account_number" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.bank_account_number}}" placeholder="Enter Bank Account Number">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label style="font-size: 14px;color: #1A4953;" for="validationCustom01" class="form-label">Bank IFSC Code</label>
+                            <input name="bank_ifsc_code" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control" id="validationCustom01" value="{{user.vendoraccount.bank_ifsc_code}}" placeholder="Enter Bank IFSC Code">
+                        </div>
+
+                        <div class="col-12 d-grid mt-5">
+                          <button class="btn bg-primary text-white shadow-sm" style="border-radius: 4px;" type="submit">Update</button>
+                        </div>
+                      </form>
+
+
+                
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+    {% include 'general/footer.html' %}
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

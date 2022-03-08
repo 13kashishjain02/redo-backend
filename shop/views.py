@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from .models import Product, Order, Cart,Variation,Wishlist,SubCategory2,SubCategory1,Category
 from account.models import VendorAccount
@@ -564,4 +565,9 @@ def payment(request):
 
 
 def products(request,category):
-    return render(request,'shop/product.html')
+    products = Product.objects.all()
+    return render(request,'shop/product.html',context={'products':products})
+
+def productDetails(request,id):
+    product = Product.objects.get(id=id)
+    return render(request,'shop/product-details.html',context={'product':product})

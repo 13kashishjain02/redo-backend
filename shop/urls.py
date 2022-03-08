@@ -8,6 +8,7 @@ urlpatterns = [
     path('checkout/address/',views.address,name="address"),
     path("checkout/payment/", views.payment, name="payment"),
     path('products/<slug:category>/',views.products,name="products"),
+    path('<int:id>/buy/',views.productDetails,name="products-details"),
 
 
 

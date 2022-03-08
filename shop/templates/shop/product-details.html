@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redopact</title>
+
+
+  <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    <style>
+       .product{
+           display: flex;
+       }
+       .product .product-images{
+           display: flex;
+       }
+       
+    </style>
+   
+</head>
+<body>
+
+
+
+
+  {%include 'general/Navbar.html' %}
+
+
+
+
+  <div class="mt-5 container">
+        <ol class="breadcrumb px-3">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            {% if product.category %}
+            <li class="breadcrumb-item"><a href="/product/{{product.category}}/">{{product.category}}</a></li>
+            {% endif %}
+            {% if product.subcategory1 %}
+            <li class="breadcrumb-item"><a href="/product/{{product.category}}/{{product.subcategory1}}/">{{product.subcategory1}}</a></li>
+            {% endif %}
+           {% if product.subcategory2 %}
+           <li class="breadcrumb-item active">{{product.subcategory2}}</li>
+           {% endif %}
+        </ol>
+  </div>
+
+    <div class="product container mt-5">
+        <div class="product-images">
+
+            <div class="sm-images">
+
+                <img id="changeImage1" style="cursor: pointer;" class="" src="{{product.image.url}}" alt="" width="90px"> <br> 
+                <img id="changeImage2" style="cursor: pointer;" class="mt-1" src="{{product.image2.url}}" alt="" width="90px"> <br>
+                <img id="changeImage3" style="cursor: pointer;" class="mt-1" src="{{product.image3.url}}" alt="" width="90px"> <br>
+                <img id="changeImage4" style="cursor: pointer;" class="mt-1" src="{{product.image4.url}}" alt="" width="90px">
+
+            </div>
+
+            <div class="lg-image px-3">
+                <img id="main-img" class="shadow" src="{{product.image.url}}" alt="" style="width: 369px;">
+            </div>
+
+        </div>
+
+        <div class="product-details px-5">
+            <h3>{{product.brand}}</h3>
+            <h5 class="text-muted">{{product.name}}</h5>
+            <!-- <span style="font-size:small;">420,173 Ratings & 2,563 Reviews</span>--> <br> 
+
+            <h5>Product Description</h5>
+            <span style="font-size:small;">{{product.short_description|safe}}</span>
+                
+                <br> 
+
+                <h4>Rs. {{product.special_price}} <span style="text-decoration: line-through;">Rs.{{product.mrp}}</span> <span style="color: orangered;">(Rs. {{product.discount}} OFF)</span></h4>
+                <small style="color: #4CAD8C;">inclusive of all taxes</small>
+
+                <div class="mt-5">
+                    <h5>SELECT SIZE</h5> <br>
+                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">S</button>
+
+                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">M</button>
+
+                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Xl</button>
+
+                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">XXL</button>
+                </div>
+
+                <div class="mt-5">
+                    <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+                    <button class="btn btn-secondary border px-5"><i class="fa-solid fa-heart text-primary"></i> Wishlist</button>
+                </div>
+            
+        </div>
+    </div>
+
+
+
+
+    <div class="product-extra-details mt-5 py-5 container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="tab" href="#details">Product Detail</a>
+            </li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active show py-5" id="home">
+              <h5>Description</h5>
+              <span style="font-size: 15px;">{{product.description|safe}}</span> <br>
+                <h5>Material</h5>
+                <span style="font-size: 13px;" class="text-muted">{{product.material}}</span><br> <br> <br> 
+
+                <h5>Weight</h5>
+                <span style="font-size: 13px;" class="text-muted">{{product.weight}}</span> <br> <br>
+
+                <h5>Height</h5>
+                <span style="font-size: 13px;" class="text-muted">{{product.height}}</span> <br> <br>
+
+                <h5>Length</h5>
+                <span style="font-size: 13px;" class="text-muted">{{product.length}}</span> <br> <br>
+
+                <h5>Width</h5>
+                <span style="font-size: 13px;" class="text-muted">{{product.width}}</span> <br> <br>
+            </div>
+
+            <hr>
+          </div>
+    </div>
+
+
+
+
+
+
+    <div class="wishlist-products container mt-5">
+
+        <h3 class="px-2">BROWSING HISTORY</h3>
+
+        <div class="row">
+          
+          
+          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center ">
+           <div class="shadow-sm border py-5 mx-3">
+            <img src="{% static 'general/images/product2.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+            <h5>Louis Philippe Jeans</h5>
+            <p class="">Rs.1,049 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,899</span> <span style="color: orangered;">(Rs. 1300 OFF)</span></span></p>
+            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
+           </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center">
+            <div class="shadow-sm border py-5 mx-3">
+              <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+            <h5>Roadster Jeans</h5>
+            <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center">
+            <div class="shadow-sm border py-5 mx-3">
+              <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+            <h5>WROGN Shirts</h5>
+            <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center">
+            <div class="shadow-sm border py-5 mx-3">
+            <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
+            <h5>WROGN Jeans</h5>
+            <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
+            </div>
+          </div>
+
+
+
+
+        </div>
+    </div>
+  
+
+  {%include 'general/footer.html'%}
+
+
+<script>
+  const changeImage1 = document.getElementById('changeImage1');
+  const changeImage2 = document.getElementById('changeImage2');
+  const changeImage3 = document.getElementById('changeImage3');
+  const changeImage4 = document.getElementById('changeImage4');
+  
+  const main_img = document.getElementById('main-img');
+
+  changeImage1.onclick = function(event) {
+    main_img.src = event.target.src
+  }
+
+  changeImage2.onclick = function(event) {
+    main_img.src = event.target.src
+  }
+
+  changeImage3.onclick = function(event) {
+    main_img.src = event.target.src
+  }
+
+  changeImage4.onclick = function(event) {
+    main_img.src = event.target.src
+  }
+</script>
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

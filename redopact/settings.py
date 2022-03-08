@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'blog',
     'payment',
     'general',
+    'vendor',
 
     'django.contrib.sites',
     'django.contrib.admin',
@@ -248,8 +249,6 @@ EMAIL_HOST_USER = 'aashishkumar12376@gmail.com'
 EMAIL_HOST_PASSWORD = '9818908306'
 
 
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login/'
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
