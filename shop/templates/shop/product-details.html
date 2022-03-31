@@ -93,9 +93,16 @@
                     <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">XXL</button>
                 </div>
 
-                <div class="mt-5">
+                <div class="mt-5 d-flex"> 
                     <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-                    <button class="btn btn-secondary border px-5"><i class="fa-solid fa-heart text-primary"></i> Wishlist</button>
+                    {% if is_wishlist %}
+                      <a class="btn border"><i class="fa-solid fa-check"></i> already wishlist</a>
+                    {% else %}
+                    <form action="" method="POST">{%csrf_token%}
+                      <input type="hidden" value="{{product.id}}" name="id">
+                      <button class="btn btn-secondary border px-5" name="wishlist"><i class="fa-solid fa-heart text-primary"></i> Wishlist</button>
+                    </form>
+                    {% endif %}
                 </div>
             
         </div>

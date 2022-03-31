@@ -7,9 +7,10 @@ urlpatterns = [
     path('checkout/cart/',views.cart,name="cart"),
     path('checkout/address/',views.address,name="address"),
     path("checkout/payment/", views.payment, name="payment"),
-    path('products/<slug:category>/',views.products,name="products"),
+    path('products/<str:category>/',views.products,name="products"),
+    path('products/<str:category>/<str:subcategory1>/',views.products,name="products"),
+    path('products/<str:category>/<str:subcategory1>/<str:subcategory2>/',views.products,name="products"),
     path('<int:id>/buy/',views.productDetails,name="products-details"),
-
 
 
 
@@ -31,10 +32,10 @@ urlpatterns = [
     path('wishlist/', views.wishlist, name='wishlist'),
     path('vendororders/', views.vendororders, name='vendororders'),
 
-    path('cart/', cart.mycart, name='mycart'),
-    path('addtocart/', cart.addtocart, name='addtocart'),
-    path('increaseqty/', cart.increaseqty, name='increaseqty'),
-    path('decreaseqty/', cart.decreaseqty, name='decreaseqty'),
+    # path('cart/', cart.mycart, name='mycart'),
+    # path('addtocart/', cart.addtocart, name='addtocart'),
+    # path('increaseqty/', cart.increaseqty, name='increaseqty'),
+    # path('decreaseqty/', cart.decreaseqty, name='decreaseqty'),
 
     path('maintenance/', views.maintenance, name='maintenance'),
 

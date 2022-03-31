@@ -28,7 +28,7 @@ urlpatterns = [
                   path('vendor/',include('vendor.urls')),
 
                   path('api/', include('account.api.urls')),
-                  path('api/', include('shop.api.urls')),
+                #   path('api/', include('shop.api.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'general.views.handler404'

@@ -30,54 +30,53 @@
       <li class="breadcrumb-item active">Wishlist</li>
     </ol>
 
-    <h4 class="mt-5 px-3"><span class="text-primary">My Wishlist -</span> 4 Items</h4>
+    
+
+
+    {% if count == 0 %}
+    
+     <div class="text-center mt-5 pt-5">
+        <h3>YOUR WISHLIST IS EMPTY</h5>
+        <span style="font-size: 13px;" class="text-muted">Add items that you like to your wishlist. Review them anytime and easily move them to the bag.</span> <br> <br>
+        <img src="{% static 'general/images/wishlist.png' %}" class="img-fluid" style="width: 500px;" alt="">
+     </div>
+
+
+    {% else %}
 
 
     <div class="wishlist-products">
-        <div class="row">
-          
-          
-          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center ">
-           <div class="shadow-sm border py-5 mx-3">
-            <img src="{% static 'general/images/product2.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-            <h5>Louis Philippe Jeans</h5>
-            <p class="">Rs.1,049 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,899</span> <span style="color: orangered;">(Rs. 1300 OFF)</span></span></p>
-            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
-           </div>
+      <h4 class="mt-5 px-3"><span class="text-primary">My Wishlist -</span> {{count}} Items</h4>
+      <div class="row">
+        
+        
+        {% for product in products %}
+        
+        <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center">
+          <div class="shadow-sm border pb-5 mx-1">
+            <form action="" method="post" style="float: right;"> {%csrf_token%}
+              <input type="hidden" name="id" value="{{product.id}}">
+              <button class="btn" name="remove"><i class="fa-solid fa-xmark"></i></button>
+            </form><br> <br>
+           <img src="{{product.product.image.url}}" class="img-fluid" width="70%" alt=""> <br> <br>
+           <h5>{{product.product.brand}}</h5>
+           <span style="font-size:13px">{{product.product.name|slice:15}}..</span>
+           <p class="">Rs. {{product.product.special_price}} <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.{{product.product.mrp}}</span> <span style="color: orangered;">(Rs. {{product.product.discount}} OFF)</span></span></p>
+           <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
           </div>
+         </div>
 
-          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center">
-            <div class="shadow-sm border py-5 mx-3">
-              <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-            <h5>Roadster Jeans</h5>
-            <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center">
-            <div class="shadow-sm border py-5 mx-3">
-              <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-            <h5>WROGN Shirts</h5>
-            <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
-            </div>
-          </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-3 mt-5 text-center">
-            <div class="shadow-sm border py-5 mx-3">
-            <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" width="70%" alt=""> <br> <br>
-            <h5>WROGN Jeans</h5>
-            <p class="">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
-            <button class="btn bg-primary text-white shadow px-5">Move to cart</button>
-            </div>
-          </div>
+        
+        {% endfor %}
+      
+      </div>
 
 
 
-
-        </div>
-    </div>
+  </div>
+    
+    
+    {% endif %}
 
 
     

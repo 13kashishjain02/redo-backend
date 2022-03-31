@@ -1,7 +1,26 @@
+from dataclasses import field, fields
+from pyexpat import model
 from django import forms
+from .models import Product , Post
+
+
+
+class StateForm(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		kwargs.setdefault('label_suffix', '')
+		super(StateForm, self).__init__(*args, **kwargs)
+		
+	class Meta:
+		model = Product
+		fields = ['state']
+		widgets = {'state': forms.Select(attrs={'class':'form-select bg-white','style':'border: 1px solid #1A4953;font-size:14px;'})}
+	
+
+
 from ckeditor.widgets import CKEditorWidget
 
-# creating a form
-class AddproductForm(forms.Form):
-	short_desc = forms.CharField(label='Short Description',widget=CKEditorWidget(attrs={'rows':'3','required':'required'}))
-	desc = forms.CharField(label='Description', widget=CKEditorWidget(attrs={'required':'required'}))
+class PostForm(forms.ModelForm):
+	class Meta:
+		model = Post
+		fields = ['content']
+

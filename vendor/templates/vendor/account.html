@@ -29,7 +29,8 @@
                     <a href="/vendor/documents/upload/" style="font-size:14px;" class="list-group-item list-group-item-action">Upload Documents</a>
                     <a href="/vendor/add-products/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">Add Products</a>
                     <a href="/vendor/add-products/variations/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">Add Products with Variations</a>
-                    <a href="/vendor/orders/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">Your Orders</a>
+                    <a href="/vendor/products/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">My Products</a>
+                    <a href="/vendor/orders/" style="font-size:14px;" class="list-group-item list-group-item-action {% if user.vendoraccount.pan_image.url != '' and user.vendoraccount.is_verified %} {% else %}disabled{% endif %}">My Orders</a>
                     <a href="/logout/" style="font-size:14px;" class="list-group-item list-group-item-action">Logout</a>
                   </div>
             </div>

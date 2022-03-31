@@ -19,7 +19,7 @@ phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
 
 class MyAccountManager(BaseUserManager):
     # create_user deals with creating the user of costumer type
-    def create_user(self, email, name=None, contact_number=None, viewpass=None, password=None, ):
+    def create_user(self, email, name=None, contact_number=None, password=None, ):
         if not email:
             raise ValueError("enter email")
 
@@ -27,7 +27,6 @@ class MyAccountManager(BaseUserManager):
             email=self.normalize_email(email),
             name=name,
             contact_number=contact_number,
-            viewpass=viewpass,
         )
         user.set_password(password)
         user.save(using=self._db)

@@ -7,5 +7,10 @@ urlpatterns = [
     path('account/',views.accountVendor,name="accountVendor"),
     path('documents/upload/',views.documents,name="documents"),
     path('add-products/',views.addProducts,name="addProducts"),
+    path('add-products/variations/',views.addProductVariation,name="addProductVariation"),
+    path('store/add-products/variations/',views.storeVproducts,name="storeVproducts"),
+    path('products/',views.products,name="products"),
+    path('product/edit/<int:id>/',views.edit_products,name="Edit-product"),
+    path('orders/',views.orders,name="orders"),
 ]
 

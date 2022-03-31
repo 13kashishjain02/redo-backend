@@ -1,0 +1,928 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redopact | {{product.name}}</title>
+
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    <style>
+            
+    </style>
+
+</head>
+<body>
+    
+    {% include 'general/Navbar.html' %}
+
+    <div class="container my-5">
+        <h4>
+            <a href="/vendor/products/"><i class="fa-solid fa-arrow-left"></i> Back to Products</a>
+        </h4>
+    </div>
+
+        <div class="container mt-5">
+            <h5>Edit Products</h5> <hr>
+            <ul>
+                <li>While uploading your product try to be as precise as possible!
+                    All the fields marked with * are compulsory</li>
+                <li>If you have any questions, please feel free to contact us,our customer service center is working for you 24/7</li>
+            </ul>
+        </div>
+
+
+        <div class="add-products my-5 container">
+            {% if messages %}
+                {% for message in messages  %}
+                    <div class="alert alert-{{message.tags}}">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <form method="post" enctype="multipart/form-data"> {%csrf_token%}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group has-success">
+                            <label class="form-label mt-4" for="inputValid">Product Name</label>
+                            <input type="text" value="{{product.name}}" name="p_name" style="background: white;border: 1px solid #1A4953;font-size:14px;" required placeholder="Product name" class="form-control is-valid" id="inputValid">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Brand Name</label>
+                            <input value="{{product.brand}}" name="b_name" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control is-valid" id="inputValid" aria-describedby="emailHelp" placeholder="Brand name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product SKU</label>
+                            <input value="{{product.sku}}" name="sku" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product sku">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product Weight (in kg)</label>
+                            <input value="{{product.weight}}" name="weight" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="weight" aria-describedby="emailHelp" placeholder="Product weight">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product length (in cm)</label>
+                            <input value="{{product.length}}" name="length" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="length" aria-describedby="emailHelp" placeholder="Product length">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product height (in cm)</label>
+                            <input value="{{product.height}}" name="height" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="heigth" aria-describedby="emailHelp" placeholder="Product height">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product width (in cm)</label>
+                            <input value="{{product.width}}" name="width" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="width" aria-describedby="emailHelp" placeholder="Product width">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleSelect1" class="form-label mt-4">Select GST</label>
+                            <select name="gst" style="border: 1px solid #1A4953;font-size:14px;" class="form-select bg-white" id="gst">
+                              <option value="5" {% if product.gst == '5' %} selected="selected" {% endif %} >5%</option>
+                              <option value="12" {% if product.gst == '12' %} selected="selected" {% endif %}>12%</option>
+                              <option value="18" {% if product.gst == '18' %} selected="selected" {% endif %}>18%</option>
+                              <option value="28" {% if product.gst == '28' %} selected="selected" {% endif %}>28%</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product MRP</label>
+                            <input value="{{product.mrp}}" name="mrp" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product mrp">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product Special Price</label>
+                            <input value="{{product.special_price}}" id="s_price" name="s_price" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product special price">
+                            <span id="vendor_amount" class="text-danger" style="font-size: 13px;"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Product Stock</label>
+                            <input value="{{product.stock}}" name="stock" required style="background: white;border: 1px solid #1A4953;font-size:14px;" type="number" class="form-control is-valid" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product stock">
+                        </div>
+
+                        <label for="exampleSelect1" class="form-label mt-4">{{state.label}}</label>
+                        {{state}}
+
+                        <label class="form-check-label mt-4 text-dark">Choose Product Type</label> <br>
+                        <div class="form-check form-check-inline mt-2">
+                            <input  {% if product.is_recycled %} checked {%endif%} name="recycled" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="RECYCLED">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox1">RECYCLED</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input  {% if product.is_upcycled %} checked {%endif%} name="upcycled" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="UPCYCLED">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox2">UPCYCLED</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input  {% if product.is_ecofriendly %} checked {%endif%} name="ecofriendly" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="ECOFRIENDLY">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox3">ECOFRIENDLY</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input  {% if product.is_handicraft %} checked {%endif%} name="handicraft" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="HANDICRAFT">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox2">HANDICRAFT</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input  {% if product.is_handloom %} checked {%endif%} name="handloom" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="HANDLOOM">
+                            <label style="font-size: 14px;" class="form-check-label" for="inlineCheckbox3">HANDLOOM</label>
+                          </div>
+
+                          <div class="form-group mt-3">
+                            <label for="formFile"  class="form-label mt-4">Product Image - 1</label><br>
+                              <img src="{{product.image.url}}" alt="" style="width: 50px;"><br>
+                            <input name="p_image1" value="{{product.image.url}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="file" id="formFile">
+                        </div>
+
+                          <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Product Image - 2</label><br>
+                            <img src="{{product.image2.url}}" alt="" style="width: 50px;"><br>
+                            <input name="p_image2" value="{{product.image2.url}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="file" id="formFile">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Product Image - 3</label><br>
+                            <img src="{{product.image3.url}}" alt="" style="width: 50px;"><br>
+                            <input name="p_image3" value="{{product.image3.url}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="file" id="formFile">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Product Image - 4</label><br>
+                            <img src="{{product.image4.url}}" alt="" style="width: 50px;"><br>
+                            <input name="p_image4" value="{{product.image4.url}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="file" id="formFile">
+                          </div>
+                    </div>
+                    <div class="col-sm-6">
+                       <!-- <label class="text-dark mt-4">{{desc.short_desc.label}}</label> <br>
+                        <div class="mt-1">
+                            {{desc.media}} {{desc.short_desc}}
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="exampleTextarea" class="form-label mt-4">Short Description</label>
+                            <textarea name="s_desc" style="background: white;border: 1px solid #1A4953;font-size:14px;" placeholder="Short Description" class="form-control" id="exampleTextarea" rows="3">{{product.description|striptags|safe}}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleTextarea" class="form-label mt-4">Description</label>
+                            <textarea name="l_desc" style="background: white;border: 1px solid #1A4953;font-size:14px;" placeholder="Description" class="form-control" id="exampleTextarea" rows="14">{{product.short_description|safe}}</textarea>
+                        </div>
+                      
+
+                        <!-- <label class="text-dark mt-4">{{desc.desc.label}}</label> <br>
+                        <div class="mt-1">
+                            {{desc.media}} {{desc.desc}}
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label mt-4 text-dark">product Tags</label>
+                            <input value="{{product.tags}}" name="p_tags" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control is-valid" id="inputValid" aria-describedby="emailHelp" placeholder="Product Tags" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleSelect1" class="form-label mt-4">Select Product Material</label>
+                            <select name="material" style="border: 1px solid #1A4953;font-size:14px;" class="form-select bg-white" id="exampleSelect1">
+                              <option value="Areca Leaf" {% if product.material == 'Areca Leaf' %} selected="selected" {% endif %} >Areca Leaf</option>
+                              <option value="Baggasee" {% if product.material == 'Baggasee' %} selected="selected" {% endif %}>Baggasee</option>
+                              <option value="Bamboo" {% if product.material == 'Bamboo' %} selected="selected" {% endif %}>Bamboo</option>
+                              <option value="Bamboo Fiber" {% if product.material == 'Bamboo Fiber' %} selected="selected" {% endif %}>Bamboo Fiber</option>
+                              <option value="banana fiber" {% if product.material == 'banana fiber' %} selected="selected" {% endif %}>banana fiber</option>
+                              <option value="Brass" {% if product.material == 'Brass' %} selected="selected" {% endif %}>Brass</option>
+                              <option value="Bronze" {% if product.material == 'Bronze' %} selected="selected" {% endif %}>Bronze</option>
+                              <option value="cactus" {% if product.material == 'cactus' %} selected="selected" {% endif %}>cactus</option>
+                              <option value="cane" {% if product.material == 'cane' %} selected="selected" {% endif %}>cane</option>
+                              <option value="Clay" {% if product.material == 'Clay' %} selected="selected" {% endif %}>Clay</option>
+                              <option value="Cork" {% if product.material == 'Cork' %} selected="selected" {% endif %}>Cork</option>
+                              <option value="Corn fiber" {% if product.material == 'Corn fiber' %} selected="selected" {% endif %}>Corn fiber</option>
+                              <option value="corn husk" {% if product.material == 'corn husk' %} selected="selected" {% endif %}>corn husk</option>
+                              <option value="cow dung" {% if product.material == 'cow dung' %} selected="selected" {% endif %}>cow dung</option>
+                              <option value="Hemp" {% if product.material == 'Hemp' %} selected="selected" {% endif %}>Hemp</option>
+                              <option value="Jute" {% if product.material == 'Jute' %} selected="selected" {% endif %}>Jute</option>
+                              <option value="Kansa" {% if product.material == 'Kansa' %} selected="selected" {% endif %}>Kansa</option>
+                              <option value="Kauna grass" {% if product.material == 'Kauna grass' %} selected="selected" {% endif %}>Kauna grass</option>
+                              <option value="linen" {% if product.material == 'linen' %} selected="selected" {% endif %}>linen</option>
+                              <option value="longpi" {% if product.material == 'longpi' %} selected="selected" {% endif %}>longpi</option>
+                              <option value="Lyocell" {% if product.material == 'Lyocell' %} selected="selected" {% endif %}>Lyocell</option>
+                              <option value="Mangowood" {% if product.material == 'Mangowood' %} selected="selected" {% endif %}>Mangowood</option>
+                              <option value="Mushroom fiber" {% if product.material == 'Mushroom fiber' %} selected="selected" {% endif %}>Mushroom fiber</option>
+                              <option value="Neem wood" {% if product.material == 'Neem wood' %} selected="selected" {% endif %}>Neem wood</option>
+                              <option value="Organic wool" {% if product.material == 'Organic wool' %} selected="selected" {% endif %}>Organic wool</option>
+                              <option value="Organic cotton" {% if product.material == 'Organic cotton' %} selected="selected" {% endif %}>Organic cotton</option>
+                              <option value="pinatex" {% if product.material == 'pinatex' %} selected="selected" {% endif %}>pinatex</option>
+                              <option value="pine needles" {% if product.material == 'pine needles' %} selected="selected" {% endif %}>pine needles</option>
+                              <option value="ramie" {% if product.material == 'ramie' %} selected="selected" {% endif %}>ramie</option>
+                              <option value="rattan" {% if product.material == 'rattan' %} selected="selected" {% endif %}>rattan</option>
+                              <option value="Recycled Plastic" {% if product.material == 'Recycled Plastic' %} selected="selected" {% endif %}>Recycled Plastic</option>
+                              <option value="Recycled Rubber" {% if product.material == 'Recycled Rubber' %} selected="selected" {% endif %}>Recycled Rubber</option>
+                              <option value="rhino dung" {% if product.material == 'rhino dung' %} selected="selected" {% endif %}>rhino dung</option>
+                              <option value="sabai grass" {% if product.material == 'sabai grass' %} selected="selected" {% endif %}>sabai grass</option>
+                              <option value="Spider silk" {% if product.material == 'Spider silk' %} selected="selected" {% endif %}>Spider silk</option>
+                              <option value="Sea weed" {% if product.material == 'Sea weed' %} selected="selected" {% endif %}>Sea weed</option>
+                              <option value="Steel" {% if product.material == 'Steel' %} selected="selected" {% endif %}>Steel</option>
+                              <option value="terracota" {% if product.material == 'terracota' %} selected="selected" {% endif %}>terracota</option>
+                              <option value="The Sikki Grass" {% if product.material == 'The Sikki Grass' %} selected="selected" {% endif %}>The Sikki Grass</option>
+                              <option value="water hyacinth" {% if product.material == 'water hyacinth' %} selected="selected" {% endif %}>water hyacinth</option>
+                              <option value="water reed" {% if product.material == 'water reed' %} selected="selected" {% endif %}>water reed</option>
+                              <option value="WHEAT STRAW" {% if product.material == 'WHEAT STRAW' %} selected="selected" {% endif %}>WHEAT STRAW</option>
+                              <option value="Wood" {% if product.material == 'Wood' %} selected="selected" {% endif %}>Wood</option>
+                              <option value="Silk" {% if product.material == 'Silk' %} selected="selected" {% endif %}>Silk</option>
+                              <option value="Other" {% if product.material == 'Other' %} selected="selected" {% endif %}>Other</option>
+                             
+                            </select>
+                          </div>
+
+                         <div class="border mt-5 p-3">
+                            {% if product.category %}
+                            <div class="form-group">
+                              <label class="form-label">Product Category</label>
+                              <input disabled value="{{product.category}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="text">
+                            </div>
+                            {% endif %}
+  
+                            {% if product.subcategory1 %}
+                            <div class="form-group">
+                              <label class="form-label mt-4">Product Sub Category 1</label>
+                              <input disabled value="{{product.subcategory1}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="text">
+                            </div>
+                            {% endif %}
+  
+                            {% if product.subcategory2 %}
+                            <div class="form-group">
+                              <label class="form-label mt-4">Product Sub Category 2</label>
+                              <input disabled value="{{product.subcategory2}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="text">
+                            </div>
+                            {% endif %}
+  
+                            {% if product.subcategory3 %}
+                            <div class="form-group">
+                              <label class="form-label mt-4">Product Sub Category 3</label>
+                              <input disabled value="{{product.subcategory3}}" style="background: white;border: 1px solid #1A4953;font-size:14px;" class="form-control mt-2" type="text">
+                            </div>
+                            {% endif %} <br>
+                            <a class="btn bg-primary text-white px-3 btn-sm" onclick="showct()">Change Category & subcategory</a>
+                         </div>
+
+                          
+
+                          <div class="form-group d-none" id="ct-show">
+                            <label for="exampleSelect1" class="form-label mt-4">Select Product Category</label>
+                            <select name="category" style="border: 1px solid #1A4953;font-size:14px;" class="bg-white form-select" id="category">
+                                <option value="Choose">Choose</option>
+                                <option value="Personal Care">Personal Care</option>
+                                <option value="Carry Ons">Carry Ons</option>
+                                <option value="Stationary">Stationary</option>
+                                <option value="Kitchen">Kitchen</option>
+                                <option value="Home">Home</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Books">Books</option>
+                            </select>
+                            <span class="text-danger" style="font-size: 13px;">{{c_validation}}</span>
+                        </div>
+                            <div class="form-group {% if sub_category1%} d-block {% else %} d-none {%endif%}" id="s-category">
+                                <label for="exampleSelect1" class="form-label mt-4">Select Product Sub Category 1</label>
+                                <select name="sub_category1" id="s-category-options" style="border: 1px solid #1A4953;font-size:14px;" class="bg-white form-select" id="exampleSelect1">
+                                </select>
+                                <span class="text-danger" style="font-size: 13px;">{{s1_validation}}</span>
+                          </div>
+
+                          <div class="form-group {% if sub_category2%} d-block {% else %} d-none {%endif%}" id="s-category-2">
+                            <label for="exampleSelect1" class="form-label mt-4">Select Product Sub Category 2</label>
+                            <select name="sub_category2" id="s-category-options-2" style="border: 1px solid #1A4953;font-size:14px;" class="bg-white form-select" id="exampleSelect1">
+                            </select>
+                            <span class="text-danger" style="font-size: 13px;">{{s2_validation}}</span>
+                      </div>
+
+                      <div class="form-group {% if sub_category3%} d-block {% else %} d-none {%endif%}" id="s-category-3">
+                        <label for="exampleSelect1" class="form-label mt-4">Select Product Sub Category 3</label>
+                        <select name="sub_category3" id="s-category-options-3" style="border: 1px solid #1A4953;font-size:14px;" class="bg-white form-select" id="exampleSelect1">
+                        </select>
+                        <span class="text-danger" style="font-size: 13px;">{{s3_validation}}</span>
+                      </div>
+
+                      {% comment %} <div class="form-group">
+                        <label for="exampleInputEmail1" class="form-label mt-4 text-dark">Sizes</label>
+                        <input value="{{sizes}}" name="sizes" style="background: white;border: 1px solid #1A4953;font-size:14px;" type="text" class="form-control is-valid" id="inputValid" aria-describedby="emailHelp" placeholder="32 ,33, 34, 35" required>
+                    </div> {% endcomment %}
+                    
+                </div>
+                <div class="d-grid mt-5">
+                    <button class="btn bg-primary text-white shadow-sm" style="border-radius: 4px;">Save</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+    {% include 'general/footer.html' %}
+     
+
+
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+
+    function showct() {
+
+        let ctshow = document.getElementById('ct-show')
+        
+            ctshow.setAttribute('class','d-block')
+        
+    }
+
+
+  window.onload = function(){
+
+
+    const personal_care = ['Choose','Bath Care','Hair Care','Skin Care','Body Care','Oral Hygiene','Female Hygiene','Reusable Mask','Natural Essential Oils']
+    const carry_ons = ['Baskets','Bagpacks & Travel Bags','Shoppingbag/Tote Bag','Mobile Cover','Duffle Bag']
+    const stationary = ['Choose','Pen & Pencils','Plantable Stationary','Notebook & Diaries','Packaging','Stationary Accessories']
+    const sweet_home = ['Furniture','Home Decor','Mandir','Mats/Rugs','Bedsheets/Pillow','Garden','Yoga Essentials']
+    const kitchen = ['Choose','Cutlery','Cookware','Serving Ware','Household Supplies','Disposables','Collection']
+    const fashion = ['Choose','Clothes','Jewellery','Footwear','Accessories']
+    const kids = ['Kids Apparels','Diaper Needs','Nursery Needs','Toys','School Bag']
+    const books = ['Mystery','Non Fiction','Young Adult','Romance','Self Help Books','Text Books','Fantasy']
+
+    // fashion
+
+    const f_subcategory = ['Choose','Men','Women']
+    const c_subcategory = ['Choose','c_Men','c_Women']
+    const f1_subcategory = ['Choose','f_Men','f_Women']
+    const a_subcategory = ['Choose','a_Men','a_Women']
+    const jewellery = ['Choose','Earrings','Necklace','Pendant','Rings','Nose accessories']
+
+    const c_subcategory_2 = ['Tshirt','Shirt','Sweatshirt','Pants & Pyjamas','Kurtas']
+    const f_subcategory_2 = ['Casuals','Sports shoes','Slippers','Others']
+    const a_subcategory_2 = ['Tie & Belts','Goggles','Bags & Pouches','Wallets & purses','Clutches']
+   
+    //end
+
+
+    // stationary
+
+    const plantable_stationary = ['seed pencil','seed greeting cards','seed paper']
+    const notebook = ['diary','exercise book','notepads','students notebook']
+    const s_accessories = ['Printer/Xerox papers','pen stand & holders','pouches','Keychains','Bookmarks']
+    const packaging =['packaging tapes','Bubble wrap','Fillers']
+
+    //end
+
+
+    // home
+
+    const home_decor = ['candles','lantern','table vase','sculptures/idol','photo frame']
+    const bedsheet = ['Bedsheet','pillow cover','cushion cover','Curtains']
+    const furniture = ['Stools','Tables','Chair']
+    const garden = ['pots & planters','tables','chair & stools','Others']
+    const mandir = ['incense stick/cones','Murtis','Pots','Mats','Others']
+
+    //end
+
+
+    //kitchen
+
+    const table_ware = ['Plates','Bowls','Coasters']
+    const cultery = ['Knifes','spoons','Forks']
+    const disposables = ['disposable plates','disposable bowls','disposable spoons','disposable glass','disposable container']
+    const cookware = ['frying pan','pressure cooker','kadai handi','tawa','Steamers']
+    const household_supplies = ['waste bin','bottle cleaner','utensil scrubber','shopping bag','table mats']
+    const serving_ware = ['tea cups','coffee mug','beer mug','kettle','jugs']
+    const collection = ['Dinner set','cup sets','others']
+
+    //end
+
+    // personal care
+
+    const bath_care = ['Soaps & Gels','Bathroom Accessories']
+    const hair_care = ['Shampoos & Conditioners','Hair Oils & Masks ','comb & brushes']
+    const skin_care = ['Serums','Mists & Toners','Masks & Scrubs','Moisturisers','Sunscreen','Massager','Eye & Lip Care']
+    const oral_hygiene = ['tooth brush','tounge cleaner','tooth pick','Tooth powder']
+    const female_hygiene = ['sanitary pads','panty liner','menstrual cup']
+    const body_care = ['Cleaning wipes','earbuds','tissue paper','hot and cold massager','towel']
+
+    //end
+
+
+
+
+
+
+    const category = document.getElementById('category')
+    const scategory = document.getElementById('s-category')
+    const scategory_2 = document.getElementById('s-category-2')
+    const scategory_3 = document.getElementById('s-category-3')
+    const scategory_option = document.getElementById('s-category-options')
+    const scategory_option_2 = document.getElementById('s-category-options-2')
+    const scategory_option_3 = document.getElementById('s-category-options-3')
+
+    category.onchange = function(event) {
+
+    scategory.setAttribute('class','d-block')
+    
+    scategory_option.length = 0
+    
+    if(event.target.value == 'Choose'){
+        scategory.setAttribute('class','d-none')
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+    }
+    if(event.target.value == 'Personal Care' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in personal_care){
+            scategory_option.options[scategory_option.options.length] = new Option(personal_care[x],personal_care[x]);
+        }
+    }
+    if(event.target.value == 'Carry Ons' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in carry_ons){
+            scategory_option.options[scategory_option.options.length] = new Option(carry_ons[x],carry_ons[x]);
+        } 
+    }
+
+    if(event.target.value == 'Stationary' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in stationary){
+            scategory_option.options[scategory_option.options.length] = new Option(stationary[x],stationary[x]);
+        }
+    }
+
+    if(event.target.value == 'Kitchen' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in kitchen){
+            scategory_option.options[scategory_option.options.length] = new Option(kitchen[x],kitchen[x]);
+        }
+    }
+
+    if(event.target.value == 'Home' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in sweet_home){
+            scategory_option.options[scategory_option.options.length] = new Option(sweet_home[x],sweet_home[x]);
+        }
+    }
+
+    if(event.target.value == 'Fashion' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in fashion){
+            scategory_option.options[scategory_option.options.length] = new Option(fashion[x],fashion[x]);
+        }
+    }
+
+    if(event.target.value == 'Kids' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in kids){
+            scategory_option.options[scategory_option.options.length] = new Option(kids[x],kids[x]);
+        }
+    }
+
+    if(event.target.value == 'Books' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in books){
+            scategory_option.options[scategory_option.options.length] = new Option(books[x],books[x]);
+        }
+    }
+
+
+    }
+
+    // click on subcatgory1
+
+
+    scategory_option.onchange = function(event){
+        
+    
+
+
+    scategory_option_2.length = 0
+    
+    if(event.target.value == 'Choose'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+    }
+
+    // Fashion
+    
+    
+    if(event.target.value == 'Clothes' ){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in c_subcategory){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(f_subcategory[x],c_subcategory[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Jewellery' ){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+
+        for(var x in jewellery){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(jewellery[x],jewellery[x]);
+        }
+    }
+
+    if(event.target.value == 'Footwear' ){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in f1_subcategory){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(f_subcategory[x],f1_subcategory[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Accessories' ){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in f_subcategory){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(f_subcategory[x],a_subcategory[x]);
+        }
+       
+    }
+
+
+
+    // Stationary
+
+    if(event.target.value == 'Plantable Stationary' ){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in plantable_stationary){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(plantable_stationary[x],plantable_stationary[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Pen & Pencils' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+    }
+    
+
+    if(event.target.value == 'Notebook & Diaries' ){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in notebook){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(notebook[x],notebook[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Stationary Accessories' ){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in s_accessories){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(s_accessories[x],s_accessories[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Packaging'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in packaging){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(packaging[x],packaging[x]);
+        }
+       
+    }
+
+
+    // home
+
+    if(event.target.value == 'Mats/Rugs' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+    }
+
+    if(event.target.value == 'Yoga Essentials' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+    }
+
+    if(event.target.value == 'Home Decor'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in home_decor){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(home_decor[x],home_decor[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Bedsheets/Pillow'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in bedsheet){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(bedsheet[x],bedsheet[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Furniture'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in furniture){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(furniture[x],furniture[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Garden'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in garden){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(garden[x],garden[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Mandir'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in mandir){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(mandir[x],mandir[x]);
+        }
+       
+    }
+
+    //kitchen
+
+
+    if(event.target.value == 'Table ware'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in table_ware){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(table_ware[x],table_ware[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Cutlery'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in cultery){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(cultery[x],cultery[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Disposables'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in disposables){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(disposables[x],disposables[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Cookware'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in cookware){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(cookware[x],cookware[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Household Supplies'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in household_supplies){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(household_supplies[x],household_supplies[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Serving Ware'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in serving_ware){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(serving_ware[x],serving_ware[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Collection'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in collection){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(collection[x],collection[x]);
+        }
+       
+    }
+
+    //personal care
+
+    if(event.target.value == 'Reusable Mask' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+    }
+
+    if(event.target.value == 'Natural Essential Oils' ){
+        scategory_2.setAttribute('class','d-none')
+        scategory_3.setAttribute('class','d-none')
+    }
+
+    if(event.target.value == 'Bath Care'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in bath_care){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(bath_care[x],bath_care[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Hair Care'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in hair_care){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(hair_care[x],hair_care[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Skin Care'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in skin_care){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(skin_care[x],skin_care[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Body Care'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in body_care){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(body_care[x],body_care[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Oral Hygiene'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in oral_hygiene){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(oral_hygiene[x],oral_hygiene[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'Female Hygiene'){
+        scategory_2.setAttribute('class','d-block')
+        scategory_3.setAttribute('class','d-none')
+        for(var x in female_hygiene){
+            scategory_option_2.options[scategory_option_2.options.length] = new Option(female_hygiene[x],female_hygiene[x]);
+        }
+       
+    }
+
+}    
+
+
+// click on subcatgory2
+
+    scategory_2.onchange = function(event){
+
+        
+        
+        scategory_option_3.length = 0
+
+        if(event.target.value == 'Choose'){
+
+            scategory_3.setAttribute('class','d-none')
+}
+
+        if(event.target.value == 'c_Men' || event.target.value == 'c_Women'){
+            scategory_3.setAttribute('class','d-block');
+        for(var x in c_subcategory_2){
+            scategory_option_3.options[scategory_option_3.options.length] = new Option(c_subcategory_2[x],c_subcategory_2[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'f_Men' || event.target.value == 'f_Women'){
+        scategory_3.setAttribute('class','d-block');
+        for(var x in f_subcategory_2){
+            scategory_option_3.options[scategory_option_3.options.length] = new Option(f_subcategory_2[x],f_subcategory_2[x]);
+        }
+       
+    }
+
+    if(event.target.value == 'a_Men' || event.target.value == 'a_Women'){
+        scategory_3.setAttribute('class','d-block');
+        for(var x in f_subcategory_2){
+            scategory_option_3.options[scategory_option_3.options.length] = new Option(a_subcategory_2[x],a_subcategory_2[x]);
+        }
+       
+    }
+
+    }
+  
+  }
+
+
+// Find delivery charges
+
+function DeliveryCharges(){
+
+    // let final_weight = 0
+
+    let weight = document.getElementById('weight').value
+    let length = document.getElementById('length').value
+    let height = document.getElementById('heigth').value
+    let width = document.getElementById('width').value
+    let s_price = document.getElementById('s_price').value
+
+    if((weight == '') && (length == '') && (height == '') && (width == '')){
+        return 0
+    }
+    else{
+        let Volumetric_weight = (length * height * width)/4000
+        if(Volumetric_weight > weight){
+            var final_weight =  Volumetric_weight
+        }
+        else{
+            var final_weight =  weight
+        }
+
+
+        if (s_price >=0 && s_price <=200) {
+            if(final_weight <= 0.5){
+                let d_charges = 30
+        }
+        debugger
+        return final_weight
+        }
+    
+    
+    }
+}
+
+
+
+
+//vendor total amount
+
+$('document').ready(function(){
+   $('#s_price').on('change',function(){
+    gst = $('#gst').val()
+    s_price = $('#s_price').val()
+
+    
+    let sales_value = (s_price*100) / (100 + gst);
+    let gst_value = s_price - sales_value;
+    let seller_commission = (s_price*18)/100 + 100;
+    let gst_commission = seller_commission*18/100;
+    let tcs = sales_value*1/100;
+
+    let R_amount = seller_commission + gst_commission + tcs
+    let seller_amount = s_price - R_amount
+
+    console.log(DeliveryCharges())
+    $('#vendor_amount').text('You will get ₹' + seller_amount);
+   })
+
+   $('#gst').on('change',function(){
+    gst =$('#gst').val()
+    s_price = $('#s_price').val()
+
+    if (s_price === '' ) {
+        return ''
+    }
+    else{
+        total = s_price*gst/100
+        total = s_price - total
+        $('#vendor_amount').text('You will get ₹' + total);
+    }
+   })
+
+})
+
+</script>
+
+</body>
+</html>

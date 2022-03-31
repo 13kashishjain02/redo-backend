@@ -1,11 +1,12 @@
+from itertools import count
 from multiprocessing import context
+# from tkinter import W
 from django.shortcuts import render, redirect
-from .models import Product, Order, Cart,Variation,Wishlist,SubCategory2,SubCategory1,Category
+from .models import Post, Product, Order, Cart,Variation,My_Wishlist
 from account.models import VendorAccount
 from django.contrib.auth.decorators import login_required
 from datetime import date
 import math
-from .forms import AddproductForm
 from django.views.decorators.csrf import csrf_exempt
 from PayTm import Checksum2
 from twilio.rest import Client
@@ -14,8 +15,9 @@ from django.views.generic import ListView
 from django.db.utils import IntegrityError
 import re
 from account.models import Address
+from .helpers import exist_wishlist
 
-MERCHANT_KEY = 'Ujzdeai9L@l%#6!o';
+MERCHANT_KEY = 'Ujzdeai9L@l%#6!o'
 username = ""
 orderid = ""
 
@@ -505,20 +507,7 @@ def listing(request):
     #               {"product": product, 'page_obj': product, 'is_paginated': True, 'paginator': product_paginator})
 
 
-def wishlist(request):
-    try:
-        list = Wishlist.objects.get(user=request.user)
-        data=list.wishlist
 
-        print("hello!",data)
-        counter=0
-        total=0
-        final_total=0
-        print("trt")
-        return render(request, 'shop/wishlist.html')
-    except Exception as e:
-        print("except",e)
-        return render(request, 'shop/wishlist.html')
 
 def vendororders(request):
     vendor = VendorAccount.objects.get(email=request.user.email)
@@ -546,7 +535,21 @@ def maintenance(request):
 
 
 
+@login_required
+def wishlist(request):
 
+    if request.method == "POST":
+        id = 'id' in request.POST and request.POST['id']
+        try:
+            My_Wishlist.objects.get(id=id).delete()
+        except:
+            pass
+        
+
+    products = My_Wishlist.objects.filter(user=request.user)
+    count = products.count()
+
+    return render(request, 'shop/wishlist.html',{'count':count,'products':products})
 
 @login_required
 def cart(request):
@@ -564,10 +567,32 @@ def payment(request):
     return render(request,'shop/payment.html')
 
 
-def products(request,category):
-    products = Product.objects.all()
-    return render(request,'shop/product.html',context={'products':products})
+def products(request,category=None, subcategory1=None,subcategory2=None):
+    if category is not None and subcategory1 is None and subcategory2 is None:
+        products = Product.objects.filter(category=category)
+        return render(request,'shop/product.html',context={'products':products,'category':category})
+    elif subcategory1 is not None and category is not None and subcategory2 is None:
+        products = Product.objects.filter(subcategory1=subcategory1)
+        return render(request,'shop/product.html',context={'products':products,'category':category,'subcategory1':subcategory1})
+    elif subcategory2 is not None and subcategory1 is not None and category is not None:
+        products = Product.objects.filter(subcategory2=subcategory2)
+        return render(request,'shop/product.html',context={'products':products,'category':category,'subcategory1':subcategory1,'subcategory2':subcategory2})
+
 
 def productDetails(request,id):
+    if request.method == "POST" and 'wishlist' in request.POST:
+        id = 'id' in request.POST and request.POST['id']
+        product_id = Product.objects.get(id=id)
+        if My_Wishlist.objects.filter(user=request.user,product=product_id):
+            pass
+        else:
+            My_Wishlist.objects.create(
+            user=request.user,
+            product = product_id
+        )
     product = Product.objects.get(id=id)
-    return render(request,'shop/product-details.html',context={'product':product})
+    is_wishlist = False
+    if exist_wishlist(product,request):
+        is_wishlist = True 
+    return render(request,'shop/product-details.html',context={'product':product,'is_wishlist':is_wishlist})
+
