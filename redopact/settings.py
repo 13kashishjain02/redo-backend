@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'social_django',
     'fontawesomefree',
     'django_cleanup',
+    'mathfilters'
 ]
 SITE_ID = 1
 

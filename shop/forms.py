@@ -1,7 +1,7 @@
 from dataclasses import field, fields
 from pyexpat import model
 from django import forms
-from .models import Product , Post
+from .models import Product
 
 
 
@@ -14,13 +14,4 @@ class StateForm(forms.ModelForm):
 		model = Product
 		fields = ['state']
 		widgets = {'state': forms.Select(attrs={'class':'form-select bg-white','style':'border: 1px solid #1A4953;font-size:14px;'})}
-	
-
-
-from ckeditor.widgets import CKEditorWidget
-
-class PostForm(forms.ModelForm):
-	class Meta:
-		model = Post
-		fields = ['content']
 

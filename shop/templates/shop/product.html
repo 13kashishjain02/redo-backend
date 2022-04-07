@@ -54,10 +54,15 @@
            {% elif category and subcategory1 and not subcategory2 %}
            <li class="breadcrumb-item"><a href="/products/{{category}}/">{{category|capfirst}}</a></li>
            <li class="breadcrumb-item">{{subcategory1|capfirst}}</li>
-           {% elif category and subcategory1 and subcategory2%}
+           {% elif category and subcategory1 and subcategory2 and not subcategory3%}
            <li class="breadcrumb-item"><a href="/products/{{category}}/">{{category|capfirst}}</a></li>
            <li class="breadcrumb-item"><a href="/products/{{category}}/{{subcategory1}}/">{{subcategory1|capfirst}}</a></li>
            <li class="breadcrumb-item">{{subcategory2|capfirst}}</li>
+           {% elif category and subcategory1 and subcategory2 and subcategory3%}
+           <li class="breadcrumb-item"><a href="/products/{{category}}/">{{category|capfirst}}</a></li>
+           <li class="breadcrumb-item"><a href="/products/{{category}}/{{subcategory1}}/">{{subcategory1|capfirst}}</a></li>
+           <li class="breadcrumb-item">{{subcategory2|capfirst}}</li>
+           <li class="breadcrumb-item">{{subcategory3|capfirst}}</li>
            {% endif %}
         </ol>
       
@@ -81,13 +86,15 @@
   </div>
 
   <div class="container">
+    
   {% if category and not subcategory1 and not subcategory2 %}
     <span>{{category|capfirst}} - <span style="color: black;">{{products.count}} items</span></span>
     {% elif category and subcategory1 and not subcategory2%}
     <span>{{subcategory1|capfirst}} - <span style="color: black;">{{products.count}} items</span></span>
-    {% elif category and subcategory1 and subcategory2%}
+    {% elif category and subcategory1 and subcategory2 and not subcategory3%}
     <span>{{subcategory2|capfirst}} - <span style="color: black;">{{products.count}} items</span></span>
-  
+    {% elif category and subcategory1 and subcategory2 and subcategory3%}
+    <span>{{subcategory3|capfirst}} - <span style="color: black;">{{products.count}} items</span></span>
   {% endif %}
 </div>
 
@@ -96,56 +103,87 @@
     <div class="product-filter border  p-3">
         <h5>Filters</h5> <hr style="color: #CACED2;"/>
 
+        <form method="post">{% csrf_token %}
         <h6 class="mt-4 px-1">Price</h6>
         <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
-            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+            <input class="form-check-input" type="checkbox" {% if '200-300' in request.GET.price  %}checked="checked"{% endif %} value="200-300" name="rs-200-300" style="font-size: small;">
+            <label class="form-check-label" for="rs-200-300" style="font-size: small;">
               Rs. 200 to 300
             </label>
         </div>
 
         <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
-            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+            <input class="form-check-input" type="checkbox" {% if '300-500' in request.GET.price  %}checked="checked"{% endif %} value="300-500" name="rs-300-500" style="font-size: small;">
+            <label class="form-check-label" for="rs-300-500" style="font-size: small;">
               Rs. 300 to 500
             </label>
         </div>
 
         <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
-            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+            <input class="form-check-input" type="checkbox" {% if '500-700' in request.GET.price  %}checked="checked"{% endif %} value="500-700" name="rs-500-700" style="font-size: small;">
+            <label class="form-check-label" for="rs-500-700" style="font-size: small;">
               Rs. 500 to 700
             </label>
         </div>
 
         <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
-            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+            <input class="form-check-input" type="checkbox" {% if '700-1000' in request.GET.price  %}checked="checked"{% endif %} value="700-1000" name="rs-700-1000" style="font-size: small;">
+            <label class="form-check-label" for="rs-700-100" style="font-size: small;">
               Rs. 700 to 1000
             </label>
         </div>
 
         <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
-            <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
+            <input class="form-check-input" type="checkbox" {% if '1000plus' in request.GET.price  %}checked="checked"{% endif %} value="1000" name="rs-1000" style="font-size: small;">
+            <label class="form-check-label" for="rs-1000+" style="font-size: small;">
               Rs. 1000+
             </label>
         </div>
-
-        <div class="form-check mt-5">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" style="font-size: small;">
-          <label class="form-check-label" for="flexCheckChecked" style="font-size: small;">
-            Rs. 1000+
+<br>
+        <div class="form-check pt-3 border-top">
+          <input class="form-check-input" type="checkbox" value="is_recycled" name="is_recycled" style="font-size: small;">
+          <label class="form-check-label" for="is_recycled" style="font-size: small;">
+            is recycled
           </label>
       </div>
+
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" value="is_upcycled" name="is_upcycled" style="font-size: small;">
+        <label class="form-check-label" for="is_upcycled" style="font-size: small;">
+          is upcycled
+        </label>
+    </div>
+
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" value="is_ecofriendly" name="is_ecofriendly" style="font-size: small;">
+      <label class="form-check-label" for="is_ecofriendly" style="font-size: small;">
+        is ecofriendly
+      </label>
+  </div>
+
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" value="is_handicraft" name="is_handicraft" style="font-size: small;">
+        <label class="form-check-label" for="is_handicraft" style="font-size: small;">
+          is handicraft
+        </label>
+    </div>
+    
+    <div class="form-check mt-2">
+      <input class="form-check-input" type="checkbox" value="is_handloom" name="is_handloom" style="font-size: small;">
+      <label class="form-check-label" for="is_handloom" style="font-size: small;">
+        is handloom   
+        
+        
+      </label>
+    </div>
 
 
        <div class="mt-5">
         <button class="btn bg-primary text-white px-3">Apply Filter</button>
-        <button class="btn border px-5">Reset</button>
+        <a href="/products/{{category}}/ {% if subcategory1 %}{{subcategory1}}/{% endif %} {% if subcategory2 %} {{subcategory2}}/{% endif %}" class="btn border px-5">Reset</a>
        </div>
 
-
+      </form>
 
     </div>
 
@@ -154,58 +192,77 @@
         <div class="row">
           
           
-           {% if products %}
+           {% if products or products_v %}
            
            {% for pro in products %}
-           
-         
+
+                
+
+
             <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center ">
-              
-              <div class="shadow-sm border py-5">
-                <a href="/{{pro.id}}/buy/">
-               <img src="{{pro.image.url}}" class="img-fluid" width="70%" alt=""> 
-              </a>
-               <br> <br>
-               <h5>{{pro.brand}}</h5>
-               <span style="font-size:13px">{{pro.name}}</span> 
-               <p class="">Rs.{{pro.mrp}} <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.{{pro.mrp}}</span> <span style="color: orangered;">(Rs. {{pro.discount}} OFF)</span></span></p>
-               <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
-              </div>
+                <div class="shadow-sm border py-5">
+                  <a href="/{{pro.id}}/buy/">
+                <img src="{{pro.image.url}}" class="img-fluid" width="70%" alt=""> 
+                </a>
+                <br> <br>
+                <h5>{{pro.brand}}</h5>
+                <span style="font-size:13px">{{pro.name}}</span> 
+                <p class="">Rs.{{pro.mrp}} <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.{{pro.mrp}}</span> <span style="color: orangered;">(Rs. {{pro.discount}} OFF)</span></span></p>
+                <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+                </div>
              </div>
-          
-
-
-             <div class="mt-5 pt-3">
-              <nav aria-label="...">
-                  <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                          <a class="page-link" href="#">&laquo;</a>
-                      </li>
-                      <li class="page-item active">
-                          <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">5</a>
-                        </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">&raquo;</a>
-                    </li>
-                  </ul>
-                </nav>
-              
-            </div>
+        
            
            {% endfor %}
 
+
+           {% for product_v in products_v %}
+        
+           <div class="col-sm-12 col-md-6 col-lg-4 mt-4 text-center ">
+            <div class="shadow-sm border py-5">
+              <a href="/variation/{{product_v.id}}/buy/?color={{product_v.color}}">
+            <img src="{{product_v.image1.url}}" class="img-fluid" width="70%" alt=""> 
+            </a>
+            <br> <br>
+            <h5>{{product_v.product.brand}}</h5>
+            <span style="font-size:13px">{{product_v.product.name}}</span> 
+            <p class="">Rs.{{product_v.mrp}} <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.{{product_v.mrp}}</span> <span style="color: orangered;">(Rs. {{product_v.discount}} OFF)</span></span></p>
+            <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+            </div>
+         </div>
+      
+           
+           {% endfor %}
+
+
+           <div class="mt-5 pt-3 border-top">
+            <nav aria-label="...">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">4</a>
+                      </li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">5</a>
+                      </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">&raquo;</a>
+                  </li>
+                </ul>
+              </nav>
+            
+          </div>
            {% else %}
            <div class="mt-5 text-center">
              <img src="{% static 'general/images/hanger.png' %}" alt=""><br><br>
@@ -225,7 +282,9 @@
 
   </div>
 
-<br> <br> <br>
+{% if not products %}
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+{% endif %}
  
 
 
@@ -235,12 +294,74 @@
 
 
 
+  
 
+<script>
+  {% comment %} function filter() {
+   
+    let rs_200_300 = $('#rs-200-300')
+    let rs_300_500 = $('#rs-300-500')
+    let rs_500_700 = $('#rs-500-700')
+    let rs_700_1000 = $('#rs-700-1000')
+    let rs_1000 = $('#rs-1000')
 
+    if(rs_200_300.prop('checked')==true){
+      {% if '200-300' in request.GET.price %}
+      {% elif 'price' in request.get_full_path%}
+      window.location.href = '{{request.get_full_path}}-200-300';
+      {% else %}
+      window.location.href = '{{request.get_full_path}}?price=200-300';
+      {% endif %}
+    }
+    else{
+      {% if '200-300' in request.GET.price %}
+
+      {%endif%}
+    }
+
+    if(rs_300_500.prop('checked')==true){
+      {% if '300-500' in request.GET.price %}
+      {% elif 'price' in request.get_full_path%}
+      window.location.href = '{{request.get_full_path}}-300-500';
+      {% else %}
+      window.location.href = '{{request.get_full_path}}?price=300-500';
+      {% endif %}
+    }
+
+    if(rs_500_700.prop('checked')==true){
+      {% if '500-700' in request.GET.price %}
+      {% elif 'price' in request.get_full_path%}
+      window.location.href = '{{request.get_full_path}}-500-700';
+      {% else %}
+      window.location.href = '{{request.get_full_path}}?price=500-700';
+      {% endif %}
+    }
+
+    if(rs_700_1000.prop('checked')==true){
+      console.log('check')
+      {% if '700-1000' in request.GET.price %}
+      {% elif 'price' in request.get_full_path%}
+      window.location.href = '{{request.get_full_path}}-700-1000';
+      {% else %}
+      window.location.href = '{{request.get_full_path}}?price=700-1000';
+      {% endif %}
+    }
+
+    if(rs_1000.prop('checked')==true){
+      {% if '1000plus' in request.GET.price %}
+      {% elif 'price' in request.get_full_path%}
+      window.location.href = '{{request.get_full_path}}-1000plus';
+      {% else %}
+      window.location.href = '{{request.get_full_path}}?price=1000plus';
+      {% endif %}
+    }
+    
+  } {% endcomment %}
+</script>
 
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

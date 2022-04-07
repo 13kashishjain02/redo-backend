@@ -34,6 +34,13 @@
   {%include 'general/Navbar.html' %}
 
 
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{message.tags}}">
+        {{message}}
+      </div>
+    {% endfor %}
+  {% endif %}
 
 
   <div class="mt-5 container">
@@ -82,19 +89,10 @@
                 <h4>Rs. {{product.special_price}} <span style="text-decoration: line-through;">Rs.{{product.mrp}}</span> <span style="color: orangered;">(Rs. {{product.discount}} OFF)</span></h4>
                 <small style="color: #4CAD8C;">inclusive of all taxes</small>
 
-                <div class="mt-5">
-                    <h5>SELECT SIZE</h5> <br>
-                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">S</button>
-
-                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">M</button>
-
-                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Xl</button>
-
-                    <button type="button" class="btn btn-secondary border" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">XXL</button>
-                </div>
-
                 <div class="mt-5 d-flex"> 
-                    <button class="btn bg-primary text-white shadow px-5"><i class="fa-solid fa-bag-shopping px-2"></i> Add to cart</button>
+                    <form method="post"> {%csrf_token%}
+                      <button class="btn bg-primary text-white shadow px-5" name="cart"><i class="fa-solid fa-bag-shopping px-2" ></i> Add to cart</button>
+                    </form>
                     {% if is_wishlist %}
                       <a class="btn border"><i class="fa-solid fa-check"></i> already wishlist</a>
                     {% else %}

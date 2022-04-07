@@ -1,8 +1,7 @@
-from itertools import count
-from multiprocessing import context
+from django.contrib import messages
 # from tkinter import W
 from django.shortcuts import render, redirect
-from .models import Post, Product, Order, Cart,Variation,My_Wishlist
+from .models import Product, Order, Cart,Variation,My_Wishlist
 from account.models import VendorAccount
 from django.contrib.auth.decorators import login_required
 from datetime import date
@@ -553,7 +552,8 @@ def wishlist(request):
 
 @login_required
 def cart(request):
-    return render(request,'shop/cart.html')
+    products = Cart.objects.all()
+    return render(request,'shop/cart.html',{'products':products})
 
 @login_required
 def address(request):
@@ -567,16 +567,37 @@ def payment(request):
     return render(request,'shop/payment.html')
 
 
-def products(request,category=None, subcategory1=None,subcategory2=None):
-    if category is not None and subcategory1 is None and subcategory2 is None:
-        products = Product.objects.filter(category=category)
-        return render(request,'shop/product.html',context={'products':products,'category':category})
-    elif subcategory1 is not None and category is not None and subcategory2 is None:
-        products = Product.objects.filter(subcategory1=subcategory1)
-        return render(request,'shop/product.html',context={'products':products,'category':category,'subcategory1':subcategory1})
-    elif subcategory2 is not None and subcategory1 is not None and category is not None:
-        products = Product.objects.filter(subcategory2=subcategory2)
-        return render(request,'shop/product.html',context={'products':products,'category':category,'subcategory1':subcategory1,'subcategory2':subcategory2})
+def products(request,category=None, subcategory1=None,subcategory2=None,subcategory3=None):
+    # if request.method == "POST":
+    #     rs_200_300 = 'rs-200-300' in request.POST and request.POST['rs-200-300']
+    #     rs_300_500 = 'rs-300-500' in request.POST and request.POST['rs-300-500']
+    #     rs_500_700 = 'rs-500-700' in request.POST and request.POST['rs-500-700']
+    #     rs_700_1000 = 'rs-700-1000' in request.POST and request.POST['rs-700-1000']
+    #     rs_1000 = 'rs-1000' in request.POST and request.POST['rs-1000']
+
+    #     if rs_200_300:
+    #         request.session['rs_200-300'] = rs_200_300
+        
+    if category is not None and subcategory1 is None and subcategory2 is None and subcategory3 is None:
+        products = Product.objects.filter(category=category,has_variation=False)
+        products_v = Product.objects.filter(category=category,has_variation=True)
+        return render(request,'shop/product.html',context={'products':products,'category':category,'products_v':products_v})
+    elif subcategory1 is not None and category is not None and subcategory2 is None and subcategory3 is None:
+        products = Product.objects.filter(subcategory1=subcategory1,has_variation=False)
+        products_v = Product.objects.filter(subcategory1=subcategory1,has_variation=False)
+        return render(request,'shop/product.html',context={'products':products,'category':category,'subcategory1':subcategory1,'products_v':products_v})
+    elif subcategory2 is not None and subcategory1 is not None and category is not None and subcategory3 is None:
+        products = Product.objects.filter(subcategory2=subcategory2,has_variation=False)
+        products_v = Product.objects.filter(subcategory2=subcategory2,has_variation=True)
+        return render(request,'shop/product.html',context={'products':products,'category':category,'subcategory1':subcategory1,'subcategory2':subcategory2,'products_v':products_v})
+    elif subcategory3 is not None and subcategory2 is not None and subcategory1 is not None and category is not None:
+        products = Product.objects.filter(subcategory3=subcategory3,has_variation=False)
+        p_v= []
+        products_v = Variation.objects.all()
+        for i in products_v:
+            if i.product.subcategory3 == subcategory3 and i.product.has_variation:
+                p_v.append(i)
+        return render(request,'shop/product.html',context={'products':products,'category':category,'subcategory1':subcategory1,'subcategory2':subcategory2,'subcategory3':subcategory3,'products_v':p_v})
 
 
 def productDetails(request,id):
@@ -590,9 +611,24 @@ def productDetails(request,id):
             user=request.user,
             product = product_id
         )
+    if request.method == "POST" and 'cart' in request.POST:
+       if Cart.objects.filter(product=Product.objects.get(id=id)).exists():
+           messages.error(request,'Already to cart !!')
+       else:
+            Cart.objects.create(
+                user= request.user,
+                product = Product.objects.get(id=id),
+                size = 34
+            )
+            messages.success(request,'Added to cart !!')
+
     product = Product.objects.get(id=id)
     is_wishlist = False
     if exist_wishlist(product,request):
         is_wishlist = True 
     return render(request,'shop/product-details.html',context={'product':product,'is_wishlist':is_wishlist})
 
+def productDetailsVariation(request,id):
+    product = Variation.objects.get(id=id)
+    product_details = Variation.objects.filter(product=product.product)
+    return render(request,'shop/product-details-variation.html',{'product':product,'product_details':product_details})

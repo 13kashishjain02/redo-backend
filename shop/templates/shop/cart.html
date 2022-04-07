@@ -29,6 +29,7 @@
 
         .cart .cart-item .items{
             display: flex;
+            align-items:flex-start;
         }
 
 
@@ -69,7 +70,7 @@
             <li class="breadcrumb-item active">Cart</li>
           </ol>
       
-          <h4 class="mt-5 px-3"><span class="text-primary">My cart -</span> 4 Items</h4>
+          <h4 class="mt-5 px-3"><span class="text-primary">My cart -</span> {{products.count}} Items</h4>
     </div>
 
 
@@ -77,17 +78,27 @@
         <div class="row">
 
 
+            {% for product in products %}
             <div class="col-sm-12 col-md-12 col-lg-8">
 
                 <div class="cart-item border p-3">
                    
                      <div class="items">
-                        <img src="{% static 'general/images/product2.webp' %}" class="img-fluid" style="width: 150px;" alt="">
+                        <img src="{{product.product.image.url}}" class="img-fluid" style="width: 150px;" alt="">
                         <div class="items-details p-3">
-                            <span style="color: black;">Louis Philippe Jeans</span><br>
-                            <span style="font-weight: 200;">Men Navy Blue Solid Slim Fit T-shirt</span><br>
-                            <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
-                            <h5>Rs. 1049</h5> <br>
+                            <span style="color: black;">{{product.product.brand}}</span><br>
+                            <span style="font-weight: 200;">{{product.product.name}}</span><br>
+                            <span style="font-size: 13px;color: #BEC0C5;">Sold by : {{product.product.vendor}}</span> <br><br>
+                            <h5>Rs. {{product.product.special_price}}</h5>
+                            <label for="">Quantity</label>
+                            <select class="form-select bg-white" style="border: 2px solid #1A4953;" id="exampleSelect1">
+                               
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select> <br>
+                            <br>
                             <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
                         </div>  
                      </div> 
@@ -95,57 +106,8 @@
                            
                  </div>
 
-                 <div class="cart-item border p-3 mt-3">
-                   
-                    <div class="items">
-                       <img src="{% static 'general/images/product3.webp' %}" class="img-fluid" style="width: 150px;" alt="">
-                       <div class="items-details p-3">
-                           <span style="color: black;">Roadster</span><br>
-                           <span style="font-weight: 200;">Men Navy Blue Skinny Fit Light Fade Stretchable Jeans</span><br>
-                           <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
-                           <h5>Rs. 569</h5> <br>
-                           <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
-                       </div>  
-                    </div> 
-                    <span class="px-3" style="font-size: 25px;"> <i class="fa-solid fa-xmark"></i></span>
-                          
-                </div>
-
-                <div class="cart-item border p-3 mt-3">
-                   
-                    <div class="items">
-                       <img src="{% static 'general/images/product4.webp' %}" class="img-fluid" style="width: 150px;" alt="">
-                       <div class="items-details p-3">
-                           <span style="color: black;">Roadster</span><br>
-                           <span style="font-weight: 200;">Men Navy Blue Skinny Fit Light Fade Stretchable Jeans</span><br>
-                           <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
-                           <h5>Rs. 569</h5> <br>
-                           <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
-                       </div>  
-                    </div> 
-                    <span class="px-3" style="font-size: 25px;"> <i class="fa-solid fa-xmark"></i></span>
-                          
-                </div>
-
-                <div class="cart-item border p-3 mt-3">
-                   
-                    <div class="items">
-                       <img src="{% static 'general/images/product5.webp' %}" class="img-fluid" style="width: 150px;" alt="">
-                       <div class="items-details p-3">
-                           <span style="color: black;">Roadster</span><br>
-                           <span style="font-weight: 200;">Men Navy Blue Skinny Fit Light Fade Stretchable Jeans</span><br>
-                           <span style="font-size: 13px;color: #BEC0C5;">Sold by : Westbury Holdings Pvt Ltd_Madura</span> <br><br>
-                           <h5>Rs. 569</h5> <br>
-                           <h6><i class="fa-solid fa-check" style="color: #20BD99;"></i> Deliver by 24 Feb 2022</h6>
-                       </div>  
-                    </div> 
-                    <span class="px-3" style="font-size: 25px;"> <i class="fa-solid fa-xmark"></i></span>
-                          
-                </div>
-
-                 
-
             </div>
+            {% endfor %}
 
 
             <div class="col-sm-12 col-md-12 col-lg-4">

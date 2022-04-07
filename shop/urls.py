@@ -10,7 +10,10 @@ urlpatterns = [
     path('products/<str:category>/',views.products,name="products"),
     path('products/<str:category>/<str:subcategory1>/',views.products,name="products"),
     path('products/<str:category>/<str:subcategory1>/<str:subcategory2>/',views.products,name="products"),
+    path('products/<str:category>/<str:subcategory1>/<str:subcategory2>/<str:subcategory3>/',views.products,name="products"),
     path('<int:id>/buy/',views.productDetails,name="products-details"),
+    path('variation/<int:id>/buy/',views.productDetailsVariation,name="products-details-variation"),
+
 
 
 

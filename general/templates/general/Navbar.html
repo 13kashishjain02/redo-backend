@@ -63,6 +63,9 @@
         cursor: pointer;
     }
 
+    ul li{
+        list-style-type: none;
+    }
 
 
 
@@ -131,15 +134,82 @@
             <a class="text-white" id="PersonalCare" data-bs-toggle="dropdown" aria-expanded="false">Personal Care <i class="fa-solid fa-chevron-down"></i></a>
             
             <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="PersonalCare">
-                <li><a class="dropdown-item" href="/products/personal care/bath care/">Bath Care</a></li>
-                <li><a class="dropdown-item" href="/personal care/hair care/">Hair Care</a></li>
-                <li><a class="dropdown-item" href="/personal care/skin care/">Skin Care</a></li>
-                <li><a class="dropdown-item" href="/personal care/body care/">Body Care</a></li>
-                <li><a class="dropdown-item" href="/personal care/oral Hygiene/">Oral Hygiene</a></li>
+                <li><a class="dropdown-item" id="personal-care" href="/products/personal care/bath care/">Bath Care
+                     <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                        <ul class="shadow-lg d-none" id="p-care-items">
+                            <li><a class="dropdown-item" href="/products/personal care/soaps & gels/">- Soaps & Gels</a></li>
+                            <li><a class="dropdown-item" href="/products/personal care/bathroom accessories/" id="bathroom-accessories">- Bathroom Accessories <i class="fa-solid fa-chevron-right"></i></a>
+                            
+                                <ul class="shadow-lg d-none" id="bathroom-items">
+                                    <li><a class="dropdown-item" href="/products/personal care/bathroom accessories/bath scrubs/">- Bath Scrub</a></li>
+                                    <li><a class="dropdown-item" href="/products/personal care/bathroom accessories/laundary bag/">- laundary bag</a></li>
+                                    <li><a class="dropdown-item" href="/products/personal care/bathroom accessories/soap stand/">- Soap stand</a></li>
+                                    <li><a class="dropdown-item" href="/products/personal care/bathroom accessories/toilet roll/">- toilet roll</a></li>
+                                    <li><a class="dropdown-item" href="/products/personal care/bathroom accessories/hand towel/">- Hand towel</a></li>
+                                </ul>
+                            </li>
+                          </ul>       
+                </li>
+                <li><a class="dropdown-item" href="/personal care/hair care/" id="hair-care">Hair Care <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="hair-care-items">
+                        <li><a class="dropdown-item" href="/products/personal care/hair care/shampoos & conditioners/">- Shampoos & Conditioners</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/hair care/hair oils & masks/">- Hair Oils & Masks </a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/hair care/comb & brushes/" id="comb">- comb & brushes <i class="fa-solid fa-chevron-right"></i></a>
+                        
+                            <ul class="shadow-lg d-none" id="comb-items">
+                                <li><a class="dropdown-item" href="/products/personal care/hair care/comb & brushes/combs/">- Combs</a></li>
+                                <li><a class="dropdown-item" href="/products/personal care/hair care/comb & brushes/brushes/">- Brushes</a></li>
+                                <li><a class="dropdown-item" href="/products/personal care/hair care/comb & brushes/razor/">- Razor</a></li>
+                            </ul>
+
+                        </li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/personal care/skin care/" id="skin-care">Skin Care <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="skin-care-items">
+                        <li><a class="dropdown-item" href="/products/personal care/skin care/serums/">- Serums</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/skin care/mists & toners/">- Mists & Toners</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/skin care/masks & scrubs/">- Masks & Scrubs</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/skin care/moisturisers/">- Moisturisers</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/skin care/sunscreen/">- Sunscreen</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/skin care/massager/">- Massager</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/skin care/eye & lip care/">- Eye & Lip Care</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/personal care/body care/" id="body-care">Body Care <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="body-care-items">
+                        <li><a class="dropdown-item" href="/products/personal care/body care/cleaning wipes/">- Cleaning wipes</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/body care/earbuds/">- earbuds</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/body care/tissue paper/">- tissue paper</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/body care/hot and cold massager/">- hot and cold massager</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/body care/towek/">- towel</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/body care/cotton balls/">- cotton balls</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/body care/nail clippers/">- Nail clippers</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/personal care/oral Hygiene/" id="oral-hygiene">Oral Hygiene <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="oral-hygiene-items">
+                        <li><a class="dropdown-item" href="/products/personal care/oral hygiene/tooth brush/">- tooth brush</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/oral hygiene/tounge cleaner/">- tounge cleaner</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/oral hygiene/tooth pick/">- tooth pick</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/oral hygiene/tooth powder/">- Tooth powder</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/personal care/natural essentials oils/" id="female-hygiene">Female Hygiene <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="female-hygiene-items">
+                        <li><a class="dropdown-item" href="/products/personal care/female hygiene/sanitary pads/">- sanitary pads</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/female hygiene/panty liner/">- panty liner</a></li>
+                        <li><a class="dropdown-item" href="/products/personal care/female hygiene/menstrual cups/">- menstrual cups</a></li>
+                    </ul>
+                </li>
                 <li><a class="dropdown-item" href="/personal care/natural essentials oils/">Natural Essential Oils</a></li>
                 <li><a class="dropdown-item" href="/personal care/reusable mask/">Reusable Mask</a></li>
               </ul>
         </div>
+
 
         <div class="dropdown">
             <a class="text-white" id="CarryOns" data-bs-toggle="dropdown" aria-expanded="false">Carry Ons <i class="fa-solid fa-chevron-down"></i></a>
@@ -157,11 +227,49 @@
             <a class="text-white" id="Stationary" data-bs-toggle="dropdown" aria-expanded="false">Stationary <i class="fa-solid fa-chevron-down"></i></a>
             
             <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Stationary">
-                <li><a class="dropdown-item" href="/products/stationary/pen & pencils/">Pen & Pencils</a></li>
-                <li><a class="dropdown-item" href="/products/stationary/plantable stationary/">Plantable Stationary</a></li>
-                <li><a class="dropdown-item" href="/products/stationary/notebook & diaries/">Notebook & diaries</a></li>
-                <li><a class="dropdown-item" href="/products/stationary/packaging">Packaging</a></li>
-                <li><a class="dropdown-item" href="/products/stationary/accessories/">Accessories</a></li>
+                <li><a class="dropdown-item" href="/products/stationary/pen & pencils/">Pen & Pencils </a></li>
+                <li><a class="dropdown-item" href="/products/stationary/plantable stationary/" id="plantable-stationary">Plantable Stationary <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="plantable-stationary-items">
+                        <li><a class="dropdown-item" href="/products/stationary/plantable stationary/seed pencil/">- seed pencil</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/plantable stationary/seed greeting cards/">- seed greeting cards</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/plantable stationary/seed paper/">- seed paper</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/stationary/notebook & diaries/" id="notebook">Notebook & diaries <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="notebook-items">
+                        <li><a class="dropdown-item" href="/products/stationary/notebook/diary/">- diary</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/notebook/exercise book/">- exercise book</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/notebook/notepads/">- notepads</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/notebook/students notebook/">- students notebook</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/stationary/packaging" id="packaging">Packaging <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="packaging-items">
+                        <li><a class="dropdown-item" href="/products/stationary/packaging/packaging tapes/">- packaging tapes</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/packaging/Bubble wrap/">- Bubble wrap</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/packaging/Fillers/">- Fillers</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/stationary/accessories/" id="accessories">Accessories <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="accessories-items">
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/Printer & Xerox papers/">- Printer/Xerox papers</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/pen stand & holders/">- pen stand & holders</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/pouches/">- pouches</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/keychains/">- Keychains</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/bookmarks/">- Bookmarks</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/envelops/">- envelops</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/mouse pad/">- mouse pad</a></li>
+                        <li><a class="dropdown-item" href="/products/stationary/accessories/laptop buddy/">- Laptop buddy</a></li>
+                    </ul>
+
+                </li>
               </ul>
         </div>
 
@@ -169,12 +277,60 @@
             <a class="text-white" id="SweetHome" data-bs-toggle="dropdown" aria-expanded="false">Home <i class="fa-solid fa-chevron-down"></i></a>
             
             <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="SweetHome">
-                <li><a class="dropdown-item" href="/products/home/home decor/">Home Decor</a></li>
+                <li><a class="dropdown-item" href="/products/home/home decor/" id="home-decor">Home Decor <i class="fa-solid fa-chevron-right"></i></a>
+                    
+                    <ul class="shadow-lg d-none" id="home-decor-items">
+                        <li><a class="dropdown-item" href="/products/home/home decor/candles/">- candles</a></li>
+                        <li><a class="dropdown-item" href="/products/home/home decor/lantern/">- lantern</a></li>
+                        <li><a class="dropdown-item" href="/products/home/home decor/table vase/">- table vase</a></li>
+                        <li><a class="dropdown-item" href="/products/home/home decor/sculptures & idol/">- sculptures/idol</a></li>
+                        <li><a class="dropdown-item" href="/products/home/home decor/photo frame/">- photo frame</a></li>
+                        <li><a class="dropdown-item" href="/products/home/home decor/swing/">- Swing</a></li>
+                        <li><a class="dropdown-item" href="/products/home/home decor/lamps/">- lamps</a></li>
+                    </ul>
+                
+                </li>
                 <li><a class="dropdown-item" href="/products/home/mats/">Mats/Rugs</a></li>
-                <li><a class="dropdown-item" href="/products/home/bedsheets & pillow/">Bedsheets/Pillow</a></li>
-                <li><a class="dropdown-item" href="/products/home/furniture/">Furniture</a></li>
-                <li><a class="dropdown-item" href="/products/home/garden/">Garden</a></li>
-                <li><a class="dropdown-item" href="/products/home/mandir/">Mandir</a></li>
+                <li><a class="dropdown-item" href="/products/home/bedsheets & pillow/" id="bedsheets">Bedsheets/Pillow <i class="fa-solid fa-chevron-right"></i></a>
+                  
+                    <ul class="shadow-lg d-none" id="bedsheets-items">
+                        <li><a class="dropdown-item" href="/products/home/bedsheets/bedsheet/">- Bedsheet</a></li>
+                        <li><a class="dropdown-item" href="/products/home/bedsheets/pillow cover/">- pillow cover</a></li>
+                        <li><a class="dropdown-item" href="/products/home/bedsheets/cushion cover/">- cushion cover</a></li>
+                        <li><a class="dropdown-item" href="/products/home/bedsheets/Curtains/">- Curtains</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/home/furniture/" id="furniture">Furniture <i class="fa-solid fa-chevron-right"></i></a>
+                    
+                    <ul class="shadow-lg d-none" id="furniture-items">
+                        <li><a class="dropdown-item" href="/products/home/furniture/Stools/">- Stools</a></li>
+                        <li><a class="dropdown-item" href="/products/home/furniture/Tables/">- Tables</a></li>
+                        <li><a class="dropdown-item" href="/products/home/furniture/Chair/">- Chair</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/home/garden/" id="garden">Garden <i class="fa-solid fa-chevron-right"></i></a>
+                    
+                    <ul class="shadow-lg d-none" id="garden-items">
+                        <li><a class="dropdown-item" href="/products/home/garden/pots & planters/">- pots & planters</a></li>
+                        <li><a class="dropdown-item" href="/products/home/garden/tables/">- tables</a></li>
+                        <li><a class="dropdown-item" href="/products/home/garden/chair & stools/">- chair & stools</a></li>
+                        <li><a class="dropdown-item" href="/products/home/garden/others/">- Others</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/home/mandir/" id="mandir">Mandir <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="mandir-items">
+                        <li><a class="dropdown-item" href="/products/home/mandir/incense stick/cones/">- incense stick/cones</a></li>
+                        <li><a class="dropdown-item" href="/products/home/mandir/murtis/">- Murtis</a></li>
+                        <li><a class="dropdown-item" href="/products/home/mandir/pots/">- Pots</a></li>
+                        <li><a class="dropdown-item" href="/products/home/mandir/mats/">- mats</a></li>
+                        <li><a class="dropdown-item" href="/products/home/mandir/others/">- others</a></li>
+                    </ul>
+
+                </li>
                 <li><a class="dropdown-item" href="/products/home/yoga essentials/">Yoga essentials</a></li>
               </ul>
         </div>
@@ -184,10 +340,117 @@
             <a class="text-white" id="Fashion" data-bs-toggle="dropdown" aria-expanded="false">Fashion <i class="fa-solid fa-chevron-down"></i></a>
             
             <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Fashion">
-                <li><a class="dropdown-item" href="/products/fashion/clothes/">Clothes</a></li>
-                <li><a class="dropdown-item" href="/products/fashion/jewellery/">Jewellery</a></li>
-                <li><a class="dropdown-item" href="/products/fashion/footwear/">Footwear</a></li>
-                <li><a class="dropdown-item" href="/products/fashion/accessories/">Accessories</a></li>
+                <li><a class="dropdown-item" href="/products/fashion/clothes/" id="clothes">Clothes <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="clothes-items">
+                        <li><a class="dropdown-item" href="/products/fashion/clothes/men/" id="men-clothes">- Men <i class="fa-solid fa-chevron-right"></i></a>
+                        
+                            <ul class="shadow-lg d-none" id="men-clothes-items">
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/tshirt/">- Tshirt</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/shirt/">- Shirt</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/sweatshirt/">- Sweatshirt</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/pants & Pyjamas/">- Pants & Pyjamas</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/kurtas/">- Kurtas</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/shorts/">- Shorts</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/jackets/">- Jackets</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/men/others/">- others</a></li>
+                            </ul>
+
+                        </li>
+                        <li><a class="dropdown-item" href="/products/fashion/clothes/women/" id="women-clothes">- Women <i class="fa-solid fa-chevron-right"></i></a>
+                        
+                            <ul class="shadow-lg d-none" id="women-clothes-items">
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/tshirt/">- Tshirt</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/shirt/">- Shirt</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/sweatshirt/">- Sweatshirt</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/pants & Pyjamas/">- Pants & Pyjamas</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/kurtas/">- Kurtas</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/shorts/">- Shorts</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/jackets/">- Jackets</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/skirt/">- skirt</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/sarees & blouses/">- Sarees & Blouses</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/suits/">- Suits</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/tops/">- Tops</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/clothes/women/others/">- others</a></li>
+                            </ul>
+                        
+                        </li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/fashion/jewellery/" id="jewellery">Jewellery <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="jewellery-items">
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/earrings/">- Earrings</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/necklace/">- Necklace</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/pendant/">- Pendant</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/rings/">- Rings</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/nose accessories/">- Nose accessories</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/ear cuff/">- Ear cuff</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/choker/">- Choker</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/lip ring/">- Lip ring</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/jewellery/others/">- others</a></li>
+                    </ul>
+                
+                </li>
+                <li><a class="dropdown-item" href="/products/fashion/footwear/" id="footwear">Footwear <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="footwear-items">
+                        <li><a class="dropdown-item" href="/products/fashion/footer/men/" id="men-footwear">- Men <i class="fa-solid fa-chevron-right"></i></a>
+                            
+                            <ul class="shadow-lg d-none" id="men-footwear-items">
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/men/casuals/">- Casuals</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/men/sports shoes/">- Sports shoes</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/men/slippers/">- Slippers</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/men/others/">- others</a></li>
+                            </ul>
+                            
+                        </li>
+                        <li><a class="dropdown-item" href="/products/fashion/footer/women/" id="women-footwear">- Women <i class="fa-solid fa-chevron-right"></i></a>
+                        
+                            <ul class="shadow-lg d-none" id="women-footwear-items">
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/women/casuals/">- Casuals</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/women/sports shoes/">- Sports shoes</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/women/slippers/">- Slippers</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/footwear/women/others/">- others</a></li>
+                            </ul>
+                    
+                        </li>
+                    </ul>
+                
+                </li>
+                <li><a class="dropdown-item" href="/products/fashion/accessories/" id="fashion-accessories">Accessories <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="fashion-accessories-items">
+                        <li><a class="dropdown-item" href="/products/fashion/accessories/men/" id="men-fashion-accessories">- Men <i class="fa-solid fa-chevron-right"></i></a>
+                            
+                            <ul class="shadow-lg d-none" id="men-fashion-accessories-items">
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/men/tie & belts/">- Tie & Belts</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/men/goggles/">- Goggles</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/men/bags & pouches/">- Bags & Pouches</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/men/wallets /">- Wallets </a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/men/sling bag & hand bag/">- Sling bag & hand bag</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/men/others/">- others</a></li>
+                            </ul>
+                            
+                        </li>
+                        <li><a class="dropdown-item" href="/products/fashion/accessories/women/" id="women-fashion-accessories">- Women <i class="fa-solid fa-chevron-right"></i></a>
+                        
+                            <ul class="shadow-lg d-none" id="women-fashion-accessories-items">
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/tie & belts/">- Tie & Belts</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/goggles/">- Goggles</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/bags & pouches/">- Bags & Pouches</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/wallets & purses/">- Wallets & purses</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/clutches/">- Clutches</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/sling bag & hand bag/">- Sling bag & hand bag</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/scrunchies/">- scrunchies</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/Stoles & Scarfs/">- Stoles & Scarfs</a></li>
+                                <li><a class="dropdown-item" href="/products/fashion/accessories/women/others/">- others</a></li>
+                            </ul>
+                        
+                        </li>
+                    </ul>
+
+                </li>
               </ul>
         </div>
 
@@ -209,13 +472,70 @@
             <a class="text-white" id="Kitchen" data-bs-toggle="dropdown" aria-expanded="false">Kitchen <i class="fa-solid fa-chevron-down"></i></a>
             
             <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Kitchen">
-                <li><a class="dropdown-item" href="/products/kitchen/table ware/">Table ware</a></li>
-                <li><a class="dropdown-item" href="/products/kitchen/cultery/">Cutlery</a></li>
-                <li><a class="dropdown-item" href="/products/kitchen/serving ware/">Serving Ware</a></li>
-                <li><a class="dropdown-item" href="/products/kitchen/household supplies/">Household Supplies</a></li>
-                <li><a class="dropdown-item" href="/products/kitchen/collection/">Collection</a></li>
-                <li><a class="dropdown-item" href="/products/kitchen/disposable/">Disposables</a></li>
-                <li><a class="dropdown-item" href="/products/kitchen/cookware/">Cookware</a></li>
+                <li><a class="dropdown-item" href="/products/kitchen/table ware/" id="table-ware">Table ware <i class="fa-solid fa-chevron-right"></i></a>
+                   
+                    <ul class="shadow-lg d-none" id="table-ware-items">
+                        <li><a class="dropdown-item" href="/products/kitchen/table ware/plates/">- Plates</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/table ware/bowls/">- Bowls</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/table ware/coasters/">- Coasters</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/products/kitchen/cultery/" id="cutlery">Cutlery <i class="fa-solid fa-chevron-right"></i></a>
+                    
+                    <ul class="shadow-lg d-none" id="cutlery-items">
+                        <li><a class="dropdown-item" href="/products/kitchen/cutlery/Knifes/">- Knifes</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/cutlery/spoons/">- spoons</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/cutlery/forks/">- Forks</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/products/kitchen/serving ware/" id="serving-ware">Serving Ware <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="serving-ware-items">
+                        <li><a class="dropdown-item" href="/products/kitchen/serving ware/tea cups">- tea cups</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/serving ware/coffee mug/">- coffee mug</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/serving ware/beer mug/">- beer mug</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/serving ware/kettle/">- kettle</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/serving ware/jugs/">- jugs</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/serving ware/trays/">- Trays</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/serving ware/bowls/">- Bowls</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/products/kitchen/household supplies/" id="household">Household Supplies <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="household-items">
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/waste bin">- waste bin</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/bottle cleaner/">- bottle cleaner</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/utensil scrubber/">- utensil scrubber</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/shopping bag/">- shopping bag</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/table mats/">- table mats</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/bottle holder/">- bottle holder</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/coasters/">- coasters</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/household supplies/Aprons/">- Aprons</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/products/kitchen/collection/" id="collection">Collection <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="collection-items">
+                        <li><a class="dropdown-item" href="/products/kitchen/collection/dinner set">- Dinner set</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/collection/cup sets/">- cup sets</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/collection/others/">- others</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/products/kitchen/disposable/" id="disposables">Disposables <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="disposables-items">
+                        <li><a class="dropdown-item" href="/products/kitchen/disposables/disposable plates">- disposable plates</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/disposables/disposable bowls/">- disposable bowls</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/disposables/disposable spoons/">- disposable spoons</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/disposables/disposable glass/">- disposable glass</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/disposables/disposable container/">- disposable container</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/products/kitchen/cookware/" id="cookware">Cookware <i class="fa-solid fa-chevron-right"></i></a>
+                    <ul class="shadow-lg d-none" id="cookware-items">
+                        <li><a class="dropdown-item" href="/products/kitchen/cookware/frying pan">- frying pan</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/cookware/pressure cooker/">- pressure cooker</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/cookware/kadai handi/">- kadai handi</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/cookware/tawa/">- tawa</a></li>
+                        <li><a class="dropdown-item" href="/products/kitchen/cookware/Steamers/">- Steamers</a></li>
+                    </ul>
+                </li>
               </ul>
         </div>
        
@@ -238,11 +558,411 @@
         
         
         
-       
         
        
 
     </div>
 
 </section>
+
+
+<script>
+
+    //personal care
+    let p_care = document.getElementById('personal-care');
+    let p_care_items = document.getElementById('p-care-items')
+    let bathroom_items = document.getElementById('bathroom-items')
+    let bathroom_accessories = document.getElementById('bathroom-accessories')
+    let hair_care = document.getElementById('hair-care')
+    let hair_care_items = document.getElementById('hair-care-items')
+    let comb = document.getElementById('comb')
+    let comb_items = document.getElementById('comb-items')
+    let skin_care = document.getElementById('skin-care')
+    let skin_care_items = document.getElementById('skin-care-items')
+    let body_care = document.getElementById('body-care')
+    let body_care_items = document.getElementById('body-care-items')
+    let oral_hygiene = document.getElementById('oral-hygiene')
+    let oral_hygiene_items = document.getElementById('oral-hygiene-items')
+    let female_hygiene = document.getElementById('female-hygiene')
+    let female_hygiene_items = document.getElementById('female-hygiene-items')
+
+    //kitchen
+    let table_ware = document.getElementById('table-ware')
+    let table_ware_items = document.getElementById('table-ware-items')
+    let cutlery = document.getElementById('cutlery')
+    let cutlery_items = document.getElementById('cutlery-items')
+    let serving_ware = document.getElementById('serving-ware')
+    let serving_ware_items = document.getElementById('serving-ware-items')
+    let household = document.getElementById('household')
+    let household_items = document.getElementById('household-items')
+    let collection = document.getElementById('collection')
+    let collection_items = document.getElementById('collection-items')
+    let disposables = document.getElementById('disposables')
+    let disposables_items = document.getElementById('disposables-items')
+    let cookware = document.getElementById('cookware')
+    let cookware_items = document.getElementById('cookware-items')
+
+    //home
+    let home_decor = document.getElementById('home-decor')
+    let home_decor_items = document.getElementById('home-decor-items')
+    let bedsheets = document.getElementById('bedsheets')
+    let bedsheets_items = document.getElementById('bedsheets-items')
+    let furniture = document.getElementById('furniture')
+    let furniture_items = document.getElementById('furniture-items')
+    let garden= document.getElementById('garden')
+    let garden_items = document.getElementById('garden-items')
+    let mandir = document.getElementById('mandir')
+    let mandir_items = document.getElementById('mandir-items')
+
+    //staionary
+    let plantable_stationary = document.getElementById('plantable-stationary')
+    let plantable_stationary_items = document.getElementById('plantable-stationary-items')
+    let notebook = document.getElementById('notebook')
+    let notebook_items = document.getElementById('notebook-items')
+    let accessories = document.getElementById('accessories')
+    let accessories_items = document.getElementById('accessories-items')
+    let packaging = document.getElementById('packaging')
+    let packaging_items = document.getElementById('packaging-items')
+
+    //fashion
+    let clothes = document.getElementById('clothes')
+    let clothes_items = document.getElementById('clothes-items')
+    let men_clothes = document.getElementById('men-clothes')
+    let men_clothes_items = document.getElementById('men-clothes-items')
+    let women_clothes = document.getElementById('women-clothes')
+    let women_clothes_items = document.getElementById('women-clothes-items')
+    let jewellery = document.getElementById('jewellery')
+    let jewellery_items = document.getElementById('jewellery-items')
+    let footwear = document.getElementById('footwear')
+    let footwear_items = document.getElementById('footwear-items')
+    let men_footwear = document.getElementById('men-footwear')
+    let men_footwear_items = document.getElementById('men-footwear-items')
+    let women_footwear = document.getElementById('women-footwear')
+    let women_footwear_items = document.getElementById('women-footwear-items')
+    let fashion_accessories = document.getElementById('fashion-accessories')
+    let fashion_accessories_items = document.getElementById('fashion-accessories-items')
+    let men_fashion_accessories = document.getElementById('men-fashion-accessories')
+    let men_fashion_accessories_items = document.getElementById('men-fashion-accessories-items')
+    let women_fashion_accessories = document.getElementById('women-fashion-accessories')
+    let women_fashion_accessories_items = document.getElementById('women-fashion-accessories-items')
+    
+
+
+
+
+    
+    p_care.addEventListener('mouseenter',function(){
+        p_care_items.setAttribute('class','d-block')
+    })
+
+    p_care_items.addEventListener('mouseleave',function(){
+        p_care_items.setAttribute('class','d-none')
+        bathroom_items.setAttribute('class','d-none')
+    })
+
+    bathroom_accessories.addEventListener('mouseenter',function(){
+        bathroom_items.setAttribute('class','d-block')
+    })
+
+    hair_care.addEventListener('mouseenter',function(){
+        hair_care_items.setAttribute('class','d-block')
+    })
+
+    hair_care_items.addEventListener('mouseleave',function(){
+        hair_care_items.setAttribute('class','d-none')
+        comb_items.setAttribute('class','d-none')
+    })
+
+    comb.addEventListener('mouseenter',function(){
+        comb_items.setAttribute('class','d-block')
+    })
+
+    skin_care.addEventListener('mouseenter',function(){
+        skin_care_items.setAttribute('class','d-block')
+    })
+
+    skin_care_items.addEventListener('mouseleave',function(){
+        skin_care_items.setAttribute('class','d-none')
+        
+    })
+
+    body_care.addEventListener('mouseenter',function(){
+        body_care_items.setAttribute('class','d-block')
+    })
+
+    body_care_items.addEventListener('mouseleave',function(){
+        body_care_items.setAttribute('class','d-none')
+        
+    })
+
+    oral_hygiene.addEventListener('mouseenter',function(){
+        oral_hygiene_items.setAttribute('class','d-block')
+    })
+
+    oral_hygiene_items.addEventListener('mouseleave',function(){
+        oral_hygiene_items.setAttribute('class','d-none')
+        
+    })
+
+    female_hygiene.addEventListener('mouseenter',function(){
+        female_hygiene_items.setAttribute('class','d-block')
+    })
+
+    female_hygiene_items.addEventListener('mouseleave',function(){
+        female_hygiene_items.setAttribute('class','d-none')
+        
+    })
+
+    
+
+
+
+    //kitchen
+
+    table_ware.addEventListener('mouseenter',function(){
+        table_ware_items.setAttribute('class','d-block')
+    })
+
+    table_ware_items.addEventListener('mouseleave',function(){
+        table_ware_items.setAttribute('class','d-none')
+        
+    })
+
+    cutlery.addEventListener('mouseenter',function(){
+        cutlery_items.setAttribute('class','d-block')
+    })
+
+    cutlery_items.addEventListener('mouseleave',function(){
+        cutlery_items.setAttribute('class','d-none')
+        
+    })
+
+    serving_ware.addEventListener('mouseenter',function(){
+        serving_ware_items.setAttribute('class','d-block')
+    })
+
+    serving_ware_items.addEventListener('mouseleave',function(){
+        serving_ware_items.setAttribute('class','d-none')
+        
+    })
+
+    household.addEventListener('mouseenter',function(){
+        household_items.setAttribute('class','d-block')
+    })
+
+    household_items.addEventListener('mouseleave',function(){
+        household_items.setAttribute('class','d-none')
+        
+    })
+
+    collection.addEventListener('mouseenter',function(){
+        collection_items.setAttribute('class','d-block')
+    })
+
+    collection_items.addEventListener('mouseleave',function(){
+        collection_items.setAttribute('class','d-none')
+        
+    })
+
+    disposables.addEventListener('mouseenter',function(){
+        disposables_items.setAttribute('class','d-block')
+    })
+
+    disposables_items.addEventListener('mouseleave',function(){
+        disposables_items.setAttribute('class','d-none')
+        
+    })
+
+    cookware.addEventListener('mouseenter',function(){
+        cookware_items.setAttribute('class','d-block')
+    })
+
+    cookware_items.addEventListener('mouseleave',function(){
+        cookware_items.setAttribute('class','d-none')
+        
+    })
+
+    //home
+
+    home_decor.addEventListener('mouseenter',function(){
+        home_decor_items.setAttribute('class','d-block')
+    })
+
+    home_decor_items.addEventListener('mouseleave',function(){
+        home_decor_items.setAttribute('class','d-none')
+        
+    })
+
+    bedsheets.addEventListener('mouseenter',function(){
+        bedsheets_items.setAttribute('class','d-block')
+    })
+
+    bedsheets_items.addEventListener('mouseleave',function(){
+        bedsheets_items.setAttribute('class','d-none')
+        
+    })
+
+    furniture.addEventListener('mouseenter',function(){
+        furniture_items.setAttribute('class','d-block')
+    })
+
+    furniture_items.addEventListener('mouseleave',function(){
+        furniture_items.setAttribute('class','d-none')
+        
+    })
+
+    garden.addEventListener('mouseenter',function(){
+        garden_items.setAttribute('class','d-block')
+    })
+
+    garden_items.addEventListener('mouseleave',function(){
+        garden_items.setAttribute('class','d-none')
+        
+    })
+
+    mandir.addEventListener('mouseenter',function(){
+        mandir_items.setAttribute('class','d-block')
+    })
+
+    mandir_items.addEventListener('mouseleave',function(){
+        mandir_items.setAttribute('class','d-none')
+        
+    })
+
+
+    //stationary
+
+    plantable_stationary.addEventListener('mouseenter',function(){
+        plantable_stationary_items.setAttribute('class','d-block')
+    })
+
+    plantable_stationary_items.addEventListener('mouseleave',function(){
+        plantable_stationary_items.setAttribute('class','d-none')
+        
+    })
+
+    notebook.addEventListener('mouseenter',function(){
+        notebook_items.setAttribute('class','d-block')
+    })
+
+    notebook_items.addEventListener('mouseleave',function(){
+        notebook_items.setAttribute('class','d-none')
+        
+    })
+
+    accessories.addEventListener('mouseenter',function(){
+        accessories_items.setAttribute('class','d-block')
+    })
+
+    accessories_items.addEventListener('mouseleave',function(){
+        accessories_items.setAttribute('class','d-none')
+        
+    })
+
+    packaging.addEventListener('mouseenter',function(){
+        packaging_items.setAttribute('class','d-block')
+    })
+
+    packaging_items.addEventListener('mouseleave',function(){
+        packaging_items.setAttribute('class','d-none')
+        
+    })
+
+
+    //fashion
+    clothes.addEventListener('mouseenter',function(){
+        clothes_items.setAttribute('class','d-block')
+    })
+
+    clothes_items.addEventListener('mouseleave',function(){
+        clothes_items.setAttribute('class','d-none')
+        
+    })
+
+    men_clothes.addEventListener('mouseenter',function(){
+        men_clothes_items.setAttribute('class','d-block')
+    })
+
+    men_clothes_items.addEventListener('mouseleave',function(){
+        men_clothes_items.setAttribute('class','d-none')
+        
+    })
+
+    women_clothes.addEventListener('mouseenter',function(){
+        women_clothes_items.setAttribute('class','d-block')
+    })
+
+    women_clothes_items.addEventListener('mouseleave',function(){
+        women_clothes_items.setAttribute('class','d-none')
+        
+    })
+
+    jewellery.addEventListener('mouseenter',function(){
+        jewellery_items.setAttribute('class','d-block')
+    })
+
+    jewellery_items.addEventListener('mouseleave',function(){
+        jewellery_items.setAttribute('class','d-none')
+        
+    })
+
+    footwear.addEventListener('mouseenter',function(){
+        footwear_items.setAttribute('class','d-block')
+    })
+
+    footwear_items.addEventListener('mouseleave',function(){
+        footwear_items.setAttribute('class','d-none')
+        
+    })
+
+    men_footwear.addEventListener('mouseenter',function(){
+        men_footwear_items.setAttribute('class','d-block')
+    })
+
+    men_footwear_items.addEventListener('mouseleave',function(){
+        men_footwear_items.setAttribute('class','d-none')
+        
+    })
+
+    women_footwear.addEventListener('mouseenter',function(){
+        women_footwear_items.setAttribute('class','d-block')
+    })
+
+    women_footwear_items.addEventListener('mouseleave',function(){
+        women_footwear_items.setAttribute('class','d-none')
+        
+    })
+
+    fashion_accessories.addEventListener('mouseenter',function(){
+        fashion_accessories_items.setAttribute('class','d-block')
+    })
+
+    fashion_accessories_items.addEventListener('mouseleave',function(){
+        fashion_accessories_items.setAttribute('class','d-none')
+        
+    })
+
+    men_fashion_accessories.addEventListener('mouseenter',function(){
+        men_fashion_accessories_items.setAttribute('class','d-block')
+    })
+
+    men_fashion_accessories_items.addEventListener('mouseleave',function(){
+        men_fashion_accessories_items.setAttribute('class','d-none')
+        
+    })
+
+    women_fashion_accessories.addEventListener('mouseenter',function(){
+        women_fashion_accessories_items.setAttribute('class','d-block')
+    })
+
+    women_fashion_accessories_items.addEventListener('mouseleave',function(){
+        women_fashion_accessories_items.setAttribute('class','d-none')
+        
+    })
+
+   
+
+
+    
+</script>
 

@@ -1,3 +1,4 @@
+from pyexpat import model
 from django_countries.fields import CountryField
 from django.db import models
 from account.models import VendorAccount,Account
@@ -204,13 +205,13 @@ class Product(models.Model):
         return d_charges
     
     def sales_value(self):
-        return self.special_price*100/100+int(self.gst)
+        return (self.special_price*100)/(100+int(self.gst))
     
     def gst_value(self):
-        return  self.sales_value() - self.special_price
+        return  self.special_price  - self.sales_value()
 
     def seller_commission(self):
-        return (self.special_price*18)/100+self.delivery_charges()
+        return (self.special_price*18/100)+self.delivery_charges()
 
     def gst_commission(self):
         return (self.seller_commission()*18/100)
@@ -235,9 +236,9 @@ class Variation(models.Model):
     special_price = models.FloatField(null=True,blank=True)
     our_price = models.FloatField(null=True,blank=True)
     pub_date = models.DateField(null=True, blank=True, )
-    image1 = models.ImageField(upload_to=get_uplaod_file_name_variation)
-    image2 = models.ImageField(upload_to=get_uplaod_file_name_variation)
-    image3 = models.ImageField(upload_to=get_uplaod_file_name_variation)
+    image1 = models.ImageField(upload_to=get_uplaod_file_name_variation,max_length=500)
+    image2 = models.ImageField(upload_to=get_uplaod_file_name_variation,max_length=500)
+    image3 = models.ImageField(upload_to=get_uplaod_file_name_variation,max_length=500)
     # image4 = models.ImageField(upload_to=get_uplaod_file_name_variation)
     sku = models.CharField(max_length=50, null=True,blank=True,unique=True)
 
@@ -275,7 +276,9 @@ class Order(models.Model):
 
 class Cart(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
-    cartdata = models.JSONField(default=list, blank=True, null=True)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    size = models.CharField(max_length=100)
     def __str__(self):
         return self.user.name
 
@@ -285,8 +288,3 @@ class My_Wishlist(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE) 
 
 
-# from django.db import models
-from ckeditor.fields import RichTextField
-
-class Post(models.Model):
-    content = RichTextField()

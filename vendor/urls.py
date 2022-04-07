@@ -11,6 +11,7 @@ urlpatterns = [
     path('store/add-products/variations/',views.storeVproducts,name="storeVproducts"),
     path('products/',views.products,name="products"),
     path('product/edit/<int:id>/',views.edit_products,name="Edit-product"),
+    path('product/variation/edit/<int:id>/',views.edit_product_variation,name="Edit-product-variation"),
     path('orders/',views.orders,name="orders"),
 ]
 

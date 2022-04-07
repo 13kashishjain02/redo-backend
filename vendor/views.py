@@ -564,4 +564,109 @@ def edit_products(request,id):
 
 def orders(request):
     return render(request,'vendor/orders.html')
+
+def edit_product_variation(request,id):
+    p_id = Product.objects.get(id=id)
+    products = Variation.objects.filter(product=p_id)
+    if request.method == "POST":
+        state = StateForm(request.POST)
+        if state.is_valid():
+            st = state.cleaned_data['state']
+        p_name = 'p_name' in request.POST and request.POST['p_name']
+        b_name = 'b_name' in request.POST and request.POST['b_name']
+        weight = 'weight' in request.POST and request.POST['weight']
+        length = 'length' in request.POST and request.POST['length']
+        width = 'width' in request.POST and request.POST['width']
+        height = 'height' in request.POST and request.POST['height']
+        recycled = 'recycled' in request.POST and request.POST['recycled']
+        upcycled = 'upcycled' in request.POST and request.POST['upcycled']
+        ecofriendly = 'ecofriendly' in request.POST and request.POST['ecofriendly']
+        handicraft = 'handicraft' in request.POST and request.POST['handicraft']
+        handloom = 'handloom' in request.POST and request.POST['handloom']
+        p_tags = 'p_tags' in request.POST and request.POST['p_tags']
+        material = 'material' in request.POST and request.POST['material']
+        category = 'category' in request.POST and request.POST['category']
+        sub_category1 = 'sub_category1' in request.POST and request.POST['sub_category1']
+        sub_category2 = 'sub_category2' in request.POST and request.POST['sub_category2']
+        sub_category3 = 'sub_category3' in request.POST and request.POST['sub_category3']
+        s_desc = 's_desc' in request.POST and request.POST['s_desc']
+        l_desc = 'l_desc' in request.POST and request.POST['l_desc']
+        sizes = 'sizes' in request.POST and request.POST['sizes']
+        gst = 'gst' in request.POST and request.POST['gst']
+
+
+        rec = False
+        if recycled:
+            rec = True
+        
+        upc = False
+        if upcycled:
+            upc = True
+
+        eco= False
+        if ecofriendly:
+            eco = True
+        
+        handi = False
+        if handicraft:
+            handi = True
+
+        handl= False
+        if handloom:
+            handl = True
+
+
+        p_id.name = p_name
+        p_id.brand = b_name
+        p_id.weight = weight
+        p_id.length = length
+        p_id.width = width
+        p_id.height = height
+        p_id.tags = p_tags
+        p_id.material = material
+        p_id.category = category
+        p_id.subcategory1 = sub_category1
+        p_id.subcategory2 = sub_category2
+        p_id.subcategory3 = sub_category3
+        p_id.description = l_desc
+        p_id.short_description = s_desc
+        p_id.is_recycled = rec
+        p_id.is_upcycled = upc
+        p_id.is_ecofriendly= eco
+        p_id.state = st
+        p_id.size = sizes
+        p_id.is_handicraft = handi
+        p_id.is_handloom=handl
+        p_id.gst = gst
+        p_id.has_variation = True
+
+        p_id.save()
+
+        for p in products:
+            p_v = Variation.objects.get(id=p.id)
+            p_v.color = request.POST[f'color{p.id}']
+            p_v.size = request.POST[f'size{p.id}']
+            p_v.sku = request.POST[f'sku{p.id}']
+            p_v.stock = request.POST[f'stock{p.id}']
+            p_v.mrp = request.POST[f'mrp{p.id}']
+            p_v.special_price = request.POST[f'price{p.id}']
+            if request.POST[f'p_image1{p.id}']:
+                p_v.image1 = request.POST[f'p_image1{p.id}']
+            if request.POST[f'p_image2{p.id}']:
+                p_v.image2 = request.POST[f'p_image2{p.id}']
+            if request.POST[f'p_image3{p.id}']:
+                p_v.image3 = request.POST[f'p_image3{p.id}']
+            p_v.save()
+
+
+
+
+
+        messages.success(request,'Product has been updated')
+
+
+    
+    state = StateForm()
+    
+    return render(request,'vendor/edit-product-variation.html',{'products':products,'product':p_id,'state':state})
     
