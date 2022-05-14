@@ -1,0 +1,1680 @@
+{% extends 'general/base2.html' %}
+{%load static%}
+{% block head%}
+    <link rel="stylesheet" href="{%static 'general/css/index-style.css'%}">
+    <link rel="stylesheet" href="{%static 'general/css/home.css'%}">
+
+    <!--product slider / hide box in mobile view-->
+     <style>
+        @media (max-width: 768px) {
+            .hide {
+              display: none;
+            }
+          }
+        @media (min-width: 769px) {
+            .hide_lap {
+              display: none;
+            }
+          }
+    </style>
+
+     <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+      background-color: #f2f2f2;
+      font-family: sans-serif;
+    }
+
+    .login, .menu-head, .cat {
+      display: none;
+    }
+
+    /* search bar */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #004953;
+      padding: 0px 45px;
+    }
+
+    .burger {
+      display: none;
+    }
+
+    .line {
+      background-color: white;
+      width: 20px;
+      height: 3px;
+      margin: 0px 5px
+    }
+
+    .big-line {
+      margin: 5px;
+      background-color: white;
+      width: 30px;
+      height: 3px;
+    }
+
+    .search {
+      display: flex;
+      padding: 5px 15px;
+      background-color: #f3f4f9;
+      width: 600px;
+      border-radius: 8px;
+      border: 1px solid #f3f4f9;
+    }
+
+    .search-btn {
+      background-color: #f3f4f9;
+      border: 1px solid #f3f4f9;
+      outline: none;
+      font-size: 1.2rem;
+      color: #777;
+    }
+
+    .sb {
+      background-color: #f3f4f9;
+      width: 100%;
+      border: 1px solid #f3f4f9;
+      outline: none;
+      font-weight: 400;
+      font-size: 0.8rem;
+      margin-left: 35px;
+      color: #777;
+    }
+
+    .search-res {
+      display: none;
+    }
+    /* /search bar */
+
+    /*nav-bar*/
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      padding: 10px;
+    }
+
+    .content {
+      color: #004953;
+      margin: 10px 0px 10px 10px;
+    }
+
+    .fa-chevron-down {
+      vertical-align: middle;
+    }
+    /* nav-bar finished */
+
+    /*content below nav-bar*/
+
+    .drop-pc {
+      position: relative;
+    }
+
+    .dd-pc {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .drop-down-pc {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      padding: 15px 0px;
+      background-color: white;
+      width: 200px;
+    }
+
+    .drop-pc:hover .drop-down-pc {
+      display: block;
+    }
+
+    .d-pc {
+      list-style: none;
+      color: #004953;
+      padding: 10px 20px;
+      text-transform: capitalize;
+    }
+
+    .d-pc:hover {
+      background-color: #f2f2f2;
+    }
+
+    #arrow-pc {
+      margin-left: 5px;
+      margin-right: 10px;
+      color: #004953;
+    }
+
+    .show {
+      display: flex !important;
+    }
+
+    @media screen and (max-width: 640px) {
+
+    .search-bar {
+      margin-bottom: 10px;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .burger {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .search {
+      display: none !important;
+    }
+
+    .sb, .search-btn {
+      background-color: #fff;
+      border: 1px solid #fff;
+    }
+
+    .search-res {
+      display: flex;
+      margin: auto;
+      padding: 5px 5px;
+      background-color: #fff;
+      width: 90%;
+      border-radius: 8px;
+      border: 1px solid #004953;
+    }
+
+    .fa-headphones{
+      display: none !important;
+    }
+
+    .nav {
+        display: none;
+        position: fixed;
+        top: 0px;
+        /* bottom: 0px; */
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        background-color: #004953;
+        padding: 0px;
+        width: 80%;
+        height: auto;
+        z-index: 100;
+      }
+
+      .menu-head {
+        width: 100%;
+        display: none;
+        justify-content: flex-end;
+        background-color: #fff;
+        padding: 10px 0px;
+      }
+
+      .cross {
+        color: #004953;
+        font-size: 1.6rem;
+        padding: 0px 10px;
+      }
+
+      .login {
+        display: none;
+        width: 100%;
+        border-bottom: 1px solid white;
+      }
+
+      .m {
+        color: white;
+        margin: 0px 10px;
+        padding: 10px 0px;
+      }
+
+      .cat {
+        display: none;
+        color: white;
+        margin: 5px 10px 0px;
+        padding: 5px 0px;
+      }
+
+      .content {
+        color: #fff;
+        margin: 10px 0px 10px 10px;
+      }
+
+      .drop-pc {
+        position: initial;
+        width: 100%;
+      }
+
+      .drop-down-pc {
+        display: none;
+        position: initial;
+        /* z-index: 100; */
+        margin: 0px 10px;
+        padding: 15px 0px;
+        background-color: white;
+        width: auto;
+        border-radius: 10px;
+      }
+
+      .drop-pc:hover .drop-down-pc {
+        display: block;
+      }
+
+      .dd-pc {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #arrow-pc {
+        margin-left: 5px;
+        margin-right: 10px;
+        color: #fff;
+      }
+
+      .d-pc {
+        list-style: none;
+        color: #004953;
+        padding: 10px 20px;
+        text-transform: capitalize;
+      }
+
+      .d-pc:hover {
+        background-color: #f2f2f2;
+      }
+
+      .dil {
+        display: none !important;
+      }
+    }
+    /* footer */
+    #footer {
+      background-color: #004953;
+      padding: 2% 0;
+    }
+
+    .footer,
+    .contents {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+    }
+
+    .footer-content {
+      margin: 0px 30px;
+    }
+
+    .footer-heading {
+      color: #f67171;
+      padding-bottom: 5%;
+    }
+
+    .footer-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-list li {
+      color: white;
+      padding: 1% 0;
+    }
+
+    .footer-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 40%;
+      margin-top: 5%;
+    }
+
+    .footer-icons .icons {
+      margin: 0 3%;
+      padding: 7%;
+      border-radius: 100%;
+      background-color: #cccccc;
+    }
+    /* footer finished */
+    @media screen and (max-width: 640px) {
+      .footer {
+        flex-direction: column;
+      }
+      .contents {
+        margin: 25px 0px;
+      }
+
+      .footer-list {
+        line-height: 1.3;
+      }
+    }
+
+    </style>
+{% endblock %}
+{% block body%}
+    <!-- poster below nav bar -->
+    <div class="banner"></div>
+    <!-- container for below portions -->
+    <div class="cont">
+        <!-- div for whole recycle section -->
+        <div class="recycle">
+            <!-- div for each perticular item -->
+            <div class="recycle-item">
+                <!-- div for contents of each item -->
+                <div class="recycle-content">
+                    <p class="recycle-para hide">Recycle Products</p>
+                    <p class="recycle-para hide_lap" style="font-size:1.75rem;">Recycle Products</p>
+                    <button class="recycle-button">Shop Now</button>
+                </div>
+            </div>
+            <div class="recycle-item">
+                <div class="recycle-content">
+                    <p class="recycle-para hide">Recycle Products</p>
+                    <p class="recycle-para hide_lap" style="font-size:1.75rem;">Recycle Products</p>
+                    <button class="recycle-button">Shop Now</button>
+                </div>
+            </div>
+            <div class="recycle-item hidden">
+                <div class="recycle-content">
+                    <p class="recycle-para">Recycle Products</p>
+                    <button class="recycle-button">Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- end of recycle section -->
+        <!-- featured collection section -->
+        <h2 class="feature-heading">Featured Collection</h2>
+        <div class="featured-collection">
+            <!-- left part -->
+            <div class="left-part">
+                <!-- sections of left part -->
+                <div class="top">
+                    <!-- further section of left for for the top and bottom portion -->
+                    <div class="item-left parent">
+                        <img src="{%static 'general/images/feature-1.jfif'%}" alt="">
+                    </div>
+                    <div class="item-right parent">
+                        <img src="{%static 'general/images/feature-2.jfif'%}" alt="">
+                    </div>
+                </div>
+                <div class="middle parent">
+                    <img src="{%static 'general/images/feature-3.jfif'%}" alt="">
+                </div>
+                <div class="bottom">
+                    <div class="item-left parent">
+                        <img src="{%static 'general/images/feature-4.jfif'%}" alt="">
+                    </div>
+                    <div class="item-right parent">
+                        <img src="{%static 'general/images/feature-5.jfif'%}" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- right part -->
+            <div class="right-part parent">
+                <img src="{%static 'general/images/feature-6.jfif'%}" alt="">
+            </div>
+        </div>
+        <!-- end of feature section -->
+
+    </div>
+    <!-- buy 1 get free section -->
+    <div class="buy1">
+        <div class="buy1-left">
+            <p>Buy 1 Get 2 Free on Any <span>Gift</span></p>
+        </div>
+        <div class="buy1-right">
+            <div class="buy1-subright">
+                <div class="buy1-box">
+                    <img src="{%static 'general/images/buy1-1.jfif'%}" class="buy1-image" alt="">
+                    <p>Gift for special one</p>
+                    <button>Shop now</button>
+                </div>
+                <div class="buy1-box">
+                    <img src="{%static 'general/images/buy1-2.jfif'%}" class="buy1-image" alt="">
+                    <p>Gift for Kids</p>
+                    <button>Shop now</button>
+                </div>
+            </div>
+            <div class="buy1-subright">
+                <div class="buy1-box">
+                    <img src="{%static 'general/images/buy1-3.jfif'%}" class="buy1-image" alt="">
+                    <p>Gift for special one</p>
+                    <button>Shop now</button>
+                </div>
+                <div class="buy1-box">
+                    <img src="{%static 'general/images/buy1-4.jfif'%}" class="buy1-image" alt="">
+                    <p>Gift for special one</p>
+                    <button>Shop now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- vision -->
+    <div id="vision">
+        <!-- background image -->
+        <img src="{%static 'general/images/vision-bg.jfif'%}" class="vision-img" alt="">
+        <!-- heading -->
+        <h2 style="margin-left: 43%; color: #004953; font-weight: 500;">VISION</h2>
+        <div class="vision">
+            <!-- left portion -->
+            <div class="vision-left">
+                <div class="vision-left-content">
+                    <h3>First featurette heading.</h3>
+                    <h3 style="color: green;position: absolute; right: 0;">It’ll blow your mind.</h3>
+                    <div class="visionl-para">
+                        <p>Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugit commodi at quas itaque quaerat dolores error, excepturi ducimus ab corporis quae saepe explicabo iusto libero harum facilis suscipit, sed recusandae ad rem. Corrupti, dolorem eius? Quod dolorum alias, aut exercitationem temporibus nobis odio quas facere nam assumenda, ea nihil?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde animi accusantium ipsam deleniti libero maiores voluptates deserunt, at commodi qui reprehenderit exercitationem quisquam cupiditate corrupti! Minima cum qui nostrum consequatur, suscipit nam commodi neque. Deserunt, voluptatum laborum maiores adipisci ullam excepturi. Molestiae itaque similique animi. Non exercitationem blanditiis nesciunt porro omnis dolorem maiores consectetur? Illum repellat sequi veritatis maxime doloremque!</p>
+                    </div>
+                    <!-- entering email portion -->
+                    <p class="vision-email">Enter your mail address to subscribe</p>
+                    <form action="post" class="vision-form">
+                        <input class="input" type="text" id="email" value="Enter email address">
+                        <button>SUBSCRIBE</button>
+                    </form>
+                </div>
+            </div>
+            <!-- end of left portion and beginning of right portion -->
+            <div class="vision-right">
+                <!-- div for box -->
+                <div class="vision-box"></div>
+                <!-- icons -->
+                <div class="vision-icons">
+                    <i style="background-color: #F67171; color: white; width: 4rem;" class="fab fa-facebook-f icons"></i>
+                    <i class="fab fa-twitter icons"></i>
+                    <i class="fab fa-linkedin-in icons"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of vision div -->
+
+
+
+
+
+    <!-- Browsing History Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+        <!--Container for Heading and arrow keys -->
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <span class="navbar-brand" style="color: #008080;font-weight: 600;">
+            BROWSING HISTORY</span>
+            <div class="d-flex">
+                <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
+                <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+
+
+        <!-- Slider items -->
+        <div class="main-carousel">
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 2 (2).png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 2 (2).png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 2 (2).png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 2 (2).png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 2 (2).png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 2 (2).png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 2 (2).png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--Recommendation Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+
+        <!--Container for Heading and arrow keys -->
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <span class="navbar-brand" style="color: #008080;font-weight: 600;">
+            RECOMMENDATION</span>
+            <div class="d-flex">
+                <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
+                <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+
+        <!-- Slider items -->
+        <div class="main-carousel">
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 1.png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 1.png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 1.png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 1.png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="card">
+                    <img src="{%static 'general/images/Rackle-Shoes-Red-1 1.png'%}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                    </div>
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item" style="border: none;">size</li>
+                        <li class="list-group-item  d-flex justify-content-between align-items-center" style="border: none;">
+                            <div class="price">
+                                <span style="color:#004953;;">Rs 700</span>
+                                <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                            </div>
+                            <div>
+                                <i class="bi bi-dash-square" style="color:
+                                #004953;"></i>
+                                <i class="bi bi-cart2" style="color:
+                            #222222;"></i>
+                                <i class="bi bi-plus-square-fill" style="color:
+                            #004953;"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unique Collection Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+
+        <!--Container for Heading and arrow keys -->
+        <div class="container-fluid d-flex justify-content-between align-items-center mb-2">
+            <span class="navbar-brand" style="color: #008080;font-weight: 600;">Unique Collection</span>
+            <div class="d-flex">
+                <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
+                <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+
+        <!-- Slider -->
+        <div class="main-carousel">
+            <div class="carousel-cell uniqueCollection">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 me-1">
+                    <div class="col">
+                        <div class="card mb-3 border-0" style="background-color: #F2F2F2;">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3"style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 border-0" style="background-color: #F2F2F2;">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3"style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell uniqueCollection">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 me-1">
+                    <div class="col">
+                        <div class="card mb-3 border-0" style="background-color: #F2F2F2;">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3"style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 border-0" style="background-color: #F2F2F2;">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3"style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell uniqueCollection">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 me-1">
+                    <div class="col">
+                        <div class="card mb-3 border-0" style="background-color: #F2F2F2;">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3"style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 border-0" style="background-color: #F2F2F2;">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3"style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center rounded-0 text-light uniqueButton" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Collection Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+
+        <!--Container for Heading and arrow keys -->
+        <div class="container-fluid d-flex justify-content-between align-items-center mb-2">
+            <span class="navbar-brand" style="color: #008080;font-weight: 600;">Special Collection</span>
+            <div class="d-flex">
+                <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
+                <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+
+        <!-- Slider -->
+        <div class="main-carousel">
+            <div class="carousel-cell specialCollection" style="min-width: 43%; aspect-ratio: 3/4;">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 me-1">
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell specialCollection" style="min-width: 43%; aspect-ratio: 3/4;">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 me-1">
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell specialCollection" style="min-width: 43%; aspect-ratio: 3/4;">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 me-1">
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell specialCollection" style="min-width: 43%; aspect-ratio: 3/4;">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 me-1">
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                                <div class="col-md-4 col-sm-4 col-4">
+                                    <img src="{%static 'general/images/uniqueCollection.png'%}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-8" style="background-color: #F2F2F2;box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+                                border-radius: 0px 30px 30px 0px;">
+                                    <div class="card-body">
+                                        <p class="card-title" style="font-weight: 600;line-height: 21px; color: #777676;">Brand Name</p>
+                                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;font-weight: 500;">Men’s Alex Redwood Hemp Shoes</p>
+                                        <p class="card-text">Description goes here.</p>
+                                        <div class="price">
+                                            <span style="color:#004953;;">Rs 700</span>
+                                            <span class="text-muted" style="font-size: 0.8em; font-weight: 400; color:  #C7C7C7;"> <del>1200</del></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-end flex-wrap">
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #15707C;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Add to Cart
+                                        </button>
+                                        <button type="button" class="btn text-center w-50 rounded-0 text-light" style="background-color: #004953;">
+                                            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                                            Buy Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+        <div class="row">
+            <!-- Heading -->
+            <div class="col-md-4 col-sm-12 col-12 d-flex align-items-center" style="font-size: calc(0.9rem + 0.5vw);">
+                <div class="blog-heading-container w-100">
+                    <div class="heading">
+                        <h1 style="font-weight: 600; color: #008080;">BLOG</h1>
+                        <p class="text-wrap text-start">Some description goes here.</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="arrows prev_arrow"><i class="bi bi-arrow-left blogArrow"></i></div>
+                        <div class="arrows next_arrow"><i class="bi bi-arrow-right blogArrow"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider -->
+            <div class="col-md-8 col-sm-12 col-12" style="background-color: #F7F8FA;">
+                <div class="main-carousel">
+                    <div class="carousel-cell blog-carousel">
+                        <div class="card w-50 border-0" style="background-color: #F7F8FA;">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color: #1D252C;">
+                                    Clean and fragrant soy wax
+                                </h2>
+                                <p class="card-text mt-3" style="color: #004953; font-size: 0.65rem;">
+                                    Made for your home and for your wellness
+                                </p>
+                            </div>
+                            <ul class="list-group list-group-flush border-0" style="font-size: 0.65rem;">
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <button type="button" class="btn text-center rounded-3 text-light" style="background-color: #004953; padding: 2% 11%;">
+                                   Learn More
+                                </button>
+                            </div>
+                        </div>
+                        <div class="blog-img w-50 d-flex align-items-center justify-content-center">
+                            <img src="{%static 'general/images/Candle_Mockup_1_B (2) copy 2 14.02 1.png'%}" alt="" width="50%">
+                        </div>
+                    </div>
+                    <div class="carousel-cell blog-carousel">
+                        <div class="card w-50 border-0" style="background-color: #F7F8FA;">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color: #1D252C;">
+                                    Clean and fragrant soy wax
+                                </h2>
+                                <p class="card-text mt-3" style="color: #004953; font-size: 0.65rem;">
+                                    Made for your home and for your wellness
+                                </p>
+                            </div>
+                            <ul class="list-group list-group-flush border-0" style="font-size: 0.65rem;">
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <button type="button" class="btn text-center rounded-3 text-light" style="background-color: #004953; padding: 2% 11%;">
+                                   Learn More
+                                </button>
+                            </div>
+                        </div>
+                        <div class="blog-img w-50 d-flex align-items-center justify-content-center">
+                            <img src="{%static 'general/images/Candle_Mockup_1_B (2) copy 2 14.02 1.png'%}" alt="" width="50%">
+                        </div>
+                    </div>
+                    <div class="carousel-cell blog-carousel">
+                        <div class="card w-50 border-0" style="background-color: #F7F8FA;">
+                            <div class="card-body">
+                                <h2 class="card-title" style="color: #1D252C;">
+                                    Clean and fragrant soy wax
+                                </h2>
+                                <p class="card-text mt-3" style="color: #004953; font-size: 0.65rem;">
+                                    Made for your home and for your wellness
+                                </p>
+                            </div>
+                            <ul class="list-group list-group-flush border-0" style="font-size: 0.65rem;">
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-circle" style="font-size: 0.8rem;"></i> Eco-sustainable:All recyclable materials, 0% CO2 emissions
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <button type="button" class="btn text-center rounded-3 text-light" style="background-color: #004953; padding: 2% 11%;">
+                                   Learn More
+                                </button>
+                            </div>
+                        </div>
+                        <div class="blog-img w-50 d-flex align-items-center justify-content-center">
+                            <img src="{%static 'general/images/Candle_Mockup_1_B (2) copy 2 14.02 1.png'%}" alt="" width="50%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Shop by Material Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+        <div class="row">
+            <!-- Heading -->
+            <div class="col-md-4 col-sm-12 col-12 d-flex align-items-center" style="font-size: calc(0.9rem + 0.5vw);">
+                <div class="blog-heading-container w-100">
+                    <div class="heading text-start">
+                        <h1 style="font-weight: 600; color: #008080;">Shop By Material</h1>
+                        <p class="text-wrap text-start">Some description goes here.</p>
+                    </div>
+                    <button type="button" id="shop-desktop" class="btn text-center rounded-2 w-75 text-light" style="background-color: #15707C;">Shop Now
+                    </button>
+                    <div class="d-flex">
+                        <div class="arrows prev_arrow"><i class="bi bi-arrow-left blogArrow"></i></div>
+                        <div class="arrows next_arrow"><i class="bi bi-arrow-right blogArrow"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider -->
+            <div class="col-md-8 col-sm-12 col-12">
+                <div class="main-carousel">
+                    <div class="carousel-cell shop-carousel">
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-cell shop-carousel">
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-cell shop-carousel">
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-cell shop-carousel">
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-cell shop-carousel">
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                        <div class="card border-0" style="background-color:#E5E5E5; margin: 0.5rem; border-radius: 1rem;">
+                            <img src="{%static 'general/images/image 1 1.png'%}" class="card-img-top image-fluid" alt="...">
+                            <div class="card-body" style="background-color: white;">
+                                <p class="card-text text-center" style="color: #15707C; font-weight: bold;">Shop Now</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+            <button type="button" id="shop-mobile" class="btn text-center rounded-2 w-100 text-light" style="background-color: #15707C;">Shop Now
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- Testimonial Slider -->
+    <div class="container-fluid carousel-container mt-4 mb-4" style="font-size: calc(0.8rem + 0.4vw); font-family: 'Raleway', sans-serif;">
+
+        <!--Container for Heading and arrow keys -->
+        <div class="container-fluid d-flex justify-content-end align-items-center">
+            <div class="half-container d-flex justify-content-between align-items-center">
+                <span class="navbar-brand" style="color: #008080;font-weight: 600;">
+                    Testimonials</span>
+                <div class="d-flex">
+                    <div class="arrows prev_arrow"><i class="fas fa-chevron-left"></i></div>
+                    <div class="arrows next_arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Slider -->
+        <div class="main-carousel">
+            <div class="carousel-cell w-100 testimonial-carousel">
+                <div class="row">
+                    <!-- Image -->
+                    <div class="col-sm-12 col-md-4 col-12">
+                        <div class="testimonials-images">
+                            <img src="{%static 'general/images/Vector 15.png'%}" alt="" class="image-fluid w-100 testimonials-images-up-vector">
+                            <img src="{%static 'general/images/Vector 16.png'%}" alt="" class="image-fluid w-100 testimonials-images-down-vector">
+                            <img src="{%static 'general/images/Rectangle 34.png'%}" alt="" class="image-fluid w-100 testimonials-images-background">
+                            <img src="{%static 'general/images/image 24.png'%}" alt="" class="image-fluid w-100 testimonials-images-person">
+                        </div>
+                    </div>
+                    <!-- Description -->
+                    <div class="col-sm-12 col-md-8 col-12 d-flex align-items-center">
+                        <div class="description text-start">
+                            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem;">Loving my new KAILI watch from @matoa_id, the first ever Indonesian watch local brand that uses wood as their main material. Like any other Matoa products, KAILI is inspired by Indonesian heritage.</p>
+                            <p style="font-weight: bold; letter-spacing: 0.03em;">Gita Savitri</p>
+                            <p style="color:#777777;">Content Creator/Influencer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell w-100 testimonial-carousel">
+                <div class="row">
+                    <!-- Image -->
+                    <div class="col-sm-12 col-md-4 col-12">
+                        <div class="testimonials-images">
+                            <img src="{%static 'general/images/Vector 15.png'%}" alt="" class="image-fluid w-100 testimonials-images-up-vector">
+                            <img src="{%static 'general/images/Vector 16.png'%}" alt="" class="image-fluid w-100 testimonials-images-down-vector">
+                            <img src="{%static 'general/images/Rectangle 34.png'%}" alt="" class="image-fluid w-100 testimonials-images-background">
+                            <img src="{%static 'general/images/image 24.png'%}" alt="" class="image-fluid w-100 testimonials-images-person">
+                        </div>
+                    </div>
+                    <!-- Description -->
+                    <div class="col-sm-12 col-md-8 col-12 d-flex align-items-center">
+                        <div class="description text-start">
+                            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem;">Loving my new KAILI watch from @matoa_id, the first ever Indonesian watch local brand that uses wood as their main material. Like any other Matoa products, KAILI is inspired by Indonesian heritage.</p>
+                            <p style="font-weight: bold; letter-spacing: 0.03em;">Gita Savitri</p>
+                            <p style="color:#777777;">Content Creator/Influencer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN plugin for flickity slider -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+    <!--Flickity JavaScript -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Applied JavaScript -->
+    <script src="{%static 'general/css/home.js'%}"></script>
+
+    <!-- js link of bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,467 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redopact</title>
+
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .banner{
+            background-image:url("{% static 'general/images/banner.jpg' %}");
+            background-color: black;
+            background-size:     cover;                      
+            background-repeat:   no-repeat;
+            background-position: center center;
+            height: 610px;
+        }
+
+        .featured-collections img{
+            cursor: pointer;
+        }
+ 
+
+
+
+    </style>
+
+</head>
+<body>
+
+
+    {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert text-center alert-dismissible alert-{{message.tags}} mx-auto mt-3" style="width: 40%;border-radius: 0.5rem;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+       <b> {{message}}</b>
+      </div>
+    {%endfor%}
+
+    {%endif%}
+
+
+{% include 'general/Navbar.html' %}
+
+
+
+<div class="container-fluid banner text-center" id="banner"></div>
+
+
+<div class="featured-collections container my-5 py-5">
+
+    <h2 class="text-primary text-center display"><b>Featured Collection</b></h2>
+
+
+    <div class="row mt-5">
+        <div class="col-sm-4">
+           <a href="/products/stationary/"><img src="{% static 'general/images/featured/stationary.png' %}" class="img-fluid shadow" alt=""></a>
+            <h5 class="text-muted mt-3">Stationary</h5>
+        </div>
+        <div class="col-sm-4">
+            <a href="/products/books/"><img src="{% static 'general/images/featured/books.png' %}" class="img-fluid shadow" alt=""></a>
+            <h5 class="text-muted mt-3">Books</h5>
+        </div>
+        <div class="col-sm-4">
+            <a href="/products/bathroom/"><img src="{% static 'general/images/featured/bathroom.png' %}" class="img-fluid shadow" alt=""></a>
+            <h5 class="text-muted mt-3">Bathroom</h5>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-sm-4">
+            <a href="/products/kitchen/"><img src="{% static 'general/images/featured/kitchen.png' %}" class="img-fluid shadow" alt=""></a>
+            <h5 class="text-muted mt-3">Kitchen</h5>
+        </div>
+        <div class="col-sm-4">
+            <a href="/products/fashion/clothes/"><img src="{% static 'general/images/featured/garments.png' %}" class="img-fluid shadow" alt=""></a>
+            <h5 class="text-muted mt-3">Garments</h5>
+        </div>
+        <div class="col-sm-4">
+            <a href="/products/home/"><img src="{% static 'general/images/featured/gadgets.png' %}" class="img-fluid shadow" alt=""></a>
+            <h5 class="text-muted mt-3">Daily Needs</h5>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="container my-5 py-5">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3 class="text-primary">Shop By Material</h3>
+            <span class="text-muted" style="font-size: 13px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima, ullam.</span> <br> <br>
+            <a href="" class="btn bg-primary text-white px-5">Shop Now</a>
+        </div>
+        <div class="col-sm-8">
+            <div class="owl-carousel owl-theme mt-5">
+                <div class="item text-center">
+                    <div class="shadow-sm border pb-3 mx-3">
+                        <img src="{% static 'general/images/materials/bamboo.png'%}" class="img-fluid" alt=""> <br>
+                        <h5 style="font-size: 13px;">Bamboo</h5>
+                        <button class="btn bg-primary text-white shadow">Shop Now</button>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <div class="shadow-sm border pb-3 mx-3">
+                        <img src="{% static 'general/images/materials/banana.png' %}" class="img-fluid" alt=""> <br>
+                      <h5 style="font-size: 13px;">Banana</h5>
+                      <button class="btn bg-primary text-white shadow">Shop Now</button>
+                      </div>
+                </div>
+                <div class="item text-center">
+                    <div class="shadow-sm border pb-3 mx-3">
+                        <img src="{% static 'general/images/materials/bronze.png' %}" class="img-fluid" alt=""> <br>
+                      <h5 style="font-size: 13px;">Bronze</h5>
+                      <button class="btn bg-primary text-white shadow">Shop Now</button>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <div class="shadow-sm border pb-3 mx-3">
+                        <img src="{% static 'general/images/materials/cane.png'%}" class="img-fluid" alt=""> <br>
+                        <h5 style="font-size: 13px;">Cane</h5>
+                        <button class="btn bg-primary text-white shadow">Shop Now</button>
+                    </div>
+                </div>
+                <div class="item text-center">
+                    <div class="shadow-sm border pb-3 mx-3">
+                        <img src="{% static 'general/images/materials/clay.png'%}" class="img-fluid" alt=""> <br>
+                      <h5 style="font-size: 13px;">Clay</h5>
+                      <button class="btn bg-primary text-white shadow">Shop Now</button>
+                      </div>
+                </div>
+                <div class="item text-center">
+                    <div class="shadow-sm border pb-3 mx-3">
+                        <img src="{% static 'general/images/materials/linen.png' %}" class="img-fluid" alt=""> <br>
+                      <h5 style="font-size: 13px;">Linen</h5>
+                      <button class="btn bg-primary text-white shadow">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container my-5 py-5">
+    <div class="row">
+        <div class="col-sm-6 py-5">
+            <h1 class="text-primary display-5"><i>Buy 1 Get 2 <br> Free on Any <br> Gift</i></h1>
+            <a href="" class="btn bg-primary text-white px-5">Shop Now</a>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="{% static 'general/images/gifts-section/gift1.png' %}" class="img-fluid" alt=""><br>
+                    <div class="d-grid">
+                        <a href="" class="btn bg-primary text-white">Shop now</a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <img src="{% static 'general/images/gifts-section/gift2.png' %}" class="img-fluid" alt="">
+                    <div class="d-grid">
+                        <a href="" class="btn bg-primary text-white">Shop now</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-3">
+                    <img src="{% static 'general/images/gifts-section/gift3.png' %}" class="img-fluid" alt="">
+                    <div class="d-grid">
+                        <a href="" class="btn bg-primary text-white">Shop now</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-3">
+                    <img src="{% static 'general/images/gifts-section/gift4.png' %}" class="img-fluid" alt="">
+                    <div class="d-grid">
+                        <a href="" class="btn bg-primary text-white">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container">
+    <h2 class="text-primary text-center display"><b>BROWSING HISTORY</b></h2>
+    <div class="owl-carousel owl-theme mt-5">
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" alt=""> <br>
+                <h5 style="font-size: 13px;">WROGN Jeans</h5>
+                <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+                <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">WROGN Shirts</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+              </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">Roadster Jeans</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" alt=""> <br>
+                <h5 style="font-size: 13px;">WROGN Jeans</h5>
+                <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+                <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">WROGN Shirts</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+              </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">Roadster Jeans</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class="container mt-5">
+    <h2 class="text-primary text-center display"><b>RECOMMENDATION</b></h2>
+    <div class="owl-carousel owl-theme mt-5">
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" alt=""> <br>
+                <h5 style="font-size: 13px;">WROGN Jeans</h5>
+                <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+                <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">WROGN Shirts</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+              </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">Roadster Jeans</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product5.webp'%}" class="img-fluid" alt=""> <br>
+                <h5 style="font-size: 13px;">WROGN Jeans</h5>
+                <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+                <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product4.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">WROGN Shirts</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+              </div>
+        </div>
+        <div class="item text-center">
+            <div class="shadow-sm border pb-3 mx-3">
+                <img src="{% static 'general/images/product3.webp'%}" class="img-fluid" alt=""> <br>
+              <h5 style="font-size: 13px;">Roadster Jeans</h5>
+              <p class="" style="font-size: 13px;">Rs.599 <span style="font-size: 12px;"><span style="text-decoration: line-through;">Rs.1,299</span> <span style="color: orangered;">(Rs. 700 OFF)</span></span></p>
+              <button class="btn bg-primary text-white shadow">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+<!-- vision -->
+
+<div class="container my-5 py-5">
+
+    <h2 class="text-primary text-center display"><b>vision</b></h2>
+
+    <div class="row pt-5">
+
+        <div class="col-sm-8 p-5">
+            <h1>Heading here</h1>
+            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, libero distinctio deleniti perspiciatis, eius unde fugit, rerum totam ducimus voluptas labore nam reiciendis sapiente explicabo magnam. Minima voluptate quidem mollitia ab. Sed eligendi illum ea harum dignissimos similique cum delectus tenetur laborum ex. Tempora impedit dolore culpa animi dicta at! Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nihil eius voluptates! Aliquam distinctio dicta facere optio ipsam harum sit libero quae amet impedit, aut ratione et delectus consequuntur! Neque quisquam doloremque inventore consequatur magnam laudantium voluptates nesciunt itaque sunt vitae. Laborum, id! Suscipit vel deleniti aspernatur, autem repellat aperiam.</span><br>
+
+            <form method="POST" class="py-3"> {%csrf_token%}
+                <input type="email" name="email" class="form-control bg-white" placeholder="Enter your email address" required style="border: 1px solid #1A4953;font-size:14px;"> <br>
+                <button class="btn bg-primary px-5 text-white" name="subscribe">subscribe</button>
+            </form>
+        </div>
+
+        <div class="col-sm-4 text-center">
+            <img src="{% static 'general/images/vision.jpg' %}" class="img-fluid" width="300px" alt=""> <br>
+            <div class="mt-3">
+                <a href="" class="px-2" style="font-size:20px;"><i class="fa-brands fa-facebook"></i></a>
+                <a href="" class="px-2" style="font-size:20px;"><i class="fa-brands fa-twitter"></i></a>
+                <a href="" class="px-2" style="font-size:20px;"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="" class="px-2" style="font-size:20px;"><i class="fa-brands fa-instagram"></i></a>
+               </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container my-5 py-5" style="background-color: #F2F2F2;">
+    <div class="row pt-5">
+
+        <div class="col-sm-4 p-5">
+            <h1 class="text-primary">Blog</h1>
+            <span>Some description goes here</span><br><br>
+                <a href="" class="btn bg-primary px-5 text-white">See More</a>
+        </div>
+
+        <div class="col-sm-8 p-5" style="background-color: #F7F8FA;">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4>{{blogs.title}}</h4>
+                        <p style="font-size: 13px;">{{blogs.content|safe}}</p><br>
+                        <a href="" class="btn bg-primary text-white px-5">Learn more</a>
+                    </div>
+
+                    <div class="col-sm-7">
+                        <img src="{{blogs.image.url}}" class="img-fluid" alt="">
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="container my-5 pt-5">
+    <h2 class="text-primary text-center display"><b>Customer reviews</b></h2>
+
+    <div class="owl-carousel owl-theme mt-5">
+        <div class="item">
+                <div class="shadow-sm px-3 pt-3 pb-1" style="border-radius: 10px;">
+                    <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i> <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>
+                    <p class="pt-2" style="font-size: 13px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias saepe a iste, inventore necessitatibus commodi earum, fugit facere veniam nemo, non est! Nesciunt velit sed repellat cupiditate, quas sequi mollitia.</p>
+                </div><br>
+                <img src="{% static 'general/images/04.jpeg'%}" style="border-radius:50%;width:40px;" alt="">
+                <span class="px-2">Laura Wilson</span>
+        </div>
+
+        <div class="item">
+            <div class="shadow-sm px-3 pt-3 pb-1" style="border-radius: 10px;">
+                <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i> <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>
+                <p class="pt-2" style="font-size: 13px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias saepe a iste, inventore necessitatibus commodi earum, fugit facere veniam nemo, non est! Nesciunt velit sed repellat cupiditate, quas sequi mollitia.</p>
+            </div><br>
+            <img src="{% static 'general/images/03.jpeg'%}" style="border-radius:50%;width: 40px;" alt="">
+            <span class="px-2">Richard Davies</span>
+        </div>
+
+        <div class="item">
+            <div class="shadow-sm px-3 pt-3 pb-1" style="border-radius: 10px;">
+                <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i> <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>
+                <p class="pt-2" style="font-size: 13px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias saepe a iste, inventore necessitatibus commodi earum, fugit facere veniam nemo, non est! Nesciunt velit sed repellat cupiditate, quas sequi mollitia.</p>
+            </div><br>
+            <img src="{% static 'general/images/02.jpeg'%}" style="border-radius:50%;width: 40px;" alt="">
+            <span class="px-2">Maria Alice Grant</span>
+        </div>
+
+        <div class="item">
+            <div class="shadow-sm px-3 pt-3 pb-1" style="border-radius: 10px;">
+                <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i> <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>  <i class="fas fa-star" style="color: #F4A568;font-size: 13px;"></i>
+                <p class="pt-2" style="font-size: 13px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias saepe a iste, inventore necessitatibus commodi earum, fugit facere veniam nemo, non est! Nesciunt velit sed repellat cupiditate, quas sequi mollitia.</p>
+            </div><br>
+            <img src="{% static 'general/images/01.jpeg'%}" style="border-radius:50%;width: 40px;" alt="">
+            <span class="px-2">Rafael Marquez</span>
+        </div>
+    </div>
+</div>
+
+
+
+{%include 'general/footer.html'%}
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    lazyLoad:true,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+
+owl.on('mousewheel', '.owl-stage', function (e) {
+    if (e.deltaY>0) {
+        owl.trigger('next.owl');
+    } else {
+        owl.trigger('prev.owl');
+    }
+    e.preventDefault();
+});
+
+
+
+banner.addEventListener('click',function(){
+        p_care_items.setAttribute('class','d-none')
+    })
+    </script>
+
+
+
+
+
+</body>
+</html>

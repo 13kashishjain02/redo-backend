@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title%} {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{%static 'shop/vendor/bootstrap/css/bootstrap.min.css'%}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="{%static 'shop/vendor/font-awesome/css/font-awesome.min.css'%}">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="{%static 'shop/vendor/owl.carousel/assets/owl.carousel.css'%}">
+    <link rel="stylesheet" href="{%static 'shop/vendor/owl.carousel/assets/owl.theme.default.css'%}">
+    <!-- theme stylesheet-->
+    {% if style == "default" %}
+      <link rel="stylesheet" href="{%static 'shop/css/style.default.css'%}" id="theme-stylesheet">
+    {%endif%}
+    {% if style == "blue" %}
+      <link rel="stylesheet" href="{%static 'shop/css/style.blue.css'%}" id="theme-stylesheet">
+    {%endif%}
+    {% if style == "green" %}
+      <link rel="stylesheet" href="{%static 'shop/css/style.green.css'%}" id="theme-stylesheet">
+    {%endif%}
+    {% if style == "pink" %}
+      <link rel="stylesheet" href="{%static 'shop/css/style.pink.css'%}" id="theme-stylesheet">
+    {%endif%}
+    {% if style == "red" %}
+      <link rel="stylesheet" href="{%static 'shop/css/style.red.css'%}" id="theme-stylesheet">
+    {%endif%}
+    {% if style == "sea" %}
+      <link rel="stylesheet" href="{%static 'shop/css/style.sea.css'%}" id="theme-stylesheet">
+    {%endif%}
+    {% if style == "violet" %}
+      <link rel="stylesheet" href="{%static 'shop/css/style.violet.css'%}" id="theme-stylesheet">
+    {%endif%}
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" src="/media/{{vendor.logo}}">
+    <!-- Favicon-->
+
+    <link rel="shortcut icon" href="../media/{{vendor.logo}}">
+
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'%}"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js'%}"></script><![endif]-->
+    {% block style%} {% endblock %}
+    <style>
+    .alert {
+      padding: 20px;
+      background-color: #25E008;
+      color: white;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- navbar-->
+    <header class="header mb-0">
+      <!--
+      *** TOPBAR ***
+      _________________________________________________________
+      -->
+      <div id="top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">{{blogger.blogname}}</a><a href="#" class="ml-1"></a></div>
+            <div class="col-lg-6 text-center text-lg-right">
+              <ul class="menu list-inline mb-0">
+                {%if request.user.is_authenticated %}
+                <li class="list-inline-item"><a href="../logout">logout</a></li>
+                <li class="list-inline-item"><a href="../account">My account</a></li>
+                {%else%}
+                <li class="list-inline-item"><a href="../register" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                <li class="list-inline-item"><a href="../register">Register</a></li>
+                {%endif%}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Customer login</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">X</span></button>
+              </div>
+              <div class="modal-body">
+                <form action="../login" method="post">
+                    {%csrf_token%}
+                  <div class="form-group">
+                    <input id="email-modal" type="text" name="email" placeholder="email" class="form-control" required/>
+                  </div>
+                  <div class="form-group">
+                    <input id="password-modal" type="password" name="password" placeholder="password" class="form-control" required/>
+                  </div>
+                  <p class="text-center">
+                    <button class="btn btn-primary" value="required" /><i class="fa fa-sign-in"></i> Log in</button>
+                  </p>
+                </form>
+                <p class="text-center text-muted">Not registered yet?</p>
+                <p class="text-center text-muted"><a href="../register"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- *** TOP BAR END ***-->
+
+
+      </div>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container"><a href="../" class="navbar-brand home"><img src="/media/{{blogger.logo}}" alt="{{blogger.blogname}}"  width="93" height="70" class="d-none d-md-inline-block"><img src="/media/{{blogger.logo}}" width="60" height="60" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Elpizo - go to homepage</span></a>
+          <div class="navbar-buttons">
+            <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
+            <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="../cart-detail" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
+          </div>
+          <div id="navigation" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item"><a href="../../{{blogger.blogname}}/viewblog/" class="nav-link active">Home</a></li>
+            </ul>
+            <div class="navbar-buttons d-flex justify-content-end">
+              <!-- /.nav-collapse-->
+              <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="#" class="btn btn-primary navbar-btn"><i class="fa fa-user"></i>Profile</a></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block body%} {% endblock %}
+
+
+    <!--    *** FOOTER ***
+    _________________________________________________________
+    -->
+<!--    <div id="footer">-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+<!--          <div class="col-lg-3 col-md-6">-->
+<!--            <h4 class="mb-3" style="color:#ffd835;">Pages</h4>-->
+<!--            <ul class="list-unstyled">-->
+<!--              <li><a href="../aboutus">About us</a></li>-->
+<!--              <li><a href="../termsandcondition">Terms and conditions</a></li>-->
+<!--              <li><a href="../privacypolicy">Privacy Policy</a></li>-->
+<!--              <li><a href="../termsandcondition/#refunds/cancellation">Refunds/Cancellation</a></li>-->
+<!--              {%if request.user.is_Vendor %}-->
+<!--              {%else%}-->
+<!--              <li><a href="../vendorregister">Become a vendor</a></li>-->
+<!--              {%endif%}-->
+<!--              <li><a href="../contactus">Contact us</a></li>-->
+<!--            </ul>-->
+<!--            <hr>-->
+<!--            <h4 class="mb-3" style="color:#ffd835;">User section</h4>-->
+<!--            <ul class="list-unstyled">-->
+<!--              {%if request.user.is_authenticated %}-->
+<!--                <li><a href="../logout" data-toggle="modal" data-target="#login-modal">Logout</a></li>-->
+<!--              {%else%}-->
+<!--                <li><a href="../login" data-toggle="modal" data-target="#login-modal">Login</a></li>-->
+<!--                <li><a href="../register">Register</a></li>-->
+<!--              {%endif%}-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; /.col-lg-3&ndash;&gt;-->
+<!--          &lt;!&ndash; /.col-lg-3&ndash;&gt;-->
+<!--          <div class="col-lg-3 col-md-6 ">-->
+<!--            <h4 class="mb-3" style="color:#ffd835;">Where to find us</h4>-->
+<!--            <p style="color:white;">{{blogger.shop_add}}<br>{{vendor.city}}<br>{{vendor.state}}<br><strong>India</strong></p><a href="../contactus">Go to contact page</a>-->
+<!--            <hr class="d-block d-md-none">-->
+<!--          </div>-->
+<!--          &lt;!&ndash; /.col-lg-3&ndash;&gt;-->
+<!--          <div class="col-lg-3 col-md-6">-->
+<!--&lt;!&ndash;            <h4 class="mb-3" style="color:#ffd835;">Get the news</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>&ndash;&gt;-->
+<!--            <form method="get" action="../vendorsearch/{{vendor.shop_name}}">-->
+<!--              <div class="input-group">-->
+<!--                <input type="text" name="search" class="form-control"><span class="input-group-append">-->
+<!--                  <button type="submit" class="btn btn-outline-secondary">Search</button></span>-->
+<!--              </div>-->
+<!--              &lt;!&ndash; /input-group&ndash;&gt;-->
+<!--            </form>-->
+<!--            <hr>-->
+<!--            <h4 class="mb-3" style="color:#ffd835;">Stay in touch</h4>-->
+<!--            <p class="social">-->
+<!--              <a href="#" class="facebook external"><i class="fa fa-facebook"></i></a>-->
+<!--              <a href="#" class="twitter external"><i class="fa fa-twitter"></i></a>-->
+<!--              <a href="#" class="instagram external"><i class="fa fa-instagram"></i></a>-->
+<!--&lt;!&ndash;              <a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a>&ndash;&gt;-->
+<!--              <a href="mailto:elpizocustomercare@gmail.com" class="email external"><i class="fa fa-envelope"></i></a>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; /.col-lg-3&ndash;&gt;-->
+<!--        </div>-->
+<!--        &lt;!&ndash; /.row&ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; /.container&ndash;&gt;-->
+<!--    </div>-->
+    <!-- /#footer-->
+    <!-- *** FOOTER END ***-->
+
+
+    <!--
+    *** COPYRIGHT ***
+    _________________________________________________________
+    -->
+    <div id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-2 mb-lg-0">
+            <p class="text-center text-lg-left">©2021 Kashish Jain.</p>
+          </div>
+          <div class="col-lg-6">
+<!--            <p class="text-center text-lg-right">Template design by <a href="#">Elpizo</a>-->
+              <!-- If you want to remove this backlink, pls purchase an Attribution-free License @ https://bootstrapious.com/p/obaju-e-commerce-template. Big thanks!-->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *** COPYRIGHT END ***-->
+    <!-- JavaScript files-->
+    <script src="{%static 'shop/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{%static 'shop/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{%static 'shop/vendor/jquery.cookie/jquery.cookie.js'%}"> </script>
+    <script src="{%static 'shop/vendor/owl.carousel/owl.carousel.min.js'%}"></script>
+    <script src="{%static 'shop/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js'%}"></script>
+    <script src="{%static 'shop/js/front.js'%}"></script>
+
+
+
+
+       {% block js%} {% endblock %}
+  </body>
+</html>

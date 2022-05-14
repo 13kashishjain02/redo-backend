@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color: #f2f2f2;
+        font-family: sans-serif;
+      }
+
+      .login, .menu-head, .cat {
+        display: none;
+      }
+
+      /* search bar */
+      .search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #004953;
+        padding: 0px 45px;
+      }
+
+      .burger {
+        display: none;
+      }
+
+      .line {
+        background-color: white;
+        width: 20px;
+        height: 3px;
+        margin: 0px 5px
+      }
+
+      .big-line {
+        margin: 5px;
+        background-color: white;
+        width: 30px;
+        height: 3px;
+      }
+
+      .search {
+        display: flex;
+        padding: 5px 15px;
+        background-color: #f3f4f9;
+        width: 600px;
+        border-radius: 8px;
+        border: 1px solid #f3f4f9;
+      }
+
+      .search-btn {
+        background-color: #f3f4f9;
+        border: 1px solid #f3f4f9;
+        outline: none;
+        font-size: 1.2rem;
+        color: #777;
+      }
+
+      .sb {
+        background-color: #f3f4f9;
+        width: 100%;
+        border: 1px solid #f3f4f9;
+        outline: none;
+        font-weight: 400;
+        font-size: 0.8rem;
+        margin-left: 35px;
+        color: #777;
+      }
+
+      .search-res {
+        display: none;
+      }
+      /* /search bar */
+
+      /*nav-bar*/
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 10px;
+      }
+
+      .content {
+        color: #004953;
+        margin: 10px 0px 10px 10px;
+      }
+
+      .fa-chevron-down {
+        vertical-align: middle;
+      }
+      /* nav-bar finished */
+
+      /*content below nav-bar*/
+
+      .drop-pc {
+        position: relative;
+      }
+
+      .dd-pc {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .drop-down-pc {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        padding: 15px 0px;
+        background-color: white;
+        width: 200px;
+      }
+
+      .drop-pc:hover .drop-down-pc {
+        display: block;
+      }
+
+      .d-pc {
+        list-style: none;
+        color: #004953;
+        padding: 10px 20px;
+        text-transform: capitalize;
+      }
+
+      .d-pc:hover {
+        background-color: #f2f2f2;
+      }
+
+      #arrow-pc {
+        margin-left: 5px;
+        margin-right: 10px;
+        color: #004953;
+      }
+
+      .show {
+        display: flex !important;
+      }
+
+      @media screen and (max-width: 640px) {
+
+      .search-bar {
+        margin-bottom: 10px;
+        padding: 0px;
+        width: 100%;
+      }
+
+      .burger {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .search {
+        display: none !important;
+      }
+
+      .sb, .search-btn {
+        background-color: #fff;
+        border: 1px solid #fff;
+      }
+
+      .search-res {
+        display: flex;
+        margin: auto;
+        padding: 5px 5px;
+        background-color: #fff;
+        width: 90%;
+        border-radius: 8px;
+        border: 1px solid #004953;
+      }
+
+      .fa-headphones{
+        display: none !important;
+      }
+
+      .nav {
+          display: none;
+          position: fixed;
+          top: 0px;
+          /* bottom: 0px; */
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          background-color: #004953;
+          padding: 0px;
+          width: 80%;
+          height: auto;
+          z-index: 100;
+        }
+
+        .menu-head {
+          width: 100%;
+          display: none;
+          justify-content: flex-end;
+          background-color: #fff;
+          padding: 10px 0px;
+        }
+
+        .cross {
+          color: #004953;
+          font-size: 1.6rem;
+          padding: 0px 10px;
+        }
+
+        .login {
+          display: none;
+          width: 100%;
+          border-bottom: 1px solid white;
+        }
+
+        .m {
+          color: white;
+          margin: 0px 10px;
+          padding: 10px 0px;
+        }
+
+        .cat {
+          display: none;
+          color: white;
+          margin: 5px 10px 0px;
+          padding: 5px 0px;
+        }
+
+        .content {
+          color: #fff;
+          margin: 10px 0px 10px 10px;
+        }
+
+        .drop-pc {
+          position: initial;
+          width: 100%;
+        }
+
+        .drop-down-pc {
+          display: none;
+          position: initial;
+          /* z-index: 100; */
+          margin: 0px 10px;
+          padding: 15px 0px;
+          background-color: white;
+          width: auto;
+          border-radius: 10px;
+        }
+
+        .drop-pc:hover .drop-down-pc {
+          display: block;
+        }
+
+        .dd-pc {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        #arrow-pc {
+          margin-left: 5px;
+          margin-right: 10px;
+          color: #fff;
+        }
+
+        .d-pc {
+          list-style: none;
+          color: #004953;
+          padding: 10px 20px;
+          text-transform: capitalize;
+        }
+
+        .d-pc:hover {
+          background-color: #f2f2f2;
+        }
+
+        .dil {
+          display: none !important;
+        }
+      }
+      </style>
+</head>
+<body>
+    <nav class="search-bar">
+        <div class="burger" onclick="appear()"><!--three horizontal lines-->
+          <div class="line"></div>
+          <div class="big-line"></div>
+          <div class="line"></div>
+        </div>
+        <div class="img"><!--logo-->
+          <img
+            src="https://raw.githubusercontent.com/13kashishjain02/redo-frontend/main/images/LOGO.png?token=AU47YQB4I7LLXR3CQEFXKNLBVDJFI"
+            width="200px"
+            height="50px"
+          />
+        </div>
+        <form class="search"><!--search bar-->
+          <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+          <input
+            type="search"
+            class="sb"
+            placeholder="Search for fruit salad combos"
+          />
+        </form>
+        <div class="logo"><!--user, heart, car and headphones logo-->
+          <i
+            class="far fa-user"
+            style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+          ></i>
+          <i
+            class="far fa-heart dil"
+            style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+          ></i>
+          <i
+            class="fas fa-shopping-cart"
+            style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+          ></i>
+          <i
+            class="fas fa-headphones"
+            style="color: #f2f2f2; font-size: 1.4rem; margin: 0px 10px"
+          ></i>
+        </div>
+      </nav>
+      <form class="search-res"><!--search bar for responsive-->
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+        <input
+          type="search"
+          class="sb"
+          placeholder="Search for fruit salad combos"
+        />
+      </form>
+      <nav class="nav"><!--nav-bar-->
+        <div class="menu-head">
+          <p class="cross" onclick="appear()"><i class="far fa-times-circle"></i></p>
+        </div>
+        <div class="login">
+          <p class="m"><i class="far fa-user"></i> Login/Register</p>
+        </div>
+        <div class="login">
+          <p class="m"><i class="fas fa-shopping-cart"></i> Cart</p>
+        </div>
+        <p class="cat">Category</p>
+        <div class="drop-pc" onmouseover="dropFunc(0)" onmouseout="dropFunc(0)">
+          <div class="dd-pc">
+            <p class="content">Personal Care</p>
+            <i class="fas fa-chevron-down" id = arrow-pc></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">Bathroom accessories</li>
+            <li class="d-pc">Body hygiene</li>
+            <li class="d-pc">Oral hygiene</li>
+            <li class="d-pc">Female hygiene</li>
+            <li class="d-pc">Kits</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(1)" onmouseout="dropFunc(1)">
+          <div class="dd-pc">
+            <p class="content">Carry Ons</p>
+            <i class="fas fa-chevron-down" id = arrow-pc></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">bags and pouches</li>
+            <li class="d-pc">wallets and clutches</li>
+            <li class="d-pc">basket</li>
+            <li class="d-pc">mobile cover</li>
+            <li class="d-pc">face mask</li>
+            <li class="d-pc">goggles</li>
+            <li class="d-pc">stoles and scarves</li>
+            <li class="d-pc">tie and belts</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(2)" onmouseout="dropFunc(2)">
+          <div class="dd-pc">
+            <p class="content">Stationary</p>
+            <i class="fas fa-chevron-down" id='arrow-pc'></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">paper and pen</li>
+            <li class="d-pc">plantable stationary</li>
+            <li class="d-pc">stands and pouches</li>
+            <li class="d-pc">stationary Kits</li>
+            <li class="d-pc">notebooks</li>
+            <li class="d-pc">packaging</li>
+            <li class="d-pc">office</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(3)" onmouseout="dropFunc(3)">
+          <div class="dd-pc">
+            <p class="content">Sweet Home</p>
+            <i class="fas fa-chevron-down" id='arrow-pc'></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">furniture</li>
+            <li class="d-pc">home decor</li>
+            <li class="d-pc">mandir</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(4)" onmouseout="dropFunc(4)">
+          <div class="dd-pc">
+            <p class="content">Fashion</p>
+            <i class="fas fa-chevron-down" id='arrow-pc'></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">clothes</li>
+            <li class="d-pc">footwear</li>
+            <li class="d-pc">jewellery</li>
+            <li class="d-pc">scrunchies</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(5)" onmouseout="dropFunc(5)">
+          <div class="dd-pc">
+            <p class="content">Garden</p>
+            <i class="fas fa-chevron-down" id='arrow-pc'></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">pots</li>
+            <li class="d-pc">planters</li>
+            <li class="d-pc">outdoor furniture</li>
+            <li class="d-pc">plants</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(6)" onmouseout="dropFunc(6)">
+          <div class="dd-pc">
+            <p class="content">GymFreak</p>
+            <i class="fas fa-chevron-down" id='arrow-pc'></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">yoga mat</li>
+            <li class="d-pc">massage ball</li>
+            <li class="d-pc">sipper</li>
+            <li class="d-pc">duffel bag</li>
+            <li class="d-pc">hand towel</li>
+            <li class="d-pc">cap</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(7)" onmouseout="dropFunc(7)">
+          <div class="dd-pc">
+            <p class="content">Kids</p>
+            <i class="fas fa-chevron-down" id='arrow-pc'></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">toys</li>
+            <li class="d-pc">stationary</li>
+            <li class="d-pc">friendship band</li>
+            <li class="d-pc">kids wear</li>
+            <li class="d-pc">reusable diapers</li>
+            <li class="d-pc">nursery needs</li>
+          </ul>
+        </div>
+        <div class="drop-pc" onmouseover="dropFunc(8)" onmouseout="dropFunc(8)">
+          <div class="dd-pc">
+            <p class="content">Kitchen</p>
+            <i class="fas fa-chevron-down" id='arrow-pc'></i>
+          </div>
+          <ul class="drop-down-pc">
+            <li class="d-pc">cultery</li>
+            <li class="d-pc">cookware</li>
+            <li class="d-pc">serving ware</li>
+            <li class="d-pc">household supplies</li>
+            <li class="d-pc">Kits</li>
+          </ul>
+        </div>
+        <p class="content">Books</p>
+        <div
+            class="login"
+            style="border-top: 1px solid white; height: 45px"
+          ></div>
+          <div class="login">
+            <p class="m">Become a supplier</p>
+          </div>
+          <div class="login" style="align-items: center; justify-content: center;">
+            <i class="fas fa-headphones" style="display: block !important; color: white; margin: 0px 3px 0px 10px;"></i>
+            <p class="m">
+               +91 1234567890 / info@redopact.com
+            </p>
+          </div>
+      </nav>
+      <script> //script for menu appear and disappear
+        const nav = document.querySelector('.nav')
+        const menuHead = document.querySelector('.menu-head');
+        const login = document.querySelectorAll('.login');
+        const cat = document.querySelector('.cat');
+
+      function appear() {
+        const burger = document.querySelector('.burger');
+        nav.classList.toggle('show')
+        menuHead.classList.toggle('show');
+        login.forEach((e) => e.classList.toggle('show'));
+        cat.classList.toggle('show');
+      }
+      </script>
+
+      <script>//script for drop down menu content
+        const dropPc = document.querySelectorAll(".drop-down-pc");
+        function dropFunc(x) {
+          const arrowPc = document.querySelectorAll("#arrow-pc");
+          if (arrowPc[x].attributes[0].value == "fas fa-chevron-down") {
+            dropPc[x].style.display = "block";
+            arrowPc[x].classList.remove("fa-chevron-down");
+            arrowPc[x].classList.add("fa-chevron-up");
+          }else {
+            dropPc[x].style.display = "none";
+            arrowPc[x].classList.remove("fa-chevron-up");
+            arrowPc[x].classList.add("fa-chevron-down");
+          }
+        }
+      </script>
+      <section style="background-color: #e5e5e5;">
+        <div class="container pt-2 text-start">
+          <a href="#" class="text-dark fw-bold">Home</a>
+          <i class="bi bi-chevron-right"></i>
+          <a href="#" class="text-dark fw-bold">Contact US</a>
+        </div>
+      </section>
+      <!--Title-->
+      <section style="background-color: #e5e5e5;">
+        <div class="container p-5 text-left">
+          <span class="text-center">
+            <h2 style="color: #008080;
+            ">
+              RECOMMENDATION | 24x7 Customer Care Support
+            </h2>
+          </span>
+          <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum sequi aperiam laboriosam eum illo modi voluptatem ipsum possimus ratione?</p>
+        </div>
+      </section>
+      <!--Main Content-->
+      <section style="background-color: #e5e5e5;">
+      <div class="container pb-4">
+        <div class="row g-4">
+          <div class="col-md-4 ">
+            <div class="d-flex flex-row-reverse">
+              <div class="card" style="width: 60%;">
+                <span class=" p-2 text-center">
+                  <h6 class="card-title fw-bold" style="color: #004953;">Type of Issue</h6>
+                </span>
+                <ul class="list-group list-group-flush">
+                  <a href="#" class="list-group-item list-group-item-action fw-bold">
+                    Help with your Business
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action fw-bold">
+                    Help with your Order
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action fw-bold">
+                    Help with your Order
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action fw-bold">
+                    Help with your Order
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="card" style="width: 90%;">
+              <div class="card-body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor dolorem amet molestias inventore quae quod perspiciatis quidem, eos incidunt aspernatur rerum ea quam adipisci nobis, quasi repudiandae. Laudantium fugit ipsam unde dicta, assumenda quia voluptatem illum perferendis a officia quis nam! Quae ducimus veniam veritatis dolorum ab expedita eveniet sint eos deserunt, natus in numquam maiores, quaerat quibusdam magnam voluptatem incidunt maxime obcaecati doloremque delectus eligendi pariatur architecto nostrum harum! Dolores culpa quas voluptates nisi placeat exercitationem consectetur, molestias incidunt.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+      </section>
+      <!--Footer links-->
+    <section class="text-light" style="background-color: #004953;">
+        <div class="container pt-3">
+          <div class="d-lg-flex justify-content-evenly">
+            <div class="p-2">
+              <h5 class="fw-bold" style="color: #f67171;">Explore</h5>
+              <br>
+              <a href="#" class="text-light"style="font-size: 15px;">
+                Redopact for Business
+              </a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Custom Gift Boxes</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Bulk</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Custom Branding</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Deals</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Clearance</a><br>
+            </div>
+            <div class="p-2">
+              <h5 class="fw-bold" style="color: #f67171;">Get Involved</h5>
+              <br>
+              <a href="#" class="text-light"style="font-size: 15px;">Become a Supplier</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Job Opportunities</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Affiliates</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">In the Press</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Redopact Rewards</a><br>
+
+            </div>
+            <div class="p-2">
+              <h5 class="fw-bold" style="color: #f67171;">Support</h5>
+              <br>
+              <a href="#" class="text-light"style="font-size: 15px;">My Account</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">FAQs</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Shipping & Returns</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Privacy Policy</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Terms & Conditions</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Contact Us</a><br>
+            </div>
+            <div class="p-2">
+              <h5 class="fw-bold" style="color: #f67171;">About Us</h5>
+              <br>
+              <a href="#" class="text-light"style="font-size: 15px;">Impact</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Our Story</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Meet the Team</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Sustainability Logos</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Our Footprint</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Blog</a><br>
+              <a href="#" class="text-light"style="font-size: 15px;">Land Acknowledgement</a><br>
+            </div>
+            <div class="p-2">
+              <h5 class="fw-bold" style="color: #f67171;">Contact Us</h5>
+              <br>
+              <a href="#" class="text-light"style="font-size: 15px;">info@upciclo.com</a><br>
+              <p>(General Queries)</p>
+              <a href="#" class="text-light"style="font-size: 15px;">sales@upciclo.com</a><br>
+              <p>(Seller Queries)</p>
+              <a href="#" class="text-light"style="font-size: 15px;">support@upciclo.com</a><br>
+              <p>(Technical Queries)</p>
+            </div>
+          </div>
+        </div>
+        </section>
+
+        <!--Bottom Icons-->
+        <section class="text-light" style="background-color: #004953;">
+        <div class="d-flex justify-content-center">
+          <div class="py-2">
+            <button type="button" class="btn btn-danger" style="border-color: #f67171;background-color: #f67171; border-radius: 50%;">
+              <i class="fab fa-facebook-f text-light"></i>
+            </button>
+            <button type="button" class="btn btn-light2" style="background-color: #cccccc;border-radius: 50%;">
+              <i class="bi bi-twitter text-dark2"></i>
+            </button>
+            <button type="button" class="btn btn-light2" style="background-color: #cccccc;border-radius: 50%;">
+              <i class="bi bi-linkedin text-dark2"></i>
+            </button>
+            <button type="button" class="btn btn-light2" style="background-color: #cccccc;border-radius: 50%;">
+              <i class="bi bi-instagram text-dark2"></i>
+            </button>
+          </div>
+        </div>
+        </section>
+        <!--Copyright-->
+        <section style="background-color: #e5e5e5;">
+        <div class="d-flex justify-content-center">
+          <div class="py-1">
+            <p class="lead">Designed by @ GuruDatt Creators 2021</p>
+          </div>
+        </div>
+        </section>
+</body>
+</html>

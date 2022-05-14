@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name='viewport' content='width=device-width, initial-scale=1'>-->
+    <meta content="width=device-width,user-scalable=no" name="viewport">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="{%static 'general/css/style.css'%}" >
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+    <title>{% block title%} {% endblock %}</title>
+
+    <!--product slider / hide box in mobile view-->
+    <style>
+        @media (max-width: 768px) {
+            .hide {
+              display: none;
+            }
+          }
+        @media (min-width: 769px) {
+            .hide_lap {
+              display: none;
+            }
+          }
+    </style>
+    {% block head%} {% endblock %}
+</head>
+<body>
+<!--<body oncontextmenu='return false' class='snippet-body'>-->
+    <!--main page-->
+    <section id="header">
+        <div class="header hide">
+            <!--top-bar-->
+            <div class="top-bar">
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Free Delivery (Over 1000 INR*)</h6>
+                    </div>
+                </div>
+
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-reply"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Easy Returns</h6>
+                    </div>
+                </div>
+
+                <div class="top-bar-item">
+                    <div class="icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="icon-content">
+                        <h6>Best Deals</h6>
+                    </div>
+                </div>
+            </div>
+            <!--end-of-topbar-->
+
+
+
+        </div>
+    </section>
+
+    <!--end of header-->
+
+
+    <!--navbar-->
+    <section id="navbar">
+        <!--New Nav-->
+        <nav class="navbar nav3 navbar-dark d-block d-sm-none">
+            <div >
+                <div class="nav-btn">
+                    <a class="navbar-brand" href="#">REDOPACT</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+               <div class="collapse navbar-collapse" id="navbarNav">
+
+                <div class="accordion" id="accordionExample" >
+                    <div class="accordion-item">
+                      <h3 class="accordion-header" id="headingOne">
+                        <a href="./index.html">Personal Care</a>
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        </button>
+                      </h3>
+                      <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Bathroom accessories</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">toilet roll</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">scrub</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">laundary bag</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Soap stand</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Hand towel</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">toothbrush holder</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">other</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Body Hygine</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">shaving brush</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">hot and cold massager</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">earbuds</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">tissue paper</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Cleaning wipes</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">towel</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">comb</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Cotton Balls</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Bamboo Razor</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Oral Hygine</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">tooth brush</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">tounge cleaner</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">tooth pick</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Female Hygine</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">Sanatry pads</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Panty liner</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">menstrual cup</a></li>
+                              </ul>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <a href="#">Fashion</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Clothes</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">Men</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Women</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Kids</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Footwear</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">Men</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Women</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Kids</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Jewellery</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Scrunchies</button></div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <a href="#">Stationary</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">paper and pen</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Plantable Stationary</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn "> Stands and pouches</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Stationary kits</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">notebooks</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">packaging</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Office</button></div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <a href="#">Carry Ons</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+
+                          </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse " aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Bags and Pouches</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">bagpack</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">handbags</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">fanny bags</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">sling bags</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">duffle bags</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">laptop bags</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">other</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Wallets and Clutches</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">pouches</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">card holders</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">wallets</a></li
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Baskets</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Mobile COvers</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">facemask</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">goggles</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Stoles and scarves</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Tie and belts</button></div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <a href="#">Kitchen</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+
+                          </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse " aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px;">
+                              <button type="button" class="btn" style="text-align:left;">Cutlery</button>
+                              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li ><a class="dropdown-item" href="#">Disposable Cutlery</a></li>
+                                <li><a class="dropdown-item" style="width: 250px;" href="#">Reusable Cutlery</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Cookware</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Serving Ware</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">household Supplies</button></div>
+                            <div class="btn-group" style="width: 250px;"><button type="button" class="btn" style="text-align:left;">Kits</button></div>
+                          </div>
+                        </div>
+                    </div>
+
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSix">
+                            <a href="#">Home Sweet Home</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+
+                          </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse " aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Furniture</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Home Decor</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Mandir</button></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingKids">
+                            <a href="#">Kids</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+
+                          </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse " aria-labelledby="headingKids" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">toys</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">stationary</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">friendship band</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">kids wear</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">reusable diapers</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Nursery Needs</button></div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEight">
+                            <a href="#">Gym Freak</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+
+                          </button>
+                        </h2>
+                        <div id="collapseEight" class="accordion-collapse collapse " aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">yoga mat</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">massage ball</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">sipper</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">duffel bag</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">hand towel</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">cap</button></div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingNine">
+                            <a href="#">Garden</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+
+                          </button>
+                        </h2>
+                        <div id="collapseNine" class="accordion-collapse collapse " aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <!-- Example split danger button -->
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Pots</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Planters</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Outdoor Furniture</button></div>
+                            <div class="btn-group" style="width: 250px; "><button type="button" style="color: #000; background-color: #ffffff; text-align: left;" class="btn ">Plants</button></div>
+                          </div>
+                        </div>
+                    </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEleven">
+                            <a href="#">Books</a>
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+
+                          </button>
+                        </h2>
+
+                    </div>
+
+
+
+
+
+
+                </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <nav class="navbar header">
+            <div class="container-fluid">
+<!--                <a id="logo-img" href="../../"><img class="logo" src="{%static 'general/Images/logo.png'%}" alt="REDOPACT" style="height:60px"></a>-->
+                <a id="logo-img" href="../../" class="hide" style="color: #ffffff;">REDOPACT</a>
+                <div class="d-sm-none d-md-block ms-auto d-none d-sm-block">
+                    <form action="../listing/" method="get" class="d-flex ms-auto">
+                        <input id="inpt_srch" class="form-control" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit" style="padding-left: 6px"><svg
+                                class="srch_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                {%if request.user.is_authenticated %}
+                <ul class="flex-container ms-auto" style="list-style-type: none">
+                    {%if request.user.is_Vendor %}
+                    <li class="pad_nav">
+                        <a href="../../dashboard" style="color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg><br>Seller Account</a>
+                    </li>
+                    {%else%}
+                    <li class="pad_nav">
+                        <a href="../../account" style="color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg><br>Account</a>
+                    </li>
+                    {%endif%}
+                    <li class="pad_nav">
+                        <a href="../../wishlist" style="color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg><br>Wishlist</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="../../cart" style="color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cart" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg></span><br>Cart</a>
+                    </li>
+                </ul>
+                {%else%}
+                <ul class="flex-container ms-auto" style="list-style-type: none">
+                    <li class="pad_nav">
+                        <a href="../../login" style="color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg><br>Login/Register</a>
+                    </li>
+                    <li class="pad_nav">
+                        <a href="../contactus" style="color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg><br>Contact Us</a>
+                    </li>
+                </ul>
+                {%endif%}
+                <div class="d-none d-sm-block d-md-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form action="../listing/" method="get" class="d-flex ms-auto">
+                        <input id="inptsm_srch" class="form-control" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+                <div class="d-block d-sm-none ms-auto me-auto" style="margin-bottom: 10px;">
+                    <form action="../listing/" method="get" class="d-flex ms-auto">
+                        <input id="inptxs_srch" class="form-control" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button id="srch" class="btn btn-outline-success" type="submit"><svg class="srch_btn"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+
+        <!-- 1st part -->
+
+        <nav class="navbar nav2 d-none d-sm-block">
+            <div class="container-fluid margin-bottom: 0">
+                <ul class="ms-auto me-auto mb-2 mb-lg-0 mb-md-0 mb-sm-0 navi"
+                    style="list-style-type: none; padding-left: 0px">
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Personal Care
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Bathroom accessories</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Body hygiene</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Oral hygine</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Female hygine</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Kits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Carry Ons
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">bags and Pouches</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">wallets and clutches</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">baskets</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">mobile cover</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Face mask</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Goggles</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Stoles and Scarves</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">tie and belts</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Stationary
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">paper and pen</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Plantable Stationary</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#"> Stands and pouches</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Stationary kits</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">notebooks</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">packaging</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Office</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home sweet home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Furniture</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Home Decor</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Mandir</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Garden
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">pots</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">planters</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Outdoor Furniture</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">plants</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Gym Freak
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">yoga mat</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">massage ball</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">sipper</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">duffel bag</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">hand towel</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">cap</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            KIDS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">toys</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">stationary</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">friendship band</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">kids wear</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">reusable diapers</a></li>
+                            <li><a class="dropdown-item" style="width: 250px;" href="#">Nursery Needs</a></li>
+                        </ul>
+                    </li>
+                    <!-- dummy work start -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Kitchens
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">cutlery</a>
+                                <ul class="dropdown-submenu dropdown-submenu-item" aria-labelledby="navbarDropdown">
+                                    <li ><a class="dropdown-submenu-item dropdown-item" href="#">disposable cutlery</a></li>
+                                    <li><a class="dropdown-submenu-item dropdown-item" href="#">Reusable Cutlery</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">cookware</a></li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">serving ware</a></li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">Household Supplies</a></li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">kits</a></li>
+                        </ul>
+
+                    </li>
+                    <!-- dummy work end -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Fashion
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">clothes</a>
+                                <ul class="dropdown-submenu dropdown-submenu-item" aria-labelledby="navbarDropdown">
+                                    <li ><a class="dropdown-submenu-item dropdown-item" href="#">Men</a></li>
+                                    <li><a class="dropdown-submenu-item dropdown-item" href="#">Women</a></li>
+                                    <li><a class="dropdown-submenu-item dropdown-item" href="#">Kids</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">Footwear</a>
+                                <ul class="dropdown-submenu dropdown-submenu-item" aria-labelledby="navbarDropdown">
+                                    <li ><a class="dropdown-submenu-item dropdown-item" href="#">Men</a></li>
+                                    <li><a class="dropdown-submenu-item dropdown-item" href="#">Women</a></li>
+                                    <li><a class="dropdown-submenu-item dropdown-item" href="#">Kids</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">jewellery</a></li>
+                            <li class="dropdown-item-class"><a class="dropdown-item" href="#">scrunchies</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Books</a>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+       <style !important>
+
+            .d-none    .dropdown:hover  .dropdown-menu{
+                      display: block !important;
+             }
+            .d-none .dropdown-submenu-item{
+                display: none;
+            }
+            .d-none .submenuList:hover .dropdown-submenu-item{
+                display: block;
+
+            }
+            .d-none .dropdown-item-class:hover .dropdown-submenu-item{
+                display: block;
+
+            }
+
+
+            .plus{
+                color: #fff;
+                opacity: 0.5;
+                font-size: 1.4rem;
+            }
+            .plus:hover{
+               opacity: 1;
+               color: #fff;
+            }
+
+            .links{
+                justify-content: space-between;
+                display: flex;
+            }
+       </style>
+
+
+    </section>
+
+    <style>
+
+          .nav-btn{
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        .nav-btn a{
+            font-weight: 700;
+        }
+        .accordion-header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            padding: 8px;
+            margin:auto;
+        }
+        .accordion-header a{
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: #000;
+            flex-basis: 90%;
+        }
+        .accordion{
+            background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+        }
+        .accordion-item{
+            /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+            background:#ffffff
+        }
+        .accordion-item .accordion-button{
+            width: 40px;
+            height: 40px;
+            /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+            border: none;
+            outline: none;
+            color: #fff;
+            justify-content: center;
+        }
+        .accordion-item .accordion-button:active{
+            background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+
+       .accordion .dropdown{
+           background-color: transparent;
+
+       }
+       .accordion .dropdown-menu{
+        /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+        background:#ffffff
+       }
+       .accordion .dropdown-menu a{
+        color: #000000;
+       }
+       .accordion .dropdown-item:hover{
+        background-color: transparent;
+       }
+       .accordion .dropdown button{
+
+           background-color: transparent;
+           outline: none;
+           border: none;
+       }
+       .accordion .dropdown button:focus{
+        background-color: transparent;
+           outline: none;
+           border: none;
+       }
+    </style>
+
+    <!--end of navbar-->
+    {% block body%} {% endblock %}
+<!--footer-->
+    <section id="footer">
+        <div class="footer container">
+<!--            <div class="footer-items">-->
+<!--                <div class="footer-item">-->
+<!--                    <div class="shop">-->
+<!--                        <h4>Shop</h4>-->
+
+<!--                        <ul>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Fashion</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Accessories</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Home & Kitchen</li>-->
+<!--                            </a>-->
+<!--                            <a href="../../listing/">-->
+<!--                                <li>Event And Festival Shop</li>-->
+<!--                            </a>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+            <div class="footer-item">
+                <div class="Information">
+                    <h4>Information</h4>
+
+                    <ul>
+                        <a href="../../aboutus/">
+                            <li>About Us</li>
+                        </a>
+                        <a href="../../privacypolicy/">
+                            <li>Privacy and Cookie Policy</li>
+                        </a>
+                        <a href="../../privacypolicy/">
+                            <li>Shiping and Returns</li>
+                        </a>
+                        <a href="../../termsandcondition/">
+                            <li>Terms of Use</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="Quick-links">
+                    <h4>Let us help you</h4>
+
+                    <ul>
+                        <a href="../../account/">
+                            <li>My Account</li>
+                        </a>
+                        <a>
+                            <li>Shopping Cart</li>
+                        </a>
+                        <a href="../../register/">
+                            <li>Customer Registration</li>
+                        </a>
+                        <a href="../../login/">
+                            <li>Login</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="support">
+                    <h4>Support</h4>
+
+                    <ul>
+                        <a href="../../vendorregister/">
+                            <li>Sell With Us</li>
+                        </a>
+                        <a>
+                            <li>Customer Help & FAQs</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="contact">
+                    <h4>Contact Us</h4>
+
+                    <ul>
+                        <a>
+                            <li>info@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(General Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>sales@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Seller Queries)</h6>
+                        </l1>
+                        <a>
+                            <li>support@redopact.com</li>
+                        </a>
+                        <l1>
+                            <h6>(Technical Queries)</h6>
+                        </l1>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
+        </div>
+        </div>
+    </section>
+
+    <!--footer for mobile-->
+
+    <section id="footer-mobile">
+        <div class="footer">
+            <div class="footer-items">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Information
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><button class="dropdown-item" type="button"><a href="../../aboutus/">About Us</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../privacypolicy/">Privacy and Cookie Policy</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../privacypolicy/">Shiping and Returns</a></button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Let Us help You
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                        <li><button class="dropdown-item" type="button"><a href="../../account/">My Account</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a>Shopping Cart</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../register/">Customer Registration</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a href="../../login/">Login</a></button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Support
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                        <li><button class="dropdown-item" type="button"><a href="../../vendorregister/">Sell With Us</a></button></li>
+                        <li><button class="dropdown-item" type="button"><a>Customer Help & FAQs</a></button></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu5"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                        <li><button class="dropdown-item" type="button">Action</button></li>
+                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <h4>Copyright © 2021 Redopact, Inc. All rights reserved.</h4>
+        </div>
+
+    </section>
+    <!--end-of-footer-->
+    <!--end of main page-->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>

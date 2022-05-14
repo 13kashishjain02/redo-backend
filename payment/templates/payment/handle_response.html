@@ -1,0 +1,70 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    <style>
+        .order-page{
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mx-auto order-page p-5 border mt-5">
+        <h3 class="text-center">Transaction {%if response_dict.RESPCODE == '01'%}
+            SUCCESSFUL <br> <br>
+            <i class="fas fa-check-circle text-success" style="font-size: 60px;"></i>
+        {%else %}
+            FAILED
+            <br> <br>
+            <i class="fas fa-times-circle text-danger" style="font-size: 60px;"></i>
+        {%endif%}</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Amount</td>
+                    <td>{{response_dict.TXNAMOUNT}}</td>
+                </tr>
+
+                <tr>
+                    <td>Transaction ID</td>
+                    <td>{{response_dict.TXNID}}</td>
+                </tr>
+
+                <tr>
+                    <td>Order ID</td>
+                    <td>{{response_dict.ORDERID}}</td>
+                </tr>
+
+                <tr>
+                    <td>Status</td>
+                    <td>{%if response_dict.RESPCODE == '01'%}
+                        ORDER SUCCESSFUL
+                    {%else %}
+                        ORDER FAILED
+                    {%endif%}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

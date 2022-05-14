@@ -1,0 +1,50 @@
+{% extends 'general/base2.html' %} {%load static%} {% block head%}
+<link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+<link rel="stylesheet" href="{%static 'shop/css/dashboard.css'%}"> {% endblock %} {% block body%}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12 my-lg-0 my-1">
+            <div id="main-content" class="bg-white border">
+                <div class="text-uppercase">My recent orders</div>
+                {% for i in data%}
+                <div class="order my-3 bg-light">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="d-flex flex-column justify-content-between order-summary">
+                                <div class="d-flex align-items-center">
+                                    <div class="text-uppercase">Order #REDO{{i.order_id}}</div>
+                                    <div class="blue-label ms-auto text-uppercase">paid</div>
+                                </div>
+                                <div class="fs-8">Products #{{i.product_id}}</div>
+                                <div class="fs-8">{{i.date}}</div>
+                                <div class="rating d-flex align-items-center pt-1"> <img src="https://www.freepnglogos.com/uploads/like-png/like-png-hand-thumb-sign-vector-graphic-pixabay-39.png" alt=""><span class="px-2">Rating:</span> <span class="fas fa-star"></span> <span class="fas fa-star"></span>                                    <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="d-sm-flex align-items-sm-start justify-content-sm-between">
+                                <div class="status">Status : {{i.status}}</div>
+                                <div class="btn btn-primary text-uppercase">order info</div>
+                            </div>
+                            <div class="progressbar-track">
+                                <ul class="progressbar">
+                                    {%if i.status == placed %}
+                                    <li id="step-1" class="text-muted green"> <span class="fas fa-gift"></span> </li>
+                                    <li id="step-2" class="text-muted green"> <span class="fas fa-check"></span> </li>
+                                    <li id="step-3" class="text-muted green"> <span class="fas fa-box"></span> </li>
+                                    <li id="step-4" class="text-muted green"> <span class="fas fa-truck"></span> </li>
+                                    <li id="step-5" class="text-muted green"> <span class="fas fa-box-open"></span> </li>
+                                    {%endif%}
+                                </ul>
+                                <div id="tracker"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

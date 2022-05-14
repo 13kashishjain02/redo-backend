@@ -1,0 +1,144 @@
+{% extends 'general/base2.html' %}
+{%load static%}
+
+{% block head%}
+    <link rel="stylesheet" href="{%static 'shop/css/product.css'%}">
+<!--    overflow-->
+    <style>
+#overflowTest {
+
+  color: black;
+  padding: 15px;
+  width: 100%;
+  height: 300px;
+
+
+  background: #f2f2f2;
+  border: none;
+  overflow: auto
+}
+</style>
+
+{% endblock %}
+{% block body%}
+<div class="cont">
+        <p><strong>Home > Clothing + Accessories > Men > Shoes > Reda</strong></p>
+        <div class="product-main">
+            <div class="product">
+                <div class="product-left">
+                    <div class="product-img">
+                        <img src="{%static 'general/images/shoes.jfif'%}" class="product-image parent" alt="">
+                    </div>
+                    <div class="product-img">
+                        <img src="{%static 'general/images/shoes.jfif'%}" class="product-image parent" alt="">
+                    </div>
+                    <div class="product-img">
+                        <img src="{%static 'general/images/shoes.jfif'%}" class="product-image parent" alt="">
+                    </div>
+                    <div class="product-img">
+                        <img src="{%static 'general/images/shoes.jfif'%}" class="product-image parent" alt="">
+                    </div>
+                </div>
+                <div class="product-middle">
+
+                    <div class="mid-img">
+                        <i class="fas fa-heart  heart"></i>
+                        <img src="../media/{{product.image}}" class="mid-image" alt="">
+                    </div>
+                    <div class="mid-bot">
+                        <div class="blue"></div>
+                        <div class="black"></div>
+                        <div class="yellow"></div>
+                        <div class="red"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-right">
+                <div class="right-head">
+                    <div class="head-l">
+                        <h1>{{product.name}}</h1>
+                        <p>420,173 Ratings & 2,563 Reviews</p>
+                    </div>
+                    <div class="head-r">
+                        <h1>10% off</h1>
+                    </div>
+                </div>
+                <div class="description" id="overflowTest">
+                    <h3>Product Description</h3>
+                    <ul class="description-point">
+                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat consequatur consectetur et odio nulla, provident iusto dicta voluptate obcaecati optio accusantium maiores? Odit quasi eius quisquam nobis corporis possimus ullam?</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint delectus possimus, velit facilis amet nihil quam sequi sunt beatae odit!</li>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum eveniet laudantium minima? Natus, tempora iste.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, sapiente.</li>
+                    </ul>
+                </div>
+                <div class="third-part row">
+                    {%if product.special_price%}
+                    <div class="price col-md-6 col-sm-6">
+                        <p class="price-text" style="font-size: 2.5rem; "><strong>&#x20b9; {{product.special_price}}</strong> <span style="font-size: 2rem; text-decoration: line-through;">&#x20b9; {{product.mrp}}</span></p>
+                    </div>
+                    {%else%}
+                    <div class="price col-md-6 col-sm-6">
+                        <p class="price-text" style="font-size: 2.5rem; "><strong>&#x20b9; {{product.mrp}}</strong> </p>
+                    </div>
+                    {%endif%}
+<!--                    <div class="size col-md-6 col-sm-6" style="display: flex;">-->
+<!--                        <div class="size-text" style="width: 30%; margin-top: 2%; margin-left: 2%;">-->
+<!--                            <p style="font-size: 1.5rem; margin: 0; padding: 0;"><strong>Size: </strong></p>-->
+<!--                        </div>-->
+<!--                        <div class="size-div" style="display: flex; width: 70%; margin-top: 2% ;">-->
+<!--                            <div class="size-box">6</div>-->
+<!--                            <div class="size-box">7</div>-->
+<!--                            <div class="size-box">8</div>-->
+<!--                            <div class="size-box">9</div>-->
+<!--                            <div class="size-box">10</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+                <form method="post" action="../addtocart/" >
+                    {%csrf_token%}
+                    <div class="shop-now">
+                        <input type="hidden" name="qty" value="1">
+<!--                        <input type="hidden" name="image" value="{{product.image}}">-->
+                        <input type="hidden" name="id" value="{{product.id}}">
+                        <button type="submit" class="shop">Add to cart</button>
+                        <button type="submit" class="add">Buy Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="second-s">
+            <div class="info info1 " style="margin-top:20px; margin-bottom:-25px">
+                <p style="font-size:25px">Description</p>
+<!--                <hr align="left">-->
+            </div>
+<!--            <div class="info">-->
+<!--                <p>Warranty</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>Custom Engrave</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>How to Adjust</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>How to Care</p>-->
+<!--            </div>-->
+<!--            <div class="info">-->
+<!--                <p>Gallery</p>-->
+<!--            </div>-->
+        </div>
+        <hr>
+        <div class="below-s">
+            {{product.description|safe}}
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus eos praesentium ad deleniti neque veniam quas et eaque alias, fuga nemo laudantium corporis odit. Voluptatum illo earum corporis nobis! Veniam corporis vero aperiam, saepe
+                quisquam nesciunt doloremque deserunt sunt a vel facilis accusantium nulla, tempore ipsa incidunt, iusto dolor officiis.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'general/base.html' %}
+{%load static%}
+{% block title%}redopack{% endblock %}
+{% block head%}
+    <link rel="stylesheet" href="{%static 'account/css/login.css'%}">
+    <link rel="stylesheet" href="{%static 'shop/css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'shop/css/styles_navbar_Responsive.css'%}">
+<!--    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">-->
+{% endblock %}
+
+{% block body%}
+    <!------------Header--------------->
+<!--   <section id="graybar" style="width: 100vw; height: 6vh; background-color: gray;">-->
+<!--   </section>-->
+    <section id="greenbar">
+        <h2 id="redopact">REDOPACT</h2>
+    </section>
+
+    {%if msg%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{msg}}!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endif%}
+    <!--Login-->
+    <!--<img class="wave-1" src="Images/wave-1.png">-->
+    <section class="container mb-5" style="margin-top: 4rem!important;margin-bottom:7rem!important;">
+        <div class="img">
+            <img src="{%static 'account/image/login.png'%}" style="width: 800px; object-fit: cover; margin: 20px 20px 20px 2px;">
+        </div>
+        <div class="login-content">
+            <form method="post" action="../otpemail/" class="form">
+                {%csrf_token%}
+                <img src="{%static 'account/image/avatar-y.svg'%}" style="width: 100px; height: 100px;">
+                <h2 class="title" style="color: #ffbf00; font-weight:bold;">REGISTER</h2>
+                <div class="input-div pass" >
+                    <div class="i">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="div">
+                        <input type="text" class="input" placeholder="OTP"  name="otp" value="">
+                    </div>
+                </div>
+                <button class="butn" id="login-btn" type="submit" value="Register">SIGN IN</button>
+                <button class="butn" id="sign-up-btn" type="button" value="Register" style="display: none;">SIGN UP</button>
+
+                <p class="last-para-login">Already registerd? <span  ><a href="../login/" style="color: teal; font-weight: 800; cursor: pointer;"> SIGNIN </a></span></p>
+                <p class="last-para-signup" style="display: none;">Registered? <span class="change-to-login" style="color: teal; font-weight: 800; cursor: pointer;"> LOGIN</span></p>
+                <p class="vendor-registration" style="color: teal; font-weight: 700; margin: 10px auto; display: none;"><a>Vendor Registration</a></p>
+            </form>
+           
+        </div>
+
+       
+    </section>
+
+    <div class="forgot-pwd">
+        <div class="container-f">
+            <div class="forgot">
+                <h3>Forgot Password</h3>
+                <a href="#" class="cross"><i class="fas fa-times"></i></a>
+            </div>
+
+            <h4>Please enter your email address to recieve a password reset link</h4>
+
+            <div class="email-input">
+                <input class="input" type="text" placeholder="Email Id">
+            </div>
+
+            <div class="forgot-pwd-btn btn">Submit</div>
+
+        </div>
+
+
+    </div>
+
+<!--End Of register-->
+{% endblock %}

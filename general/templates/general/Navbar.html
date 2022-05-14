@@ -1,0 +1,561 @@
+{% load static %}
+
+
+
+<style>
+    a{
+        text-decoration: none;
+        transition: 0.4s ease-in-out;
+    }
+    a:hover{
+        color: #1A4953;
+    }
+    .nav{
+        /* margin-top: 0.5rem; */
+    }
+    .nav .nav-cnt{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+        .nav .nav-cnt .logo .mob-bars{
+            display: none;
+        }
+        .nav .nav-cnt .logo{
+            display: flex;
+            align-items: center;
+        }
+    .nav .nav-cnt .search input{
+        width: 35rem;
+        border: 1.9px solid #1A4953;
+        background-color: white;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        font-size: 13px;
+        border-radius: 5rem;
+    }
+    .nav .nav-cnt .search{
+        display: flex;
+        align-items: center;
+    }
+    .nav .nav-cnt .search .search-icon{
+        position: relative;
+        left: 2rem;
+    }
+
+    .nav .nav-cnt .auth i{
+        font-size: 23px;
+        /* margin: 0 0.3rem; */
+        
+    }
+    .products-section{
+        display: inline-block;
+    }
+    .products-section .products{
+        display: flex;
+        align-items: centers;
+        justify-content: space-around;
+    }
+
+    .products-section .products a{
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    ul li{
+        list-style-type: none;
+    }
+
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index:999;
+  top: 0;
+  left: 0;
+  background-color: #1A4953;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  /* padding: 8px 8px 8px 32px; */
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+        @media screen and (min-width:991px) {
+            .sidebar{
+                display: none;
+            }
+        }
+
+    @media screen and (max-width:991px) {
+        .nav{
+            margin-top: 0rem;
+        }
+        .nav .nav-cnt .search{
+            display: none;
+        }
+
+        .nav .nav-cnt .logo .mob-bars{
+            display: block;
+            font-size: 30px;
+        }
+        .products-section{
+            display: none;
+            margin-top: -2rem;
+        }
+    }
+</style>
+
+
+
+<div class="container-fluid nav py-2">
+
+    <div class="nav-cnt container">
+        <div class="logo">
+            <i class="fa-solid fa-bars-staggered mob-bars" onclick="openNav()"></i> 
+            <a href="/"><img src="{% static 'general/images/Redopact.png' %}" width="150px" alt="logo"></a>
+        </div>
+
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i> 
+           <form action="/search/" method="GET">
+            <input type="search" name="search" class="form-control px-5" placeholder="Search for products brands & more">
+            <button hidden></button>
+           </form>
+        </div>
+
+        <div class="auth">
+            {% if user.is_authenticated %}
+           
+          <a class="px-2" href="/wishlist/"><i class="fa-solid fa-heart text-primary"></i></a>
+          <a class="px-2" href="/checkout/cart/"> <i class="fa-solid fa-cart-arrow-down text-primary"></i></a>
+          <a class="px-2" href="/account/"> 
+            <img src="{{user.profile.image.url}}" style="width: 40px;border-radius: 50%;" alt="">
+          </a>
+            {%else%}
+
+            <a href="/login/" class="px-3 text-primary">Login</a>
+            <a href="/register/" class="text-primary">Register</a>
+
+            {%endif%}
+        </div>
+    </div>
+  
+</div>
+
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+       <a class="text-white px-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#personal-care-mob" role="button" aria-expanded="false" aria-controls="personal-care-mob">Personal Care <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="personal-care-mob">
+        <div class="card card-body">
+            <a class="text-dark py-1" style="font-size: 15px;" data-bs-toggle="collapse" href="#bath-care-mob" role="button" aria-expanded="false" aria-controls="bath-care-mob">Bath Care <i class="fa-solid fa-chevron-right"></i></a>
+                    <div class="collapse" id="bath-care-mob">
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/soaps & gels/">- Soaps & Gels</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/bathroom accessories/">- Bathroom Accessories</a>
+                    </div>
+            <a class="text-dark py-1" style="font-size: 15px;" data-bs-toggle="collapse" href="#hair-care-mob" role="button" aria-expanded="false" aria-controls="hair-care-mob">Hair Care <i class="fa-solid fa-chevron-right"></i></a>
+                    <div class="collapse" id="hair-care-mob">
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/hair care/shampoos & conditioners/">- Shampoos & Conditioners</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/hair care/hair oils & masks/">- Hair Oils & Masks </a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/hair care/comb & brushes/">- comb & brushes</a>
+                    </div>
+            <a class="text-dark py-1" style="font-size: 15px;" data-bs-toggle="collapse" href="#skin-care-mob" role="button" aria-expanded="false" aria-controls="skin-care-mob">Skin Care <i class="fa-solid fa-chevron-right"></i></a>
+                        
+                     <div class="collapse" id="skin-care-mob">
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/skin care/serums/">- Serums</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/skin care/mists & toners/">- Mists & Toners</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/skin care/masks & scrubs/">- Masks & Scrubs</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/skin care/moisturisers/">- Moisturisers</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/skin care/sunscreen/">- Sunscreen</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/skin care/massager/">- Massager</a>
+                        <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/skin care/eye & lip care/">- Eye & Lip Care</a>
+                    </div>
+            <a class="text-dark py-1" style="font-size: 15px;" href="/products/personal care/body care/">Body Care</a>
+            <a class="text-dark py-1" style="font-size: 15px;" data-bs-toggle="collapse" href="#oral-hygiene-mob" role="button" aria-expanded="false" aria-controls="oral-hygiene-mob">Oral Hygiene <i class="fa-solid fa-chevron-right"></i></a>
+                        <div class="collapse" id="oral-hygiene-mob">
+                            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/oral hygiene/tooth brush/">- tooth brush</a>
+                            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/oral hygiene/tounge cleaner/">- tounge cleaner</a>
+                            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/oral hygiene/tooth pick/">- tooth pick</a>
+                            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/oral hygiene/tooth powder/">- Tooth powder</a>
+                        </div>
+            <a class="text-dark py-1" style="font-size: 15px;" data-bs-toggle="collapse" href="#female-hygiene-mob" role="button" aria-expanded="false" aria-controls="female-hygiene-mob">Female Hygiene <i class="fa-solid fa-chevron-right"></i></a>
+                <div class="collapse" id="female-hygiene-mob">
+                    <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/female hygiene/sanitary pads/">- sanitary pads</a>
+                    <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/female hygiene/panty liner/">- panty liner</a>
+                    <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/personal care/female hygiene/menstrual cups/">- menstrual cups</a>
+                </div>
+            <a class="text-dark py-1" style="font-size: 15px;" href="/products/personal care/bath care/">Reusable mask</a>
+            <a class="text-dark py-1" style="font-size: 15px;" href="/products/personal care/natural essential oils/">Natural Essential Oils</a>
+        </div>
+      </div>
+
+
+      <a class="text-white px-3 pt-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#carry-ons" role="button" aria-expanded="false" aria-controls="carry-ons">Carry Ons <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="carry-ons">
+        <div class="card card-body">
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/carryons/baskets/">Baskets</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/carryons/bagpack & travel bags/">Bagpacks & Travel bags</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/carryons/shoppingbag/">Shoppingbag/ tote bag</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/carryons/duffle bag/">Duffle bag</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/carryons/mobile covers/">Mobile Covers</a>
+        </div>
+      </div>
+
+      <a class="text-white px-3 pt-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#Stationary" role="button" aria-expanded="false" aria-controls="Stationary">Stationary <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="Stationary">
+        <div class="card card-body">
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/stationary/pen & pencils/">Pen & Pencils </a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/stationary/plantable stationary/">Plantable Stationary</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/stationary/notebook & diaries/">Notebook & diaries</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/stationary/packaging">Packaging</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/stationary/accessories/">Accessories</a>
+        </div>
+      </div>
+
+      <a class="text-white px-3 pt-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#Home" role="button" aria-expanded="false" aria-controls="Home">Home <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="Home">
+        <div class="card card-body">
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/home/home decor/">Home Decor</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/home/mats/">Mats/Rugs</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/home/bedsheets & pillow/">Bedsheets/Pillow</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/home/furniture/">Furniture</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/home/garden/">Garden</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/home/mandir/">Mandir</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/home/yoga essentials/">Yoga essentials</a>
+        </div>
+      </div>
+
+      <a class="text-white px-3 pt-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#Fashion-mob" role="button" aria-expanded="false" aria-controls="Fashion-mob">Fashion <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="Fashion-mob">
+        <div class="card card-body">
+           <a class="py-1 text-dark" style="font-size: 15px;" data-bs-toggle="collapse" href="#clothes-mob" role="button" aria-expanded="false" aria-controls="clothes-mob">Clothes <i class="fa-solid fa-chevron-right"></i></a>
+           <div class="collapse" id="clothes-mob">
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/fashion/clothes/men/">- Men</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/fashion/clothes/women/">- Women</a>
+            </div>
+           <a class="py-1 text-dark" style="font-size: 15px;" style="font-size: 15px;" data-bs-toggle="collapse" href="#footwear-mob" role="button" aria-expanded="false" aria-controls="footwear-mob">Footwear <i class="fa-solid fa-chevron-right"></i></a>
+           <div class="collapse" id="footwear-mob">
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/fashion/footwear/men/">- Men</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/fashion/footwear/women/">- Women</a>
+            </div>
+           <a class="py-1 text-dark" style="font-size: 15px;" href="/products/fashion/jewellery/">Jewellery</a>
+           <a class="py-1 text-dark" style="font-size: 15px;" data-bs-toggle="collapse" href="#accessories-mob" role="button" aria-expanded="false" aria-controls="accessories-mob">Accessories <i class="fa-solid fa-chevron-right"></i></a>
+           <div class="collapse" id="accessories-mob">
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/fashion/accessories/men/">- Men</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/fashion/accessories/women/">- Women</a>
+            </div>
+        </div>
+      </div>
+
+      <a class="text-white px-3 pt-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#Kids" role="button" aria-expanded="false" aria-controls="Kids">Kids <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="Kids">
+        <div class="card card-body">
+              <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kids/kids apparels/">Kids Apparels</a>
+              <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kids/diaper needs/">Diaper needs</a>
+              <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kids/nursery needs/">Nursery needs</a>
+              <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kids/toys/">Toys</a>
+              <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kids/school bag/">School bag</a>
+        </div>
+      </div>
+
+      <a class="text-white px-3 pt-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#Kitchen" role="button" aria-expanded="false" aria-controls="Kitchen">Kitchen <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="Kitchen">
+        <div class="card card-body">
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kitchen/table ware/">Table ware</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kitchen/cultery/">Cutlery</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kitchen/serving ware/">Serving Ware</i></a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kitchen/household supplies/">Household Supplies</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kitchen/collection/">Collection</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kitchen/disposable/">Disposables</a>
+            <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/kitchen/cookware/">Cookware</a>
+        </div>
+      </div>
+
+      <a class="text-white px-3 pt-3" style="font-size: 15px;" data-bs-toggle="collapse" href="#Books" role="button" aria-expanded="false" aria-controls="Books">Books <i class="fa-solid fa-chevron-down"></i></a>  
+       <div class="collapse" id="Books">
+        <div class="card card-body">
+               <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/books/mystery/">Mystery</a>
+               <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/books/non fiction/">Non Fiction</a>
+               <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/books/young adult/">Young Adult</a>
+               <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/books/romance/">Romance</a>
+               <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/books/self help books/">Self Help Books</a>
+               <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/books/text books/">Text Books</a>
+               <a class="dropdown-item text-dark" style="font-size: 15px;" href="/products/books/fantasy/">Fantasy</a>
+        </div>
+      </div>
+
+  </div>
+
+
+<section class="container-fluid products-section p-4 mt-2 bg-primary shadow-lg">
+
+    <div class="products">
+
+        <div class="dropdown">
+            <a class="text-white" id="PersonalCare" data-bs-toggle="dropdown" aria-expanded="false">Personal Care <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="PersonalCare">
+                <li>
+                    <a class="dropdown-item" href="/products/personal care/bath care/">Bath Care</a>      
+                </li>
+                <li><a class="dropdown-item" href="/products/personal care/hair care/">Hair Care</a>
+                </li>
+                <li><a class="dropdown-item" href="/products/personal care/skin care/">Skin Care</a>
+                </li>
+                <li><a class="dropdown-item" href="/products/personal care/body care/">Body Care</a></li>
+                <li><a class="dropdown-item" href="/products/personal care/oral Hygiene/">Oral Hygiene</a>
+                </li>
+                <li><a class="dropdown-item" href="/products/personal care/natural essentials oils/">Female Hygiene</a>
+                </li>
+                <li><a class="dropdown-item" href="/products/personal care/natural essentials oils/">Natural Essential Oils</a></li>
+                <li><a class="dropdown-item" href="/products/personal care/reusable mask/">Reusable Mask</a></li>
+              </ul>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="text-white" id="CarryOns" data-bs-toggle="dropdown" aria-expanded="false">Carry Ons <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="CarryOns">
+                <li><a class="dropdown-item" href="/products/carryons/baskets/">Baskets</a></li>
+                <li><a class="dropdown-item" href="/products/carryons/bagpack & travel bags/">Bagpacks & Travel bags</a></li>
+                <li><a class="dropdown-item" href="/products/carryons/shoppingbag/">Shoppingbag/ tote bag</a></li>
+                <li><a class="dropdown-item" href="/products/carryons/duffle bag/">Duffle bag</a></li>
+                <li><a class="dropdown-item" href="/products/carryons/mobile covers/">Mobile Covers</a></li>
+              </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="text-white" id="Stationary" data-bs-toggle="dropdown" aria-expanded="false">Stationary <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Stationary">
+                <li><a class="dropdown-item" href="/products/stationary/pen & pencils/">Pen & Pencils </a></li>
+                <li><a class="dropdown-item" href="/products/stationary/plantable stationary/">Plantable Stationary</a></li>
+                <li><a class="dropdown-item" href="/products/stationary/notebook & diaries/">Notebook & diaries</a></li>
+                <li><a class="dropdown-item" href="/products/stationary/packaging">Packaging</a></li>
+                <li><a class="dropdown-item" href="/products/stationary/accessories/">Accessories</a></li>
+              </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="text-white" id="SweetHome" data-bs-toggle="dropdown" aria-expanded="false">Home <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="SweetHome">
+                <li><a class="dropdown-item" href="/products/home/home decor/">Home Decor</a></li>
+                <li><a class="dropdown-item" href="/products/home/mats/">Mats/Rugs</a></li>
+                <li><a class="dropdown-item" href="/products/home/bedsheets & pillow/">Bedsheets/Pillow</a></li>
+                <li><a class="dropdown-item" href="/products/home/furniture/">Furniture</a></li>
+                <li><a class="dropdown-item" href="/products/home/garden/">Garden</a></li>
+                <li><a class="dropdown-item" href="/products/home/mandir/">Mandir</a></li>
+                <li><a class="dropdown-item" href="/products/home/yoga essentials/">Yoga essentials</a></li>
+              </ul>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="text-white" id="Fashion" data-bs-toggle="dropdown" aria-expanded="false">Fashion <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Fashion">
+                <li><a class="dropdown-item" href="/products/fashion/clothes/" id="clothes">Clothes <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="clothes-items">
+                        <li><a class="dropdown-item" href="/products/fashion/clothes/men/">- Men</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/clothes/women/" id="women-clothes">- Women</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="dropdown-item" href="/products/fashion/jewellery/">Jewellery</a></li>
+                <li><a class="dropdown-item" href="/products/fashion/footwear/" id="footwear">Footwear <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="footwear-items">
+                        <li><a class="dropdown-item" href="/products/fashion/footer/men/">- Men</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/footer/women/">- Women</a></li>
+                    </ul>
+                <li><a class="dropdown-item" href="/products/fashion/accessories/" id="fashion-accessories">Accessories <i class="fa-solid fa-chevron-right"></i></a>
+                
+                    <ul class="shadow-lg d-none" id="fashion-accessories-items">
+                        <li><a class="dropdown-item" href="/products/fashion/accessories/men/">- Men</a></li>
+                        <li><a class="dropdown-item" href="/products/fashion/accessories/women/">- Women</a></li>
+                    </ul>
+
+                </li>
+              </ul>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="text-white" id="Kids" data-bs-toggle="dropdown" aria-expanded="false">Kids <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Kids">
+                <li><a class="dropdown-item" href="/products/kids/kids apparels/">Kids Apparels</a></li>
+                <li><a class="dropdown-item" href="/products/kids/diaper needs/">Diaper needs</a></li>
+                <li><a class="dropdown-item" href="/products/kids/nursery needs/">Nursery needs</a></li>
+                <li><a class="dropdown-item" href="/products/kids/toys/">Toys</a></li>
+                <li><a class="dropdown-item" href="/products/kids/school bag/">School bag</a></li>
+              </ul>
+        </div>
+
+
+        <div class="dropdown">
+            <a class="text-white" id="Kitchen" data-bs-toggle="dropdown" aria-expanded="false">Kitchen <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Kitchen">
+                <li><a class="dropdown-item" href="/products/kitchen/table ware/">Table ware</a></li>
+                <li><a class="dropdown-item" href="/products/kitchen/cultery/">Cutlery</a></li>
+                <li><a class="dropdown-item" href="/products/kitchen/serving ware/">Serving Ware</i></a></li>
+                <li><a class="dropdown-item" href="/products/kitchen/household supplies/">Household Supplies</a></li>
+                <li><a class="dropdown-item" href="/products/kitchen/collection/">Collection</a></li>
+                <li><a class="dropdown-item" href="/products/kitchen/disposable/">Disposables</a></li>
+                <li><a class="dropdown-item" href="/products/kitchen/cookware/">Cookware</a></li>
+              </ul>
+        </div>
+       
+
+        <div class="dropdown">
+            <a class="text-white" id="Books" data-bs-toggle="dropdown" aria-expanded="false">Books <i class="fa-solid fa-chevron-down"></i></a>
+            
+            <ul class="dropdown-menu mt-4 shadow-lg" aria-labelledby="Books">
+                <li><a class="dropdown-item" href="/products/books/mystery/">Mystery</a></li>
+                <li><a class="dropdown-item" href="/products/books/non fiction/">Non Fiction</a></li>
+                <li><a class="dropdown-item" href="/products/books/young adult/">Young Adult</a></li>
+                <li><a class="dropdown-item" href="/products/books/romance/">Romance</a></li>
+                <li><a class="dropdown-item" href="/products/books/self help books/">Self Help Books</a></li>
+                <li><a class="dropdown-item" href="/products/books/text books/">Text Books</a></li>
+                <li><a class="dropdown-item" href="/products/books/fantasy/">Fantasy</a></li>
+              </ul>
+        </div>
+
+       
+        
+        
+        
+        
+       
+
+    </div>
+
+</section>
+
+<script>
+
+
+
+    //fashion
+    let clothes = document.getElementById('clothes')
+    let clothes_items = document.getElementById('clothes-items')
+    let jewellery = document.getElementById('jewellery')
+    let footwear = document.getElementById('footwear')
+    let footwear_items = document.getElementById('footwear-items')
+    let fashion_accessories = document.getElementById('fashion-accessories')
+    let fashion_accessories_items = document.getElementById('fashion-accessories-items')
+    
+
+
+
+
+    
+   
+
+
+
+    //fashion
+    clothes.addEventListener('mouseenter',function(){
+        clothes_items.setAttribute('class','d-block')
+    })
+
+    clothes_items.addEventListener('mouseleave',function(){
+        clothes_items.setAttribute('class','d-none')
+        
+    })
+
+
+    footwear.addEventListener('mouseenter',function(){
+        footwear_items.setAttribute('class','d-block')
+    })
+
+    footwear_items.addEventListener('mouseleave',function(){
+        footwear_items.setAttribute('class','d-none')
+        
+    })
+
+
+    fashion_accessories.addEventListener('mouseenter',function(){
+        fashion_accessories_items.setAttribute('class','d-block')
+    })
+
+    fashion_accessories_items.addEventListener('mouseleave',function(){
+        fashion_accessories_items.setAttribute('class','d-none')
+        
+    })
+
+
+   
+
+    function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+
+
+    
+</script>
+

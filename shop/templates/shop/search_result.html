@@ -1,0 +1,1404 @@
+{% extends 'general/base2.html' %}
+{%load static%}
+{% block head%}
+    <title>Redopact Search page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link rel="stylesheet" href="search-page.css"/> -->
+<style>
+    * {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #f2f2f2;
+  font-family: sans-serif;
+}
+
+.login, .menu-head, .cat {
+  display: none;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #004953;
+  padding: 0px 45px;
+}
+
+.burger {
+  display: none;
+}
+
+.big-line {
+  margin: 5px;
+  background-color: white;
+  width: 30px;
+  height: 3px;
+}
+.line {
+  background-color: white;
+  width: 20px;
+  height: 3px;
+  margin: 0px 5px
+}
+
+      .search {
+        display: flex;
+        padding: 5px 15px;
+        background-color: #f3f4f9;
+        width: 600px;
+        border-radius: 8px;
+        border: 1px solid #f3f4f9;
+      }
+
+      .search-btn {
+        background-color: #f3f4f9;
+        border: 1px solid #f3f4f9;
+        outline: none;
+        font-size: 1.2rem;
+        color: #777;
+      }
+
+      .search-res {
+        display: none;
+      }
+
+      .sb {
+        background-color: #f3f4f9;
+        width: 100%;
+        border: 1px solid #f3f4f9;
+        outline: none;
+        font-weight: 400;
+        font-size: 0.8rem;
+        margin-left: 35px;
+        color: #777;
+      }
+
+
+/*nav-bar*/
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.content {
+  color: #004953;
+  margin: 10px 0px 10px 10px;
+}
+
+.fa-chevron-down {
+  vertical-align: middle;
+}
+/* nav-bar finished */
+
+/*content below nav-bar*/
+.result {
+  margin: 20px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dis {
+  color: #004953;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.big {
+  font-size: 28px;
+}
+
+.nr {
+  color: #004953;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 2;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drop {
+      position: relative;
+      margin-left: 10px;
+    }
+
+    .dd {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 250px;
+      background-color: #004953;
+      padding: 10px 15px;
+      /* border-radius: 25px; */
+    }
+
+    .filter-btn {
+      display: none;
+      background-color: #004953;
+      padding: 10px 15px;
+      border-radius: 25px;
+      margin-left: 10px;
+    }
+
+    .d:hover {
+      opacity: 0.7;
+    }
+
+    .cover {
+      color: #f2f2f2;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    #arrow {
+      color: #f2f2f2;
+      font-size: 18px;
+      margin-left: 5px;
+    }
+
+    .drop-down {
+      z-index: 100;
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      padding: 10px;
+      /* border-radius: 25px; */
+    }
+
+    .d {
+      list-style: none;
+      padding: 10px;
+      font-size: 16px;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .drop-pc {
+      position: relative;
+    }
+
+    .drop-down-pc {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      padding: 15px 0px;
+      background-color: white;
+      width: 200px;
+    }
+
+    .drop-pc:hover .drop-down-pc {
+      display: block;
+    }
+
+    .dd-pc {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #arrow-pc {
+      margin-left: 5px;
+      margin-right: 10px;
+      color: #004953;
+    }
+
+    .d-pc {
+      list-style: none;
+      color: #004953;
+      padding: 10px 20px;
+      text-transform: capitalize;
+    }
+
+    .d-pc:hover {
+      background-color: #f2f2f2;
+    }
+
+/*content below nav-bar finished*/
+
+.half {
+  display: flex;
+}
+
+/* filter and corresponding products */
+.filters {
+  margin-left: 25px;
+  width: 250px;
+  padding: 30px;
+  background-color: #f2f2f2;
+  box-shadow: 0px 4px 15px rgba(0, 73, 83, 0.4);
+  border-radius: 25px;
+}
+
+div.price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.size {
+  padding: 10px 0px;
+  border-bottom: 3px solid #56b280;
+}
+
+.s1, .s11 {
+  color: #004953;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.s {
+  display: flex;
+  flex-direction: column;
+}
+
+.sizes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.size {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.numbers {
+  margin: 10px 0px 15px;
+}
+
+.square {
+  border: 1px solid;
+  box-shadow: 4px 4px 4px 0px #00000040;
+  padding: 5px;
+  margin: 0px 5px;
+  font-size: 10px;
+}
+
+.opt {
+  display: flex;
+}
+
+.ho {
+  padding: 10px 0px;
+  border-bottom: 3px solid #56b280;
+}
+
+.opts {
+  margin: 10px 0px;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 10px;
+  color: #f2f2f2;
+  background: #004953;
+  border: 1px solid #004953;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.btnr {
+  padding: 10px;
+  color: #004953;
+  border: 1px solid #004953;
+  border-radius: 5px;
+}
+/* filter and corresponding products finished*/
+
+/* corresponding products */
+.products {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-content: start;
+    align-content: start;
+    margin-top: -15px;
+  margin-left: 10px;
+}
+
+.list {
+  display: flex;
+}
+
+.b {
+  display: flex;
+}
+
+.box {
+  margin: 15px 7px 15px 8px;
+  position: relative;
+  /* width: 235px; */
+  box-shadow: 0px 5px 15px rgba(119, 119, 119, 0.15);
+}
+
+/* image */
+.text {
+  background-color: #004953;
+  padding: 3px;
+  color: white;
+  font-size: 0.7rem;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.heart {
+    background-color: white;
+    border-radius: 100%;
+    padding: 5px;
+    color: #F44336;
+    font-size: 0.8rem;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+/* detail */
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 175px;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.prices {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minus {
+  padding: 0px 5px;
+  background-color: #ccc;
+  margin: 0px 6px;
+}
+
+.plus {
+  margin: 0px 6px;
+  padding: 0px 5px;
+  background-color: #004953;
+}
+
+.fa-shopping-cart {
+  margin: 0px 3px;
+}
+
+.name-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 16px;
+  float: left;
+  font-family: Raleway;
+  color: #777676;
+}
+
+.rating {
+  float: right;
+  font-size: 12px;
+}
+
+.fa-star,
+.fa-star-half-alt {
+  color: #ffce31;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.price {
+  font-weight: 700;
+  color: #004953;
+  font-size: 18px;
+}
+
+.act-price {
+  color: #c7c7c7;
+  text-decoration: line-through;
+  font-size: 16px;
+}
+/* corresponding products finished */
+/* filter and corresponding products finished*/
+
+/* previous and next page option */
+.page-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.prev {
+  font-size: 22px;
+  color: #777;
+}
+
+.large {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page {
+  margin: 0px 15px;
+  font-size: 22px;
+}
+
+.arrow {
+  color: #777;
+  font-size: 30px;
+  margin: 0px 15px;
+}
+
+.next {
+  font-size: 22px;
+}
+/* previous and next page option finished*/
+
+/* footer */
+#footer {
+  background-color: #004953;
+  padding: 2% 0;
+}
+
+.footer,
+.contents {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.footer-content {
+  margin: 0px 30px;
+}
+
+.footer-heading {
+  color: #f67171;
+  padding-bottom: 5%;
+}
+
+.footer-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-list li {
+  color: white;
+  padding: 1% 0;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40%;
+  margin-top: 5%;
+}
+
+.footer-icons .icons {
+  margin: 0 3%;
+  padding: 7%;
+  border-radius: 100%;
+  background-color: #cccccc;
+}
+/* footer finished */
+
+/* range slider  */
+.range-slider {
+    width: 480px;
+    margin: auto;
+    text-align: center;
+    height: 3em;
+  }
+
+  .range-slider input[type="range"] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+  }
+  input[type="range"]:focus {
+    outline: none;
+  }
+  input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+  }
+  input[type="range"]:focus::-ms-fill-lower {
+    background: #ccc;
+  }
+  input[type="range"]:focus::-ms-fill-upper {
+    background: #ccc;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation-duration: 0.2s;
+    background: #ccc;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #ccc;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #004953;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+  input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation-duration: 0.2s;
+    background: #ccc;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+  input[type="range"]::-moz-range-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #ccc;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+  }
+  input[type="range"]::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation-duration: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  input[type="range"]::-ms-fill-lower,
+  input[type="range"]::-ms-fill-upper {
+    background: #ccc;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+  }
+  input[type="range"]::-ms-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #ccc;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+  }
+/* range slider finished */
+
+.show {
+  display: flex !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+.f-cross {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+
+  .dis, .drop {
+    display: none;
+  }
+
+  .f-cross {
+    display: block;
+      color: #004953;
+      font-size: 1.6rem;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+  }
+
+  .search {
+    display: none !important;
+  }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-bar {
+    margin-bottom: 10px;
+    padding: 0px;
+    width: 100%;
+  }
+
+  .search-res {
+    display: flex;
+    margin: auto;
+    padding: 5px 5px;
+    background-color: #fff;
+    width: 90%;
+    border-radius: 8px;
+    border: 1px solid #004953;
+  }
+
+  .sb, .search-btn {
+    background-color: #fff;
+    border: 1px solid #fff;
+  }
+
+
+  .fa-headphones{
+    display: none !important;
+  }
+
+  .result {
+      margin: 25px 0px 0px 8px;
+      align-items: baseline;
+  }
+
+  .left {
+    margin-bottom: 15px;
+  }
+
+  .dis {
+    font-size: 12px;
+  }
+
+  .nr {
+    font-size: 13px;
+  }
+
+  .cover {
+    padding: 0;
+    font-size: 13px;
+  }
+
+  #arrow {
+      font-size: 13px;
+  }
+
+  .d {
+      font-size: 13px;
+      padding: 10px 5px;
+  }
+
+  .drop:hover .drop-down {
+      display: block;
+  }
+
+  .half {
+    display: block;
+  }
+
+  .filters {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    margin-left: 0px;
+  }
+
+  .products {
+      grid-template-columns: 50% 50%;
+    margin-left: 0;
+      margin-top: 0px;
+  }
+
+  .list {
+    width: 100%;
+    overflow: auto;
+    margin-top: 15px;
+    flex-direction: column;
+  }
+
+  .b {
+    display: flex;
+  }
+
+  .page {
+    margin: 0px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .contents {
+    margin: 25px 0px;
+  }
+
+  .footer-list {
+    line-height: 1.3;
+  }
+
+  .nav {
+      display: none;
+      position: fixed;
+      top: 0px;
+      /* bottom: 0px; */
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      background-color: #004953;
+      padding: 0px;
+      width: 80%;
+      max-height: 100%;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .menu-head {
+      width: 100%;
+      display: none;
+      justify-content: flex-end;
+      background-color: #fff;
+      padding: 10px 0px;
+    }
+
+    .cross {
+      color: #004953;
+      font-size: 1.6rem;
+      padding: 0px 10px;
+    }
+
+    .login {
+      display: none;
+      width: 100%;
+      border-bottom: 1px solid white;
+    }
+
+    .m {
+      color: white;
+      margin: 0px 10px;
+      padding: 10px 0px;
+    }
+
+    .cat {
+      display: none;
+      color: white;
+      margin: 5px 10px 0px;
+      padding: 5px 0px;
+    }
+
+    .content {
+      color: #fff;
+      margin: 10px 0px 10px 10px;
+    }
+
+    .drop-pc {
+      position: initial;
+      width: 100%;
+    }
+
+    .drop-down-pc {
+      display: none;
+      position: initial;
+      /* z-index: 100; */
+      margin: 0px 10px;
+      padding: 15px 0px;
+      background-color: white;
+      width: auto;
+      border-radius: 10px;
+    }
+
+    .drop-pc:hover .drop-down-pc {
+      display: block;
+    }
+
+    .dd-pc {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #arrow-pc {
+      margin-left: 5px;
+      margin-right: 10px;
+      color: #fff;
+    }
+
+    .d-pc {
+      list-style: none;
+      color: #004953;
+      padding: 10px 20px;
+      text-transform: capitalize;
+    }
+
+    .d-pc:hover {
+      background-color: #f2f2f2;
+    }
+
+    .dil {
+      display: none !important;
+    }
+
+    .filter-btn {
+      display: block;
+      border-radius: 0;
+    }
+
+    img.picture {
+      width: 165px;
+      height: 215px;
+    }
+
+    .info {
+      width: 155px;
+    }
+
+    .brand-name {
+      font-size: 12px;
+    }
+
+    .rating {
+      font-size: 8px;
+    }
+
+    .name {
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 16px;
+    }
+
+    .act-price {
+      font-size: 14px;
+    }
+}
+
+
+</style>
+{% endblock %}
+{% block body%}
+  <section> <!--Content below nav-bar-->
+  <div class="result">
+    <div class="left">
+      <!-- <p class="dis">Showing results for: <span class="big">"Shoes"</span></p> -->
+      <p class="nr">55 search results found for the keyword "Shoes"</p>
+    </div>
+    <div class="right">
+      <p class="dis">
+        Sort:
+      </p>
+      <div class="drop" onmouseover="myFunc()" onclick="nn()"><!--drop-down-->
+        <div class="dd">
+          <p class="cover">popularity</p>
+          <i class="fas fa-chevron-down" id="arrow"></i>
+        </div>
+        <ul class="drop-down"><!--drop-down list-->
+          <li class="d" onclick="changeName(0)">Sort by price low to high</li>
+          <li class="d" onclick="changeName(1)">Sort by price high to low</li>
+          <li class="d" onclick="changeName(2)">Newest first</li>
+          <li class="d" onclick="changeName(3)">Populartity</li>
+        </ul>
+      </div>
+      <div class="filter-btn" onclick="filterShow()">
+        <p class="cover">Filter</p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section><!--filters and corresponding products-->
+  <div class="half">
+
+  <aside>
+  <div class="filters"><!--price size filter section on left-->
+    <p class="f-cross" onclick="filterShow()"><i class="far fa-times-circle"></i></p>
+    <div class="price"><!--Price filter-->
+      <div style="display: flex; justify-content: space-between; position: relative;">
+      <p class="s1">Price</p>
+      <div class="range-slider"> <!--range slider-->
+        <p class="num s1">
+          Rs <span class="number">600</span> - Rs <span class="number">2000</span>
+        </p>
+        <input value="600" min="0" max="10000" type="range" step="100"/>
+        <input value="2000" min="0" max="10000" type="range" step="100"/>
+      </div>
+    </div>
+
+    </div>
+    <hr />
+
+    <div class="size"><!--Size filter-->
+      <p class="s1">Size:</p>
+      <br />
+
+      <div class="s">
+        <form class="sizes"><!--differnet sizes-->
+          <div class="opt">
+            <input type="checkbox" id="num5" class="n1" />
+            <label for="num5"></label>
+            <p style="margin-left: 5px; color: #004953;">5</p>
+          </div>
+          <div class="opt">
+            <input type="checkbox" id="num6" class="n1" />
+            <label for="num6"></label>
+            <p style="margin-left: 5px; color: #004953;">6</p>
+          </div>
+          <div class="opt">
+            <input type="checkbox" id="num7" class="n1" />
+            <label for="num7"></label>
+            <p style="margin-left: 5px; color: #004953;">7</p>
+          </div>
+          <div class="opt">
+            <input type="checkbox" id="num8" class="n1" />
+            <label for="num8"></label>
+            <p style="margin-left: 5px; color: #004953;">8</p>
+          </div>
+        </form>
+
+        <form class="sizes"><!--differnet sizes-->
+          <div class="opt">
+            <input type="checkbox" id="num5" class="n1" />
+            <label for="num5"></label>
+            <p style="margin-left: 5px; color: #004953;">5</p>
+          </div>
+          <div class="opt">
+            <input type="checkbox" id="num6" class="n1" />
+            <label for="num6"></label>
+            <p style="margin-left: 5px; color: #004953;">6</p>
+          </div>
+          <div class="opt">
+            <input type="checkbox" id="num7" class="n1" />
+            <label for="num7"></label>
+            <p style="margin-left: 5px; color: #004953;">7</p>
+          </div>
+          <div class="opt">
+            <input type="checkbox" id="num8" class="n1" />
+            <label for="num8"></label>
+            <p style="margin-left: 5px; color: #004953;">8</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="ho"><!--Home + Office-->
+      <p class="s1">Home + Office:</p>
+
+      <form class="names"> <!--name-->
+        <div class="opts">
+          <input type="checkbox" id="office" class="n1" />
+          <label for="office">Office(88)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="cleaning" class="n1" />
+          <label for="cleaning">Cleaning(88)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="decor" class="n1" />
+          <label for="decor">Decor(88)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="bed" class="n1" />
+          <label for="bed">Bed Bath(88)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="garden" class="n1" />
+          <label for="garden">Garden(88)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="kitchen" class="n1" />
+          <label for="kitchen">Kitchen(88)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="entertaining" class="n1" />
+          <label for="entertaining">Entertaining(88)</label>
+        </div>
+      </form>
+    </div>
+
+    <div class="ho"><!--product type-->
+      <p class="s1">Product type</p>
+
+      <form class="names"><!--names-->
+        <div class="opts">
+          <input type="checkbox" id="sneakers" class="n1" />
+          <label for="sneakers">Sneakers(20)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="lace" class="n1" />
+          <label for="lace">Lace-up Shoes(13)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="slip" class="n1" />
+          <label for="slip">Slip-on Shoes(11)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="duffle" class="n1" />
+          <label for="duffle">Duffle Bags(18)</label>
+        </div>
+        <p style="color: #004953">See More...</p>
+      </form>
+    </div>
+
+    <div class="ho"><!--sustaniblity feature-->
+      <p class="s1">Sustaniblity Feature:</p>
+
+      <form class="names">
+        <div class="opts">
+          <input type="checkbox" id="sneakers" class="n1" />
+          <label for="sneakers">Sneakers(20)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="lace" class="n1" />
+          <label for="lace">Lace-up Shoes(13)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="slip" class="n1" />
+          <label for="slip">Slip-on Shoes(11)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="duffle" class="n1" />
+          <label for="duffle">Duffle Bags(18)</label>
+        </div>
+        <p style="color: #004953">See More...</p>
+      </form>
+    </div>
+
+
+
+    <div class="ho"><!--branad-->
+      <p class="s1">Branad:</p>
+
+
+      <form class="names">
+        <div class="opts">
+          <input type="checkbox" id="sneakers" class="n1" />
+          <label for="sneakers">Sneakers(20)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="lace" class="n1" />
+          <label for="lace">Lace-up Shoes(13)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="slip" class="n1" />
+          <label for="slip">Slip-on Shoes(11)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="duffle" class="n1" />
+          <label for="duffle">Duffle Bags(18)</label>
+        </div>
+        <p style="color: #004953">See More...</p>
+      </form>
+    </div>
+
+
+    <div class="ho"><!--gender-->
+      <p class="s1">Gender:</p>
+
+
+      <form class="names">
+        <div class="opts">
+          <input type="checkbox" id="male" class="n1" />
+          <label for="male">Male(20)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="female" class="n1" />
+          <label for="female">Female(13)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="kids" class="n1" />
+          <label for="kids">Kids(11)</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="boys" class="n1" />
+          <label for="boys">Boys(18)</label>
+        </div>
+        <p style="color: #004953">See More...</p>
+      </form>
+    </div>
+
+    <div class="ho" style="border-bottom: none"><!--branad-->
+      <p class="s1">Sort:</p>
+
+      <form class="names">
+        <div class="opts">
+          <input type="checkbox" id="sneakers" class="n1" />
+          <label for="sneakers">Sort by price low to high</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="lace" class="n1" />
+          <label for="lace">Sort by price high to low</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="slip" class="n1" />
+          <label for="slip">Newest first</label>
+        </div>
+        <div class="opts">
+          <input type="checkbox" id="duffle" class="n1" />
+          <label for="duffle">Populartity</label>
+        </div>
+        <p style="color: #004953">See More...</p>
+      </form>
+    </div>
+
+    <div class="btns"><!--apply and reset buttons-->
+      <button class="btn">Apply Filter</button>
+      <button class="btnr">Reset Filter</button>
+    </div>
+  </div>
+  </aside>
+
+  <div class="products"><!--products-->
+    {% for i in product %}
+    <div class="box">
+        <div class="picture">
+          <!--images-->
+          <a href="../{{i.slug}}!">
+          <img
+            class="picture"
+            src="../media/{{i.image}}"
+            width="200"
+            height="250"
+          />
+          </a>
+          {%if i.is_recycled %}
+          <p class="text">Recycled</p>
+          {%endif%}
+          <p class="heart"><i class="fas fa-heart"></i></p>
+        </div>
+        <div class="info">
+          <!--detail-->
+          <div class="name-rating">
+            <p class="brand-name">{{i.brand}}</p>
+            <p class="rating">
+              4.5 <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star-half-alt"></i>
+            </p>
+          </div>
+
+          <a href="../{{i.slug}}!" style="color: #000000; text-decoration: none;"><p class="name">{{i.name|slice:"0:50"}}</p></a>
+
+          <div class="prices">
+            {%if i.special_price%}
+            <p class="price">Rs {{i.special_price}} <span class="act-price">{{i.mrp}}</span></p>
+            {%else%}
+            <p class="price">Rs {{i.mrp}} </p>
+            {%endif%}
+            <div class="carts">
+              <p class="minus">-</p>
+              <p><i class="fas fa-shopping-cart"></i></p>
+              <p class="plus">+</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+  </section>
+
+  <section><!--previous and next page option-->
+  <div class="page-num">
+      <p class="prev">Prev</p>
+      <p class="arrow"><</p>
+      <p class="page"><span class="large">1</span> of 20</p>
+      <p class="arrow">></p>
+      <p class="next">Next</p>
+  </div>
+  </section>
+
+
+  <script>//drop down script
+    const drop = document.querySelector(".drop-down");
+    function myFunc() {
+      drop.style.display = "block";
+      const arrow = document.querySelector("#arrow");
+      if (arrow.attributes[0].value == "fas fa-chevron-down") {
+        arrow.classList.remove("fa-chevron-down");
+        arrow.classList.add("fa-chevron-up");
+      }
+    }
+  </script>
+
+  <script>//drop down script
+    const dropPc = document.querySelectorAll(".drop-down-pc");
+    function dropFunc(x) {
+      dropPc[x].style.display = "block";
+      const arrowPc = document.querySelectorAll("#arrow-pc");
+      if (arrowPc[x].attributes[0].value == "fas fa-chevron-down") {
+        arrowPc[x].classList.remove("fa-chevron-down");
+        arrowPc[x].classList.add("fa-chevron-up");
+      }
+    }
+  </script>
+
+  <script>
+    function leaveFunc(x) {
+      dropPc[x].style.display = "none";
+      const arrowPc = document.querySelectorAll('#arrow-pc')
+      if (arrowPc[x].attributes[0].value == "fas fa-chevron-up") {
+        arrowPc[x].classList.remove("fa-chevron-up");
+        arrowPc[x].classList.add("fa-chevron-down");
+      }
+    }
+  </script>
+
+  <script>//drop down script
+    const cover = document.querySelector(".cover");
+    function changeName(e) {
+      const all = document.querySelectorAll(".d");
+      cover.innerHTML = all[e].innerHTML;
+      drop.style.display = "none !important";
+      const arrow = document.querySelector("#arrow");
+      if (arrow.attributes[0].value == "fas fa-chevron-up") {
+        arrow.classList.remove("fa-chevron-up");
+        arrow.classList.add("fa-chevron-down");
+      }
+    }
+  </script>
+
+  <script>//drop down script if user click on it
+    function nn() {
+      if (drop.style.display == "block") {
+        drop.style.display = "none";
+      } else {
+        drop.style.display = "block";
+      }
+
+      if (arrow.attributes[0].value == "fas fa-chevron-up") {
+        arrow.classList.remove("fa-chevron-up");
+        arrow.classList.add("fa-chevron-down");
+      }
+    }
+  </script>
+
+
+<script>
+    //-----JS for Price Range slider-----
+
+    (function () {
+      const parent = document.querySelector(".range-slider");
+
+      if (!parent) {
+        return;
+      }
+
+      const rangeS = parent.querySelectorAll('input[type="range"]'),
+        numberS = parent.querySelectorAll(".number");
+
+      rangeS.forEach((el) => {
+        el.oninput = () => {
+          let slide1 = parseFloat(rangeS[0].value),
+            slide2 = parseFloat(rangeS[1].value);
+
+          if (slide1 > slide2) {
+            [slide1, slide2] = [slide2, slide1];
+          }
+
+          numberS[0].innerHTML = slide1;
+          numberS[1].innerHTML = slide2;
+        };
+      });
+
+      numberS.forEach((el) => {
+        el.oninput = () => {
+          let number1 = parseFloat(numberS[0].innerHTML),
+            number2 = parseFloat(numberS[1].innerHTML);
+
+          if (number1 > number2) {
+            let tmp = number1;
+            numberS[0].innerHTML = number2;
+            numberS[1].innerHTML = tmp;
+          }
+
+          rangeS[0].value = number1;
+          rangeS[1].value = number2;
+        };
+      });
+    })();
+  </script>
+
+<script>
+    const nav = document.querySelector('.nav')
+    const menuHead = document.querySelector('.menu-head');
+    const login = document.querySelectorAll('.login');
+    const cat = document.querySelector('.cat');
+
+  function appear() {
+    const burger = document.querySelector('.burger');
+    nav.classList.toggle('show')
+    menuHead.classList.toggle('show');
+    login.forEach((e) => e.classList.toggle('show'));
+    cat.classList.toggle('show');
+  }
+</script>
+
+<script>
+  function disappear() {
+  const cross = document.querySelector('.cross')
+
+  nav.classList.toggle('show')
+    menuHead.classList.toggle('show');
+    login.forEach((e) => e.classList.toggle('show'));
+    cat.classList.toggle('show');
+  }
+</script>
+
+<script>
+  function filterShow() {
+    const filters = document.querySelector('.filters')
+    filters.classList.toggle('visible')
+  }
+</script>
+{% endblock %}
+

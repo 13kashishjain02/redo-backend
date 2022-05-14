@@ -1,0 +1,197 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup | Redopact</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+ 
+    </head>
+
+    <style>
+
+    .login .row .login-right .switch{
+    display: flex;
+}
+
+    </style>
+
+
+    <body>
+
+
+        {% include 'general/terms.html' %}
+        {% include 'general/privacy.html' %}
+
+<div class="container-fluid login">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 text-center p-5 login-left">
+            <h4 class="text-primary">Get started for</h4> 
+            <h1 class="text-primary display-5" style="font-weight: bolder;"><b>ABSOLUTELY  FREE</b></h1>
+
+           <div class="mt-5">
+            <img class="img-fluid" src="{% static 'general/images/Signup.png' %}" alt="" style="width: 80%;"> 
+           </div>
+
+          
+        </div>
+        <!-- style="background-color: #FBE7E7;" -->
+        <div class="col-sm-12 col-md-6 col-lg-6 login-right p-5" >
+                   <div class="switch mt-5">
+                       <div class="">
+                           <h3 class="text-primary">
+                              <b>Signup</b>
+                           </h3>
+                       </div>
+                        <div class="border-end p-2 border-dark"></div>
+                        <div class="">
+                        <h3 class="px-3"> <a href="/login/" style="text-decoration:none">Login</a></h3>
+                         </div>
+                    </div>  
+
+
+                    <div class="login-form mt-5">
+                        {% if messages %}
+
+                        {% for message in messages %}
+
+                        <span class="container-fluid text-dark alert alert-success text-center py-3 px-5">
+                            {{message}}
+                        </span> <br> <br>
+
+                        {%endfor%}
+
+                        {%endif%}
+                    <form method="POST"> {% csrf_token %}
+                        <div class="form-group">
+                            {% if email %}
+
+                       
+
+                        <span class="text-danger">
+                            {{email}}
+                        </span>
+
+                        <br>
+                       
+
+                        {%endif%}
+                            <label for="exampleInputEmail1" class="form-label text-dark mt-2">
+                                <span style="color: black;">Email address</span>
+                            </label>
+                            <input style="border: 2px solid #1A4953;" value="{{email_v}}" name="email" type="email" class="form-control bg-white" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                          <br>
+                          <div class="form-group">
+                            {% if password %}
+
+                       
+
+                            <span class="text-danger">
+                                {{password}}
+                            </span>
+    
+                            <br>
+                           
+    
+                            {%endif%}
+                            <label for="exampleInputPassword1" class="form-label mt-2" style="color: black;">Password</label>
+                            <i class="fa-solid fa-lock" id="lock-unlock" onclick="LockUnlock()" style="float: right;position: relative;top: 3.5rem;right: 0.8rem;cursor: pointer;"></i>
+                            <input style="border: 2px solid #1A4953;" id="password" value="{{password_v}}"  name="password" type="password" class="form-control bg-white" id="exampleInputPassword1" placeholder="Password" required>
+                          </div>
+                          <div class="form-group"> <br>
+                            {% if contact1  %}
+
+                       
+
+                            <span class="text-danger">
+                                {{contact1}}
+                            </span>
+    
+                            <br>
+                           
+    
+                            {%endif%}
+
+                            {% if contact  %}
+
+                       
+
+                            <span class="text-danger">
+                                {{contact}}
+                            </span>
+    
+                            <br>
+                           
+    
+                            {%endif%}
+                            <label for="exampleInputcontact" class="form-label mt-2" style="color: black;">Contact Number</label>
+                            <input style="border: 2px solid #1A4953;" value="{{contact_v}}"  name="contact" type="tel" class="form-control bg-white" id="exampleInputcontact" placeholder="+91" required> 
+                          </div>
+                        </div>
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                            <label class="form-check-label" style="font-size: 13px;" for="flexCheckDefault">
+                                By Siging up you are agreeing to our <a href="#" data-bs-toggle="modal" data-bs-target="#terms">Terms & Condition</a> and <a href="#" data-bs-toggle="modal" data-bs-target="#privacy">Privacy Policy</a>
+                            </label>
+                          </div>
+
+                        <br> <br>
+
+                        <div class="text-center d-grid">
+                            <button class="btn bg-primary text-white py-3" style="border-radius: 4px;">Create Account</button>
+                        </div>
+
+                        <div class="text-center py-3">
+                            <span>Already have an account? <a href="/login/" class="text-primary" style="text-decoration: none;">Login here</a></span>
+                        </div>
+
+                        {% comment %} <div class="text-center py-5">
+                            <span>or continue</span> <br> <br>
+                           <span class="bg-white p-3 shadow-sm" style="border-radius: 6px;">
+                            <img src="{% static 'general/images/google.png' %}" width="30px" alt=""> Login with Google
+                           </span>
+                        </div> {% endcomment %}
+                    </form>                    
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<script>
+    function LockUnlock() {
+      const lu = document.getElementById("lock-unlock");
+      const password = document.getElementById("password");
+      if(lu.className  == 'fa-solid fa-lock'){
+          lu.setAttribute('class','fa-solid fa-lock-open');
+          password.type = "text";
+      }
+      else{
+        lu.setAttribute('class','fa-solid fa-lock');
+        password.type = "password";
+      }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
+

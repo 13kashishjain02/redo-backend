@@ -1,0 +1,138 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Redopact</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="{% static 'general/css/bootstrap.css'%}">
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    
+</head>
+<body>
+
+
+
+
+
+
+
+<div class="container-fluid login">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 text-center p-5 login-left">
+            <h4 class="text-primary">we Missed you !!</h4> 
+            <h1 class="text-primary display-5" style="font-weight: bolder;"><b>LOGIN BACK</b></h1>
+
+           <div class="logo">
+            <img class="img-fluid" style="width: 90%;" src="{% static 'general/images/Signin.png'%}" alt="">
+           </div>
+        </div>
+        <!-- style="background-color: #FBE7E7;" -->
+        <div class="col-sm-12 col-md-6 col-lg-6 login-right p-5" >
+                   <div class="mx-auto d-flex mt-5">
+                       <div class="">
+                           <h3>
+                               <a href="/register/" style="text-decoration:none">Signup</a>
+                           </h3>
+                       </div>
+                        <div class="border-end p-2 border-dark"></div>
+                        <div class="">
+                        <h3 class="px-3 text-primary">Login</h3>
+                         </div>
+                    </div>  
+
+
+                    <div class="login-form mt-5">
+                        {% if messages %}
+
+                        {% for message in messages %}
+
+                        <span class="container-fluid text-dark text-center py-3 alert alert-{{message.tags}}">
+                            {{message}}
+                        </span>
+
+                        {%endfor%}
+
+                        {%endif%}
+                    <form method="POST"> {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label text-dark mt-4">
+                                <span style="color: black;">Email address</span>
+                            </label>
+                            <input style="border: 2px solid #1A4953;" value="{{email}}" name="email" type="email" class="form-control bg-white" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1" class="form-label mt-4" style="color: black;">Password</label>
+                            <i class="fa-solid fa-lock" id="lock-unlock" onclick="LockUnlock()" style="float: right;position: relative;top: 4.5rem;right: 0.8rem;cursor: pointer;"></i>
+                            <input style="border: 2px solid #1A4953;" id="password" value="{{password}}" name="password" type="password" class="form-control bg-white" id="exampleInputPassword1" placeholder="Password" required>
+                            <label for="" class="py-2">
+                                <a href="/reset/" style="text-decoration:none; color: black;">Forget Password</a>
+                            </label>
+                          </div>
+                        </div>
+
+                        <br> <br>
+
+                        <div class="text-center d-grid">
+                            <button class="btn bg-primary text-white py-3" style="border-radius: 4px;">Login</button>
+                        </div>
+
+                        <div class="text-center py-3">
+                            <span>No account  <a href="/register/" class="text-primary" style="text-decoration: none;">Sign Up?</a></span>
+                        </div>
+
+                        {% comment %} <div class="text-center py-5">
+                            <span>or continue</span> <br> <br>
+                           <span class="bg-white p-3 shadow-sm" style="border-radius: 6px;">
+                            <img src="{% static 'general/images/google.png' %}" width="30px" alt=""> Login with Google
+                           </span>
+                        </div> {% endcomment %}
+                    </form> 
+
+
+                    
+
+
+
+
+
+                   
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+    function LockUnlock() {
+      const lu = document.getElementById("lock-unlock");
+      const password = document.getElementById("password");
+      if(lu.className  == 'fa-solid fa-lock'){
+          lu.setAttribute('class','fa-solid fa-lock-open');
+          password.type = "text";
+      }
+      else{
+        lu.setAttribute('class','fa-solid fa-lock');
+        password.type = "password";
+      }
+    }
+</script>
+
+
+</body>
+</html>
+
